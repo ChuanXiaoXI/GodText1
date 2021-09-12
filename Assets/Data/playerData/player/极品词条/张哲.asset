@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9265809cfad6d549a319a857b4a396c, type: 3}
+  m_Name: "\u5F20\u54F2"
+  m_EditorClassIdentifier: 
+  playerName: "\u5F20\u54F2"
+  playerImage: {fileID: 21300000, guid: cdf530a9009aa8b48b22733c8b86016c, type: 3}
+  playerPicture: {fileID: 0}
+  equipmentList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerInformation: "\u5F20\u54F2\uFF0C28\u5C81\uFF0C\u4F5C\u5BB6\n\u6027\u522B\uFF1A\u7537\n\u8EAB\u9AD8\uFF1A1.76\n\u79CD\u65CF\uFF1A\u73B0\u4F4D\u9762\u9EC4\u76AE\u80A4\u4EBA\u65CF\n"
+  playerStory: "\u5F20\u54F2\uFF0C\u7F51\u6587\u4F5C\u5BB6\uFF0C\u5C11\u5E74\u5929\u624D\uFF0C\u66FE\u4EE5\u4E00\u5DF1\u4E4B\u529B\u5F00\u521B\u4E86\u4E00\u5957\u5168\u65B0\u7684\u6D41\u6D3E\uFF0C\u5E76\u51ED\u501F\u6B64\u4F5C\u4E00\u4E3E\u6210\u540D\uFF0C\u6210\u4E3A\u6700\u5177\u6709\u5F71\u54CD\u529B\u7684\u4F5C\u5BB6\u4E4B\u4E00\uFF0C\u5176\u4F5C\u54C1\u5373\u4F7F\u662F\u5728\u51E0\u5341\u5E74\u540E\u4ECD\u5E7F\u4E3A\u6D41\u4F20\uFF0C\u5F71\u54CD\u6DF1\u8FDC\u3002\n\u56E0\u906D\u53D7\u751F\u6D3B\u6253\u51FB\uFF0C\u89C9\u5F97\u4EBA\u751F\u65E0\u8DA3\uFF0C\u5728\u4E00\u5929\u7801\u5B57\u7684\u65F6\u5019\uFF0C\u770B\u5230\u7535\u8111\u663E\u793A\u7684\u5BF9\u8BDD\u6846\uFF0C\u5728\u201C\u662F\u5426\u60F3\u660E\u767D\u751F\u547D\u7684\u610F\u4E49\u201D\u9009\u62E9\u4E86\u201CYES\u201D\uFF0C\u4F5C\u4E3A\u9996\u6279\u8FDB\u5165\u7A7A\u95F4\u7684\u4EBA\uFF0C\u4E3B\u795E\u5BF9\u4ED6\u6709\u6781\u9AD8\u7684\u8BA4\u53EF\uFF0C\u5C06\u5176\u7075\u9B42\u6C38\u8FDC\u7559\u5728\u7A7A\u95F4\u4E2D\u3002\n\u795E\u7684\u8BA4\u53EF\uFF1A\u653B\u51FB+7%\uFF0C\u6CD5\u5F3A+7%\uFF0C\u6700\u5927\u751F\u547D\u503C+7%\uFF0C\u9B45\u529B+7%\n"
+  npcTalk: []
+  npcMission: []
+  npcMissionTalk: []
+  npcChat: []
+  npcRefuse: 
+  npcThank: 
+  npcNullMission: 
+  hp: 0
+  totalhp: 15
+  replyHp: 1
+  mp: 0
+  totalmp: 0
+  replyMp: 0
+  sp: 40
+  replySp: 1
+  ad: 4
+  ap: 1
+  def: 3
+  mdef: 0
+  speed: 2
+  dodge: 5
+  crit: 5
+  iq: 6
+  charm: 8
+  critDamge: 0
+  drainLife: 0
+  skillOdds: 0
+  exp: 0
+  level: 0
+  totalhpPCT: 0.07
+  totalmpPCT: 0
+  totalspPCT: 0
+  spPCT: 0
+  adPCT: 0.07
+  apPCT: 0.07
+  defPCT: 0
+  mdefPCT: 0
+  speedPCT: 0
+  dodgePCT: 0
+  critPCT: 0
+  iqPCT: 0
+  charmPCT: 0.07
+  critDamgePCT: 0
+  drainLifePCT: 0
+  replyHpPCT: 0
+  replyMpPCT: 0
+  replySpPCT: 0
+  sword: 0
+  gun: 0

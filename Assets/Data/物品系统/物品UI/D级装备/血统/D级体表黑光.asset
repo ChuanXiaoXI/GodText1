@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9298dcf4578514f97913b37df2f544, type: 3}
+  m_Name: "D\u7EA7\u4F53\u8868\u9ED1\u5149"
+  m_EditorClassIdentifier: 
+  itemName: "\u4F53\u8868\u611F\u67D3"
+  itemImage: {fileID: 21300000, guid: c8544965f66d7bb4985adc49d7b36b09, type: 3}
+  itemColor: {r: 0, g: 0, b: 0, a: 1}
+  itemHeld: 1
+  itemID: 0
+  equipment: 0
+  equipmentClass: 
+  weaponClass: 
+  consumable: 0
+  consumableTime: 0
+  blood: 1
+  bloodClass: "\u9ED1\u5149\u75C5\u6BD2"
+  level: 2
+  story: 0
+  skillList: []
+  textFile: {fileID: 0}
+  itemInfo: "\u4F53\u8868\u6CE8\u5C04\u5668\uFF0CD\u7EA7\u8840\u7EDF\uFF0C\u9ED1\u5149\u75C5\u6BD2\n\u6700\u5927\u751F\u547D\u503C+8\uFF0C\u901F\u5EA6+3\uFF0C\u7269\u653B+3\n\u66B4\u51FB\u7387+5%\uFF0C\u7269\u9632+2\uFF0C\u9B54\u9632+1\n\u9ED1\u5149\u75C5\u6BD2\u5F00\u59CB\u4F9D\u9644\u4E8E\u76AE\u80A4\u8868\u9762\uFF0C\u7565\u5FAE\u5F3A\u5316\u76AE\u80A4\n"
+  hp: 0
+  mp: 0
+  Sp: 0
+  replyHp: 0
+  replyMp: 0
+  replySp: 0
+  replyHpPCT: 0
+  replyMpPCT: 0
+  replySpPCT: 0
+  totalhp: 8
+  totalhpPCT: 0
+  totalmp: 0
+  totalmpPCT: 0
+  sp: 0
+  spPCT: 0
+  ad: 3
+  adPCT: 0
+  ap: 0
+  apPCT: 0
+  def: 2
+  defPCT: 0
+  mdef: 1
+  mdefPCT: 0
+  speed: 3
+  speedPCT: 0
+  dodge: 0
+  dodgePCT: 0
+  crit: 5
+  critPCT: 0
+  iq: 0
+  iqPCT: 0
+  charm: 0
+  charmPCT: 0
+  critDamge: 0
+  critDamgePCT: 0
+  drainLife: 0
+  drainLifePCT: 0
+  swordFactor: 0
+  gunFactor: 0
+  shieldFactor: 0
+  skillOdds: 0
+  assassin: 0

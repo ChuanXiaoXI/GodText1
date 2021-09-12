@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Sence/MainMenu.unity
+    guid: aacbff8d074105947a3c5cec80597d42
+  - enabled: 1
+    path: Assets/Sence/xiongCityStartRoom.unity
+    guid: de3a7300763802040bf5e8849c85072d
+  m_configObjects: {}

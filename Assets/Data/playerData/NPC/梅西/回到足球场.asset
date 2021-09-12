@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5fe0671ccd946944a60ed59974372b7, type: 3}
+  m_Name: "\u56DE\u5230\u8DB3\u7403\u573A"
+  m_EditorClassIdentifier: 
+  day: 0
+  gameObjectName: "\u8DB3\u7403\u573A"
+  enemyNum: 0
+  enemyObjectName: 
+  failDay: 3
+  point: 50
+  Cpoint: 0
+  Spoint: 0
+  SSSpoint: 0
+  missionInfo: "E\u7EA7\u4EFB\u52A1\uFF0C\u56DE\u7403\u573A\u641C\u5BFB\u4E00\u4E0B\uFF0C\u66FF\u6885\u897F\u627E\u627E\u8FD8\u6709\u6CA1\u6709\u5E78\u5B58\u8005\n\u5956\u52B1\uFF1A50\u70B9\u6570"
+  missionText: "\u524D\u5F80\u8DB3\u7403\u573A\u641C\u5BFB"

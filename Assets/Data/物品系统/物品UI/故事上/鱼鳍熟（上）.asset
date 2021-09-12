@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9298dcf4578514f97913b37df2f544, type: 3}
+  m_Name: "\u68A6"
+  m_EditorClassIdentifier: 
+  itemName: "\u68A6"
+  itemImage: {fileID: 0}
+  itemHeld: 1
+  itemID: 0
+  equipment: 0
+  equipmentClass: 
+  weaponClass: 
+  consumableTime: 0
+  blood: 0
+  bloodClass: 
+  level: 0
+  consumable: 0
+  story: 1
+  skillList: []
+  textFile: {fileID: 0}
+  itemInfo: 
+  hp: 0
+  mp: 0
+  Sp: 0
+  replyHp: 0
+  replyMp: 0
+  replySp: 0
+  replyHpPCT: 0
+  replyMpPCT: 0
+  replySpPCT: 0
+  totalhp: 0
+  totalhpPCT: 0
+  totalmp: 0
+  totalmpPCT: 0
+  sp: 0
+  spPCT: 0
+  ad: 0
+  adPCT: 0
+  ap: 0
+  apPCT: 0
+  def: 0
+  defPCT: 0
+  mdef: 0
+  mdefPCT: 0
+  speed: 0
+  speedPCT: 0
+  dodge: 0
+  dodgePCT: 0
+  crit: 0
+  critPCT: 0
+  iq: 0
+  iqPCT: 0
+  charm: 0
+  charmPCT: 0
+  critDamge: 0
+  critDamgePCT: 0
+  drainLife: 0
+  drainLifePCT: 0
+  swordFactor: 0
+  gunFactor: 0
+  shieldFactor: 0
+  skillOdds: 0
+  assassin: 0

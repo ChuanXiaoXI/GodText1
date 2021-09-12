@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9265809cfad6d549a319a857b4a396c, type: 3}
+  m_Name: "\u695A\u8F69"
+  m_EditorClassIdentifier: 
+  playerName: "\u695A\u8F69"
+  playerImage: {fileID: 21300000, guid: 0b405eefac099f74ea8505a3d26bfd6a, type: 3}
+  playerPicture: {fileID: 0}
+  equipmentList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerInformation: "\u695A\u8F69\uFF0C28\u5C81\uFF0C\u7B2C\u4E00\u4EE3\u57FA\u56E0\u4EBA\u79CD\n\u6027\u522B\uFF1A\u7537\n\u8EAB\u9AD8\uFF1A1.76\n\u79CD\u65CF\uFF1A\u73B0\u4E16\u4EE3\u708E\u56FD\u9EC4\u80A4\u4EBA\u65CF"
+  playerStory: "\u519B\u4EBA\uFF0C\u519B\u8854\u4E3A\u5927\u6821\uFF0C\u5404\u65B9\u9762\u90FD\u51CC\u9A7E\u4E8E\u666E\u901A\u7279\u79CD\u5175\u4E4B\u4E0A\uFF0C\u65E0\u8BBA\u662F\u8FD1\u8EAB\u683C\u6597\uFF0C\u8FD8\u662F\u519B\u4E8B\u7F16\u5236\uFF0C\u90FD\u76F8\u5F53\u719F\u7EC3\u3002\u56E0\u4E3A\u57FA\u56E0\u6539\u9020\u6280\u672F\u7684\u4E0D\u5B8C\u5584\uFF0C\u81EA\u8EAB\u7F3A\u4E4F\u76F8\u5BF9\u5E94\u7684\u60C5\u611F\u8868\u8FBE\uFF0C\u5473\u89C9\u57FA\u56E0\u7F3A\u5931\u3002\n\u56E0\u4E3A\u597D\u5947\uFF0C\u9009\u62E9\u4E86YES\uFF0C\u8FDB\u5165\u7A7A\u95F4\u3002\n\u4E00\u4EE3\u57FA\u56E0\u6539\u9020\uFF1A+5%\u8111\u529B\uFF0C+3%\u6CD5\u5F3A\uFF0C+3%\u6700\u5927\u751F\u547D\u503C"
+  npcTalk: []
+  npcMission: []
+  npcMissionTalk: []
+  npcChat: []
+  npcRefuse: 
+  npcThank: 
+  npcNullMission: 
+  hp: 0
+  totalhp: 10
+  replyHp: 1
+  mp: 0
+  totalmp: 0
+  replyMp: 0
+  sp: 50
+  replySp: 1
+  ad: 6
+  ap: 1
+  def: 3
+  mdef: 0
+  speed: 3
+  dodge: 0
+  crit: 5
+  iq: 10
+  charm: 0
+  critDamge: 0.2
+  drainLife: 0
+  skillOdds: 0
+  exp: 0
+  level: 0
+  totalhpPCT: 0.03
+  totalmpPCT: 0
+  totalspPCT: 0
+  spPCT: 0
+  adPCT: 0
+  apPCT: 0.03
+  defPCT: 0
+  mdefPCT: 0
+  speedPCT: 0
+  dodgePCT: 0
+  critPCT: 0
+  iqPCT: 0.05
+  charmPCT: 0
+  critDamgePCT: 0
+  drainLifePCT: 0
+  replyHpPCT: 0
+  replyMpPCT: 0
+  replySpPCT: 0
+  sword: 0
+  gun: 0

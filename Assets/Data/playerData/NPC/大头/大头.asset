@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9265809cfad6d549a319a857b4a396c, type: 3}
+  m_Name: "\u5927\u5934"
+  m_EditorClassIdentifier: 
+  playerName: "\u5927\u5934"
+  playerImage: {fileID: 0}
+  playerPicture: {fileID: 0}
+  equipmentList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerInformation: 
+  playerStory: 
+  npcTalk:
+  - "\u563F\u563F\uFF0C\u6211\u53EB\u5927\u5934\uFF0C\u4ED6\u662F\u2026\u2026\u2026\u2026\u54CE\uFF01"
+  - "\u773C\u955C\uFF0C\u773C\u955C\uFF0C\u4F60\u8BF4\u2026\u2026\u2026\u2026\u54CE"
+  - "\u5916\u9762\u662F\u4E0D\u662F\u602A\u7269\u5F88\u591A\uFF1F"
+  npcMission:
+  - {fileID: 11400000, guid: 8c0bf4125834a9a4caaf6843d172de7c, type: 2}
+  - {fileID: 11400000, guid: 6dcfc7b134373384286197b5c1f2de61, type: 2}
+  npcMissionTalk:
+  - "\u4ED6\u53EB\u773C\u955C\uFF0C\u554A\uFF0C\u4ED6\u4E0D\u6234\u773C\u955C\uFF0C\u4ED6\u53EB\u80E1\u5E7F\u751F\uFF08E\u7EA7\u4EFB\u52A1\uFF09"
+  - "\u6211\u7231\u5979\uFF0C\u6211\u4E0D\u7BA1\u5979\u4EE5\u524D\u505A\u5565\u5B50\u7684\uFF0C\u6211\u53EA\u7BA1\u5979\u4E0B\u534A\u8F88\u5B50\u6709\u6211\uFF08C\u7EA7\u4EFB\u52A1\uFF09"
+  npcChat:
+  - "\u68A6\u9732\u3002\u7B49\u6211\u56DE\u53BB\uFF0C\u6211\u56DE\u53BB\u4FDD\u62A4\u4F60"
+  - "\u773C\u955C\uFF0C\u6211\u4EEC\u8D70\u5427\u2026\u2026"
+  - "\u773C\u955C\uFF0C\u68A6\u9732\u7EDD\u5BF9\u4E0D\u4F1A\u9A97\u6211\u6EF4\u2026\u2026"
+  - "\u773C\u955C\uFF0C\u4F60\u8FD8\u6D3B\u7740\u54A7\uFF01"
+  npcRefuse: "\u7B97\u4E86\uFF0C\u4F60\u4EEC\u90FD\u4E0D\u4F1A\u5E2E\u6211"
+  npcThank: "\u8C22\u8C22\uFF01\u8C22\u8C22\uFF01"
+  npcNullMission: "\u6211\u6CA1\u5565\u5176\u4ED6\u613F\u671B\u4E86"
+  hp: 0
+  totalhp: 15
+  replyHp: 1
+  mp: 0
+  totalmp: 0
+  replyMp: 0
+  sp: 50
+  replySp: 1
+  ad: 5
+  ap: 0
+  def: 4
+  mdef: 0
+  speed: 3
+  dodge: 10
+  crit: 5
+  iq: 3
+  charm: 3
+  critDamge: 0.2
+  drainLife: 0
+  skillOdds: 0
+  exp: 0
+  level: 0
+  totalhpPCT: 0.05
+  totalmpPCT: 0
+  totalspPCT: 0
+  spPCT: 0
+  adPCT: 0.05
+  apPCT: 0
+  defPCT: 0
+  mdefPCT: 0
+  speedPCT: 0
+  dodgePCT: 0
+  critPCT: 0
+  iqPCT: 0
+  charmPCT: 0
+  critDamgePCT: 0
+  drainLifePCT: 0
+  replyHpPCT: 0
+  replyMpPCT: 0
+  replySpPCT: 0
+  sword: 0
+  gun: 0

@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9265809cfad6d549a319a857b4a396c, type: 3}
+  m_Name: "\u5927\u98DE"
+  m_EditorClassIdentifier: 
+  playerName: "\u5927\u98DE"
+  playerImage: {fileID: 0}
+  playerPicture: {fileID: 0}
+  equipmentList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerInformation: 
+  playerStory: 
+  npcTalk:
+  - "\u6211\u662F\u5927\u98DE\uFF0C\u6709\u4F55\u8D35\u5E72"
+  - "\u770B\u4EC0\u4E48\uFF0C\u8D76\u7D27\u5E72\u6D3B\u53BB"
+  npcMission:
+  - {fileID: 11400000, guid: 8004f250bed9b4f4ca298be0a210ad78, type: 2}
+  - {fileID: 11400000, guid: 5725830fb9dbfd1498cdb3b451756e5b, type: 2}
+  - {fileID: 11400000, guid: 3aba4ba469e0e6046b4861a8df24b367, type: 2}
+  npcMissionTalk:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  npcRefuse: []
+  npcThank: []
+  npcNullMission: []
+  hp: 0
+  totalhp: 20
+  replyHp: 1
+  mp: 0
+  totalmp: 0
+  replyMp: 0
+  sp: 50
+  replySp: 1
+  ad: 6
+  ap: 0
+  def: 4
+  mdef: 0
+  speed: 3
+  dodge: 10
+  crit: 5
+  iq: 3
+  charm: 3
+  critDamge: 0.2
+  drainLife: 0
+  skillOdds: 0
+  exp: 0
+  level: 0
+  totalhpPCT: 0.05
+  totalmpPCT: 0
+  totalspPCT: 0
+  spPCT: 0
+  adPCT: 0
+  apPCT: 0
+  defPCT: 0
+  mdefPCT: 0
+  speedPCT: 0
+  dodgePCT: 0
+  critPCT: 0
+  iqPCT: 0
+  charmPCT: 0
+  critDamgePCT: 0
+  drainLifePCT: 0
+  replyHpPCT: 0
+  replyMpPCT: 0
+  replySpPCT: 0
+  sword: 0
+  gun: 0

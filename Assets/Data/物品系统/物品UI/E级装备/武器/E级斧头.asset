@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9298dcf4578514f97913b37df2f544, type: 3}
+  m_Name: "E\u7EA7\u65A7\u5934"
+  m_EditorClassIdentifier: 
+  itemName: "\u65A7\u5934"
+  itemImage: {fileID: 21300000, guid: 9ae161f88b1bc484ab43232d5c9d8e24, type: 3}
+  itemColor: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
+  itemHeld: 1
+  itemID: 0
+  equipment: 1
+  equipmentClass: Weapon
+  weaponClass: 
+  consumable: 0
+  consumableTime: 0
+  blood: 0
+  bloodClass: 
+  level: 1
+  story: 0
+  skillList: []
+  textFile: {fileID: 0}
+  itemInfo: "\u65A7\u5934\uFF0CE\u7EA7\u88C5\u5907\uFF0C\u6B66\u5668\n\u7269\u653B+3\uFF0C\u901F\u5EA6-1\n\u597D\u7528\u662F\u597D\u7528\uFF0C\u53EF\u662F\u522B\u7838\u5230\u81EA\u5DF1\u7684\u811A\u54E6"
+  hp: 0
+  mp: 0
+  Sp: 0
+  replyHp: 0
+  replyMp: 0
+  replySp: 0
+  replyHpPCT: 0
+  replyMpPCT: 0
+  replySpPCT: 0
+  totalhp: 0
+  totalhpPCT: 0
+  totalmp: 0
+  totalmpPCT: 0
+  sp: 0
+  spPCT: 0
+  ad: 3
+  adPCT: 0
+  ap: 0
+  apPCT: 0
+  def: 0
+  defPCT: 0
+  mdef: 0
+  mdefPCT: 0
+  speed: -1
+  speedPCT: 0
+  dodge: 0
+  dodgePCT: 0
+  crit: 0
+  critPCT: 0
+  iq: 0
+  iqPCT: 0
+  charm: 0
+  charmPCT: 0
+  critDamge: 0
+  critDamgePCT: 0
+  drainLife: 0
+  drainLifePCT: 0
+  swordFactor: 0
+  gunFactor: 0
+  shieldFactor: 0
+  skillOdds: 0
+  assassin: 0

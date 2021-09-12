@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d23ebe591b350141b1cc6443521fb06, type: 3}
+  m_Name: "\u521D\u62E5"
+  m_EditorClassIdentifier: 
+  skillName: "\u521D\u62E5"
+  startSkill: 0
+  activeSkill: 1
+  endSkill: 0
+  endSkillOdd: 0
+  turnSkill: 0
+  growthSkill: 0
+  baseDamage: 0
+  adSkill: 0
+  adSkillFactor: 0
+  apSkill: 1
+  apSkillFactor: 1.5
+  iqSkill: 0
+  iqSkillFactor: 0
+  hpSkill: 0
+  hpSkillFactor: 0
+  mp: 30
+  sp: 0
+  dizzy: 0
+  disarm: 0
+  singleDamage: 1
+  teamDamage: 0
+  singleBuff: 0
+  teamBuff: 0
+  ownBuff: 1
+  singleDebuff: 0
+  teamDebuff: 0
+  ad: 0
+  ap: 0
+  totalhp: 0
+  speed: 0
+  def: 0
+  mdef: 0
+  critDamge: 0
+  iq: 0
+  charm: 0
+  buff: {fileID: 0}
+  skillFactor: 0
