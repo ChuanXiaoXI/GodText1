@@ -4621,6 +4621,8 @@ MonoBehaviour:
   dodgeString: 
   damageNumObjectIsAlive: 0
   buffManage: {fileID: 557008036263741098}
+  buffPrefabObject: {fileID: 1825274025422022433, guid: b36b22f88d39a4440a07601a75da094f,
+    type: 3}
 --- !u!1 &7654260401193709268
 GameObject:
   m_ObjectHideFlags: 0
