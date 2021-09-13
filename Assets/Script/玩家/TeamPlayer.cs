@@ -223,9 +223,21 @@ public GameObject playerInformation;
 public GameObject enemyInformation;
 public GameObject itemInfromation;
 public GameObject infromation;
-[Header("战斗显示系统")]
-public GameObject buffPrefabObject;
 
+
+[Header("战斗显示")]
+public GameObject damageNumObject;//prefab
+//public GameObject damageNumobjectPoint1;//定位点
+//public GameObject damageNumobjectPoint2;//定位点
+public GameObject damageNumObj;//标记
+//public Text damageNumText;
+public float damageNumber;
+public string dodgeString;
+public bool damageNumObjectIsAlive;
+
+public GameObject buffManage;
+public GameObject buffPrefabObject;
+//public float waitSecond;
 
 public void Start()
 {

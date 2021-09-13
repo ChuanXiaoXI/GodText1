@@ -11,6 +11,9 @@ public class PlayerBattle : MonoBehaviour
    [Header("血条")]
    public Slider slider;
    public Slider speedSlider;
+   [Header("战斗显示")]
+   public GameObject damageNumobjectPoint1;//定位点
+   public GameObject damageNumobjectPoint2;//定位点
 
    public void Start()
    {

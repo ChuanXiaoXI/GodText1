@@ -1025,6 +1025,8 @@ MonoBehaviour:
   player: {fileID: 0}
   slider: {fileID: 4382875283375923525}
   speedSlider: {fileID: 999688492410858712}
+  damageNumobjectPoint1: {fileID: 4472494222156280413}
+  damageNumobjectPoint2: {fileID: 5094139822955745500}
 --- !u!1 &7983178298868279996
 GameObject:
   m_ObjectHideFlags: 0
