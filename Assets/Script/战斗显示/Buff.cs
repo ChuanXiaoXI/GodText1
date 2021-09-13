@@ -31,10 +31,11 @@ public void OnPointerExit(PointerEventData eventData)
     // Update is called once per frame
     void Update()
     {
-        /*if(buffHeld == 0)
+        if(buffHeld == 0)
         {
+            gameObject.transform.parent.gameObject.GetComponent<EnemyBuffManager>().buffList.Remove(buff);    
             Destroy(gameObject);
-        }*/
+        }
       
     }
 }

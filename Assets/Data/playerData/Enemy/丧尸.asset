@@ -54,7 +54,7 @@ MonoBehaviour:
   npcInteraction: []
   npcRefuseInteraction: []
   npcInteractionItem: []
-  totalhp: 100
+  totalhp: 10
   replyHp: 1
   totalmp: 0
   replyMp: 0

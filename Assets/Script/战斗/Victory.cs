@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+//using System;
 
 public class Victory : MonoBehaviour
 {
@@ -19,10 +20,13 @@ public class Victory : MonoBehaviour
   public void OnEnable()
   {
       enemyPoint = battleManage.enemyPoint;
-      /*for (int i = 0; i < battleManage.remainPlayerList.Count ; i++)
+      
+      for (int i = 0; i < battleManage.remainPlayerList.Count ; i++)
             {
                for(int j = 0; j < battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList.Count ; j++)
                {
+                 if(battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j] != null)
+                 {                 
                    if(battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].overSkill)
                    {
                         battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.baseAd += battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[i].ad;
@@ -35,9 +39,10 @@ public class Victory : MonoBehaviour
                         battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.baseIq += battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[i].iq;
                         battleManage. remainPlayerList[i].GetComponent<PlayerBattle>().player.baseCharm += battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[i].charm;
                    }
+                 }
                }
             }
-
+     
       for (int i = 0; i < player.Count; i++)
       {
           if(player[i].playerClass == null)
@@ -46,10 +51,10 @@ public class Victory : MonoBehaviour
           }
           if(player[i].playerClass != null)
           {
-              playerDamage[i].text = player[i].name.ToString() + ":" + player[i].damageNum.ToString();
+              playerDamage[i].text = player[i].playerClass.playerName.ToString() + ":" + ((int)player[i].damageNum).ToString();
           }
-      }*/
-
+      }
+    
       Instantiate(itemPrefab).transform.parent = item1.transform;
       item1.transform.GetChild(0).gameObject.transform.position = item1.transform.position;
       Instantiate(itemPrefab).transform.parent = item2.transform;
