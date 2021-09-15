@@ -222,6 +222,7 @@ public class EnemyUI : MonoBehaviour
 //[技能系统]
 public List<Skill> skillList = new List<Skill>();
 float swordMax;
+public float randomFloat;//随机因子
 
 [Header("战斗显示")]
 public GameObject damageNumObject;//prefab
@@ -235,6 +236,9 @@ public bool damageNumObjectIsAlive;
 
 public GameObject buffManage;
 public GameObject buffPrefabObject;
+[Header("战斗动作")]
+public Vector2 originalPosition;
+
 //public float waitSecond;
 
 
@@ -286,6 +290,11 @@ public void Start()
     PlayerInformation();
     
     hp = totalhp;mp = totalmp;sp = totalsp;
+}
+public void OnEnable()
+{
+    randomFloat = Random.Range(0,0.2f);
+    originalPosition = gameObject.transform.position;
 }
 public void Update()
 {
@@ -362,23 +371,23 @@ public void PlayerInformation()
     
     //玩家属性值公式//属性 = （基础属性 + 装备属性 + 临时附加属性（技能附加，消耗品附加）） * （1 + 基础附加百分比（道具，特性）+ 装备附加百分比 + 临时附加百分比（技能，消耗品））
     //totalhp = ((baseTotalhp + equipmentTotalhp + temporaryTotalhp + buffTotalhp) * (1.0f + baseTotalhpPCT + equipmentTotalhpPCT + temporaryTotalhpPCT + buffTotalhpPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
-    totalhp = ((baseTotalhp + equipmentTotalhp + temporaryTotalhp + buffTotalhp) * (1.0f + baseTotalhpPCT + equipmentTotalhpPCT + temporaryTotalhpPCT + buffTotalhpPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
-    totalmp = ((baseTotalmp + equipmentTotalmp + temporaryTotalmp + buffTotalmp) * (1.0f + baseTotalmpPCT + equipmentTotalmpPCT + temporaryTotalmpPCT + buffTotalmpPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
-    totalsp = ((baseTotalsp + equipmentTotalsp + temporaryTotalsp + buffTotalsp) * (1.0f + baseTotalspPCT + equipmentTotalspPCT + temporaryTotalspPCT + buffTotalspPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
-    ad = ((baseAd + equipmentAd + temporaryAd + buffAd) * (1.0f + baseAdPCT + equipmentAdPCT + temporaryAdPCT + buffAdPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
-    ap = ((baseAp + equipmentAp + temporaryAp + buffAp) * (1.0f + baseApPCT + equipmentApPCT + temporaryApPCT + buffApPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
-    def = ((baseDef + equipmentDef + temporaryDef + buffDef) * (1.0f + baseDefPCT + equipmentDefPCT + temporaryDefPCT + buffDefPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
-    mdef = ((baseMdef + equipmentMdef + temporaryMdef + buffMdef) * (1.0f + baseMdefPCT + equipmentMdefPCT + temporaryMdefPCT + buffMdefPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
-    speed = ((baseSpeed + equipmentSpeed + temporarySpeed + buffSpeed) * (1.0f + baseSpeedPCT + equipmentSpeedPCT + temporarySpeedPCT + buffSpeedPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
+    totalhp = ((baseTotalhp + equipmentTotalhp + temporaryTotalhp + buffTotalhp) * (1.0f + randomFloat + baseTotalhpPCT + equipmentTotalhpPCT + temporaryTotalhpPCT + buffTotalhpPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
+    totalmp = ((baseTotalmp + equipmentTotalmp + temporaryTotalmp + buffTotalmp) * (1.0f + randomFloat + baseTotalmpPCT + equipmentTotalmpPCT + temporaryTotalmpPCT + buffTotalmpPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
+    totalsp = ((baseTotalsp + equipmentTotalsp + temporaryTotalsp + buffTotalsp) * (1.0f + randomFloat + baseTotalspPCT + equipmentTotalspPCT + temporaryTotalspPCT + buffTotalspPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
+    ad = ((baseAd + equipmentAd + temporaryAd + buffAd) * (1.0f + randomFloat +  baseAdPCT + equipmentAdPCT + temporaryAdPCT + buffAdPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
+    ap = ((baseAp + equipmentAp + temporaryAp + buffAp) * (1.0f + randomFloat +  baseApPCT + equipmentApPCT + temporaryApPCT + buffApPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
+    def = ((baseDef + equipmentDef + temporaryDef + buffDef) * (1.0f + randomFloat +  baseDefPCT + equipmentDefPCT + temporaryDefPCT + buffDefPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
+    mdef = ((baseMdef + equipmentMdef + temporaryMdef + buffMdef) * (1.0f + randomFloat +  baseMdefPCT + equipmentMdefPCT + temporaryMdefPCT + buffMdefPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
+    speed = ((baseSpeed + equipmentSpeed + temporarySpeed + buffSpeed) * (1.0f +  randomFloat + baseSpeedPCT + equipmentSpeedPCT + temporarySpeedPCT + buffSpeedPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
     dodge = (baseDodge + equipmentDodge + temporaryDodge + buffDodge); //* (1.0f + baseDodgePCT + equipmentDodgePCT + temporaryDodgePCT + buffDodgePCT);
     crit = (baseCrit + equipmentCrit + temporaryCrit + buffCrit) ;//* (1.0f + baseCritPCT + equipmentCritPCT + temporaryCritPCT + buffCritPCT);
-    iq = ((baseIq + equipmentIq + temporaryIq + buffIq) * (1.0f + baseIqPCT + equipmentIqPCT + temporaryIqPCT + buffIqPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
-    charm = ((baseCharm + equipmentCharm + temporaryCharm + buffCharm) * (1.0f + baseCharmPCT + equipmentCharmPCT + temporaryCharmPCT + buffCharmPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
+    iq = ((baseIq + equipmentIq + temporaryIq + buffIq) * (1.0f + randomFloat +  baseIqPCT + equipmentIqPCT + temporaryIqPCT + buffIqPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
+    charm = ((baseCharm + equipmentCharm + temporaryCharm + buffCharm) * (1.0f + randomFloat +  baseCharmPCT + equipmentCharmPCT + temporaryCharmPCT + buffCharmPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
     critDamge = (baseCritDamge + equipmentCritDamge + temporaryCritDamge + buffCritDamge);//* (1.0f + baseCritDamgePCT + equipmentCritDamgePCT + temporaryCritDamgePCT + buffCritDamgePCT);
     drainLife = (baseDrainLife + equipmentDrainLife + temporaryDrainLife + buffDrainLife); //* (1.0f + baseDrainLifePCT + equipmentDrainLifePCT + temporaryDrainLifePCT + buffDrainLifePCT);
-    replyHp = ((baseReplyHp + equipmentReplyHp + temporaryReplyHp + buffReplyHp) * (1.0f + baseReplyHpPCT + equipmentReplyHpPCT + temporaryReplyHpPCT + buffReplyHpPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
-    replyMp = ((baseReplyMp + equipmentReplyMp + temporaryReplyMp + buffReplyMp) * (1.0f + baseReplyMpPCT + equipmentReplyMpPCT + temporaryReplyMpPCT + buffReplyMpPCT));  
-    replySp = ((baseReplySp + equipmentReplySp + temporaryReplySp + buffReplySp) * (1.0f + baseReplySpPCT + equipmentReplySpPCT + temporaryReplySpPCT + buffReplySpPCT)); 
+    replyHp = ((baseReplyHp + equipmentReplyHp + temporaryReplyHp + buffReplyHp) * (1.0f +  randomFloat + baseReplyHpPCT + equipmentReplyHpPCT + temporaryReplyHpPCT + buffReplyHpPCT)) * ((1.0f + (0.1f * timeFactor)) * (1.0f + (0.1f * level)));
+    replyMp = ((baseReplyMp + equipmentReplyMp + temporaryReplyMp + buffReplyMp) * (1.0f +  randomFloat + baseReplyMpPCT + equipmentReplyMpPCT + temporaryReplyMpPCT + buffReplyMpPCT));  
+    replySp = ((baseReplySp + equipmentReplySp + temporaryReplySp + buffReplySp) * (1.0f +  randomFloat + baseReplySpPCT + equipmentReplySpPCT + temporaryReplySpPCT + buffReplySpPCT)); 
     skillOdds = baseSkillOdds + equipmentSkillOdds + temPorarySkillOdds + buffSkillOdds;
     sword = baseSword + equipmentSword + temporarySword + buffSword;
     gun = baseGun + equipmentGun + temporaryGun + buffGun;

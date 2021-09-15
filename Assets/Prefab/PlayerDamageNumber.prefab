@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2029783311456057384}
   - component: {fileID: 484044379533067258}
   - component: {fileID: 1260319425661896155}
+  - component: {fileID: -5002668015358938403}
   m_Layer: 5
   m_Name: PlayerDamageNumber
   m_TagString: Untagged
@@ -34,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -40, y: 0}
-  m_SizeDelta: {x: 80, y: 30}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 35, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &484044379533067258
 CanvasRenderer:
@@ -78,3 +79,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
+--- !u!114 &-5002668015358938403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858598334051507518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c91953b6287daa34ba62f611661a5665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamPlayer: {fileID: 0}
+  damageNumText: {fileID: 1260319425661896155}
+  destroyTime: 0

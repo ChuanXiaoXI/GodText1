@@ -263,8 +263,14 @@ public void OnEnable()
     playerBattleObject = playerPoints.transform.GetChild(0).gameObject;
 }
 public void Update()
+<<<<<<< HEAD
+{   PlayerAlive();
+    //playerBattleObject = playerPoints.transform.GetChild(0).gameObject;
+    //DamageNumObjectIsAlive();
+=======
 {
     playerBattleObject = playerPoints.transform.GetChild(0).gameObject;
+>>>>>>> parent of 8ade00b (1)
     PlayerAlive();
     Temporary();
     Equipment();
@@ -662,7 +668,11 @@ public void Fight()//战斗机制
     {  
        maxSpeed = battleManage.maxSpeed;
        actionTime += Time.deltaTime;
+<<<<<<< HEAD
+       DamageNumObjectIsAlive();
+=======
 
+>>>>>>> parent of 8ade00b (1)
        Buff();
        Target();
        Death();
