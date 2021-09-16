@@ -58,13 +58,13 @@ MonoBehaviour:
   replyHp: 0
   totalmp: 10
   replyMp: 0
-  totalsp: 100
+  totalsp: 1000
   replySp: 1
   ad: 10
   ap: 1
   def: 3
   mdef: 2
-  speed: 4
+  speed: 5
   dodge: 0
   crit: 5
   iq: 4

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class TeamPlayer : MonoBehaviour ,IPointerEnterHandler, IPointerExitHandler
 {  
@@ -227,10 +228,9 @@ public GameObject infromation;
 
 [Header("战斗显示")]
 public GameObject damageNumObject;//prefab
-//public GameObject damageNumobjectPoint1;//定位点
-//public GameObject damageNumobjectPoint2;//定位点
+
 public GameObject damageNumObj;//标记
-//public Text damageNumText;
+
 public float damageNumber;
 public string dodgeString;
 public bool damageNumObjectIsAlive;
@@ -260,24 +260,41 @@ public void Start()
 }
 public void OnEnable()
 {
-    playerBattleObject = playerPoints.transform.GetChild(0).gameObject;
+    //playerBattleObject = playerPoints.transform.GetChild(0).gameObject;
 }
 public void Update()
-<<<<<<< HEAD
 {   PlayerAlive();
     //playerBattleObject = playerPoints.transform.GetChild(0).gameObject;
     //DamageNumObjectIsAlive();
-=======
-{
-    playerBattleObject = playerPoints.transform.GetChild(0).gameObject;
->>>>>>> parent of 8ade00b (1)
     PlayerAlive();
     Temporary();
     Equipment();
     PlayerInformation();
     Fight();
+    
     //Death();
     
+}
+public void DamageNumObjectIsAlive()
+{
+    if(damageNumber <= 0)
+    {
+        damageNum = 1;
+    }
+   if(damageNumObjectIsAlive)
+    {
+        
+        damageNumObj = Instantiate(damageNumObject);
+        //damageNumObj.GetComponent<DamageNumber>().enemyUI = gameObject;
+        //damageNumObj.GetComponent<DamageNumber>().dodgeString = dodgeString;
+        //damageNumObj.GetComponent<DamageNumber>().damageNumber = damageNumber;
+        damageNumObj.transform.parent = playerBattleObject.transform;
+        damageNumObj.transform.position = playerBattleObject.GetComponent<PlayerBattle>().damageNumobjectPoint1.transform.position;
+
+        damageNumObjectIsAlive = false;
+        
+    }
+      
 }
 //UI简介系统
 public void OnPointerEnter(PointerEventData eventData)
@@ -665,20 +682,17 @@ public void Temporary()
 public void Fight()//战斗机制
 {
     if(battleManage.fighting)
-    {  
+    {  playerBattleObject = playerPoints.transform.GetChild(0).gameObject; 
        maxSpeed = battleManage.maxSpeed;
        actionTime += Time.deltaTime;
-<<<<<<< HEAD
-       DamageNumObjectIsAlive();
-=======
-
->>>>>>> parent of 8ade00b (1)
-       Buff();
        Target();
+       DamageNumObjectIsAlive();
+       Buff();
        Death();
        DamageNum();
+       
 
-       if(actionTime >= 2 * (maxSpeed / speed))//行动开始
+       if(actionTime >= 2 * (maxSpeed / speed) && actionTime >= 0.5f)//行动开始
        {
         turn += 1; 
         actionTime = 0;
@@ -710,7 +724,7 @@ public void Fight()//战斗机制
 public void Target()//目标机制
 {   
         targetEnemyUnitList = battleManage.remainEnemyList;//敌方列表
-       if(target)
+      /* if(target)
        {
               for (int i = 0; i < targetEnemyUnitList.Count; i++)
             {
@@ -733,14 +747,15 @@ public void Target()//目标机制
               //targetPlayerUnit.GetComponent<PlayerBattle>().player.targetPlayerObject = gameObject;
               break;
              }
-             target = false;
-        }
-       }
+            }
+            target = false;
+       }*/
         targetPlayerUnitList = battleManage.remainPlayerList;
         ownObject = gameObject;
 
         if(targetEnemyUnit == null)
        {
+           //Debug.Log("111");
            for (int i = 0; i < targetEnemyUnitList.Count; i++)
           {
             int targetIndex = Random.Range(0 , battleManage.remainEnemyList.Count);
@@ -1025,6 +1040,8 @@ public void Attack()
     if(!disarm && sp >= 10)
     {
         sp -= 10;
+        playerBattleObject.transform.DOMove(new Vector3( playerBattleObject.GetComponent<PlayerBattle>().actionPosition.transform.position.x, playerBattleObject.GetComponent<PlayerBattle>().actionPosition.transform.position.y, 0f), 0.2f);
+        playerBattleObject.transform.DOMove(new Vector3( playerBattleObject.GetComponent<PlayerBattle>().originalPosition.transform.position.x, playerBattleObject.GetComponent<PlayerBattle>().originalPosition.transform.position.y, 0f), 0.8f);//战斗移动
     int attackNum = Random.Range(0, 100);
     if (attackNum >= targetEnemyUnit.GetComponent<EnemyUI>().dodge)
     {
@@ -1085,6 +1102,8 @@ public void Gun()//枪械机制
         if(damageList[i] == 0)
         {
             damageList[i] = gun * (ad + ap);
+            targetEnemyUnit.GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
+            targetEnemyUnit.GetComponent<EnemyUI>().damageNumber = damageList[i];
             break;
         }
     }
@@ -1249,10 +1268,12 @@ public void Skill()//主动技能
             if(skillList[targetSkillID].activeSkill)
             {      
                  if(mp >= skillList[targetSkillID].mp && sp >= skillList[targetSkillID].sp && hp >= skillList[targetSkillID].hp )
-                {
+                { 
                    mp -= skillList[targetSkillID].mp;
                    sp -= skillList[targetSkillID].sp;
                    hp -= skillList[targetSkillID].hp;
+                   playerBattleObject.transform.DOMove(new Vector3( playerBattleObject.GetComponent<PlayerBattle>().actionPosition.transform.position.x, playerBattleObject.GetComponent<PlayerBattle>().actionPosition.transform.position.y, 0f), 0.2f);
+                  playerBattleObject.transform.DOMove(new Vector3( playerBattleObject.GetComponent<PlayerBattle>().originalPosition.transform.position.x, playerBattleObject.GetComponent<PlayerBattle>().originalPosition.transform.position.y, 0f), 0.8f);//战斗移动
                 
                    if(skillList[targetSkillID].singleDamage)//单体伤害技能
                    {

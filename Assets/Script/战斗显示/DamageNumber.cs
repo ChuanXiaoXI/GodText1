@@ -24,7 +24,15 @@ public class DamageNumber : MonoBehaviour
            //m_Rect = gameObject.GetComponent<RectTransform>();
            if(enemyUI.GetComponent<EnemyUI>().dodgeString == null)
            {
-               damageNumText.text = Convert.ToInt16(enemyUI.GetComponent<EnemyUI>().damageNumber).ToString();
+               if(enemyUI.GetComponent<EnemyUI>().damageNumber <= 0)
+               {
+                   damageNumText.text = "1";
+               }
+               if(enemyUI.GetComponent<EnemyUI>().damageNumber > 0)
+               {
+                   damageNumText.text = Convert.ToInt16(enemyUI.GetComponent<EnemyUI>().damageNumber).ToString();
+               }
+               //damageNumText.text = Convert.ToInt16(enemyUI.GetComponent<EnemyUI>().damageNumber).ToString();
            }
            if(enemyUI.GetComponent<EnemyUI>().dodgeString != null)
            {
@@ -32,7 +40,7 @@ public class DamageNumber : MonoBehaviour
            }
             //damageNumText.text = Convert.ToInt16(damageNumber).ToString();
             
-            enemyUI.GetComponent<EnemyUI>().damageNumber = 0;
+            enemyUI.GetComponent<EnemyUI>().damageNumber = 1;
             enemyUI.GetComponent<EnemyUI>().dodgeString = null;
         
         

@@ -54,17 +54,17 @@ MonoBehaviour:
   npcInteraction: []
   npcRefuseInteraction: []
   npcInteractionItem: []
-  totalhp: 100
+  totalhp: 10
   replyHp: 1
   totalmp: 0
   replyMp: 0
   totalsp: 100
   replySp: 3
-  ad: 5
+  ad: 2
   ap: 3
   def: 3
   mdef: 1
-  speed: 5
+  speed: 3
   dodge: 10
   crit: 20
   iq: 4

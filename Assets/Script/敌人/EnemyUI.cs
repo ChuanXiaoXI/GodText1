@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 //using System;
 public class EnemyUI : MonoBehaviour
 {  
@@ -237,13 +238,18 @@ public bool damageNumObjectIsAlive;
 public GameObject buffManage;
 public GameObject buffPrefabObject;
 [Header("战斗动作")]
-public Vector2 originalPosition;
-
+public GameObject originalPosition;
+public GameObject actionPosition;
+public GameObject hurtPosition;
 //public float waitSecond;
 
 
 public void DamageNumObjectIsAlive()
 {
+    if(damageNumber <= 0)
+    {
+        damageNum = 1;
+    }
     if(damageNumObjectIsAlive)
     {
         damageNumObj = Instantiate(damageNumObject);
@@ -266,6 +272,7 @@ public void DamageNumObjectIsAlive()
     enemyInformation.SetActive(true);
     itemInformation.SetActive(false);
     enemyInformation.GetComponent<EnemyInformation>().playerscript = gameObject.GetComponent<EnemyUI>();
+    
      
       
     }
@@ -294,7 +301,7 @@ public void Start()
 public void OnEnable()
 {
     randomFloat = Random.Range(0,0.2f);
-    originalPosition = gameObject.transform.position;
+    //originalPosition = gameObject.transform.position;
 }
 public void Update()
 {
@@ -575,6 +582,7 @@ public void Fight()//战斗机制
 
        if(actionTime >= 2 * (maxSpeed / speed))//行动开始
        {
+          
         turn += 1; 
         actionTime = 0;
         hp += replyHp;
@@ -927,10 +935,12 @@ public void Action()//行动机制
 }
 public void Attack()
 { 
-    //Debug.Log("111");
-    
+   
+     gameObject.transform.DOMove(new Vector3( actionPosition.transform.position.x, actionPosition.transform.position.y, 0f), 0.2f);
+     gameObject.transform.DOMove(new Vector3( originalPosition.transform.position.x, originalPosition.transform.position.y, 0f), 0.8f);//战斗移动
     if(!disarm && sp >= 10)
     {
+        
         sp -= 10;
     int attackNum = Random.Range(0, 100);
     if (attackNum >= targetEnemyUnit.GetComponent<PlayerBattle>().player.dodge)
@@ -942,6 +952,8 @@ public void Attack()
     }
     if (attackNum < targetEnemyUnit.GetComponent<PlayerBattle>().player.dodge)
     {
+         targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+        targetEnemyUnit.GetComponent<PlayerBattle>().player.dodgeString = "闪避";
         //End();
     }
     }
@@ -976,6 +988,8 @@ public void Gun()//枪械机制
         if(damageList[i] == 0)
         {
             damageList[i] = gun * (ad + ap);
+             targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+            targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumber = damageList[i];
             break;
         }
     }
@@ -1094,11 +1108,18 @@ public void Damage()//伤害机制
         if(critNumber > crit)
         {  
            targetEnemyUnit.GetComponent<PlayerBattle>().player.hp -= (ad - targetEnemyUnit.GetComponent<PlayerBattle>().player.def); 
+           
            for (int m = 0; m < damageList.Count; m++)
            {
                   if(damageList[m] == 0)
                 {
-                   damageList[m] = (ad - targetEnemyUnit.GetComponent<PlayerBattle>().player.def);
+                   damageList[m] = (ad - targetEnemyUnit.GetComponent<PlayerBattle>().player.def); 
+                   if(damageList[m] <= 0)
+                   {
+                         damageList[m] = 1;
+                   }                                  
+                   targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                   targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumber = damageList[m];                   
                    break;
                 }
            }   
@@ -1111,6 +1132,12 @@ public void Damage()//伤害机制
                   if(damageList[m] == 0)
                 {
                    damageList[m] = ((ad - targetEnemyUnit.GetComponent<PlayerBattle>().player.def) * (1.0f + critDamge));
+                   if(damageList[m] <= 0)
+                   {
+                         damageList[m] = 1;
+                   }                  
+                   targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                   targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumber = damageList[m];
                    break;
                 }
            }
@@ -1139,6 +1166,8 @@ for (int i = 0; i < skillList.Count; i++)
                    mp -= skillList[targetSkillID].mp;
                    sp -= skillList[targetSkillID].sp;
                    hp -= skillList[targetSkillID].hp;
+                   gameObject.transform.DOMove(new Vector3( actionPosition.transform.position.x, actionPosition.transform.position.y, 0f), 0.2f);
+                   gameObject.transform.DOMove(new Vector3( originalPosition.transform.position.x, originalPosition.transform.position.y, 0f), 0.8f);//战斗移动
                 
                    if(skillList[targetSkillID].singleDamage)//单体伤害技能
                    {
@@ -1150,6 +1179,12 @@ for (int i = 0; i < skillList.Count; i++)
                            if(damageList[n] == 0)
                            {
                                damageList[n] = ((ad * skillList[targetSkillID].adSkillFactor) - targetEnemyUnit.GetComponent<PlayerBattle>().player.def);
+                                if(damageList[n] <= 0)
+                         {
+                             damageList[n] = 1;
+                         }        
+                               targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                               targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumber = damageList[n];
                                break;
                            }
                        }
@@ -1164,6 +1199,12 @@ for (int i = 0; i < skillList.Count; i++)
                            if(damageList[n] == 0)
                            {
                                damageList[n] = ((totalhp * skillList[targetSkillID].hpSkillFactor) - targetEnemyUnit.GetComponent<PlayerBattle>().player.def);
+                                if(damageList[n] <= 0)
+                         {
+                             damageList[n] = 1;
+                         }        
+                               targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                               targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumber = damageList[n];
                                break;
                            }
                        }
@@ -1179,6 +1220,12 @@ for (int i = 0; i < skillList.Count; i++)
                          if(damageList[m] == 0)
                          {
                             damageList[m] = ((ap * skillList[targetSkillID].apSkillFactor) - targetEnemyUnit.GetComponent<PlayerBattle>().player.mdef);
+                            if(damageList[m] <= 0)
+                         {
+                             damageList[m] = 1;
+                         }        
+                            targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                            targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumber = damageList[m];
                             break;
                          }
                        }
@@ -1193,6 +1240,12 @@ for (int i = 0; i < skillList.Count; i++)
                          if(damageList[m] == 0)
                          {
                             damageList[m] = ((iq * skillList[targetSkillID].iqSkillFactor) - targetEnemyUnit.GetComponent<PlayerBattle>().player.mdef);
+                               if(damageList[m] <= 0)
+                             {
+                                damageList[m] = 1;
+                             }        
+                            targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                            targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumber = damageList[m];
                             break;
                          }
                        }
@@ -1214,6 +1267,12 @@ for (int i = 0; i < skillList.Count; i++)
                               if(damageList[m] == 0)
                             { 
                                damageList[m] = ((ad * skillList[targetSkillID].adSkillFactor) - targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def);
+                                if(damageList[m] <= 0)
+                             {
+                                damageList[m] = 1;
+                             }        
+                               targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                               targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumber = damageList[m];
                                break;
                             }
                           }
@@ -1233,6 +1292,12 @@ for (int i = 0; i < skillList.Count; i++)
                               if(damageList[m] == 0)
                             { 
                                damageList[m] = ((totalhp * skillList[targetSkillID].hpSkillFactor) - targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def);
+                                if(damageList[m] <= 0)
+                             {
+                                damageList[m] = 1;
+                             }        
+                               targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                               targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumber = damageList[m];
                                break;
                             }
                           }
@@ -1250,6 +1315,12 @@ for (int i = 0; i < skillList.Count; i++)
                               if(damageList[m] == 0)
                              { 
                                damageList[m] = ((ap * skillList[targetSkillID].apSkillFactor) - targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef);
+                                if(damageList[m] <= 0)
+                             {
+                                damageList[m] = 1;
+                             }        
+                               targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                               targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumber = damageList[m];
                                break;
                             }
                           }
@@ -1268,6 +1339,12 @@ for (int i = 0; i < skillList.Count; i++)
                               if(damageList[m] == 0)
                              { 
                                damageList[m] = ((iq * skillList[targetSkillID].iqSkillFactor) - targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef);
+                                if(damageList[m] <= 0)
+                             {
+                                damageList[m] = 1;
+                             }        
+                               targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                               targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumber = damageList[m];
                                break;
                             }
                           }
@@ -1513,6 +1590,12 @@ public void EndSkill()//被动技能
                               if(damageList[m] == 0)
                             { 
                                damageList[m] = ((ad * skillList[i].adSkillFactor) - targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def);
+                                if(damageList[m] <= 0)
+                             {
+                                damageList[m] = 1;
+                             }        
+                               targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                               targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumber = damageList[m];
                                break;
                             }
                           }
@@ -1531,6 +1614,12 @@ public void EndSkill()//被动技能
                               if(damageList[m] == 0)
                             { 
                                damageList[m] = ((totalhp * skillList[i].hpSkillFactor) - targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def);
+                                if(damageList[m] <= 0)
+                             {
+                                damageList[m] = 1;
+                             }        
+                               targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                               targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumber = damageList[m];
                                break;
                             }
                           }
@@ -1547,6 +1636,12 @@ public void EndSkill()//被动技能
                               if(damageList[m] == 0)
                              { 
                                damageList[m] = ((ap * skillList[i].apSkillFactor) - targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef);
+                                if(damageList[m] <= 0)
+                             {
+                                damageList[m] = 1;
+                             }        
+                               targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                               targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumber = damageList[m];
                                break;
                             }
                           }
@@ -1564,6 +1659,12 @@ public void EndSkill()//被动技能
                               if(damageList[m] == 0)
                              { 
                                damageList[m] = ((iq * skillList[i].iqSkillFactor) - targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef);
+                                if(damageList[m] <= 0)
+                             {
+                                damageList[m] = 1;
+                             }        
+                               targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                               targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumber = damageList[m];
                                break;
                             }
                           }
@@ -1722,6 +1823,12 @@ public void End()
                            if(damageList[n] == 0)
                            {
                                damageList[n] = ((ad * skillList[i].adSkillFactor) - targetEnemyUnit.GetComponent<PlayerBattle>().player.def);
+                                if(damageList[n] <= 0)
+                         {
+                             damageList[n] = 1;
+                         }        
+                                targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                               targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumber = damageList[n];
                                break;
                            }
                        }          
@@ -1735,6 +1842,12 @@ public void End()
                            if(damageList[n] == 0)
                            {
                                damageList[n] = ((totalhp * skillList[i].hpSkillFactor) - targetEnemyUnit.GetComponent<PlayerBattle>().player.def);
+                                if(damageList[n] <= 0)
+                         {
+                             damageList[n] = 1;
+                         }        
+                               targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                               targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumber = damageList[n];
                                break;
                            }
                        }           
@@ -1748,6 +1861,12 @@ public void End()
                          if(damageList[m] == 0)
                          {
                             damageList[m] = ((ap * skillList[i].apSkillFactor) - targetEnemyUnit.GetComponent<PlayerBattle>().player.mdef);
+                             if(damageList[m] <= 0)
+                             {
+                                damageList[m] = 1;
+                             }        
+                            targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                               targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumber = damageList[m];
                             break;
                          }
                        } 
@@ -1761,6 +1880,12 @@ public void End()
                          if(damageList[m] == 0)
                          {
                             damageList[m] = ((iq * skillList[i].iqSkillFactor) - targetEnemyUnit.GetComponent<PlayerBattle>().player.mdef);
+                             if(damageList[m] <= 0)
+                             {
+                                damageList[m] = 1;
+                             }        
+                            targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                               targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumber = damageList[m];
                             break;
                          }
                        } 
@@ -1779,6 +1904,12 @@ public void End()
                               if(damageList[m] == 0)
                             { 
                                damageList[m] = ((ad * skillList[i].adSkillFactor) - targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def);
+                                if(damageList[m] <= 0)
+                             {
+                                damageList[m] = 1;
+                             }        
+                               targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                               targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumber = damageList[m];
                                break;
                             }
                           }
@@ -1795,6 +1926,12 @@ public void End()
                               if(damageList[m] == 0)
                             { 
                                damageList[m] = ((totalhp * skillList[i].hpSkillFactor) - targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def);
+                                if(damageList[m] <= 0)
+                             {
+                                damageList[m] = 1;
+                             }        
+                                targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                               targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumber = damageList[m];
                                break;
                             }
                           }
@@ -1811,6 +1948,12 @@ public void End()
                               if(damageList[m] == 0)
                              { 
                                damageList[m] = ((ap * skillList[i].apSkillFactor) - targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef);
+                                if(damageList[m] <= 0)
+                             {
+                                damageList[m] = 1;
+                             }        
+                                targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                               targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumber = damageList[m];
                                break;
                             }
                           }
@@ -1829,6 +1972,12 @@ public void End()
                               if(damageList[m] == 0)
                              { 
                                damageList[m] = ((iq * skillList[i].iqSkillFactor) - targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef);
+                                if(damageList[m] <= 0)
+                             {
+                                damageList[m] = 1;
+                             }        
+                                targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                               targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.damageNumber = damageList[m];
                                break;
                             }
                           }
@@ -2063,6 +2212,10 @@ public void Death()//死亡机制
                            if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
                                targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = ((targetUnit.GetComponent<PlayerBattle>().player.ad * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].adSkillFactor) - targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().def);
+                                if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] <= 0)
+                         {
+                             targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = 1;
+                         }        
                                targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
                                targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().damageNumber = targetUnit.GetComponent<PlayerBattle>().player.damageList[n];
                                break;
@@ -2078,6 +2231,10 @@ public void Death()//死亡机制
                            if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
                                targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = ((targetUnit.GetComponent<PlayerBattle>().player.totalhp * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].hpSkillFactor) - targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().def);
+                               if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] <= 0)
+                               {
+                                  targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = 1;
+                               }        
                                targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
                                targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().damageNumber = targetUnit.GetComponent<PlayerBattle>().player.damageList[n];
                                break;
@@ -2087,6 +2244,10 @@ public void Death()//死亡机制
                         if(targetUnit.GetComponent<PlayerBattle>().player.skillList[i].apSkill)
                         {
                             targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().hp -= ((targetUnit.GetComponent<PlayerBattle>().player.ap * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].apSkillFactor) - targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().mdef);
+                            if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] <= 0)
+                               {
+                                  targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = 1;
+                               }        
                             targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().targetUnit = targetUnit;
                             for (int n = 0; n < targetUnit.GetComponent<PlayerBattle>().player.damageList.Count; n++)
                             {
@@ -2095,6 +2256,10 @@ public void Death()//死亡机制
                             if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
                                targetUnit.GetComponent<PlayerBattle>().player.damageList[n] =  ((targetUnit.GetComponent<PlayerBattle>().player.ap * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].apSkillFactor) - targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().mdef);
+                               if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] <= 0)
+                               {
+                                  targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = 1;
+                               }        
                                targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
                                targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().damageNumber = targetUnit.GetComponent<PlayerBattle>().player.damageList[n];
                                break;
@@ -2110,6 +2275,10 @@ public void Death()//死亡机制
                             if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
                                targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = ((targetUnit.GetComponent<PlayerBattle>().player.iq * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].iqSkillFactor) - targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().mdef);
+                               if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] <= 0)
+                               {
+                                  targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = 1;
+                               }        
                                targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
                                targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().damageNumber = damageList[n];
                                break;
@@ -2130,6 +2299,10 @@ public void Death()//死亡机制
                             if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
                                targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = ((targetUnit.GetComponent<PlayerBattle>().player.ad * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].adSkillFactor) - targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().def);
+                               if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] <= 0)
+                               {
+                                  targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = 1;
+                               }        
                                targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
                                targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().damageNumber = targetUnit.GetComponent<PlayerBattle>().player.damageList[n];
                                break;
@@ -2148,6 +2321,10 @@ public void Death()//死亡机制
                             if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
                                targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = ((targetUnit.GetComponent<PlayerBattle>().player.totalhp * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].hpSkillFactor) - targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().def);
+                               if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] <= 0)
+                               {
+                                  targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = 1;
+                               }        
                                targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
                                targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().damageNumber = damageList[n];
                                break;
@@ -2166,6 +2343,10 @@ public void Death()//死亡机制
                             if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
                                targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = ((targetUnit.GetComponent<PlayerBattle>().player.ap * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].apSkillFactor) - targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().mdef);
+                               if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] <= 0)
+                               {
+                                  targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = 1;
+                               }        
                                targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
                                targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().damageNumber = targetUnit.GetComponent<PlayerBattle>().player.damageList[n];
                                break;
@@ -2184,6 +2365,10 @@ public void Death()//死亡机制
                             if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
                                targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = ((targetUnit.GetComponent<PlayerBattle>().player.iq * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].iqSkillFactor) - targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().mdef);
+                               if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] <= 0)
+                               {
+                                  targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = 1;
+                               }        
                                targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
                                targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().damageNumber = targetUnit.GetComponent<PlayerBattle>().player.damageList[n];
                                break;
@@ -2301,6 +2486,10 @@ public void Death()//死亡机制
                             if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.ad * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].adSkillFactor) - targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().def);
+                               if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] <= 0)
+                               {
+                                  targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = 1;
+                               }        
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().damageNumber = targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n];
                                break;
@@ -2317,6 +2506,10 @@ public void Death()//死亡机制
                             if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.totalhp * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].hpSkillFactor) - targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().def);
+                               if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] <= 0)
+                               {
+                                  targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = 1;
+                               }      
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().damageNumber = targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n];
                                break;
@@ -2332,6 +2525,10 @@ public void Death()//死亡机制
                             if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.ap * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].apSkillFactor) - targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().mdef);
+                               if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] <= 0)
+                               {
+                                  targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = 1;
+                               }      
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().damageNumber = targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n];
                                break;
@@ -2347,6 +2544,10 @@ public void Death()//死亡机制
                             if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.iq * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].iqSkillFactor) - targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().mdef);
+                               if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] <= 0)
+                               {
+                                  targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = 1;
+                               }      
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().damageNumber = targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n];
                                break;
@@ -2367,6 +2568,10 @@ public void Death()//死亡机制
                             if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.ad * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].adSkillFactor) - targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().def);
+                               if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] <= 0)
+                               {
+                                  targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = 1;
+                               }      
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().damageNumber = targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n];
                                break;
@@ -2385,6 +2590,10 @@ public void Death()//死亡机制
                             if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.totalhp * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].hpSkillFactor) - targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().def);
+                               if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] <= 0)
+                               {
+                                  targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = 1;
+                               }      
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().damageNumber = targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n];
                                break;
@@ -2403,6 +2612,10 @@ public void Death()//死亡机制
                             if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.ap * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].apSkillFactor) - targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().mdef);
+                               if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] <= 0)
+                               {
+                                  targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = 1;
+                               }      
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().damageNumber = targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n];
                                break;
@@ -2421,6 +2634,10 @@ public void Death()//死亡机制
                             if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.iq * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].iqSkillFactor) - targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().mdef);
+                               if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] <= 0)
+                               {
+                                  targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = 1;
+                               }      
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
                                targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().damageNumber = targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n];
                                break;

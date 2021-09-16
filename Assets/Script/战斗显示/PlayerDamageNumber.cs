@@ -21,10 +21,19 @@ public class PlayerDamageNumber : MonoBehaviour
      public void Start()
     {
            teamPlayer = gameObject.transform.parent.gameObject.GetComponent<PlayerBattle>().player;
+           
            //m_Rect = gameObject.GetComponent<RectTransform>();
            if(teamPlayer.dodgeString == null)
            {
-               damageNumText.text = Convert.ToInt16(teamPlayer.damageNumber).ToString();
+                     if(teamPlayer.damageNum <= 0)
+                    {
+                      damageNumText.text = "1";
+                    }
+                    
+                     if(teamPlayer.damageNum > 0)
+                     {
+                     damageNumText.text = Convert.ToInt16(teamPlayer.damageNumber).ToString();
+                     }
            }
            if(teamPlayer.dodgeString != null)
            {
@@ -32,11 +41,11 @@ public class PlayerDamageNumber : MonoBehaviour
            }
             //damageNumText.text = Convert.ToInt16(damageNumber).ToString();
             
-            teamPlayer.damageNumber = 0;
+            teamPlayer.damageNumber = 1;
             teamPlayer.dodgeString = null;
         
         
-        gameObject.transform.DOMove(new Vector3(  gameObject.transform.parent.gameObject.GetComponent<PlayerBattle>().damageNumobjectPoint2.transform.position.x,  gameObject.transform.parent.gameObject.GetComponent<PlayerBattle>().damageNumobjectPoint2.transform.position.y, 0f), 0.5f);
+        gameObject.transform.DOMove(new Vector3( gameObject.transform.parent.gameObject.GetComponent<PlayerBattle>().damageNumobjectPoint2.transform.position.x,  gameObject.transform.parent.gameObject.GetComponent<PlayerBattle>().damageNumobjectPoint2.transform.position.y, 0f), 0.5f);
         //m_Rect.DOMove(new Vector3( m_Rect.localScale.x + 0.5f, gameObject.RectTransform.localScale.y + 0.5f, 0f), 0.5f);
         
         //destroyTime += Time.deltaTime;
