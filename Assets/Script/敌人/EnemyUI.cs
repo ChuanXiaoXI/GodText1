@@ -2208,7 +2208,7 @@ public void Death()//死亡机制
                             targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().hp -= ((targetUnit.GetComponent<PlayerBattle>().player.ad * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].adSkillFactor) - targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().def);
                             targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().targetUnit = targetUnit;
                             for (int n = 0; n < targetUnit.GetComponent<PlayerBattle>().player.damageList.Count; n++)
-                       {
+                         {
                            if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
                                targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = ((targetUnit.GetComponent<PlayerBattle>().player.ad * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].adSkillFactor) - targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().def);
@@ -2220,7 +2220,7 @@ public void Death()//死亡机制
                                targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().damageNumber = targetUnit.GetComponent<PlayerBattle>().player.damageList[n];
                                break;
                            }
-                       }          
+                         }          
                         }
                         if(targetUnit.GetComponent<PlayerBattle>().player.skillList[i].hpSkill)
                         {
@@ -2244,10 +2244,7 @@ public void Death()//死亡机制
                         if(targetUnit.GetComponent<PlayerBattle>().player.skillList[i].apSkill)
                         {
                             targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().hp -= ((targetUnit.GetComponent<PlayerBattle>().player.ap * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].apSkillFactor) - targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().mdef);
-                            if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] <= 0)
-                               {
-                                  targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = 1;
-                               }        
+                           
                             targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().targetUnit = targetUnit;
                             for (int n = 0; n < targetUnit.GetComponent<PlayerBattle>().player.damageList.Count; n++)
                             {
@@ -2664,7 +2661,7 @@ public void Death()//死亡机制
                       {
                         if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetPlayerUnitList[k] != null)
                         {
-                            for (int l = 0; l < targetUnit.GetComponent<PlayerBattle>().player.targetPlayerUnitList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList.Count; l++)
+                            for (int l = 0; l < targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetPlayerUnitList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList.Count; l++)
                             {
                                 if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetPlayerUnitList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList[l] == null)
                                 {
