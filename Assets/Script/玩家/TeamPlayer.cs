@@ -681,6 +681,7 @@ public void Fight()//战斗机制
 {
     if(battleManage.fighting)
     {  playerBattleObject = playerPoints.transform.GetChild(0).gameObject; 
+       buffManage = playerBattleObject.transform.GetChild(8).gameObject;
        maxSpeed = battleManage.maxSpeed;
        actionTime += Time.deltaTime;
        Target();
@@ -1004,6 +1005,14 @@ public void Buff()//buff机制
        {
            if(buffTime[i] == 0)
            {
+               for(int j = 0; j < buffManage.transform.childCount; j++)
+               {
+                   if(buffManage.transform.GetChild(j).gameObject.GetComponent<Buff>().buff == buffAndDebuffList[i])
+                   {
+                       buffManage.transform.GetChild(j).gameObject.GetComponent<Buff>().buffHeld -= 1;
+                   }
+
+               }
                buffAndDebuffList[i] = null;//清除buff
                buffObjectList[i] = null;
            }
@@ -1074,8 +1083,27 @@ public void Sword()//剑意机制
                     buffTime[i] = buffList.buffList[0].buffTime;
                     buffObjectList[i] = playerBattleObject;
                     buffAndDebuffList[i] = buffList.buffList[0];
-                    //buffTime[i] = buffList.buffList[0].buffTime;
-                    //buffObjectList[i] = gameObject;
+                   
+                    if(!playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(buffList.buffList[0]))
+                              {
+                              playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(buffList.buffList[0]);   
+                              GameObject buffObject = Instantiate(buffPrefabObject);
+                              buffObject.transform.parent = playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = buffList.buffList[0];
+                              }
+                              if(playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(buffList.buffList[0]))
+                              {
+                                  for(int l = 0; l < playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform.childCount ; l++)
+                                  {
+                                      if(playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buff == buffList.buffList[0])
+                                      {
+                                          playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buffHeld += 1;
+                                          break;
+                                      }
+                                  }
+                              }//buff显示
+
                     break;
                 }
             }
@@ -1083,15 +1111,6 @@ public void Sword()//剑意机制
 }
 public void Gun()//枪械机制
 {
-    //gun = 0;
-    /* for (int i = 0; i < equipmentList.Count; i++)
-    {
-        if(equipmentList[i] != null)
-        {
-        gun += equipmentList[i].gunFactor;
-        }
-    }*/
-    //gun += playerClass.gun;
     targetEnemyUnit.GetComponent<EnemyUI>().hp -= gun * (ad + ap);
     hp += (gun * (ad + ap)) * drainLife;
 
@@ -1121,8 +1140,26 @@ public void Shield()//盾防机制
                   buffTime[j] = buffList.buffList[equipmentList[i].shieldFactor].buffTime;
                   buffObjectList[j] = playerBattleObject;
                   buffAndDebuffList[j] = buffList.buffList[equipmentList[i].shieldFactor];
-                  //buffTime[j] = buffList.buffList[equipmentList[i].shieldFactor].buffTime;
-                  //buffObjectList[j] = gameObject;
+                  
+                  if(!playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(buffList.buffList[equipmentList[i].shieldFactor]))
+                              {
+                              playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(buffList.buffList[equipmentList[i].shieldFactor]);   
+                              GameObject buffObject = Instantiate(buffPrefabObject);
+                              buffObject.transform.parent = playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = buffList.buffList[equipmentList[i].shieldFactor];
+                              }
+                              if(playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(buffList.buffList[equipmentList[i].shieldFactor]))
+                              {
+                                  for(int l = 0; l < playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform.childCount ; l++)
+                                  {
+                                      if(playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buff == buffList.buffList[equipmentList[i].shieldFactor])
+                                      {
+                                          playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buffHeld += 1;
+                                          break;
+                                      }
+                                  }
+                              }//buff显示
                   break;
               }
           }
@@ -1166,6 +1203,25 @@ public void Fuwen()
                             buffObjectList[j] = playerBattleObject;
                             buffAndDebuffList[j] = buffList.buffList[number];
                             
+                            if(!playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(buffList.buffList[number]))
+                              {
+                              playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(buffList.buffList[number]);   
+                              GameObject buffObject = Instantiate(buffPrefabObject);
+                              buffObject.transform.parent = playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = buffList.buffList[number];
+                              }
+                              if(playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(buffList.buffList[number]))
+                              {
+                                  for(int l = 0; l < playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform.childCount ; l++)
+                                  {
+                                      if(playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buff == buffList.buffList[number])
+                                      {
+                                          playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buffHeld += 1;
+                                          break;
+                                      }
+                                  }
+                              }//buff显示
                             break;
                         }
                     }
@@ -1177,6 +1233,26 @@ public void Fuwen()
                             targetPlayerUnit.GetComponent<TeamPlayer>().buffObjectList[j] = playerBattleObject;                    
                             targetPlayerUnit.GetComponent<TeamPlayer>().buffAndDebuffList[j] = buffList.buffList[number];
                             
+
+                               if(!targetPlayerUnit.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(buffList.buffList[number]))
+                              {
+                              targetPlayerUnit.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(buffList.buffList[number]);   
+                              GameObject buffObject = Instantiate(buffPrefabObject);
+                              buffObject.transform.parent = targetPlayerUnit.GetComponent<PlayerBattle>().player.buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = buffList.buffList[number];
+                              }
+                              if(targetPlayerUnit.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(buffList.buffList[number]))
+                              {
+                                  for(int l = 0; l < targetPlayerUnit.GetComponent<PlayerBattle>().player.buffManage.transform.childCount ; l++)
+                                  {
+                                      if(targetPlayerUnit.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buff == buffList.buffList[number])
+                                      {
+                                          targetPlayerUnit.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buffHeld += 1;
+                                          break;
+                                      }
+                                  }
+                              }//buff显示
                             break;
                         }
                     }
@@ -1203,6 +1279,25 @@ public void Zhoushu()
                             targetEnemyUnit.GetComponent<EnemyUI>().buffObjectList[j] = playerBattleObject;                     
                             targetEnemyUnit.GetComponent<EnemyUI>().buffAndDebuffList[j] = buffList.buffList[number];
                             
+                               if(!targetEnemyUnit.GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(buffList.buffList[number]))
+                              {
+                              targetEnemyUnit.GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Add(buffList.buffList[number]);   
+                              GameObject buffObject = Instantiate(buffPrefabObject);
+                              buffObject.transform.parent = targetEnemyUnit.GetComponent<EnemyUI>().buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = buffList.buffList[number];
+                              }
+                              if(targetEnemyUnit.GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(buffList.buffList[number]))
+                              {
+                                  for(int k = 0; k < targetEnemyUnit.GetComponent<EnemyUI>().buffManage.transform.childCount ; k++)
+                                  {
+                                      if(targetEnemyUnit.GetComponent<EnemyUI>().buffManage.transform.GetChild(k).GetComponent<Buff>().buff == buffList.buffList[number])
+                                      {
+                                          targetEnemyUnit.GetComponent<EnemyUI>().buffManage.transform.GetChild(k).GetComponent<Buff>().buffHeld += 1;
+                                          break;
+                                      }
+                                  }
+                              }//buff显示
                             break;
                         }
                     }
@@ -1639,6 +1734,27 @@ public void Skill()//主动技能
                            targetPlayerUnit.GetComponent<PlayerBattle>().player.buffTime[j] = skillList[targetSkillID].buff.buffTime;
                            targetPlayerUnit.GetComponent<PlayerBattle>().player.buffObjectList[j] = playerBattleObject;
                            targetPlayerUnit.GetComponent<PlayerBattle>().player.buffAndDebuffList[j] = skillList[targetSkillID].buff;
+
+                           
+                                if(!targetPlayerUnit.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                              targetPlayerUnit.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(skillList[i].buff);   
+                              GameObject buffObject = Instantiate(buffPrefabObject);
+                              buffObject.transform.parent = targetPlayerUnit.GetComponent<PlayerBattle>().player.buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = skillList[targetSkillID].buff;
+                              }
+                              if(targetPlayerUnit.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                                  for(int l = 0; l < targetPlayerUnit.GetComponent<PlayerBattle>().player.buffManage.transform.childCount ; l++)
+                                  {
+                                      if(targetPlayerUnit.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buff == skillList[i].buff)
+                                      {
+                                          targetPlayerUnit.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buffHeld += 1;
+                                          break;
+                                      }
+                                  }
+                              }//buff显示
                            
                            break;
                         }
@@ -1653,7 +1769,26 @@ public void Skill()//主动技能
                         buffTime[j] = skillList[targetSkillID].buff.buffTime;
                         buffObjectList[j] = playerBattleObject;
                         buffAndDebuffList[j] = skillList[targetSkillID].buff;
-                       
+                        
+                        if(!playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                              playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(skillList[i].buff);   
+                              GameObject buffObject = Instantiate(buffPrefabObject);
+                              buffObject.transform.parent = playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = skillList[targetSkillID].buff;
+                              }
+                              if(playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                                  for(int l = 0; l < playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform.childCount ; l++)
+                                  {
+                                      if(playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buff == skillList[i].buff)
+                                      {
+                                          playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buffHeld += 1;
+                                          break;
+                                      }
+                                  }
+                              }//buff显示
                         break;
                     }
                     break;
@@ -1672,6 +1807,26 @@ public void Skill()//主动技能
                                     targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffObjectList[k] = playerBattleObject;
                                     targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffAndDebuffList[k] = skillList[targetSkillID].buff;
                                     
+
+                                    if(!targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                              targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(skillList[i].buff);   
+                              GameObject buffObject = Instantiate(buffPrefabObject);
+                              buffObject.transform.parent = targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = skillList[targetSkillID].buff;
+                              }
+                              if(targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                                  for(int l = 0; l < targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.childCount ; l++)
+                                  {
+                                      if(targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buff == skillList[i].buff)
+                                      {
+                                          targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buffHeld += 1;
+                                          break;
+                                      }
+                                  }
+                              }//buff显示
                                     break;
                                 }
                             }
@@ -1702,6 +1857,87 @@ public void EndSkill()//被动技能
                     endSkillNum = Random.Range(0, 100);
                     if((endSkillNum - (charm * 0.003)) <= skillList[i].endSkillOdd)
                 {
+                    if(skillList[i].singleDamage)//单体伤害技能
+                {
+                    if(skillList[i].adSkill)
+                    {  
+                       targetEnemyUnit.GetComponent<EnemyUI>().hp -= ((ad * skillList[i].adSkillFactor) - targetEnemyUnit.GetComponent<EnemyUI>().def);
+                       targetEnemyUnit.GetComponent<EnemyUI>().targetUnit = playerBattleObject;
+                       for (int n = 0; n < damageList.Count; n++)
+                       {
+                           if(damageList[n] == 0)
+                           {
+                               damageList[n] = ((ad * skillList[i].adSkillFactor) - targetEnemyUnit.GetComponent<EnemyUI>().def);
+                               if(damageList[n] <= 0)
+                               {
+                                 damageList[n] = 1;
+                               }            
+                               targetEnemyUnit.GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
+                               targetEnemyUnit.GetComponent<EnemyUI>().damageNumber = damageList[n];
+                               break;
+                           }
+                       }           
+                    }
+                    if(skillList[i].hpSkill)
+                    {  
+                       targetEnemyUnit.GetComponent<EnemyUI>().hp -= ((totalhp * skillList[i].hpSkillFactor) - targetEnemyUnit.GetComponent<EnemyUI>().def);
+                       targetEnemyUnit.GetComponent<EnemyUI>().targetUnit = playerBattleObject;
+                       for (int n = 0; n < damageList.Count; n++)
+                       {
+                           if(damageList[n] == 0)
+                           {
+                               damageList[n] = ((totalhp * skillList[i].hpSkillFactor) - targetEnemyUnit.GetComponent<EnemyUI>().def);
+                               if(damageList[n] <= 0)
+                               {
+                                 damageList[n] = 1;
+                               }            
+                                targetEnemyUnit.GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
+                               targetEnemyUnit.GetComponent<EnemyUI>().damageNumber = damageList[n];
+                               break;
+                           }
+                       }           
+                    }
+                    if(skillList[i].apSkill)
+                    {  
+                       targetEnemyUnit.GetComponent<EnemyUI>().hp -= ((ap * skillList[i].apSkillFactor) - targetEnemyUnit.GetComponent<EnemyUI>().mdef);
+                       targetEnemyUnit.GetComponent<EnemyUI>().targetUnit = playerBattleObject;
+                       for (int m = 0; m < damageList.Count; m++)
+                       {
+                         if(damageList[m] == 0)
+                         {
+                            damageList[m] = ((ap * skillList[i].apSkillFactor) - targetEnemyUnit.GetComponent<EnemyUI>().mdef);
+                            if(damageList[m] <= 0)
+                               {
+                                 damageList[m] = 1;
+                               }            
+                             targetEnemyUnit.GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
+                               targetEnemyUnit.GetComponent<EnemyUI>().damageNumber = damageList[m];
+                            break;
+                         }
+                       }  
+                    }
+                    if(skillList[i].iqSkill)
+                    {  
+                       targetEnemyUnit.GetComponent<EnemyUI>().hp -= ((iq * skillList[i].iqSkillFactor) - targetEnemyUnit.GetComponent<EnemyUI>().mdef);
+                       targetEnemyUnit.GetComponent<EnemyUI>().targetUnit = playerBattleObject;
+                       for (int m = 0; m < damageList.Count; m++)
+                       {
+                         if(damageList[m] == 0)
+                         {
+                            damageList[m] = ((iq * skillList[i].iqSkillFactor) - targetEnemyUnit.GetComponent<EnemyUI>().mdef);
+                            if(damageList[m] <= 0)
+                               {
+                                 damageList[m] = 1;
+                               }            
+                             targetEnemyUnit.GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
+                               targetEnemyUnit.GetComponent<EnemyUI>().damageNumber = damageList[m];
+                            break;
+                         }
+                       }  
+                    }
+                }
+
+
                     if(skillList[i].teamDamage)//群体伤害技能
                    {
                     if(skillList[i].adSkill)
@@ -1914,6 +2150,26 @@ public void EndSkill()//被动技能
                         buffObjectList[j] = playerBattleObject;
                         buffAndDebuffList[j] = skillList[i].buff;
                         
+
+                        if(!playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                              playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(skillList[i].buff);   
+                              GameObject buffObject = Instantiate(buffPrefabObject);
+                              buffObject.transform.parent = playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = skillList[i].buff;
+                              }
+                              if(playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                                  for(int l = 0; l < playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform.childCount ; l++)
+                                  {
+                                      if(playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buff == skillList[i].buff)
+                                      {
+                                          playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buffHeld += 1;
+                                          break;
+                                      }
+                                  }
+                              }//buff显示
                         break;
                     }
                    }
@@ -1931,6 +2187,25 @@ public void EndSkill()//被动技能
                                     targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffObjectList[k] = playerBattleObject;
                                     targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffAndDebuffList[k] = skillList[i].buff;
                                     
+                                    if(!targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                              targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(skillList[i].buff);   
+                              GameObject buffObject = Instantiate(buffPrefabObject);
+                              buffObject.transform.parent = targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = skillList[i].buff;
+                              }
+                              if(targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                                  for(int l = 0; l < targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.childCount ; l++)
+                                  {
+                                      if(targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buff == skillList[i].buff)
+                                      {
+                                          targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buffHeld += 1;
+                                          break;
+                                      }
+                                  }
+                              }//buff显示
                                     break;
                                 }
                             }
@@ -2214,8 +2489,28 @@ public void End()
                            targetPlayerUnit.GetComponent<PlayerBattle>().player.buffTime[j] = skillList[i].buff.buffTime;
                            targetPlayerUnit.GetComponent<PlayerBattle>().player.buffObjectList[j] = playerBattleObject;
                            targetPlayerUnit.GetComponent<PlayerBattle>().player.buffAndDebuffList[j] = skillList[i].buff;
-                           //targetPlayerUnit.GetComponent<PlayerBattle>().player.buffTime[j] = skillList[i].buff.buffTime;
-                           //targetPlayerUnit.GetComponent<PlayerBattle>().player.buffObjectList[j] = gameObject;
+                          
+                            if(!targetPlayerUnit.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                              targetPlayerUnit.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(skillList[i].buff);   
+                              GameObject buffObject = Instantiate(buffPrefabObject);
+                              buffObject.transform.parent = targetPlayerUnit.GetComponent<PlayerBattle>().player.buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = skillList[i].buff;
+                              }
+                              if(targetPlayerUnit.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                                  for(int l = 0; l < targetPlayerUnit.GetComponent<PlayerBattle>().player.buffManage.transform.childCount ; l++)
+                                  {
+                                      if(targetPlayerUnit.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buff == skillList[i].buff)
+                                      {
+                                          targetPlayerUnit.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buffHeld += 1;
+                                          break;
+                                      }
+                                  }
+                              }//buff显示
+
+
                            break;
                         }
                     }
@@ -2228,8 +2523,27 @@ public void End()
                         buffTime[j] = skillList[i].buff.buffTime;
                         buffObjectList[j] = playerBattleObject;
                         buffAndDebuffList[j] = skillList[i].buff;
-                        //buffTime[j] = skillList[i].buff.buffTime;
-                        //buffObjectList[j] = gameObject;
+                       
+                          if(!playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                              playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(skillList[i].buff);   
+                              GameObject buffObject = Instantiate(buffPrefabObject);
+                              buffObject.transform.parent = playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = skillList[i].buff;
+                              }
+                              if(playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                                  for(int l = 0; l < playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform.childCount ; l++)
+                                  {
+                                      if(playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buff == skillList[i].buff)
+                                      {
+                                          playerBattleObject.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buffHeld += 1;
+                                          break;
+                                      }
+                                  }
+                              }//buff显示
+                        
                         break;
                     }
                 }
@@ -2246,8 +2560,26 @@ public void End()
                                     targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffTime[k] = skillList[i].buff.buffTime;
                                     targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffObjectList[k] = playerBattleObject;
                                     targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffAndDebuffList[k] = skillList[i].buff;
-                                    //targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffTime[k] = skillList[i].buff.buffTime;
-                                    //targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffObjectList[k] = gameObject;
+                                    
+                               if(!targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                              targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(skillList[i].buff);   
+                              GameObject buffObject = Instantiate(buffPrefabObject);
+                              buffObject.transform.parent = targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = skillList[i].buff;
+                              }
+                              if(targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                                  for(int l = 0; l < targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.childCount ; l++)
+                                  {
+                                      if(targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buff == skillList[i].buff)
+                                      {
+                                          targetPlayerUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buffHeld += 1;
+                                          break;
+                                      }
+                                  }
+                              }//buff显示
                                     break;
                                 }
                             }
@@ -2480,7 +2812,27 @@ public void Death()//死亡机制
                          targetUnit.GetComponent<EnemyUI>().buffTime[j] = targetUnit.GetComponent<EnemyUI>().skillList[i].buff.buffTime;
                          targetUnit.GetComponent<EnemyUI>().buffObjectList[j] = targetUnit.GetComponent<EnemyUI>().gameObject;
                          targetUnit.GetComponent<EnemyUI>().buffAndDebuffList[j] = targetUnit.GetComponent<EnemyUI>().skillList[i].buff;
-                        
+                         
+
+                         if(!targetUnit.GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                              targetUnit.GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Add(skillList[i].buff);   
+                              GameObject buffObject = Instantiate(buffPrefabObject);
+                              buffObject.transform.parent = targetUnit.GetComponent<EnemyUI>().buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = skillList[i].buff;
+                              }
+                              if(targetUnit.GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                                  for(int l = 0; l < targetUnit.GetComponent<EnemyUI>().buffManage.transform.childCount ; l++)
+                                  {
+                                      if(targetUnit.GetComponent<EnemyUI>().buffManage.transform.GetChild(l).GetComponent<Buff>().buff == skillList[i].buff)
+                                      {
+                                          targetUnit.GetComponent<EnemyUI>().buffManage.transform.GetChild(l).GetComponent<Buff>().buffHeld += 1;
+                                          break;
+                                      }
+                                  }
+                              }//buff显示
                          break;
                          }
                     }
@@ -2497,8 +2849,28 @@ public void Death()//死亡机制
                                     targetUnit.GetComponent<EnemyUI>().targetPlayerUnitList[j].GetComponent<EnemyUI>().buffTime[k] = targetUnit.GetComponent<EnemyUI>().skillList[i].buff.buffTime;
                                     targetUnit.GetComponent<EnemyUI>().targetPlayerUnitList[j].GetComponent<EnemyUI>().buffObjectList[k] = targetUnit;
                                     targetUnit.GetComponent<EnemyUI>().targetPlayerUnitList[j].GetComponent<EnemyUI>().buffAndDebuffList[k] = targetUnit.GetComponent<EnemyUI>().skillList[i].buff;
-                                    //targetUnit.GetComponent<EnemyUI>().targetPlayerUnitList[j].GetComponent<EnemyUI>().buffTime[k] = targetUnit.GetComponent<EnemyUI>().skillList[i].buff.buffTime;
-                                    //targetUnit.GetComponent<EnemyUI>().targetPlayerUnitList[j].GetComponent<EnemyUI>().buffObjectList[k] = targetUnit;
+                                    
+                                       
+                                if(!targetUnit.GetComponent<EnemyUI>().targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                              targetUnit.GetComponent<EnemyUI>().targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Add(skillList[i].buff);   
+                              GameObject buffObject = Instantiate(buffPrefabObject);
+                              buffObject.transform.parent = targetUnit.GetComponent<EnemyUI>().targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = skillList[i].buff;
+                              }
+                              if(targetUnit.GetComponent<EnemyUI>().targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                                  for(int l = 0; l < targetUnit.GetComponent<EnemyUI>().targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.transform.childCount ; l++)
+                                  {
+                                      if(targetUnit.GetComponent<EnemyUI>().targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.transform.GetChild(l).GetComponent<Buff>().buff == skillList[i].buff)
+                                      {
+                                          targetUnit.GetComponent<EnemyUI>().targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.transform.GetChild(l).GetComponent<Buff>().buffHeld += 1;
+                                          break;
+                                      }
+                                  }
+                              }//buff显示
+
                                     break;
                                 }
                             }
@@ -2519,6 +2891,26 @@ public void Death()//死亡机制
                                     targetUnit.GetComponent<EnemyUI>().targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffObjectList[k] = targetUnit;
                                     targetUnit.GetComponent<EnemyUI>().targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffAndDebuffList[k] = targetUnit.GetComponent<EnemyUI>().skillList[i].buff;
                                    
+                                if(!targetUnit.GetComponent<EnemyUI>().targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                              targetUnit.GetComponent<EnemyUI>().targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(skillList[i].buff);   
+                              GameObject buffObject = Instantiate(buffPrefabObject);
+                              buffObject.transform.parent = targetUnit.GetComponent<EnemyUI>().targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = skillList[i].buff;
+                              }
+                              if(targetUnit.GetComponent<EnemyUI>().targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                                  for(int l = 0; l < targetUnit.GetComponent<EnemyUI>().targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.childCount ; l++)
+                                  {
+                                      if(targetUnit.GetComponent<EnemyUI>().targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buff == skillList[i].buff)
+                                      {
+                                          targetUnit.GetComponent<EnemyUI>().targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buffHeld += 1;
+                                          break;
+                                      }
+                                  }
+                              }//buff显示
+                                     
                                     
                                     break;
                                 }
@@ -2735,6 +3127,26 @@ public void Death()//死亡机制
                          targetEnemyUnitList[l].GetComponent<EnemyUI>().buffObjectList[j] = targetEnemyUnitList[l].GetComponent<EnemyUI>().gameObject;
                          targetEnemyUnitList[l].GetComponent<EnemyUI>().buffAndDebuffList[j] = targetEnemyUnitList[l].GetComponent<EnemyUI>().skillList[i].buff;
                          
+
+                         if(!targetEnemyUnitList[l].GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                              targetEnemyUnitList[l].GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Add(skillList[i].buff);   
+                              GameObject buffObject = Instantiate(buffPrefabObject);
+                              buffObject.transform.parent = targetEnemyUnitList[l].GetComponent<EnemyUI>().buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = skillList[i].buff;
+                              }
+                              if(targetEnemyUnitList[l].GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                                  for(int m = 0; m < targetEnemyUnitList[l].GetComponent<EnemyUI>().buffManage.transform.childCount ; m++)
+                                  {
+                                      if(targetEnemyUnitList[l].GetComponent<EnemyUI>().buffManage.transform.GetChild(m).GetComponent<Buff>().buff == skillList[i].buff)
+                                      {
+                                          targetEnemyUnitList[l].GetComponent<EnemyUI>().buffManage.transform.GetChild(m).GetComponent<Buff>().buffHeld += 1;
+                                          break;
+                                      }
+                                  }
+                              }//buff显示
                          break;
                          }
                     }
@@ -2752,6 +3164,27 @@ public void Death()//死亡机制
                                     targetEnemyUnitList[l].GetComponent<EnemyUI>().targetPlayerUnitList[j].GetComponent<EnemyUI>().buffObjectList[k] = targetEnemyUnitList[l];
                                     targetEnemyUnitList[l].GetComponent<EnemyUI>().targetPlayerUnitList[j].GetComponent<EnemyUI>().buffAndDebuffList[k] = targetEnemyUnitList[l].GetComponent<EnemyUI>().skillList[i].buff;
                                     
+
+                                            
+                                if(!targetEnemyUnitList[l].GetComponent<EnemyUI>().targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                              targetEnemyUnitList[l].GetComponent<EnemyUI>().targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Add(skillList[i].buff);   
+                              GameObject buffObject = Instantiate(buffPrefabObject);
+                              buffObject.transform.parent = targetEnemyUnitList[l].GetComponent<EnemyUI>().targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = skillList[i].buff;
+                              }
+                              if(targetEnemyUnitList[l].GetComponent<EnemyUI>().targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                                  for(int m = 0; m < targetEnemyUnitList[l].GetComponent<EnemyUI>().targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.transform.childCount ; m++)
+                                  {
+                                      if(targetEnemyUnitList[l].GetComponent<EnemyUI>().targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.transform.GetChild(m).GetComponent<Buff>().buff == skillList[i].buff)
+                                      {
+                                          targetEnemyUnitList[l].GetComponent<EnemyUI>().targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.transform.GetChild(m).GetComponent<Buff>().buffHeld += 1;
+                                          break;
+                                      }
+                                  }
+                              }//buff显示
                                     break;
                                 }
                             }
@@ -2772,6 +3205,27 @@ public void Death()//死亡机制
                                     targetEnemyUnitList[l].GetComponent<EnemyUI>().targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffObjectList[k] = targetEnemyUnitList[l];
                                     targetEnemyUnitList[l].GetComponent<EnemyUI>().targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffAndDebuffList[k] = targetEnemyUnitList[l].GetComponent<EnemyUI>().skillList[i].buff;
                                     
+
+
+                                    if(!targetEnemyUnitList[l].GetComponent<EnemyUI>().targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                              targetEnemyUnitList[l].GetComponent<EnemyUI>().targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(skillList[i].buff);   
+                              GameObject buffObject = Instantiate(buffPrefabObject);
+                              buffObject.transform.parent = targetEnemyUnitList[l].GetComponent<EnemyUI>().targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = skillList[i].buff;
+                              }
+                              if(targetEnemyUnitList[l].GetComponent<EnemyUI>().targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[i].buff))
+                              {
+                                  for(int m = 0; m < targetEnemyUnitList[l].GetComponent<EnemyUI>().targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.childCount ; m++)
+                                  {
+                                      if(targetEnemyUnitList[l].GetComponent<EnemyUI>().targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(m).GetComponent<Buff>().buff == skillList[i].buff)
+                                      {
+                                          targetEnemyUnitList[l].GetComponent<EnemyUI>().targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(m).GetComponent<Buff>().buffHeld += 1;
+                                          break;
+                                      }
+                                  }
+                              }//buff显示
                                     break;
                                 }
                             }
