@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: "\u51CF\u7532"
   m_EditorClassIdentifier: 
   buffImage: {fileID: 21300000, guid: cdf530a9009aa8b48b22733c8b86016c, type: 3}
-  buffInfo: 
+  buffInfo: "\u51CF\u7532\uFF1A\u7269\u6297\u964D\u4F4E"
+  buffString: "\u7269\u6297\u964D\u4F4E"
   buffTime: 5
   skillFactor: 0
   dizzy: 0
@@ -57,6 +58,6 @@ MonoBehaviour:
   skillOdds: 0
   singleBuff: 0
   teamBuff: 0
-  ownBuff: 0
-  singleDebuff: 1
+  ownBuff: 1
+  singleDebuff: 0
   teamDebuff: 0

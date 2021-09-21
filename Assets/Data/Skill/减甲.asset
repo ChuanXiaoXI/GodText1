@@ -38,8 +38,8 @@ MonoBehaviour:
   teamDamage: 0
   singleBuff: 0
   teamBuff: 0
-  ownBuff: 0
-  singleDebuff: 1
+  ownBuff: 1
+  singleDebuff: 0
   teamDebuff: 0
   growthSkill: 0
   ad: 0

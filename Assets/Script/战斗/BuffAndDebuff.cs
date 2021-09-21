@@ -9,6 +9,7 @@ public class BuffAndDebuff : ScriptableObject
    [Header("buff图标")]
    public Sprite buffImage;
    public string buffInfo;
+   public string buffString;
  [Header("buff时长")]
 public int buffTime;
  [Header("技能系数")]

@@ -27,7 +27,8 @@ MonoBehaviour:
   bloodClass: "\u72FC\u4EBA"
   level: 2
   story: 0
-  skillList: []
+  skillList:
+  - {fileID: 11400000, guid: 919b7d3b3edd2dd4cbb4d507b8107c97, type: 2}
   textFile: {fileID: 0}
   itemInfo: "\u5E7C\u72FC\u4E4B\u8840\uFF0CD\u7EA7\u8840\u7EDF\uFF0C\u72FC\u4EBA\n\u6700\u5927\u751F\u547D\u503C+12\uFF0C\u751F\u547D\u6062\u590D+1\uFF0C\u901F\u5EA6+1\n\u6700\u5927\u4F53\u529B\u503C+10\uFF0C\u7269\u653B+3\uFF0C\u7269\u9632+3\uFF0C\u9B54\u9632+3\n\u8840\u6DB2\u4E2D\u878D\u5165\u7B2C\u4E00\u6EF4\u517D\u8840\uFF0C\u90A3\u662F\u5E7C\u72FC\u8E0F\u5165\u68EE\u6797\u7684\u7B2C\u4E00\u6B65"
   hp: 0

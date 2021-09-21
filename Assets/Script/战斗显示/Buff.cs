@@ -21,6 +21,7 @@ public class Buff : MonoBehaviour ,IPointerEnterHandler, IPointerExitHandler
 { 
         //buffInfo.GetComponent<PlayerClassInformation>().playerClass = playerClass;
         buffInfo.SetActive(true);
+        buffInfoText.text = buff.buffInfo;
         
 }
 public void OnPointerExit(PointerEventData eventData)

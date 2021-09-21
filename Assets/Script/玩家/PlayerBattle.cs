@@ -14,10 +14,14 @@ public class PlayerBattle : MonoBehaviour
    [Header("战斗显示")]
    public GameObject damageNumobjectPoint1;//定位点
    public GameObject damageNumobjectPoint2;//定位点
+    public GameObject buffInfoPoint1;
+    public GameObject buffInfoPoint2;
    [Header("战斗动作")]
    public GameObject originalPosition;
    public GameObject actionPosition;
    public GameObject hurtPosition;
+
+   
 
    public void Start()
    {

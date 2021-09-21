@@ -10,12 +10,8 @@ public class DamageNumber : MonoBehaviour
 {
     public GameObject enemyUI;
     public Text damageNumText;
-    //public RectTransform m_Rect;
-    //public string dodgeString;
-    //public float damageNumber;
     public float destroyTime;
     
-    //public bool knock;
     
 
      public void Start()

@@ -143,7 +143,7 @@ public class BattleManage : MonoBehaviour
         }
 
     }
-   public void StartSkill()//战斗前技能
+   public void StartSkill()//领域技能
 {
 
     for (int i = 0; i < remainPlayerList.Count; i++)
@@ -155,22 +155,7 @@ public class BattleManage : MonoBehaviour
              {
                  for (int k = 0; k < remainPlayerList.Count; k++)
                 { 
-                     if(!remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList.Contains(remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff))
-                    {
-                     for (int l = 0; l < remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList.Count; l++)
-                     {
-                         if(remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList[l] == null)
-                       {
-                         remainPlayerList[k].GetComponent<PlayerBattle>().player.buffTime[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff.buffTime;
-                         remainPlayerList[k].GetComponent<PlayerBattle>().player.buffObjectList[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.ownObject;
-                         remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff;
-                         //remainPlayerList[k].GetComponent<PlayerBattle>().player.buffTime[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff.buffTime;
-                         //remainPlayerList[k].GetComponent<PlayerBattle>().player.buffObjectList[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.ownObject;
-                         break;
-                       }
-                         
-                     }
-                    }
+                
                     if(remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList.Contains(remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff))
                     {
                         for (int l = 0; l < remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList.Count; l++)
@@ -184,13 +169,43 @@ public class BattleManage : MonoBehaviour
                                 if(remainPlayerList[k].GetComponent<PlayerBattle>().player.buffObjectList[l].GetComponent<PlayerBattle>().player.iq < remainPlayerList[i].GetComponent<PlayerBattle>().player.iq)
                                 {
                                     remainPlayerList[k].GetComponent<PlayerBattle>().player.buffTime[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff.buffTime;
-                                    remainPlayerList[k].GetComponent<PlayerBattle>().player.buffObjectList[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.ownObject;
+                                    remainPlayerList[k].GetComponent<PlayerBattle>().player.buffObjectList[l] = remainPlayerList[i];
                                     remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff;
                                     break;
 
                                 }
                             }
                         }
+                    }
+                    if(!remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList.Contains(remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff))
+                    {
+                     for (int l = 0; l < remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList.Count; l++)
+                     {
+                         if(remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList[l] == null)
+                       {
+                         remainPlayerList[k].GetComponent<PlayerBattle>().player.buffTime[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff.buffTime;
+                         remainPlayerList[k].GetComponent<PlayerBattle>().player.buffObjectList[l] = remainPlayerList[i];
+                         remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff;
+                         
+                        
+                              remainPlayerList[k].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff);   
+                              GameObject buffObject = Instantiate(remainPlayerList[k].GetComponent<PlayerBattle>().player.buffPrefabObject);
+                              buffObject.transform.parent = remainPlayerList[k].GetComponent<PlayerBattle>().player.buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff;
+                              
+                               remainPlayerList[k].GetComponent<PlayerBattle>().player.buffInfoIsAlive = true;
+                               remainPlayerList[k].GetComponent<PlayerBattle>().player.buffInfo = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff.buffString;
+                              
+                              //buff显示
+
+                              
+                              
+                                                                              
+                         break;
+                       }
+                         
+                     }
                     }
                     
                  
@@ -202,23 +217,8 @@ public class BattleManage : MonoBehaviour
              {
                  for (int k = 0; k < remainEnemyList.Count ; k++)
                  {
-                    if(!remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList.Contains(remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff))
-                    {
-                        for (int l = 0; l < remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList.Count; l++)
-                        {
-                         
-                             if(remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList[l] == null)
-                             {
-                             remainEnemyList[k].GetComponent<EnemyUI>().buffTime[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff.buffTime;
-                             remainEnemyList[k].GetComponent<EnemyUI>().buffObjectList[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.ownObject;
-                             remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff;
-                             //remainEnemyList[k].GetComponent<EnemyUI>().buffTime[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff.buffTime;
-                             //remainEnemyList[k].GetComponent<EnemyUI>().buffObjectList[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.ownObject;
-                             break;
-                             }                       
-                        }
-                    }
-                    if(remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList.Contains(remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff))
+
+                      if(remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList.Contains(remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff))
                     {
                         for (int l = 0; l < remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList.Count; l++)
                         {
@@ -231,8 +231,21 @@ public class BattleManage : MonoBehaviour
                                 if(remainEnemyList[k].GetComponent<EnemyUI>().buffObjectList[l].GetComponent<PlayerBattle>().player.iq < remainPlayerList[i].GetComponent<PlayerBattle>().player.iq)
                                 {
                                     remainEnemyList[k].GetComponent<EnemyUI>().buffTime[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff.buffTime;
-                                    remainEnemyList[k].GetComponent<EnemyUI>().buffObjectList[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.ownObject;
+                                    remainEnemyList[k].GetComponent<EnemyUI>().buffObjectList[l] = remainPlayerList[i];
                                     remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff;
+
+                                     remainEnemyList[k].GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Add(remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff);   
+                                     GameObject buffObject = Instantiate(remainEnemyList[k].GetComponent<EnemyUI>().buffPrefabObject);
+                                     buffObject.transform.parent = remainEnemyList[k].GetComponent<EnemyUI>().buffManage.transform;                              
+                                     buffObject.GetComponent<Buff>().buffHeld = 1;
+                                     buffObject.GetComponent<Buff>().buff = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff;
+                               
+                               
+                               remainEnemyList[k].GetComponent<EnemyUI>().buffInfoIsAlive = true;
+                               remainEnemyList[k].GetComponent<EnemyUI>().buffInfo = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff.buffString;
+                              
+                              //buff显示
+
                                     break;
 
                                 }
@@ -240,6 +253,22 @@ public class BattleManage : MonoBehaviour
                         }
 
                     }
+                    if(!remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList.Contains(remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff))
+                    {
+                        for (int l = 0; l < remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList.Count; l++)
+                        {
+                         
+                             if(remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList[l] == null)
+                             {
+                             remainEnemyList[k].GetComponent<EnemyUI>().buffTime[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff.buffTime;
+                             remainEnemyList[k].GetComponent<EnemyUI>().buffObjectList[l] = remainPlayerList[i];
+                             remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff;
+                             
+                             break;
+                             }                       
+                        }
+                    }
+                   
                  }
              }
               if(remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].startSkill && remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].teamDebuff && remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].dizzy)//团队眩晕
@@ -254,11 +283,21 @@ public class BattleManage : MonoBehaviour
                      {
                          for (int l = 0; l < remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList.Count; l++)
                          {
-                             remainEnemyList[k].GetComponent<EnemyUI>().buffTime[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.buffList.buffList[10].buffTime;
-                             remainEnemyList[k].GetComponent<EnemyUI>().buffObjectList [l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.ownObject;
-                             remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.buffList.buffList[10];
-                             //remainEnemyList[k].GetComponent<EnemyUI>().buffTime[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.buffList.buffList[10].buffTime;
-                             //remainEnemyList[k].GetComponent<EnemyUI>().buffObjectList [l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.ownObject;
+                             remainEnemyList[k].GetComponent<EnemyUI>().buffTime[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff.buffTime;
+                             remainEnemyList[k].GetComponent<EnemyUI>().buffObjectList [l] = remainPlayerList[i];
+                             remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff;
+
+                              remainEnemyList[k].GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Add(remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff);   
+                              GameObject buffObject = Instantiate(remainEnemyList[k].GetComponent<EnemyUI>().buffPrefabObject);
+                              buffObject.transform.parent = remainEnemyList[k].GetComponent<EnemyUI>().buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff;
+                              
+                              
+                              remainEnemyList[k].GetComponent<EnemyUI>().buffInfoIsAlive = true;
+                               remainEnemyList[k].GetComponent<EnemyUI>().buffInfo = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff.buffString;
+                              //buff显示
+                            
                              break;
                          }
                      }
@@ -359,20 +398,7 @@ public class BattleManage : MonoBehaviour
              {
                  for (int k = 0; k < remainEnemyList.Count; k++)
                  {
-                     if(!remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList.Contains(remainEnemyList[k].GetComponent<EnemyUI>().skillList[j].buff))
-                     {                
-                     for (int l = 0; l < remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList.Count; l++)
-                     {
-                         if(remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList[l] == null)
-                       {
-                         remainEnemyList[k].GetComponent<EnemyUI>().buffTime[l] = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff.buffTime;
-                         remainEnemyList[k].GetComponent<EnemyUI>().buffObjectList[l] = remainEnemyList[i];
-                         remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList[l] = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff;
-                         //remainEnemyList[k].GetComponent<EnemyUI>().buffTime[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff.buffTime;
-                         //remainEnemyList[k].GetComponent<EnemyUI>().buffObjectList[l] = remainEnemyList[i];
-                         break;
-                       }
-                     }
+                    
                      if(remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList.Contains(remainEnemyList[k].GetComponent<EnemyUI>().skillList[j].buff))
                      {
                          for (int l = 0; l < remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList.Count; l++)
@@ -386,7 +412,7 @@ public class BattleManage : MonoBehaviour
                                 if(remainEnemyList[k].GetComponent<EnemyUI>().buffObjectList[l].GetComponent<EnemyUI>().iq < remainEnemyList[i].GetComponent<EnemyUI>().iq)
                                 {
                                     remainEnemyList[k].GetComponent<EnemyUI>().buffTime[l] = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff.buffTime;
-                                    remainEnemyList[k].GetComponent<EnemyUI>().buffObjectList[l] = remainEnemyList[i].GetComponent<EnemyUI>().ownObject;
+                                    remainEnemyList[k].GetComponent<EnemyUI>().buffObjectList[l] = remainEnemyList[i];
                                     remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList[l] = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff;
                                     break;
 
@@ -394,6 +420,30 @@ public class BattleManage : MonoBehaviour
                             }
                         }
 
+                     }
+                      if(!remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList.Contains(remainEnemyList[k].GetComponent<EnemyUI>().skillList[j].buff))
+                     {                
+                     for (int l = 0; l < remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList.Count; l++)
+                     {
+                         if(remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList[l] == null)
+                       {
+                         remainEnemyList[k].GetComponent<EnemyUI>().buffTime[l] = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff.buffTime;
+                         remainEnemyList[k].GetComponent<EnemyUI>().buffObjectList[l] = remainEnemyList[i];
+                         remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList[l] = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff;
+
+                              remainEnemyList[k].GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Add(remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff);   
+                              GameObject buffObject = Instantiate(remainEnemyList[k].GetComponent<EnemyUI>().buffPrefabObject);
+                              buffObject.transform.parent = remainEnemyList[k].GetComponent<EnemyUI>().buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff;
+                              
+                              
+                              remainEnemyList[k].GetComponent<EnemyUI>().buffInfoIsAlive = true;
+                               remainEnemyList[k].GetComponent<EnemyUI>().buffInfo = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff.buffString;
+                              //buff显示
+                         
+                         break;
+                       }
                      }
                      }
                      
@@ -404,22 +454,6 @@ public class BattleManage : MonoBehaviour
              {
                  for (int k = 0; k < remainPlayerList.Count ; k++)
                  {
-                     if(!remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList.Contains(remainEnemyList[k].GetComponent<EnemyUI>().skillList[j].buff))
-                     { 
-                     for (int l = 0; l < remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList.Count; l++)
-                     {
-                         if(remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList[l] == null)
-                         {
-                             remainPlayerList[k].GetComponent<PlayerBattle>().player.buffTime[l] = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff.buffTime;
-                             remainPlayerList[k].GetComponent<PlayerBattle>().player.buffObjectList[l] = remainEnemyList[i];
-                             remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList[l] = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff;
-                             //remainPlayerList[k].GetComponent<PlayerBattle>().player.buffTime[l] = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff.buffTime;
-                             //remainPlayerList[k].GetComponent<PlayerBattle>().player.buffObjectList[l] = remainEnemyList[i];
-                             break;
-                         }
-                         
-                     }
-                     }
                      if(remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList.Contains(remainEnemyList[k].GetComponent<EnemyUI>().skillList[j].buff))
                      {
                          for (int l = 0; l < remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList.Count; l++)
@@ -440,8 +474,32 @@ public class BattleManage : MonoBehaviour
                                 }
                             }
                         }
+                     }
+                      if(!remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList.Contains(remainEnemyList[k].GetComponent<EnemyUI>().skillList[j].buff))
+                     { 
+                     for (int l = 0; l < remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList.Count; l++)
+                     {
+                         if(remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList[l] == null)
+                         {
+                             remainPlayerList[k].GetComponent<PlayerBattle>().player.buffTime[l] = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff.buffTime;
+                             remainPlayerList[k].GetComponent<PlayerBattle>().player.buffObjectList[l] = remainEnemyList[i];
+                             remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList[l] = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff;
+                             
 
-
+                              remainPlayerList[k].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff);   
+                              GameObject buffObject = Instantiate(remainEnemyList[i].GetComponent<EnemyUI>().buffPrefabObject);
+                              buffObject.transform.parent = remainPlayerList[k].GetComponent<PlayerBattle>().player.buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff;
+                              
+                              
+                               remainPlayerList[k].GetComponent<PlayerBattle>().player.buffInfoIsAlive = true;
+                               remainPlayerList[k].GetComponent<PlayerBattle>().player.buffInfo = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff.buffString;
+                              //buff显示
+                             break;
+                         }
+                         
+                     }
                      }
                      
                  }
@@ -458,11 +516,20 @@ public class BattleManage : MonoBehaviour
                      {
                          for (int l = 0; l < remainPlayerList[i].GetComponent<PlayerBattle>().player.buffAndDebuffList.Count; l++)
                          {
-                             remainPlayerList[k].GetComponent<PlayerBattle>().player.buffTime[l] = remainEnemyList[i].GetComponent<EnemyUI>().buffList.buffList[10].buffTime;
+                             remainPlayerList[k].GetComponent<PlayerBattle>().player.buffTime[l] = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff.buffTime;
                              remainPlayerList[k].GetComponent<PlayerBattle>().player.buffObjectList[l] = remainEnemyList[i];
-                             remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList[l] = remainEnemyList[i].GetComponent<EnemyUI>().buffList.buffList[10];
-                             //remainPlayerList[k].GetComponent<PlayerBattle>().player.buffTime[l] = remainEnemyList[i].GetComponent<EnemyUI>().buffList.buffList[10].buffTime;
-                             //remainPlayerList[k].GetComponent<PlayerBattle>().player.buffObjectList[l] = remainEnemyList[i];
+                             remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList[l] = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff;
+                            
+                             remainPlayerList[k].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff);   
+                              GameObject buffObject = Instantiate(remainEnemyList[i].GetComponent<EnemyUI>().buffPrefabObject);
+                              buffObject.transform.parent = remainPlayerList[k].GetComponent<PlayerBattle>().player.buffManage.transform;                              
+                              buffObject.GetComponent<Buff>().buffHeld = 1;
+                              buffObject.GetComponent<Buff>().buff = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff;
+                              
+                              
+                              remainPlayerList[k].GetComponent<PlayerBattle>().player.buffInfoIsAlive = true;
+                               remainPlayerList[k].GetComponent<PlayerBattle>().player.buffInfo = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff.buffString;
+                              //buff显示
                              break;
                          }
                      }
@@ -478,6 +545,17 @@ public class BattleManage : MonoBehaviour
                      {
                        remainPlayerList[k].GetComponent<PlayerBattle>().player.hp -= ((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].adSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().ad) - remainPlayerList[k].GetComponent<PlayerBattle>().player.def);
                        remainPlayerList[k].GetComponent<PlayerBattle>().player.targetUnit = remainEnemyList[i];
+
+                       for (int n = 0; n < remainEnemyList[i].GetComponent<EnemyUI>().damageList.Count; n++)
+                            { 
+                            if(remainEnemyList[i].GetComponent<EnemyUI>().damageList[n] == 0)
+                           {
+                               remainEnemyList[i].GetComponent<EnemyUI>().damageList[n] = ((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].adSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().ad) - remainPlayerList[k].GetComponent<PlayerBattle>().player.def);
+                               remainPlayerList[k].GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                               remainPlayerList[k].GetComponent<PlayerBattle>().player.damageNumber = remainEnemyList[i].GetComponent<EnemyUI>().damageList[n];
+                               break;
+                           }
+                            }
                      }
                 }
                  if(remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].hpSkill)
@@ -486,6 +564,17 @@ public class BattleManage : MonoBehaviour
                      {
                        remainPlayerList[k].GetComponent<PlayerBattle>().player.hp -= ((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].hpSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().totalhp) - remainPlayerList[k].GetComponent<PlayerBattle>().player.def);
                        remainPlayerList[k].GetComponent<PlayerBattle>().player.targetUnit = remainEnemyList[i];
+
+                        for (int n = 0; n < remainEnemyList[i].GetComponent<EnemyUI>().damageList.Count; n++)
+                            { 
+                            if(remainEnemyList[i].GetComponent<EnemyUI>().damageList[n] == 0)
+                           {
+                               remainEnemyList[i].GetComponent<EnemyUI>().damageList[n] = ((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].hpSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().totalhp) - remainPlayerList[k].GetComponent<PlayerBattle>().player.def);
+                               remainPlayerList[k].GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                               remainPlayerList[k].GetComponent<PlayerBattle>().player.damageNumber = remainEnemyList[i].GetComponent<EnemyUI>().damageList[n];
+                               break;
+                           }
+                            }
                      }
                 }
                 if(remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].apSkill)
@@ -494,6 +583,17 @@ public class BattleManage : MonoBehaviour
                      {
                        remainPlayerList[k].GetComponent<PlayerBattle>().player.hp -= ((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].apSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().ap) - remainPlayerList[k].GetComponent<PlayerBattle>().player.mdef);
                        remainPlayerList[k].GetComponent<PlayerBattle>().player.targetUnit = remainEnemyList[i];
+
+                        for (int n = 0; n < remainEnemyList[i].GetComponent<EnemyUI>().damageList.Count; n++)
+                            { 
+                            if(remainEnemyList[i].GetComponent<EnemyUI>().damageList[n] == 0)
+                           {
+                               remainEnemyList[i].GetComponent<EnemyUI>().damageList[n] = ((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].apSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().ap) - remainPlayerList[k].GetComponent<PlayerBattle>().player.mdef);
+                               remainPlayerList[k].GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                               remainPlayerList[k].GetComponent<PlayerBattle>().player.damageNumber = remainEnemyList[i].GetComponent<EnemyUI>().damageList[n];
+                               break;
+                           }
+                            }
                        
                      }
                 }
@@ -503,6 +603,17 @@ public class BattleManage : MonoBehaviour
                      {
                        remainPlayerList[k].GetComponent<PlayerBattle>().player.hp -= ((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].iqSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().iq) - remainPlayerList[k].GetComponent<PlayerBattle>().player.mdef);
                        remainPlayerList[k].GetComponent<PlayerBattle>().player.targetUnit = remainEnemyList[i];
+
+                        for (int n = 0; n < remainEnemyList[i].GetComponent<EnemyUI>().damageList.Count; n++)
+                            { 
+                            if(remainEnemyList[i].GetComponent<EnemyUI>().damageList[n] == 0)
+                           {
+                               remainEnemyList[i].GetComponent<EnemyUI>().damageList[n] =((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].iqSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().iq) - remainPlayerList[k].GetComponent<PlayerBattle>().player.mdef);
+                               remainPlayerList[k].GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
+                               remainPlayerList[k].GetComponent<PlayerBattle>().player.damageNumber = remainEnemyList[i].GetComponent<EnemyUI>().damageList[n];
+                               break;
+                           }
+                            }
                        
                      }
                 }
