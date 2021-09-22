@@ -246,6 +246,13 @@ public GameObject buffInfoPoint1;
 public GameObject buffInfoPoint2;
 public string buffInfo;
 public bool buffInfoIsAlive;
+public GameObject skillNamePoint1;
+public GameObject skillNamePoint2;
+public string skillName;
+public bool skillNameIsAlive;
+public GameObject skillNameObjectPrefab;
+public GameObject skillNameObject;
+
 
 
 
@@ -321,11 +328,23 @@ public void BuffInfoIsAlive()
     if(buffInfoIsAlive)
     {
         buffInfoObject = Instantiate(buffInfoObjectPrefab);
-        buffInfoObject.GetComponent<EnemyBuffInfo >().buffInfoText.text = buffInfo.ToString();
-        buffInfoObject.GetComponent<EnemyBuffInfo >().buffInfoPoint2 = buffInfoPoint2;
+        buffInfoObject.GetComponent<EnemyBuffInfo>().buffInfoText.text = buffInfo.ToString();
+        buffInfoObject.GetComponent<EnemyBuffInfo>().buffInfoPoint2 = buffInfoPoint2;
         buffInfoObject.transform.parent = gameObject.transform;
         buffInfoObject.transform.position = buffInfoPoint1.transform.position;
         buffInfoIsAlive = false;
+    }
+}
+public void SkillNameIsAlive()
+{
+    if(skillNameIsAlive)
+    {
+        skillNameObject = Instantiate(skillNameObjectPrefab);
+        skillNameObject.GetComponent<SkillName>().skillNameText.text = skillName.ToString();
+        skillNameObject.GetComponent<SkillName>().skillNamePoint2 = skillNamePoint2;
+        skillNameObject.transform.parent = gameObject.transform;
+        skillNameObject.transform.position = skillNamePoint1.transform.position;
+        skillNameIsAlive = false;
     }
 }
 
@@ -589,6 +608,7 @@ public void Fight()//战斗机制
        DamageNum();
        BuffInfoIsAlive();
        DamageNumObjectIsAlive();
+       SkillNameIsAlive();
 
        if(actionTime >= 2 * (maxSpeed / speed))//行动开始
        {
@@ -948,6 +968,7 @@ public void Attack()
    
      gameObject.transform.DOMove(new Vector3( actionPosition.transform.position.x, actionPosition.transform.position.y, 0f), 0.2f);
      gameObject.transform.DOMove(new Vector3( originalPosition.transform.position.x, originalPosition.transform.position.y, 0f), 0.8f);//战斗移动
+     
     if(!disarm && sp >= 10)
     {
         
@@ -1237,7 +1258,9 @@ public void Damage()//伤害机制
                    if(damageList[m] <= 0)
                    {
                          damageList[m] = 1;
-                   }                                  
+                   } 
+                   skillName = "攻击";
+                   skillNameIsAlive = true;                                 
                    targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
                    targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumber = damageList[m];                   
                    break;
@@ -1255,7 +1278,9 @@ public void Damage()//伤害机制
                    if(damageList[m] <= 0)
                    {
                          damageList[m] = 1;
-                   }                  
+                   }   
+                   skillName = "暴击";
+                   skillNameIsAlive = true;                   
                    targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
                    targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumber = damageList[m];
                    break;

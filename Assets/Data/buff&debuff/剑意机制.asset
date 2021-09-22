@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef78aeb2920ba904b80fb918d5da567a, type: 3}
   m_Name: "\u5251\u610F\u673A\u5236"
   m_EditorClassIdentifier: 
-  buffTime: 2
+  buffImage: {fileID: 0}
+  buffInfo: 
+  buffString: 
+  buffTime: 1
   skillFactor: 0
   dizzy: 0
+  disarm: 0
   hp: 0
   mp: 0
-  Sp: 0
+  sp: 0
   replyHp: 0
   replyMp: 0
   replySp: 0
@@ -28,8 +32,8 @@ MonoBehaviour:
   totalhpPCT: 0
   totalmp: 0
   totalmpPCT: 0
-  sp: 0
-  spPCT: 0
+  totalsp: 0
+  totalspPCT: 0
   ad: 0
   adPCT: 0
   ap: 0
@@ -41,27 +45,17 @@ MonoBehaviour:
   speed: 999999
   speedPCT: 0
   dodge: 0
-  dodgePCT: 0
   crit: 0
-  critPCT: 0
   iq: 0
   iqPCT: 0
   charm: 0
   charmPCT: 0
   critDamge: 0
-  critDamgePCT: 0
   drainLife: 0
-  drainLifePCT: 0
-  swordFactor: 0
-  gunFactor: 0
+  sword: 0
+  gun: 0
   shieldFactor: 0
-  startSkill: 0
-  activeSkill: 0
-  endSkill: 0
-  growthSkill: 0
-  endSkillOdd: 0
-  singleDamage: 0
-  teamDamage: 0
+  skillOdds: 0
   singleBuff: 1
   teamBuff: 0
   ownBuff: 0
