@@ -43,6 +43,7 @@ public class BattleManage : MonoBehaviour
     }
     public void  OnEnable() 
     {   
+        maxSpeed = 10000;
         SetUpUnits();
         StartSkill();
     }

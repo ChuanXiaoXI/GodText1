@@ -235,12 +235,16 @@ public bool damageNumObjectIsAlive;
 [Header("buff显示")]
 public GameObject buffManage;
 public GameObject buffPrefabObject;
-
 public GameObject buffInfoObjectPrefab;
 public GameObject buffInfoObject;
-
 public string buffInfo;
 public bool buffInfoIsAlive;
+
+
+public string skillName;
+public bool skillNameIsAlive;
+public GameObject skillNameObjectPrefab;
+public GameObject skillNameObject;
 
 public void Start()
 {
@@ -698,7 +702,7 @@ public void Fight()//战斗机制
     {  playerBattleObject = playerPoints.transform.GetChild(0).gameObject; 
        buffManage = playerBattleObject.transform.GetChild(8).gameObject;
        maxSpeed = battleManage.maxSpeed;
-       actionTime += Time.deltaTime;
+       actionTime += (Time.deltaTime * (speed / maxSpeed));
        Target();
        DamageNumObjectIsAlive();
        BuffInfoIsAlive();
@@ -707,7 +711,7 @@ public void Fight()//战斗机制
        DamageNum();
        
 
-       if(actionTime >= 2 * (maxSpeed / speed) && actionTime >= 0.5f)//行动开始
+       if(actionTime >= 2 && actionTime >= 0.5f)//行动开始
        {
         turn += 1; 
         actionTime = 0;
@@ -770,7 +774,7 @@ public void Target()//目标机制
 
         if(targetEnemyUnit == null)
        {
-           //Debug.Log("111");
+           
            for (int i = 0; i < targetEnemyUnitList.Count; i++)
           {
             int targetIndex = Random.Range(0 , battleManage.remainEnemyList.Count);
@@ -1033,7 +1037,7 @@ public void Buff()//buff机制
                buffObjectList[i] = null;
            }
        }
-  Debug.Log("111");
+ 
 }
 public void Action()//行动机制
 {
@@ -1063,6 +1067,7 @@ public void Attack()
     if(!disarm && sp >= 10)
     {
         sp -= 10;
+        
         playerBattleObject.transform.DOMove(new Vector3( playerBattleObject.GetComponent<PlayerBattle>().actionPosition.transform.position.x, playerBattleObject.GetComponent<PlayerBattle>().actionPosition.transform.position.y, 0f), 0.2f);
         playerBattleObject.transform.DOMove(new Vector3( playerBattleObject.GetComponent<PlayerBattle>().originalPosition.transform.position.x, playerBattleObject.GetComponent<PlayerBattle>().originalPosition.transform.position.y, 0f), 0.8f);//战斗移动
     int attackNum = Random.Range(0, 100);
@@ -1411,7 +1416,7 @@ public void Skill()//主动技能
                    sp -= skillList[targetSkillID].sp;
                    hp -= skillList[targetSkillID].hp;
                    playerBattleObject.transform.DOMove(new Vector3( playerBattleObject.GetComponent<PlayerBattle>().actionPosition.transform.position.x, playerBattleObject.GetComponent<PlayerBattle>().actionPosition.transform.position.y, 0f), 0.2f);
-                  playerBattleObject.transform.DOMove(new Vector3( playerBattleObject.GetComponent<PlayerBattle>().originalPosition.transform.position.x, playerBattleObject.GetComponent<PlayerBattle>().originalPosition.transform.position.y, 0f), 0.8f);//战斗移动
+                   playerBattleObject.transform.DOMove(new Vector3( playerBattleObject.GetComponent<PlayerBattle>().originalPosition.transform.position.x, playerBattleObject.GetComponent<PlayerBattle>().originalPosition.transform.position.y, 0f), 0.8f);//战斗移动
                 
                    if(skillList[targetSkillID].singleDamage)//单体伤害技能
                    {

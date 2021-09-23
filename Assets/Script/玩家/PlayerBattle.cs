@@ -16,6 +16,8 @@ public class PlayerBattle : MonoBehaviour
    public GameObject damageNumobjectPoint2;//定位点
     public GameObject buffInfoPoint1;
     public GameObject buffInfoPoint2;
+    public GameObject skillNamePoint1;
+    public GameObject skillNamePoint2;
    [Header("战斗动作")]
    public GameObject originalPosition;
    public GameObject actionPosition;
@@ -31,7 +33,7 @@ public class PlayerBattle : MonoBehaviour
    {
        slider.value = player.hp;
        slider.maxValue = player.totalhp;
-       speedSlider.maxValue = (player.maxSpeed / player.speed) * 2;
+       speedSlider.maxValue = 2;
        speedSlider.value = player.actionTime;
 
    }

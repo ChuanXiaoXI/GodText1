@@ -6,14 +6,12 @@ using DG.Tweening;
 
 public class SkillName : MonoBehaviour
 {
-    //public GameObject enemyUI;
+    
     public Text skillNameText;
     public float destroyTime;
     public GameObject skillNamePoint2;
     void Start()
     {
-        //enemyUI = gameObject.transform.parent.gameObject;
-      
         gameObject.transform.DOMove(new Vector3( skillNamePoint2.transform.position.x,  skillNamePoint2.transform.position.y, 0f), 0.5f);
     }
 
