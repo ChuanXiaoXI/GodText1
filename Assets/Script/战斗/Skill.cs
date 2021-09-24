@@ -86,7 +86,21 @@ public float charm;
 //public int buffID;//
 public BuffAndDebuff buff;
 
-
+[Header("单体伤害显示")]
+[Header("显示种类")]
+public bool singleDamageName;//单体伤害
+[Header("群体伤害显示")]
+public bool teamDamageName;//群体伤害
+[Header("单体队友buff显示")]
+public bool singleBuffName;//单体buff
+[Header("全队buff显示")]
+public bool teamBuffName;//群体buff
+[Header("自我buff显示")]
+public bool ownBuffName;//单体buff
+[Header("单体敌人debuff显示")]
+public bool singleDebuffName;//单体debuff
+[Header("群体敌人debuff显示")]
+public bool teamDebuffName;//群体debuff
 
 
 //public float skillFactor;
