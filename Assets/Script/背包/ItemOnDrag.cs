@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHandler
+public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHandler,IPointerEnterHandler, IPointerExitHandler
 { 
     [Header("item属性传输")]
     public Item item;
@@ -22,6 +22,9 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
     public GameObject information;
     public GameObject informationManage;
     public Text itemInfo;
+
+    public Text itemInfoText1;
+    public GameObject itemInfoObject1;
     //[消耗品]
     public int itemHeld;
     public Text itemNum;//数量
@@ -69,6 +72,17 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
 
     
   }
+  public void OnPointerEnter(PointerEventData eventData)
+{ 
+        itemInfoText1.text = item.itemInfo;
+        itemInfoObject1.SetActive(true);
+        
+}
+public void OnPointerExit(PointerEventData eventData)
+{
+       itemInfoObject1.SetActive(false);
+               
+}
    public void OnMouseDown()
    {
     information.SetActive(false);
