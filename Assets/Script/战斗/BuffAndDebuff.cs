@@ -8,7 +8,9 @@ public class BuffAndDebuff : ScriptableObject
 {
    [Header("buff图标")]
    public Sprite buffImage;
+   [Header("buff左下角标注")]
    public string buffInfo;
+   [Header("buff会消失的字体")]
    public string buffString;
  [Header("buff时长")]
 public int buffTime;
