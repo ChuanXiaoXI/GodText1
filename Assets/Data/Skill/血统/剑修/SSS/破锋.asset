@@ -22,7 +22,7 @@ MonoBehaviour:
   deathSkill: 0
   overSkill: 0
   adSkill: 1
-  adSkillFactor: 2
+  adSkillFactor: 3
   apSkill: 0
   apSkillFactor: 0
   iqSkill: 0

@@ -34,8 +34,8 @@ MonoBehaviour:
   totalmpPCT: 0
   totalsp: 0
   totalspPCT: 0
-  ad: 0
-  adPCT: 0.3
+  ad: 100
+  adPCT: 0
   ap: 0
   apPCT: 0
   def: 0
