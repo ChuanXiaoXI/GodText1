@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2914621083892420178}
   - component: {fileID: 1284786283984778234}
   m_Layer: 5
-  m_Name: ItemInfo1
+  m_Name: ItemInfoPoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2463806088534285342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6748074368323824111}
@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -250, y: -150}
-  m_SizeDelta: {x: 350, y: 400}
+  m_AnchoredPosition: {x: -200, y: -150}
+  m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2914621083892420178
 CanvasRenderer:
@@ -449,11 +449,12 @@ MonoBehaviour:
   information: {fileID: 0}
   informationManage: {fileID: 0}
   itemInfo: {fileID: 0}
-  itemInfoText1: {fileID: 1284786283984778234}
-  itemInfoObject1: {fileID: 2463806088534285342}
+  itemInfoText: {fileID: 0}
+  itemInfoTextObject: {fileID: 0}
+  itemInfoPoint1: {fileID: 2463806088534285342}
   itemHeld: 0
   itemNum: {fileID: 6748074368059098796}
-  timeManage: {fileID: 2463806088534285342}
+  timeManage: {fileID: 0}
   time: 0
   bag: {fileID: 0}
   itemPrefab: {fileID: 6748074368323824113}

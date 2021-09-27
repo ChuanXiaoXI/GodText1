@@ -23,8 +23,9 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
     public GameObject informationManage;
     public Text itemInfo;
 
-    public Text itemInfoText1;
-    public GameObject itemInfoObject1;
+    public Text itemInfoText;
+    public GameObject itemInfoTextObject;
+    public GameObject itemInfoPoint1;
     //[消耗品]
     public int itemHeld;
     public Text itemNum;//数量
@@ -48,7 +49,7 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
     //infromation = GameObject.Find("InformationManage");
     timeManage = GameObject.Find("World");
     story = GameObject.Find("UI").transform.GetChild(7).gameObject;
-    
+    itemInfoTextObject = GameObject.Find("UI").transform.GetChild(9).gameObject;
     informationManage = GameObject.Find("InformationManage");
     information = informationManage.transform.GetChild(0).gameObject;
     enemyInformation = information.transform.GetChild(1).gameObject;
@@ -74,13 +75,15 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
   }
   public void OnPointerEnter(PointerEventData eventData)
 { 
-        itemInfoText1.text = item.itemInfo;
-        itemInfoObject1.SetActive(true);
+        itemInfoText = itemInfoTextObject.GetComponent<Text>();
+        itemInfoText.text = item.itemInfo;
+        itemInfoTextObject.transform.position = itemInfoPoint1.transform.position;
+        itemInfoTextObject.SetActive(true);
         
 }
 public void OnPointerExit(PointerEventData eventData)
 {
-       itemInfoObject1.SetActive(false);
+       itemInfoTextObject.SetActive(false);
                
 }
    public void OnMouseDown()
