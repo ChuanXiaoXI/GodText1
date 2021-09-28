@@ -51,7 +51,7 @@ MonoBehaviour:
   critDamge: 0
   iq: 0
   charm: 0
-  buff: {fileID: 11400000, guid: e140ed469218414478694d0c553380ac, type: 2}
+  buff: {fileID: 11400000, guid: 7a5a4d8e8c84e5b49abaeb8f12c66a51, type: 2}
   singleDamageName: 0
   teamDamageName: 0
   singleBuffName: 0
