@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9298dcf4578514f97913b37df2f544, type: 3}
+  m_Name: "B\u7EA7\u8700\u5C71"
+  m_EditorClassIdentifier: 
+  itemName: "\u671B\u6708"
+  itemImage: {fileID: 0}
+  itemColor: {r: 0.9647059, g: 0, b: 0, a: 1}
+  itemHeld: 1
+  itemID: 0
+  equipment: 0
+  equipmentClass: Blood
+  weaponClass: 
+  consumable: 0
+  consumableTime: 0
+  blood: 1
+  singleBlood: 0
+  bloodClass: "\u8700\u5C71"
+  level: 4
+  story: 0
+  skillList:
+  - {fileID: 11400000, guid: 59cfc0c5c9c59d74da930a6f89b367ce, type: 2}
+  textFile: {fileID: 0}
+  itemInfo: "\u300A\u9189\u4ED9\u671B\u6708\u6B65\u300B\uFF0CB\u7EA7\u4F20\u627F\uFF0C\u3010\u8700\u5C71\u4F53\u7CFB\u3011\n\u751F\u547D\uFF0B600
+    \u6CD5\u5F3A\uFF0B170 \r\n\u901F\u5EA6\uFF0B45 \n\u7269\u9632\uFF0B70 \u9B54\u9632\uFF0B100\n\n\u6765\u81EA\u4E8E\u9AD8\u6B66\u4F4D\u9762\u8700\u5C71\u6D3E\uFF0C\u662F\u8700\u5C71\u72EC\u95E8\u8F7B\u529F\u3002\n\n\u4F7F\u7528\u540E\u5C06\u4F1A\u5F3A\u5316\u81F3\u671B\u6708\u4F20\u627F\uFF0C\u5E76\u83B7\u5F97\u4EE5\u4E0B\u6280\u80FD\r\u53CA\u5F3A\u5316\n\u671B\u6708\uFF1A\u3010\u671B\u6708\u5F52\u53BB\uFF0C\u68A6\u884C\u6545\u9053\u3011\n\n\u4E07\u5251\u8BC0:\u6D88\u801740\u6CD5\u529B\uFF0C\u5BF9\u654C\u65B9\u9020\u6210170%\u6CD5\u5F3A\u7FA4\u4F53\u4F24\u5BB3\r\n\n\u671B\u6708\u6B65:\u5251\u610F+1\uFF1B\u9B54\u6CD5+30"
+  hp: 0
+  mp: 0
+  sp: 0
+  replyHp: 0
+  replyMp: 0
+  replySp: 0
+  replyHpPCT: 0
+  replyMpPCT: 0
+  replySpPCT: 0
+  totalhp: 600
+  totalhpPCT: 0
+  totalmp: 30
+  totalmpPCT: 0
+  totalsp: 0
+  totalspPCT: 0
+  ad: 0
+  adPCT: 0
+  ap: 170
+  apPCT: 0
+  def: 70
+  defPCT: 0
+  mdef: 100
+  mdefPCT: 0
+  speed: 45
+  speedPCT: 0
+  dodge: 0
+  crit: 0
+  iq: 0
+  iqPCT: 0
+  charm: 0
+  charmPCT: 0
+  critDamge: 0
+  drainLife: 0
+  sword: 1
+  gun: 0
+  shieldFactor: 0
+  skillOdds: 0
+  assassin: 0
+  baseTotalhp: 0
+  baseDef: 0
+  baseMdef: 0
+  baseAd: 0
+  baseAp: 0
+  baseCharm: 0
+  baseIq: 0
+  baseSpeed: 0
+  basePoint: 0
+  baseCPoint: 0
+  baseSPoint: 0
+  baseSSSPoint: 0
