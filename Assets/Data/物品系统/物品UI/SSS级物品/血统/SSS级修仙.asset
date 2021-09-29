@@ -65,7 +65,7 @@ MonoBehaviour:
   crit: 0
   iq: 0
   iqPCT: 0
-  charm: 0
+  charm: 300
   charmPCT: 0
   critDamge: 0
   drainLife: 0
@@ -74,6 +74,7 @@ MonoBehaviour:
   shieldFactor: 0
   skillOdds: 0
   assassin: 0
+  charmSkillBool: 1
   baseTotalhp: 0
   baseDef: 0
   baseMdef: 0

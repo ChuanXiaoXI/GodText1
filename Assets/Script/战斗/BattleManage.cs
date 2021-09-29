@@ -312,13 +312,13 @@ public class BattleManage : MonoBehaviour
                 {
                      for (int k = 0; k < remainEnemyList.Count ; k++)
                      {
-                       remainEnemyList[k].GetComponent<EnemyUI>().hp -= ((remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].adSkillFactor * remainPlayerList[i].GetComponent<PlayerBattle>().player.ad) - remainEnemyList[k].GetComponent<EnemyUI>().def);
+                       remainEnemyList[k].GetComponent<EnemyUI>().hp -= ((remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].adSkillFactor * remainPlayerList[i].GetComponent<PlayerBattle>().player.ad) - (remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].adSkillFactor * remainEnemyList[k].GetComponent<EnemyUI>().def));
                        remainEnemyList[k].GetComponent<EnemyUI>().targetUnit = remainPlayerList[i].GetComponent<PlayerBattle>().player.gameObject;
                        for (int n = 0; n < remainPlayerList[i].GetComponent<PlayerBattle>().player.damageList.Count; n++)
                             { 
                             if(remainPlayerList[i].GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
-                               remainPlayerList[i].GetComponent<PlayerBattle>().player.damageList[n] = ((remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].adSkillFactor * remainPlayerList[i].GetComponent<PlayerBattle>().player.ad) - remainEnemyList[k].GetComponent<EnemyUI>().def);
+                               remainPlayerList[i].GetComponent<PlayerBattle>().player.damageList[n] = ((remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].adSkillFactor * remainPlayerList[i].GetComponent<PlayerBattle>().player.ad) - (remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].adSkillFactor * remainEnemyList[k].GetComponent<EnemyUI>().def));
                                remainEnemyList[k].GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
                                remainEnemyList[k].GetComponent<EnemyUI>().damageNumber = remainPlayerList[i].GetComponent<PlayerBattle>().player.damageList[n];
                                break;
@@ -331,13 +331,13 @@ public class BattleManage : MonoBehaviour
                 {
                      for (int k = 0; k < remainEnemyList.Count ; k++)
                      {
-                       remainEnemyList[k].GetComponent<EnemyUI>().hp -= ((remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].hpSkillFactor * remainPlayerList[i].GetComponent<PlayerBattle>().player.totalhp) - remainEnemyList[k].GetComponent<EnemyUI>().def);
+                       remainEnemyList[k].GetComponent<EnemyUI>().hp -= ((remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].hpSkillFactor * remainPlayerList[i].GetComponent<PlayerBattle>().player.totalhp) - (remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].hpSkillFactor * remainEnemyList[k].GetComponent<EnemyUI>().def));
                        remainEnemyList[k].GetComponent<EnemyUI>().targetUnit = remainPlayerList[i].GetComponent<PlayerBattle>().player.gameObject;
                         for (int n = 0; n < remainPlayerList[i].GetComponent<PlayerBattle>().player.damageList.Count; n++)
                             { 
                             if(remainPlayerList[i].GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
-                               remainPlayerList[i].GetComponent<PlayerBattle>().player.damageList[n] = ((remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].hpSkillFactor * remainPlayerList[i].GetComponent<PlayerBattle>().player.totalhp) - remainEnemyList[k].GetComponent<EnemyUI>().def);
+                               remainPlayerList[i].GetComponent<PlayerBattle>().player.damageList[n] = ((remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].hpSkillFactor * remainPlayerList[i].GetComponent<PlayerBattle>().player.totalhp) - (remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].hpSkillFactor * remainEnemyList[k].GetComponent<EnemyUI>().def));
                                remainEnemyList[k].GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
                                remainEnemyList[k].GetComponent<EnemyUI>().damageNumber = remainPlayerList[i].GetComponent<PlayerBattle>().player.damageList[n];
                                break;
@@ -350,13 +350,13 @@ public class BattleManage : MonoBehaviour
                 {
                     for (int k = 0; k < remainEnemyList.Count ; k++)
                      {
-                       remainEnemyList[k].GetComponent<EnemyUI>().hp -= ((remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].apSkillFactor * remainPlayerList[i].GetComponent<PlayerBattle>().player.ap) - remainEnemyList[k].GetComponent<EnemyUI>().mdef);
+                       remainEnemyList[k].GetComponent<EnemyUI>().hp -= ((remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].apSkillFactor * remainPlayerList[i].GetComponent<PlayerBattle>().player.ap) - (remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].apSkillFactor * remainEnemyList[k].GetComponent<EnemyUI>().mdef));
                        remainEnemyList[k].GetComponent<EnemyUI>().targetUnit = remainPlayerList[i].GetComponent<PlayerBattle>().player.gameObject;
                        for (int n = 0; n < remainPlayerList[i].GetComponent<PlayerBattle>().player.damageList.Count; n++)
                             { 
                             if(remainPlayerList[i].GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
-                               remainPlayerList[i].GetComponent<PlayerBattle>().player.damageList[n] =((remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].apSkillFactor * remainPlayerList[i].GetComponent<PlayerBattle>().player.ap) - remainEnemyList[k].GetComponent<EnemyUI>().mdef);
+                               remainPlayerList[i].GetComponent<PlayerBattle>().player.damageList[n] =((remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].apSkillFactor * remainPlayerList[i].GetComponent<PlayerBattle>().player.ap) - (remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].apSkillFactor * remainEnemyList[k].GetComponent<EnemyUI>().mdef));
                                remainEnemyList[k].GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
                                remainEnemyList[k].GetComponent<EnemyUI>().damageNumber = remainPlayerList[i].GetComponent<PlayerBattle>().player.damageList[n];
                                break;
@@ -369,13 +369,13 @@ public class BattleManage : MonoBehaviour
                 {
                     for (int k = 0; k < remainEnemyList.Count ; k++)
                      {
-                       remainEnemyList[k].GetComponent<EnemyUI>().hp -= ((remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].iqSkillFactor * remainPlayerList[i].GetComponent<PlayerBattle>().player.iq) - remainEnemyList[k].GetComponent<EnemyUI>().mdef);
+                       remainEnemyList[k].GetComponent<EnemyUI>().hp -= ((remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].iqSkillFactor * remainPlayerList[i].GetComponent<PlayerBattle>().player.iq) - (remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].iqSkillFactor * remainEnemyList[k].GetComponent<EnemyUI>().mdef));
                        remainEnemyList[k].GetComponent<EnemyUI>().targetUnit = remainPlayerList[i].GetComponent<PlayerBattle>().player.gameObject;
                        for (int n = 0; n < remainPlayerList[i].GetComponent<PlayerBattle>().player.damageList.Count; n++)
                             { 
                             if(remainPlayerList[i].GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
-                               remainPlayerList[i].GetComponent<PlayerBattle>().player.damageList[n] =((remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].iqSkillFactor * remainPlayerList[i].GetComponent<PlayerBattle>().player.iq) - remainEnemyList[k].GetComponent<EnemyUI>().mdef);
+                               remainPlayerList[i].GetComponent<PlayerBattle>().player.damageList[n] =((remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].iqSkillFactor * remainPlayerList[i].GetComponent<PlayerBattle>().player.iq) - (remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].iqSkillFactor * remainEnemyList[k].GetComponent<EnemyUI>().mdef));
                                remainEnemyList[k].GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
                                remainEnemyList[k].GetComponent<EnemyUI>().damageNumber = remainPlayerList[i].GetComponent<PlayerBattle>().player.damageList[n];
                                break;
@@ -544,14 +544,14 @@ public class BattleManage : MonoBehaviour
                 {
                      for (int k = 0; k < remainPlayerList.Count ; k++)
                      {
-                       remainPlayerList[k].GetComponent<PlayerBattle>().player.hp -= ((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].adSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().ad) - remainPlayerList[k].GetComponent<PlayerBattle>().player.def);
+                       remainPlayerList[k].GetComponent<PlayerBattle>().player.hp -= ((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].adSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().ad) - (remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].adSkillFactor * remainPlayerList[k].GetComponent<PlayerBattle>().player.def));
                        remainPlayerList[k].GetComponent<PlayerBattle>().player.targetUnit = remainEnemyList[i];
 
                        for (int n = 0; n < remainEnemyList[i].GetComponent<EnemyUI>().damageList.Count; n++)
                             { 
                             if(remainEnemyList[i].GetComponent<EnemyUI>().damageList[n] == 0)
                            {
-                               remainEnemyList[i].GetComponent<EnemyUI>().damageList[n] = ((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].adSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().ad) - remainPlayerList[k].GetComponent<PlayerBattle>().player.def);
+                               remainEnemyList[i].GetComponent<EnemyUI>().damageList[n] = ((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].adSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().ad) - (remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].adSkillFactor * remainPlayerList[k].GetComponent<PlayerBattle>().player.def));
                                remainPlayerList[k].GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
                                remainPlayerList[k].GetComponent<PlayerBattle>().player.damageNumber = remainEnemyList[i].GetComponent<EnemyUI>().damageList[n];
                                break;
@@ -563,14 +563,14 @@ public class BattleManage : MonoBehaviour
                 {
                      for (int k = 0; k < remainPlayerList.Count ; k++)
                      {
-                       remainPlayerList[k].GetComponent<PlayerBattle>().player.hp -= ((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].hpSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().totalhp) - remainPlayerList[k].GetComponent<PlayerBattle>().player.def);
+                       remainPlayerList[k].GetComponent<PlayerBattle>().player.hp -= ((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].hpSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().totalhp) - (remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].hpSkillFactor * remainPlayerList[k].GetComponent<PlayerBattle>().player.def));
                        remainPlayerList[k].GetComponent<PlayerBattle>().player.targetUnit = remainEnemyList[i];
 
                         for (int n = 0; n < remainEnemyList[i].GetComponent<EnemyUI>().damageList.Count; n++)
                             { 
                             if(remainEnemyList[i].GetComponent<EnemyUI>().damageList[n] == 0)
                            {
-                               remainEnemyList[i].GetComponent<EnemyUI>().damageList[n] = ((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].hpSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().totalhp) - remainPlayerList[k].GetComponent<PlayerBattle>().player.def);
+                               remainEnemyList[i].GetComponent<EnemyUI>().damageList[n] = ((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].hpSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().totalhp) - (remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].hpSkillFactor * remainPlayerList[k].GetComponent<PlayerBattle>().player.def));
                                remainPlayerList[k].GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
                                remainPlayerList[k].GetComponent<PlayerBattle>().player.damageNumber = remainEnemyList[i].GetComponent<EnemyUI>().damageList[n];
                                break;
@@ -582,14 +582,14 @@ public class BattleManage : MonoBehaviour
                 {
                     for (int k = 0; k < remainPlayerList.Count ; k++)
                      {
-                       remainPlayerList[k].GetComponent<PlayerBattle>().player.hp -= ((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].apSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().ap) - remainPlayerList[k].GetComponent<PlayerBattle>().player.mdef);
+                       remainPlayerList[k].GetComponent<PlayerBattle>().player.hp -= ((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].apSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().ap) - (remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].apSkillFactor * remainPlayerList[k].GetComponent<PlayerBattle>().player.mdef));
                        remainPlayerList[k].GetComponent<PlayerBattle>().player.targetUnit = remainEnemyList[i];
 
                         for (int n = 0; n < remainEnemyList[i].GetComponent<EnemyUI>().damageList.Count; n++)
                             { 
                             if(remainEnemyList[i].GetComponent<EnemyUI>().damageList[n] == 0)
                            {
-                               remainEnemyList[i].GetComponent<EnemyUI>().damageList[n] = ((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].apSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().ap) - remainPlayerList[k].GetComponent<PlayerBattle>().player.mdef);
+                               remainEnemyList[i].GetComponent<EnemyUI>().damageList[n] = ((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].apSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().ap) - (remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].apSkillFactor * remainPlayerList[k].GetComponent<PlayerBattle>().player.mdef));
                                remainPlayerList[k].GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
                                remainPlayerList[k].GetComponent<PlayerBattle>().player.damageNumber = remainEnemyList[i].GetComponent<EnemyUI>().damageList[n];
                                break;
@@ -602,14 +602,14 @@ public class BattleManage : MonoBehaviour
                 {
                     for (int k = 0; k < remainPlayerList.Count ; k++)
                      {
-                       remainPlayerList[k].GetComponent<PlayerBattle>().player.hp -= ((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].iqSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().iq) - remainPlayerList[k].GetComponent<PlayerBattle>().player.mdef);
+                       remainPlayerList[k].GetComponent<PlayerBattle>().player.hp -= ((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].iqSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().iq) - (remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].iqSkillFactor * remainPlayerList[k].GetComponent<PlayerBattle>().player.mdef));
                        remainPlayerList[k].GetComponent<PlayerBattle>().player.targetUnit = remainEnemyList[i];
 
                         for (int n = 0; n < remainEnemyList[i].GetComponent<EnemyUI>().damageList.Count; n++)
                             { 
                             if(remainEnemyList[i].GetComponent<EnemyUI>().damageList[n] == 0)
                            {
-                               remainEnemyList[i].GetComponent<EnemyUI>().damageList[n] =((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].iqSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().iq) - remainPlayerList[k].GetComponent<PlayerBattle>().player.mdef);
+                               remainEnemyList[i].GetComponent<EnemyUI>().damageList[n] =((remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].iqSkillFactor * remainEnemyList[i].GetComponent<EnemyUI>().iq) - (remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].iqSkillFactor * remainPlayerList[k].GetComponent<PlayerBattle>().player.mdef));
                                remainPlayerList[k].GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
                                remainPlayerList[k].GetComponent<PlayerBattle>().player.damageNumber = remainEnemyList[i].GetComponent<EnemyUI>().damageList[n];
                                break;
