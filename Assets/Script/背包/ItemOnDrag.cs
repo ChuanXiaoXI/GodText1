@@ -279,10 +279,6 @@ public void OnPointerExit(PointerEventData eventData)
           transform.parent = originalParent;
           GetComponent<CanvasGroup>().blocksRaycasts = true;
           itemHeld -= 1;
-          if(itemHeld == 0)
-          {  
-          Destroy(gameObject);
-          }
           for (int i = 0; i < 100; i++)
           {
             if(eventData.pointerCurrentRaycast.gameObject.GetComponent<TeamPlayer>().consumableList[i] == null)
@@ -291,10 +287,7 @@ public void OnPointerExit(PointerEventData eventData)
               eventData.pointerCurrentRaycast.gameObject.GetComponent<TeamPlayer>().consumableTimeList[i] = timeManage.GetComponent<TimeManage>().time;
               break;
             }
-          }
-          
-          
-
+          }                   
         }
         else
             {

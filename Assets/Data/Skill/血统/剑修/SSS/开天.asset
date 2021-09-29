@@ -42,7 +42,7 @@ MonoBehaviour:
   singleDebuff: 0
   teamDebuff: 0
   growthSkill: 1
-  ad: 1
+  ad: 0.1
   ap: 0
   totalhp: 0
   speed: 0

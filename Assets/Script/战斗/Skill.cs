@@ -16,6 +16,7 @@ public bool activeSkill;//主动技能
 public bool endSkill;//被动技能
 [Header("被动概率(被动技能需要设置概率，可以100%)")]
 public int endSkillOdd;//被动概率
+public float charmFactor;//魅力系数
 [Header("回合技能（每回合结束前释放）")]
 public bool turnSkill;//回合结束技能
 [Header("击杀型技能（击杀怪物触发）")]

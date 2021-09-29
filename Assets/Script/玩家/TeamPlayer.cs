@@ -67,6 +67,7 @@ public class TeamPlayer : MonoBehaviour ,IPointerEnterHandler, IPointerExitHandl
     public float skillOdds,baseSkillOdds,equipmentSkillOdds,temPorarySkillOdds;//技能施法概率
     public float sword,baseSword,equipmentSword,temporarySword;
     public float gun,baseGun,equipmentGun,temporaryGun;
+    public bool charmSkillBool;
     [Header("战斗系统")]
     public GameObject playerBattlePrefab;
     public GameObject playerBattleObject;
@@ -1059,6 +1060,7 @@ public void Action()//行动机制
     Book();
     Fuwen();
     Zhoushu();
+    CharmSkill();
     int skillNum = Random.Range(0, 100);
     if(skillNum > skillOdds)
     {
@@ -1087,8 +1089,6 @@ public void Attack()
     {
        Damage();
        EndSkill();
-
-
     }
     if (attackNum < targetEnemyUnit.GetComponent<EnemyUI>().dodge)
     {
@@ -1210,6 +1210,20 @@ public void Shield()//盾防机制
       }
     }
    
+}
+public void CharmSkill()
+{
+    charmSkillBool = false;
+    for (int i = 0; i < equipmentList.Count; i++)
+    {
+        if(equipmentList[i] != null)
+        {
+            if(equipmentList[i].charmSkillBool == true)
+            {
+                charmSkillBool = true;
+            }
+        }
+    }
 }
 public void Book()
 {
@@ -2001,9 +2015,11 @@ public void EndSkill()//被动技能
         {
             if(skillList[i].endSkill)
             {
+                if(charmSkillBool)
+                {
                     int endSkillNum;
                     endSkillNum = Random.Range(0, 100);
-                    if((endSkillNum - (charm * 0.003)) <= skillList[i].endSkillOdd)
+                    if((endSkillNum - (charm * skillList[i].charmFactor)) <= skillList[i].endSkillOdd)
                 {
                     if(skillList[i].singleDamage)//单体伤害技能
                 {
@@ -2424,10 +2440,11 @@ public void EndSkill()//被动技能
                     }
                    }
                 }
-                if((endSkillNum - (charm * 0.003)) > skillList[i].endSkillOdd)
+                if((endSkillNum - (charm * skillList[i].charmFactor)) > skillList[i].endSkillOdd)
                 {
                     continue;
                 }
+            }
             }
         }
     }
