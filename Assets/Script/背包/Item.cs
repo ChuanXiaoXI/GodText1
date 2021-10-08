@@ -25,6 +25,7 @@ public int consumableTime;//消耗品的持续时间
 public bool blood;//血统
 public bool singleBlood;
 [Header("血统种类")]
+//public int bloodClassID;
 public string bloodClass;
 public int level;//等级
 [Header("故事")]

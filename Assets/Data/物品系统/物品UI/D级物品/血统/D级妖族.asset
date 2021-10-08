@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9298dcf4578514f97913b37df2f544, type: 3}
   m_Name: "D\u7EA7\u5996\u65CF"
   m_EditorClassIdentifier: 
-  itemName: "\u901A\u8EAB"
+  itemName: "\u5F00\u8BC6"
   itemImage: {fileID: 0}
   itemColor: {r: 0.9647059, g: 0, b: 0, a: 1}
   itemHeld: 1

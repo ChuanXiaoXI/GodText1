@@ -39,13 +39,13 @@ public class EnemyObject : MonoBehaviour
         teamManage = GameObject.Find("Team").GetComponent<TeamManage>();
         
         enemyNum1 = enemyList.Count;
-        //enemyNum2 = enemyNum1 + 1;
+      
         enemyNum3 = enemyNum1 + 2;
         if(enemyNum3 > 20)
         {
             enemyNum3 = 20;
         }
-        //enemyNum4 = enemyNum1 - 1;
+    
         enemyNum5 = enemyNum1 - 2;
         if(enemyNum5 <= 1)
         {
@@ -82,8 +82,6 @@ public class EnemyObject : MonoBehaviour
            }
            
        }
-    
-   
         for (int i = 0; i < enemyList.Count; i++)
         {
             if(enemyList[i] != null)
@@ -105,7 +103,7 @@ public class EnemyObject : MonoBehaviour
    {
        if(other.gameObject.CompareTag("Player"))//碰撞检测
        {
-         // battleManage.GetComponent<BattleManage>().enemyNum = enemyNum;
+        
           battleManage.GetComponent<BattleManage>().enemyList = enemyList;
           battleManage.GetComponent<BattleManage>().enemyObject = gameObject;
           battleManage.GetComponent<BattleManage>().npcObject = npcList;
@@ -121,18 +119,7 @@ public class EnemyObject : MonoBehaviour
     playerInformation.SetActive(false);
     enemyInformation.SetActive(false);
     itemInformation.SetActive(true);
-      /*GameObject gameObject8 = infromation.transform.GetChild(8).gameObject;
-      List<GameObject> list = new List<GameObject>();
-      
-      for (int i = 0; i < 8; i++)
-      {
-          list.Add(infromation.transform.GetChild(i).gameObject);
-          list[i].SetActive(false);
-      }
-     
-      list.Clear();
-      gameObject8.SetActive(true);
-      enemyInfo = gameObject8.transform.GetChild(0).gameObject.GetComponent<Text>();//激活窗口*/
+    
 
       for (int i = 0; i < teamManage.players.Count; i++)
     {

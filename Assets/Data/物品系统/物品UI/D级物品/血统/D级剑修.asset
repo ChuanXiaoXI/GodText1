@@ -69,6 +69,7 @@ MonoBehaviour:
   shieldFactor: 0
   skillOdds: 0
   assassin: 0
+  charmSkillBool: 0
   baseTotalhp: 0
   baseDef: 0
   baseMdef: 0

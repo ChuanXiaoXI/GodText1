@@ -1784,6 +1784,8 @@ for (int i = 0; i < skillList.Count; i++)
                     }    
                     for (int j = 0; j < buffAndDebuffList.Count; j++)
                     {
+                        if(buffAndDebuffList[j] == null)
+                        {
                         buffTime[j] = skillList[targetSkillID].buff.buffTime;
                         buffObjectList[j] = gameObject;
                         buffAndDebuffList[j] = skillList[targetSkillID].buff;
@@ -1813,6 +1815,7 @@ for (int i = 0; i < skillList.Count; i++)
                              buffInfo = skillList[targetSkillID].buff.buffString;
                               //buff显示
                         break;
+                        }
                     }
                     break;
                    }
@@ -2137,6 +2140,9 @@ public void EndSkill()//被动技能
                     }    
                     for (int j = 0; j < buffAndDebuffList.Count; j++)
                     {
+                        if(buffAndDebuffList[j] == null)
+                        {
+                        
                         buffTime[j] = skillList[i].buff.buffTime;
                         buffObjectList[j] = gameObject;
                         buffAndDebuffList[j] = skillList[i].buff;
@@ -2167,6 +2173,7 @@ public void EndSkill()//被动技能
                               //buff显示
                         
                         break;
+                        }
                     }
                    }
                    if(skillList[i].teamBuff)//团队buff
@@ -2476,6 +2483,8 @@ public void EndSkill()//被动技能
                     }    
                     for (int j = 0; j < buffAndDebuffList.Count; j++)
                     {
+                        if(buffAndDebuffList[j] == null)
+                        {                    
                         buffTime[j] = skillList[i].buff.buffTime;
                         buffObjectList[j] = gameObject;
                         buffAndDebuffList[j] = skillList[i].buff;
@@ -2506,6 +2515,7 @@ public void EndSkill()//被动技能
                               //buff显示
                         
                         break;
+                        }
                     }
                    }
                    if(skillList[i].teamBuff)//团队buff
@@ -2919,6 +2929,8 @@ public void End()
                     }    
                     for (int j = 0; j < buffAndDebuffList.Count; j++)
                     {
+                        if(buffAndDebuffList[j] == null)
+                        {                      
                         buffTime[j] = skillList[i].buff.buffTime;
                         buffObjectList[j] = gameObject;
                         buffAndDebuffList[j] = skillList[i].buff;
@@ -2950,6 +2962,7 @@ public void End()
                                   
                                   //buff显示
                         break;
+                        }
                     }
                 }
                 if(skillList[i].teamBuff)//团队buff
@@ -3272,6 +3285,8 @@ public void Death()//死亡机制
                     }    
                          for (int j = 0; j < targetUnit.GetComponent<PlayerBattle>().player.buffAndDebuffList.Count; j++)
                          {
+                             if(targetUnit.GetComponent<PlayerBattle>().player.buffAndDebuffList[j] == null)
+                             {
                          targetUnit.GetComponent<PlayerBattle>().player.buffTime[j] = targetUnit.GetComponent<PlayerBattle>().player.skillList[i].buff.buffTime;
                          targetUnit.GetComponent<PlayerBattle>().player.buffObjectList[j] = targetUnit;
                          targetUnit.GetComponent<PlayerBattle>().player.buffAndDebuffList[j] = targetUnit.GetComponent<PlayerBattle>().player.skillList[i].buff;
@@ -3301,6 +3316,7 @@ public void Death()//死亡机制
                               
                               //buff显示
                          break;
+                             }
                          }
                     }
                     if(targetUnit.GetComponent<PlayerBattle>().player.skillList[i].teamBuff)//团队buff
@@ -3625,6 +3641,8 @@ public void Death()//死亡机制
                     {
                          for (int k = 0; k < targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.buffAndDebuffList.Count; k++)
                          {
+                             if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.buffAndDebuffList[k] == null)
+                             {                            
                          targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.buffTime[k] = targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].buff.buffTime;
                          targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.buffObjectList[k] = targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.gameObject;
                          targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.buffAndDebuffList[k] = targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].buff;
@@ -3657,6 +3675,7 @@ public void Death()//死亡机制
                               //buff显示
 
                          break;
+                             }
                          }
                     }
                     if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].teamBuff)//团队buff

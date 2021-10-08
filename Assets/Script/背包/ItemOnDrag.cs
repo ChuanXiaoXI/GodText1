@@ -165,7 +165,7 @@ public void OnPointerExit(PointerEventData eventData)
     if(trophy == false)
     {
      transform.position = eventData.position;
-     Debug.Log(eventData.pointerCurrentRaycast.gameObject.name);
+     
     }
     
   }
@@ -338,16 +338,14 @@ public void OnPointerExit(PointerEventData eventData)
           transform.position = originalPosition;
           transform.parent = originalParent;
           GetComponent<CanvasGroup>().blocksRaycasts = true;
-          
+          //Debug.Log(item.bloodClass);
           
           for (int i = 9; i < (eventData.pointerCurrentRaycast.gameObject.GetComponent<TeamPlayer>().bloodNum + 9); i++)
           {
-
              if(eventData.pointerCurrentRaycast.gameObject.GetComponent<TeamPlayer>().equipmentList[i] == null)//空血统
             {
               if(item.level == 2 && item.singleBlood == false)
               {
-                
               eventData.pointerCurrentRaycast.gameObject.GetComponent<TeamPlayer>().equipmentList[i] = item;
               Destroy(gameObject);
               }
@@ -359,7 +357,7 @@ public void OnPointerExit(PointerEventData eventData)
             }
             if(eventData.pointerCurrentRaycast.gameObject.GetComponent<TeamPlayer>().equipmentList[i] != null)
             {
-              if((item.level - eventData.pointerCurrentRaycast.gameObject.GetComponent<TeamPlayer>().equipmentList[i].level) == 2 && item.bloodClass == eventData.pointerCurrentRaycast.gameObject.GetComponent<TeamPlayer>().playerClass.equipmentList[i].bloodClass)
+              if((item.level - eventData.pointerCurrentRaycast.gameObject.GetComponent<TeamPlayer>().equipmentList[i].level) == 1 && item.bloodClass == eventData.pointerCurrentRaycast.gameObject.GetComponent<TeamPlayer>().equipmentList[i].bloodClass)
               {
                 eventData.pointerCurrentRaycast.gameObject.GetComponent<TeamPlayer>().equipmentList[i] = item;
                 Destroy(gameObject);

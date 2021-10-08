@@ -1167,6 +1167,19 @@ public void Gun()//枪械机制
 }
 public void Shield()//盾防机制
 {
+     /*for (int i = 0; i < targetEnemyUnitList.Count; i++)
+     {
+         if(targetEnemyUnitList[i].GetComponent<EnemyUI>().targetEnemyUnit == playerBattleObject)
+         {
+             continue;
+         }
+         if(targetEnemyUnitList[i].GetComponent<EnemyUI>().targetEnemyUnit != playerBattleObject)
+         {
+             targetEnemyUnitList[i].GetComponent<EnemyUI>().targetEnemyUnit = playerBattleObject;
+             break;
+         }
+     }*/
+
     for (int i = 0; i < equipmentList.Count; i++)
     {   if(equipmentList[i] != null)
       {
@@ -1913,6 +1926,8 @@ public void Skill()//主动技能
                                  }    
                     for (int j = 0; j < buffAndDebuffList.Count; j++)
                     {
+                        if(buffAndDebuffList[j] == null)
+                        {
                         buffTime[j] = skillList[targetSkillID].buff.buffTime;
                         buffObjectList[j] = playerBattleObject;
                         buffAndDebuffList[j] = skillList[targetSkillID].buff;
@@ -1941,6 +1956,7 @@ public void Skill()//主动技能
                              
                               //buff显示
                         break;
+                        }
                     }
                     break;
                    }
@@ -2356,9 +2372,12 @@ public void EndSkill()//被动技能
                     {                          
                         skillName = skillList[i].skillName;
                         skillNameIsAlive = true; 
-                    }    
+                    } 
+                       
                     for (int j = 0; j < buffAndDebuffList.Count; j++)
                     {
+                        if(buffAndDebuffList[j] == null)
+                        {
                         buffTime[j] = skillList[i].buff.buffTime;
                         buffObjectList[j] = playerBattleObject;
                         buffAndDebuffList[j] = skillList[i].buff;
@@ -2389,6 +2408,7 @@ public void EndSkill()//被动技能
                               playerBattleObject.GetComponent<PlayerBattle>().player.buffInfo = skillList[i].buff.buffString;
                               //buff显示
                         break;
+                        }
                     }
                    }
                    if(skillList[i].teamBuff)//团队buff
@@ -2789,6 +2809,10 @@ public void EndSkill()//被动技能
                     }    
                     for (int j = 0; j < buffAndDebuffList.Count; j++)
                     {
+                        if(buffAndDebuffList[j] == null)
+                        {
+
+                        
                         buffTime[j] = skillList[i].buff.buffTime;
                         buffObjectList[j] = playerBattleObject;
                         buffAndDebuffList[j] = skillList[i].buff;
@@ -2819,6 +2843,7 @@ public void EndSkill()//被动技能
                               playerBattleObject.GetComponent<PlayerBattle>().player.buffInfo = skillList[i].buff.buffString;
                               //buff显示
                         break;
+                        }
                     }
                    }
                    if(skillList[i].teamBuff)//团队buff
@@ -3231,6 +3256,8 @@ public void End()
                     }    
                     for (int j = 0; j < buffAndDebuffList.Count; j++)
                     {
+                         if(buffAndDebuffList[j] == null)
+                         {
                         buffTime[j] = skillList[i].buff.buffTime;
                         buffObjectList[j] = playerBattleObject;
                         buffAndDebuffList[j] = skillList[i].buff;
@@ -3262,6 +3289,7 @@ public void End()
                               //buff显示
                         
                         break;
+                         }
                     }
                 }
                 if(skillList[i].teamBuff)//团队buff
@@ -3559,6 +3587,8 @@ public void Death()//死亡机制
                     }    
                          for (int j = 0; j < targetUnit.GetComponent<EnemyUI>().buffAndDebuffList.Count; j++)
                          {
+                             if(targetUnit.GetComponent<EnemyUI>().buffAndDebuffList[j] == null)
+                             {
                          targetUnit.GetComponent<EnemyUI>().buffTime[j] = targetUnit.GetComponent<EnemyUI>().skillList[i].buff.buffTime;
                          targetUnit.GetComponent<EnemyUI>().buffObjectList[j] = targetUnit.GetComponent<EnemyUI>().gameObject;
                          targetUnit.GetComponent<EnemyUI>().buffAndDebuffList[j] = targetUnit.GetComponent<EnemyUI>().skillList[i].buff;
@@ -3589,6 +3619,7 @@ public void Death()//死亡机制
                               
                               //buff显示
                          break;
+                             }
                          }
                     }
                     if(targetUnit.GetComponent<EnemyUI>().skillList[i].teamBuff)//团队buff
@@ -3926,6 +3957,8 @@ public void Death()//死亡机制
                     }    
                          for (int j = 0; j < targetEnemyUnitList[l].GetComponent<EnemyUI>().buffAndDebuffList.Count; j++)
                          {
+                         if(targetEnemyUnitList[l].GetComponent<EnemyUI>().buffAndDebuffList[j] == null)
+                         {
                          targetEnemyUnitList[l].GetComponent<EnemyUI>().buffTime[j] = targetEnemyUnitList[l].GetComponent<EnemyUI>().skillList[i].buff.buffTime;
                          targetEnemyUnitList[l].GetComponent<EnemyUI>().buffObjectList[j] = targetEnemyUnitList[l].GetComponent<EnemyUI>().gameObject;
                          targetEnemyUnitList[l].GetComponent<EnemyUI>().buffAndDebuffList[j] = targetEnemyUnitList[l].GetComponent<EnemyUI>().skillList[i].buff;
@@ -3957,6 +3990,7 @@ public void Death()//死亡机制
                               targetEnemyUnitList[l].GetComponent<EnemyUI>().buffInfo = skillList[i].buff.buffString;
                               //buff显示
                          break;
+                         }
                          }
                     }
                     if(targetEnemyUnitList[l].GetComponent<EnemyUI>().skillList[i].teamBuff)

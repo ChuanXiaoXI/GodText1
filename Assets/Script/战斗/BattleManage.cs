@@ -81,10 +81,13 @@ public class BattleManage : MonoBehaviour
         }
         for (int i = 0; i < enemyList.Count; i++)
         {
+            if(enemyList[i] != null)
+            {
             Instantiate(enemyList[i]).transform.parent = enemyPoints[i].transform;
             //enemyPoints[i].transform.GetChild(0).gameObject.GetComponent<EnemyUI>().playerClass = enemyClass[i];
             enemyPoints[i].transform.GetChild(0).gameObject.transform.position = enemyPoints[i].transform.position;
             remainEnemyList.Add(enemyPoints[i].transform.GetChild(0).gameObject); 
+            }
         }     
     }
     public void MaxSpeed()
