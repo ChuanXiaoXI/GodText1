@@ -18,10 +18,10 @@ MonoBehaviour:
   endSkill: 0
   endSkillOdd: 0
   charmFactor: 0
-  turnSkill: 1
+  turnSkill: 0
   killSkill: 0
   deathSkill: 0
-  overSkill: 0
+  overSkill: 1
   adSkill: 0
   adSkillFactor: 0
   apSkill: 0
@@ -39,14 +39,14 @@ MonoBehaviour:
   teamDamage: 0
   singleBuff: 0
   teamBuff: 0
-  ownBuff: 1
+  ownBuff: 0
   singleDebuff: 0
   teamDebuff: 0
   growthSkill: 0
   ad: 0
   ap: 0
   totalhp: 0
-  speed: 0
+  speed: 0.5
   def: 0
   mdef: 0
   critDamge: 0
@@ -57,6 +57,6 @@ MonoBehaviour:
   teamDamageName: 0
   singleBuffName: 0
   teamBuffName: 0
-  ownBuffName: 1
+  ownBuffName: 0
   singleDebuffName: 0
   teamDebuffName: 0
