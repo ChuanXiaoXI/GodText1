@@ -1057,7 +1057,7 @@ public void Action()//行动机制
     Sword();
     Gun();
     Shield();
-    Book();
+    //Book();
     Fuwen();
     Zhoushu();
     CharmSkill();

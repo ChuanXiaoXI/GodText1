@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "\u5F00\u96FEbuff"
   m_EditorClassIdentifier: 
   buffImage: {fileID: 0}
-  buffInfo: "\u5F00\u96FE\uFF1A\u964D\u4F4E80\u70B9\u7269\u9632\u53CA\u9B54\u9632"
+  buffInfo: "\u5F00\u96FE\uFF1A\u6BCF\u5C42\u7269\u9632-80\u548C\u9B54\u9632-80"
   buffString: "\u9632\u5FA1\u964D\u4F4E"
   buffTime: 9999
   skillFactor: 0

@@ -17,14 +17,15 @@ MonoBehaviour:
   activeSkill: 1
   endSkill: 0
   endSkillOdd: 0
+  charmFactor: 0
   turnSkill: 0
   killSkill: 0
   deathSkill: 0
   overSkill: 0
-  adSkill: 1
-  adSkillFactor: 2
-  apSkill: 0
-  apSkillFactor: 0
+  adSkill: 0
+  adSkillFactor: 0
+  apSkill: 1
+  apSkillFactor: 2
   iqSkill: 0
   iqSkillFactor: 0
   hpSkill: 0
@@ -38,7 +39,7 @@ MonoBehaviour:
   teamDamage: 1
   singleBuff: 0
   teamBuff: 0
-  ownBuff: 1
+  ownBuff: 0
   singleDebuff: 0
   teamDebuff: 0
   growthSkill: 0

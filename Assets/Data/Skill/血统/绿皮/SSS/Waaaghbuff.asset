@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Waaaghbuff
   m_EditorClassIdentifier: 
   buffImage: {fileID: 0}
-  buffInfo: "Waaagh\uFF1A\u63D0\u5347\u7269\u653B700\u70B9"
+  buffInfo: "Waaagh\uFF1A\u7269\u653B+700"
   buffString: "Waaagh\uFF01\uFF01\uFF01"
   buffTime: 4
   skillFactor: 0
