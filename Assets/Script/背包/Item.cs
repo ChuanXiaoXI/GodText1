@@ -87,8 +87,10 @@ public string itemInfo;//信息
     public float gun;//枪的系数
     public int shieldFactor;//盾的系数
     public float skillOdds;//施法概率
-    public bool assassin;//刺心
+    //public bool assassin;//刺心
     public bool charmSkillBool;//妖血机制
+    public bool iqSkillBool;//悟道机制
+    public bool apSkillBool;//圣魂机制
 
     public float baseTotalhp;
     public float baseDef;

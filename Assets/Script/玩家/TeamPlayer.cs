@@ -68,6 +68,8 @@ public class TeamPlayer : MonoBehaviour ,IPointerEnterHandler, IPointerExitHandl
     public float sword,baseSword,equipmentSword,temporarySword;
     public float gun,baseGun,equipmentGun,temporaryGun;
     public bool charmSkillBool;
+    public bool apSkillBool;
+    public bool iqSkillBool;
     [Header("战斗系统")]
     public GameObject playerBattlePrefab;
     public GameObject playerBattleObject;
@@ -278,7 +280,7 @@ public void Update()
     Equipment();
     PlayerInformation();
     Fight();
-    
+    PlayerInformation();
     //Death();
     
 }
@@ -908,91 +910,357 @@ public void Buff()//buff机制
                 disarm = true;
              }
 
-             if(buffAndDebuffList[i].singleBuff || buffAndDebuffList[i].teamBuff || buffAndDebuffList[i].ownBuff)//脑力系数固定0.0002;每100脑力影响百分之2光环；
+             if(buffAndDebuffList[i].singleBuff || buffAndDebuffList[i].teamBuff || buffAndDebuffList[i].ownBuff)//
              {
-             sp += (buffAndDebuffList[i].sp + buffObjectList[i].GetComponent<PlayerBattle>().player.ap * buffAndDebuffList[i].skillFactor);
-             mp += (buffAndDebuffList[i].mp + buffObjectList[i].GetComponent<PlayerBattle>().player.ap * buffAndDebuffList[i].skillFactor);
-             hp += (buffAndDebuffList[i].hp + buffObjectList[i].GetComponent<PlayerBattle>().player.ap * buffAndDebuffList[i].skillFactor);
-             buffTotalhp1 += (buffAndDebuffList[i].totalhp + buffObjectList[i].GetComponent<PlayerBattle>().player.ap * buffAndDebuffList[i].skillFactor);
-             buffTotalhpPCT1 += (buffAndDebuffList[i].totalhpPCT + buffObjectList[i].GetComponent<PlayerBattle>().player.iq * buffAndDebuffList[i].skillFactor);
-             buffTotalmp1 += (buffAndDebuffList[i].totalmp + buffObjectList[i].GetComponent<PlayerBattle>().player.ap * buffAndDebuffList[i].skillFactor);
-             buffTotalmpPCT1 += (buffAndDebuffList[i].totalmpPCT + buffObjectList[i].GetComponent<PlayerBattle>().player.iq * buffAndDebuffList[i].skillFactor);
-             buffTotalsp1 += (buffAndDebuffList[i].totalsp + buffObjectList[i].GetComponent<PlayerBattle>().player.ap * buffAndDebuffList[i].skillFactor);
-             buffTotalspPCT1 += (buffAndDebuffList[i].totalspPCT + buffObjectList[i].GetComponent<PlayerBattle>().player.iq * buffAndDebuffList[i].skillFactor);
-             buffAd1 += (buffAndDebuffList[i].ad + buffObjectList[i].GetComponent<PlayerBattle>().player.ap * buffAndDebuffList[i].skillFactor);
-             buffAdPCT1 += (buffAndDebuffList[i].adPCT + buffObjectList[i].GetComponent<PlayerBattle>().player.iq * buffAndDebuffList[i].skillFactor);
+                 if(buffObjectList[i].GetComponent<PlayerBattle>().player.apSkillBool && buffObjectList[i].GetComponent<PlayerBattle>().player.iqSkillBool)
+            {
+             sp += (buffAndDebuffList[i].sp * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             mp += (buffAndDebuffList[i].mp * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             hp += (buffAndDebuffList[i].hp * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffTotalhp1 += (buffAndDebuffList[i].totalhp * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffTotalhpPCT1 += (buffAndDebuffList[i].totalhpPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             buffTotalmp1 += (buffAndDebuffList[i].totalmp * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffTotalmpPCT1 += (buffAndDebuffList[i].totalmpPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             buffTotalsp1 += (buffAndDebuffList[i].totalsp * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffTotalspPCT1 += (buffAndDebuffList[i].totalspPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             buffAd1 += (buffAndDebuffList[i].ad * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffAdPCT1 += (buffAndDebuffList[i].adPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
              buffAp1 += (buffAndDebuffList[i].ap + buffObjectList[i].GetComponent<PlayerBattle>().player.ap* buffAndDebuffList[i].skillFactor);
-             buffApPCT1 += (buffAndDebuffList[i].apPCT + buffObjectList[i].GetComponent<PlayerBattle>().player.iq * buffAndDebuffList[i].skillFactor);
-             buffDef1 += (buffAndDebuffList[i].def + buffObjectList[i].GetComponent<PlayerBattle>().player.ap * buffAndDebuffList[i].skillFactor);
-             buffDefPCT1 += (buffAndDebuffList[i].defPCT + buffObjectList[i].GetComponent<PlayerBattle>().player.iq * buffAndDebuffList[i].skillFactor);
-             buffMdef1 += (buffAndDebuffList[i].mdef + buffObjectList[i].GetComponent<PlayerBattle>().player.ap * buffAndDebuffList[i].skillFactor);
-             buffMdefPCT1 += (buffAndDebuffList[i].mdefPCT + buffObjectList[i].GetComponent<PlayerBattle>().player.iq * buffAndDebuffList[i].skillFactor);
-             buffSpeed1 += (buffAndDebuffList[i].speed + buffObjectList[i].GetComponent<PlayerBattle>().player.ap * buffAndDebuffList[i].skillFactor);
-             buffSpeedPCT1 += (buffAndDebuffList[i].speedPCT + buffObjectList[i].GetComponent<PlayerBattle>().player.iq * buffAndDebuffList[i].skillFactor);
-             buffDodge1 += (buffAndDebuffList[i].dodge + buffObjectList[i].GetComponent<PlayerBattle>().player.ap * buffAndDebuffList[i].skillFactor);
-             //buffDodgePCT1 += (buffAndDebuffList[i].dodgePCT+ buffObjectList[i].GetComponent<PlayerBattle>().player.iq * buffAndDebuffList[i].skillFactor * buffAndDebuffList[i].dodgePCT);
-             buffCrit1 += (buffAndDebuffList[i].crit + buffObjectList[i].GetComponent<PlayerBattle>().player.ap * buffAndDebuffList[i].skillFactor);
-             //buffCritPCT1 += (buffAndDebuffList[i].critPCT + buffObjectList[i].GetComponent<PlayerBattle>().player.iq * buffAndDebuffList[i].skillFactor * buffAndDebuffList[i].critPCT);
-             buffIq1 += (buffAndDebuffList[i].iq + buffObjectList[i].GetComponent<PlayerBattle>().player.ap * buffAndDebuffList[i].skillFactor);
-             buffIqPCT1 += (buffAndDebuffList[i].iqPCT + buffObjectList[i].GetComponent<PlayerBattle>().player.iq * buffAndDebuffList[i].skillFactor);
-             buffCharm1 += (buffAndDebuffList[i].charm + buffObjectList[i].GetComponent<PlayerBattle>().player.ap * buffAndDebuffList[i].skillFactor);
-             buffCharmPCT1 += (buffAndDebuffList[i].charmPCT + buffObjectList[i].GetComponent<PlayerBattle>().player.ap * buffAndDebuffList[i].skillFactor);
-             buffCritDamge1 += (buffAndDebuffList[i].critDamge + buffObjectList[i].GetComponent<PlayerBattle>().player.iq * buffAndDebuffList[i].skillFactor);
-             //buffCritDamgePCT1 += (buffAndDebuffList[i].critDamgePCT + buffObjectList[i].GetComponent<PlayerBattle>().player.iq * buffAndDebuffList[i].skillFactor * buffAndDebuffList[i].critDamgePCT);
-             buffDrainLife1 += (buffAndDebuffList[i].drainLife + buffObjectList[i].GetComponent<PlayerBattle>().player.ap * buffAndDebuffList[i].skillFactor);
-             //buffDrainLifePCT1 += (buffAndDebuffList[i].drainLifePCT + buffObjectList[i].GetComponent<PlayerBattle>().player.iq * buffAndDebuffList[i].skillFactor * buffAndDebuffList[i].drainLifePCT);
-             buffReplyHp1 += (buffAndDebuffList[i].replyHp + buffObjectList[i].GetComponent<PlayerBattle>().player.ap * buffAndDebuffList[i].skillFactor);
-             buffReplyHpPCT1 += (buffAndDebuffList[i].replyHpPCT + buffObjectList[i].GetComponent<PlayerBattle>().player.iq * buffAndDebuffList[i].skillFactor);
-             buffReplyMp1 += (buffAndDebuffList[i].replyMp + buffObjectList[i].GetComponent<PlayerBattle>().player.ap * buffAndDebuffList[i].skillFactor);
-             buffReplyMpPCT1 += (buffAndDebuffList[i].replyMpPCT + buffObjectList[i].GetComponent<PlayerBattle>().player.iq * buffAndDebuffList[i].skillFactor);
-             buffReplySp1 += (buffAndDebuffList[i].replySp + buffObjectList[i].GetComponent<PlayerBattle>().player.ap * buffAndDebuffList[i].skillFactor);
-             buffReplySpPCT1 += (buffAndDebuffList[i].replySpPCT + buffObjectList[i].GetComponent<PlayerBattle>().player.iq * buffAndDebuffList[i].skillFactor);
+             buffApPCT1 += (buffAndDebuffList[i].apPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             buffDef1 += (buffAndDebuffList[i].def * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffDefPCT1 += (buffAndDebuffList[i].defPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             buffMdef1 += (buffAndDebuffList[i].mdef * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffMdefPCT1 += (buffAndDebuffList[i].mdefPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             buffSpeed1 += (buffAndDebuffList[i].speed * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffSpeedPCT1 += (buffAndDebuffList[i].speedPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             buffDodge1 += (buffAndDebuffList[i].dodge * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             //buffDodgePCT1 += (buffAndDebuffList[i].dodgePCT* (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)) * buffAndDebuffList[i].dodgePCT);
+             buffCrit1 += (buffAndDebuffList[i].crit * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             //buffCritPCT1 += (buffAndDebuffList[i].critPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)) * buffAndDebuffList[i].critPCT);
+             buffIq1 += (buffAndDebuffList[i].iq * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffIqPCT1 += (buffAndDebuffList[i].iqPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             buffCharm1 += (buffAndDebuffList[i].charm * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffCharmPCT1 += (buffAndDebuffList[i].charmPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffCritDamge1 += (buffAndDebuffList[i].critDamge * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             //buffCritDamgePCT1 += (buffAndDebuffList[i].critDamgePCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)) * buffAndDebuffList[i].critDamgePCT);
+             buffDrainLife1 += (buffAndDebuffList[i].drainLife * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             //buffDrainLifePCT1 += (buffAndDebuffList[i].drainLifePCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)) * buffAndDebuffList[i].drainLifePCT);
+             buffReplyHp1 += (buffAndDebuffList[i].replyHp * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffReplyHpPCT1 += (buffAndDebuffList[i].replyHpPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             buffReplyMp1 += (buffAndDebuffList[i].replyMp * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffReplyMpPCT1 += (buffAndDebuffList[i].replyMpPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             buffReplySp1 += (buffAndDebuffList[i].replySp * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffReplySpPCT1 += (buffAndDebuffList[i].replySpPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
              buffSkillOdds1 += buffAndDebuffList[i].skillOdds;
              buffSword1 += buffAndDebuffList[i].sword;
              buffGun1 += buffAndDebuffList[i].gun;
-             }
+            }
+                  if(!buffObjectList[i].GetComponent<PlayerBattle>().player.apSkillBool && buffObjectList[i].GetComponent<PlayerBattle>().player.iqSkillBool)
+                  {
+             sp += (buffAndDebuffList[i].sp);
+             mp += (buffAndDebuffList[i].mp);
+             hp += (buffAndDebuffList[i].hp);
+             buffTotalhp1 += (buffAndDebuffList[i].totalhp);
+             buffTotalhpPCT1 += (buffAndDebuffList[i].totalhpPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             buffTotalmp1 += (buffAndDebuffList[i].totalmp);
+             buffTotalmpPCT1 += (buffAndDebuffList[i].totalmpPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             buffTotalsp1 += (buffAndDebuffList[i].totalsp);
+             buffTotalspPCT1 += (buffAndDebuffList[i].totalspPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             buffAd1 += (buffAndDebuffList[i].ad);
+             buffAdPCT1 += (buffAndDebuffList[i].adPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             buffAp1 += (buffAndDebuffList[i].ap + buffObjectList[i].GetComponent<PlayerBattle>().player.ap* buffAndDebuffList[i].skillFactor);
+             buffApPCT1 += (buffAndDebuffList[i].apPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             buffDef1 += (buffAndDebuffList[i].def);
+             buffDefPCT1 += (buffAndDebuffList[i].defPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             buffMdef1 += (buffAndDebuffList[i].mdef);
+             buffMdefPCT1 += (buffAndDebuffList[i].mdefPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             buffSpeed1 += (buffAndDebuffList[i].speed);
+             buffSpeedPCT1 += (buffAndDebuffList[i].speedPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             buffDodge1 += (buffAndDebuffList[i].dodge * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             //buffDodgePCT1 += (buffAndDebuffList[i].dodgePCT* (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)) * buffAndDebuffList[i].dodgePCT);
+             buffCrit1 += (buffAndDebuffList[i].crit * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             //buffCritPCT1 += (buffAndDebuffList[i].critPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)) * buffAndDebuffList[i].critPCT);
+             buffIq1 += (buffAndDebuffList[i].iq);
+             buffIqPCT1 += (buffAndDebuffList[i].iqPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             buffCharm1 += (buffAndDebuffList[i].charm);
+             buffCharmPCT1 += (buffAndDebuffList[i].charmPCT);
+             buffCritDamge1 += (buffAndDebuffList[i].critDamge * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             //buffCritDamgePCT1 += (buffAndDebuffList[i].critDamgePCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)) * buffAndDebuffList[i].critDamgePCT);
+             buffDrainLife1 += (buffAndDebuffList[i].drainLife * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             //buffDrainLifePCT1 += (buffAndDebuffList[i].drainLifePCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)) * buffAndDebuffList[i].drainLifePCT);
+             buffReplyHp1 += (buffAndDebuffList[i].replyHp);
+             buffReplyHpPCT1 += (buffAndDebuffList[i].replyHpPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             buffReplyMp1 += (buffAndDebuffList[i].replyMp);
+             buffReplyMpPCT1 += (buffAndDebuffList[i].replyMpPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             buffReplySp1 += (buffAndDebuffList[i].replySp);
+             buffReplySpPCT1 += (buffAndDebuffList[i].replySpPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)));
+             buffSkillOdds1 += buffAndDebuffList[i].skillOdds;
+             buffSword1 += buffAndDebuffList[i].sword;
+             buffGun1 += buffAndDebuffList[i].gun;
+                 }
+                 if(buffObjectList[i].GetComponent<PlayerBattle>().player.apSkillBool && !buffObjectList[i].GetComponent<PlayerBattle>().player.iqSkillBool)
+                 {
+             sp += (buffAndDebuffList[i].sp * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             mp += (buffAndDebuffList[i].mp * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             hp += (buffAndDebuffList[i].hp * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffTotalhp1 += (buffAndDebuffList[i].totalhp * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffTotalhpPCT1 += (buffAndDebuffList[i].totalhpPCT);
+             buffTotalmp1 += (buffAndDebuffList[i].totalmp * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffTotalmpPCT1 += (buffAndDebuffList[i].totalmpPCT);
+             buffTotalsp1 += (buffAndDebuffList[i].totalsp * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffTotalspPCT1 += (buffAndDebuffList[i].totalspPCT);
+             buffAd1 += (buffAndDebuffList[i].ad * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffAdPCT1 += (buffAndDebuffList[i].adPCT);
+             buffAp1 += (buffAndDebuffList[i].ap + buffObjectList[i].GetComponent<PlayerBattle>().player.ap* buffAndDebuffList[i].skillFactor);
+             buffApPCT1 += (buffAndDebuffList[i].apPCT);
+             buffDef1 += (buffAndDebuffList[i].def * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffDefPCT1 += (buffAndDebuffList[i].defPCT);
+             buffMdef1 += (buffAndDebuffList[i].mdef * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffMdefPCT1 += (buffAndDebuffList[i].mdefPCT);
+             buffSpeed1 += (buffAndDebuffList[i].speed * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffSpeedPCT1 += (buffAndDebuffList[i].speedPCT);
+             buffDodge1 += (buffAndDebuffList[i].dodge);
+             //buffDodgePCT1 += (buffAndDebuffList[i].dodgePCT* (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)) * buffAndDebuffList[i].dodgePCT);
+             buffCrit1 += (buffAndDebuffList[i].crit);
+             //buffCritPCT1 += (buffAndDebuffList[i].critPCT * buffAndDebuffList[i].critPCT);
+             buffIq1 += (buffAndDebuffList[i].iq * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffIqPCT1 += (buffAndDebuffList[i].iqPCT);
+             buffCharm1 += (buffAndDebuffList[i].charm * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffCharmPCT1 += (buffAndDebuffList[i].charmPCT * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffCritDamge1 += (buffAndDebuffList[i].critDamge);
+             //buffCritDamgePCT1 += (buffAndDebuffList[i].critDamgePCT * buffAndDebuffList[i].critDamgePCT);
+             buffDrainLife1 += (buffAndDebuffList[i].drainLife);
+             //buffDrainLifePCT1 += (buffAndDebuffList[i].drainLifePCT * buffAndDebuffList[i].drainLifePCT);
+             buffReplyHp1 += (buffAndDebuffList[i].replyHp * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffReplyHpPCT1 += (buffAndDebuffList[i].replyHpPCT);
+             buffReplyMp1 += (buffAndDebuffList[i].replyMp * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffReplyMpPCT1 += (buffAndDebuffList[i].replyMpPCT);
+             buffReplySp1 += (buffAndDebuffList[i].replySp * (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.ap / 10000)));
+             buffReplySpPCT1 += (buffAndDebuffList[i].replySpPCT);
+             buffSkillOdds1 += buffAndDebuffList[i].skillOdds;
+             buffSword1 += buffAndDebuffList[i].sword;
+             buffGun1 += buffAndDebuffList[i].gun;
+                 }
+                 if(!buffObjectList[i].GetComponent<PlayerBattle>().player.apSkillBool && !buffObjectList[i].GetComponent<PlayerBattle>().player.iqSkillBool)
+                 {
+             sp += (buffAndDebuffList[i].sp);
+             mp += (buffAndDebuffList[i].mp);
+             hp += (buffAndDebuffList[i].hp);
+             buffTotalhp1 += (buffAndDebuffList[i].totalhp);
+             buffTotalhpPCT1 += (buffAndDebuffList[i].totalhpPCT);
+             buffTotalmp1 += (buffAndDebuffList[i].totalmp);
+             buffTotalmpPCT1 += (buffAndDebuffList[i].totalmpPCT);
+             buffTotalsp1 += (buffAndDebuffList[i].totalsp);
+             buffTotalspPCT1 += (buffAndDebuffList[i].totalspPCT);
+             buffAd1 += (buffAndDebuffList[i].ad);
+             buffAdPCT1 += (buffAndDebuffList[i].adPCT);
+             buffAp1 += (buffAndDebuffList[i].ap + buffObjectList[i].GetComponent<PlayerBattle>().player.ap* buffAndDebuffList[i].skillFactor);
+             buffApPCT1 += (buffAndDebuffList[i].apPCT);
+             buffDef1 += (buffAndDebuffList[i].def);
+             buffDefPCT1 += (buffAndDebuffList[i].defPCT);
+             buffMdef1 += (buffAndDebuffList[i].mdef);
+             buffMdefPCT1 += (buffAndDebuffList[i].mdefPCT);
+             buffSpeed1 += (buffAndDebuffList[i].speed);
+             buffSpeedPCT1 += (buffAndDebuffList[i].speedPCT);
+             buffDodge1 += (buffAndDebuffList[i].dodge);
+             //buffDodgePCT1 += (buffAndDebuffList[i].dodgePCT* (1 + (buffObjectList[i].GetComponent<PlayerBattle>().player.iq / 1000)) * buffAndDebuffList[i].dodgePCT);
+             buffCrit1 += (buffAndDebuffList[i].crit);
+             //buffCritPCT1 += (buffAndDebuffList[i].critPCT * buffAndDebuffList[i].critPCT);
+             buffIq1 += (buffAndDebuffList[i].iq);
+             buffIqPCT1 += (buffAndDebuffList[i].iqPCT);
+             buffCharm1 += (buffAndDebuffList[i].charm);
+             buffCharmPCT1 += (buffAndDebuffList[i].charmPCT);
+             buffCritDamge1 += (buffAndDebuffList[i].critDamge);
+             //buffCritDamgePCT1 += (buffAndDebuffList[i].critDamgePCT * buffAndDebuffList[i].critDamgePCT);
+             buffDrainLife1 += (buffAndDebuffList[i].drainLife);
+             //buffDrainLifePCT1 += (buffAndDebuffList[i].drainLifePCT * buffAndDebuffList[i].drainLifePCT);
+             buffReplyHp1 += (buffAndDebuffList[i].replyHp);
+             buffReplyHpPCT1 += (buffAndDebuffList[i].replyHpPCT);
+             buffReplyMp1 += (buffAndDebuffList[i].replyMp);
+             buffReplyMpPCT1 += (buffAndDebuffList[i].replyMpPCT);
+             buffReplySp1 += (buffAndDebuffList[i].replySp);
+             buffReplySpPCT1 += (buffAndDebuffList[i].replySpPCT);
+             buffSkillOdds1 += buffAndDebuffList[i].skillOdds;
+             buffSword1 += buffAndDebuffList[i].sword;
+             buffGun1 += buffAndDebuffList[i].gun;
+                 }
+             }//player方增益buff
+
              if(buffAndDebuffList[i].singleDebuff || buffAndDebuffList[i].teamDebuff)
              {
-             sp += (buffAndDebuffList[i].sp + buffObjectList[i].GetComponent<EnemyUI>().ap * buffAndDebuffList[i].skillFactor);
-             mp += (buffAndDebuffList[i].mp + buffObjectList[i].GetComponent<EnemyUI>().ap * buffAndDebuffList[i].skillFactor);
-             hp += (buffAndDebuffList[i].hp + buffObjectList[i].GetComponent<EnemyUI>().ap * buffAndDebuffList[i].skillFactor);
-             buffTotalhp2 += (buffAndDebuffList[i].totalhp + buffObjectList[i].GetComponent<EnemyUI>().ap * buffAndDebuffList[i].skillFactor);
-             buffTotalhpPCT2 += (buffAndDebuffList[i].totalhpPCT + buffObjectList[i].GetComponent<EnemyUI>().iq * buffAndDebuffList[i].skillFactor);
-             buffTotalmp2 += (buffAndDebuffList[i].totalmp + buffObjectList[i].GetComponent<EnemyUI>().ap * buffAndDebuffList[i].skillFactor);
-             buffTotalmpPCT2 += (buffAndDebuffList[i].totalmpPCT + buffObjectList[i].GetComponent<EnemyUI>().iq * buffAndDebuffList[i].skillFactor);
-             buffTotalsp2 += (buffAndDebuffList[i].totalsp + buffObjectList[i].GetComponent<EnemyUI>().ap * buffAndDebuffList[i].skillFactor);
-             buffTotalspPCT2 += (buffAndDebuffList[i].totalspPCT + buffObjectList[i].GetComponent<EnemyUI>().iq * buffAndDebuffList[i].skillFactor);
-             buffAd2 += (buffAndDebuffList[i].ad + buffObjectList[i].GetComponent<EnemyUI>().ap * buffAndDebuffList[i].skillFactor);
-             buffAdPCT2 += (buffAndDebuffList[i].adPCT + buffObjectList[i].GetComponent<EnemyUI>().iq * buffAndDebuffList[i].skillFactor);
+                 if(buffObjectList[i].GetComponent<EnemyUI>().apSkillBool && buffObjectList[i].GetComponent<EnemyUI>().iqSkillBool)
+                 {
+             sp += (buffAndDebuffList[i].sp * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             mp += (buffAndDebuffList[i].mp * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             hp += (buffAndDebuffList[i].hp * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffTotalhp2 += (buffAndDebuffList[i].totalhp * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffTotalhpPCT2 += (buffAndDebuffList[i].totalhpPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffTotalmp2 += (buffAndDebuffList[i].totalmp * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffTotalmpPCT2 += (buffAndDebuffList[i].totalmpPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffTotalsp2 += (buffAndDebuffList[i].totalsp * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffTotalspPCT2 += (buffAndDebuffList[i].totalspPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffAd2 += (buffAndDebuffList[i].ad * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffAdPCT2 += (buffAndDebuffList[i].adPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
              buffAp2 += (buffAndDebuffList[i].ap + buffObjectList[i].GetComponent<EnemyUI>().ap* buffAndDebuffList[i].skillFactor);
-             buffApPCT2 += (buffAndDebuffList[i].apPCT + buffObjectList[i].GetComponent<EnemyUI>().iq * buffAndDebuffList[i].skillFactor);
-             buffDef2 += (buffAndDebuffList[i].def + buffObjectList[i].GetComponent<EnemyUI>().ap * buffAndDebuffList[i].skillFactor);
-             buffDefPCT2 += (buffAndDebuffList[i].defPCT + buffObjectList[i].GetComponent<EnemyUI>().iq * buffAndDebuffList[i].skillFactor);
-             buffMdef2 += (buffAndDebuffList[i].mdef + buffObjectList[i].GetComponent<EnemyUI>().ap * buffAndDebuffList[i].skillFactor);
-             buffMdefPCT2 += (buffAndDebuffList[i].mdefPCT + buffObjectList[i].GetComponent<EnemyUI>().iq * buffAndDebuffList[i].skillFactor);
-             buffSpeed2 += (buffAndDebuffList[i].speed + buffObjectList[i].GetComponent<EnemyUI>().ap * buffAndDebuffList[i].skillFactor);
-             buffSpeedPCT2 += (buffAndDebuffList[i].speedPCT + buffObjectList[i].GetComponent<EnemyUI>().iq * buffAndDebuffList[i].skillFactor);
-             buffDodge2 += (buffAndDebuffList[i].dodge + buffObjectList[i].GetComponent<EnemyUI>().ap * buffAndDebuffList[i].skillFactor);
-             //buffDodgePCT2 += (buffAndDebuffList[i].dodgePCT+ buffObjectList[i].GetComponent<EnemyUI>().iq * buffAndDebuffList[i].skillFactor * buffAndDebuffList[i].dodgePCT);
-             buffCrit2 += (buffAndDebuffList[i].crit + buffObjectList[i].GetComponent<EnemyUI>().ap * buffAndDebuffList[i].skillFactor);
-             //buffCritPCT2 += (buffAndDebuffList[i].critPCT + buffObjectList[i].GetComponent<EnemyUI>().iq * buffAndDebuffList[i].skillFactor * buffAndDebuffList[i].critPCT);
-             buffIq2 += (buffAndDebuffList[i].iq + buffObjectList[i].GetComponent<EnemyUI>().ap * buffAndDebuffList[i].skillFactor);
-             buffIqPCT2 += (buffAndDebuffList[i].iqPCT + buffObjectList[i].GetComponent<EnemyUI>().iq * buffAndDebuffList[i].skillFactor);
-             buffCharm2 += (buffAndDebuffList[i].charm + buffObjectList[i].GetComponent<EnemyUI>().ap * buffAndDebuffList[i].skillFactor);
-             buffCharmPCT2 += (buffAndDebuffList[i].charmPCT + buffObjectList[i].GetComponent<EnemyUI>().ap * buffAndDebuffList[i].skillFactor);
-             buffCritDamge2 += (buffAndDebuffList[i].critDamge + buffObjectList[i].GetComponent<EnemyUI>().iq * buffAndDebuffList[i].skillFactor);
-            // buffCritDamgePCT2 += (buffAndDebuffList[i].critDamgePCT + buffObjectList[i].GetComponent<EnemyUI>().iq * buffAndDebuffList[i].skillFactor * buffAndDebuffList[i].critDamgePCT);
-             buffDrainLife2 += (buffAndDebuffList[i].drainLife + buffObjectList[i].GetComponent<EnemyUI>().ap * buffAndDebuffList[i].skillFactor);
-             //buffDrainLifePCT2 += (buffAndDebuffList[i].drainLifePCT + buffObjectList[i].GetComponent<EnemyUI>().iq * buffAndDebuffList[i].skillFactor * buffAndDebuffList[i].drainLifePCT);
-             buffReplyHp2 += (buffAndDebuffList[i].replyHp + buffObjectList[i].GetComponent<EnemyUI>().ap * buffAndDebuffList[i].skillFactor);
-             buffReplyHpPCT2 += (buffAndDebuffList[i].replyHpPCT + buffObjectList[i].GetComponent<EnemyUI>().iq * buffAndDebuffList[i].skillFactor);
-             buffReplyMp2 += (buffAndDebuffList[i].replyMp + buffObjectList[i].GetComponent<EnemyUI>().ap * buffAndDebuffList[i].skillFactor);
-             buffReplyMpPCT2 += (buffAndDebuffList[i].replyMpPCT + buffObjectList[i].GetComponent<EnemyUI>().iq * buffAndDebuffList[i].skillFactor);
-             buffReplySp2 += (buffAndDebuffList[i].replySp + buffObjectList[i].GetComponent<EnemyUI>().ap * buffAndDebuffList[i].skillFactor);
-             buffReplySpPCT2 += (buffAndDebuffList[i].replySpPCT + buffObjectList[i].GetComponent<EnemyUI>().iq * buffAndDebuffList[i].skillFactor);
+             buffApPCT2 += (buffAndDebuffList[i].apPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffDef2 += (buffAndDebuffList[i].def * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffDefPCT2 += (buffAndDebuffList[i].defPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffMdef2 += (buffAndDebuffList[i].mdef * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffMdefPCT2 += (buffAndDebuffList[i].mdefPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffSpeed2 += (buffAndDebuffList[i].speed * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffSpeedPCT2 += (buffAndDebuffList[i].speedPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffDodge2 += (buffAndDebuffList[i].dodge * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             //buffDodgePCT2 += (buffAndDebuffList[i].dodgePCT* (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)) * buffAndDebuffList[i].dodgePCT);
+             buffCrit2 += (buffAndDebuffList[i].crit * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             //buffCritPCT2 += (buffAndDebuffList[i].critPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)) * buffAndDebuffList[i].critPCT);
+             buffIq2 += (buffAndDebuffList[i].iq * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffIqPCT2 += (buffAndDebuffList[i].iqPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffCharm2 += (buffAndDebuffList[i].charm * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffCharmPCT2 += (buffAndDebuffList[i].charmPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffCritDamge2 += (buffAndDebuffList[i].critDamge * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+            // buffCritDamgePCT2 += (buffAndDebuffList[i].critDamgePCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)) * buffAndDebuffList[i].critDamgePCT);
+             buffDrainLife2 += (buffAndDebuffList[i].drainLife * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             //buffDrainLifePCT2 += (buffAndDebuffList[i].drainLifePCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)) * buffAndDebuffList[i].drainLifePCT);
+             buffReplyHp2 += (buffAndDebuffList[i].replyHp * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffReplyHpPCT2 += (buffAndDebuffList[i].replyHpPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffReplyMp2 += (buffAndDebuffList[i].replyMp * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffReplyMpPCT2 += (buffAndDebuffList[i].replyMpPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffReplySp2 += (buffAndDebuffList[i].replySp * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffReplySpPCT2 += (buffAndDebuffList[i].replySpPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
              buffSkillOdds2 += buffAndDebuffList[i].skillOdds;
              buffSword2 += buffAndDebuffList[i].sword;
              buffGun2 += buffAndDebuffList[i].gun;
+                 }
+                 if(!buffObjectList[i].GetComponent<EnemyUI>().apSkillBool && buffObjectList[i].GetComponent<EnemyUI>().iqSkillBool)
+                 {
+             sp += (buffAndDebuffList[i].sp);
+             mp += (buffAndDebuffList[i].mp);
+             hp += (buffAndDebuffList[i].hp);
+             buffTotalhp2 += (buffAndDebuffList[i].totalhp);
+             buffTotalhpPCT2 += (buffAndDebuffList[i].totalhpPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffTotalmp2 += (buffAndDebuffList[i].totalmp);
+             buffTotalmpPCT2 += (buffAndDebuffList[i].totalmpPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffTotalsp2 += (buffAndDebuffList[i].totalsp);
+             buffTotalspPCT2 += (buffAndDebuffList[i].totalspPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffAd2 += (buffAndDebuffList[i].ad);
+             buffAdPCT2 += (buffAndDebuffList[i].adPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffAp2 += (buffAndDebuffList[i].ap + buffObjectList[i].GetComponent<EnemyUI>().ap* buffAndDebuffList[i].skillFactor);
+             buffApPCT2 += (buffAndDebuffList[i].apPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffDef2 += (buffAndDebuffList[i].def);
+             buffDefPCT2 += (buffAndDebuffList[i].defPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffMdef2 += (buffAndDebuffList[i].mdef);
+             buffMdefPCT2 += (buffAndDebuffList[i].mdefPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffSpeed2 += (buffAndDebuffList[i].speed);
+             buffSpeedPCT2 += (buffAndDebuffList[i].speedPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffDodge2 += (buffAndDebuffList[i].dodge * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             //buffDodgePCT2 += (buffAndDebuffList[i].dodgePCT* (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)) * buffAndDebuffList[i].dodgePCT);
+             buffCrit2 += (buffAndDebuffList[i].crit * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             //buffCritPCT2 += (buffAndDebuffList[i].critPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)) * buffAndDebuffList[i].critPCT);
+             buffIq2 += (buffAndDebuffList[i].iq);
+             buffIqPCT2 += (buffAndDebuffList[i].iqPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffCharm2 += (buffAndDebuffList[i].charm);
+             buffCharmPCT2 += (buffAndDebuffList[i].charmPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffCritDamge2 += (buffAndDebuffList[i].critDamge * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+            // buffCritDamgePCT2 += (buffAndDebuffList[i].critDamgePCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)) * buffAndDebuffList[i].critDamgePCT);
+             buffDrainLife2 += (buffAndDebuffList[i].drainLife * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             //buffDrainLifePCT2 += (buffAndDebuffList[i].drainLifePCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)) * buffAndDebuffList[i].drainLifePCT);
+             buffReplyHp2 += (buffAndDebuffList[i].replyHp);
+             buffReplyHpPCT2 += (buffAndDebuffList[i].replyHpPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffReplyMp2 += (buffAndDebuffList[i].replyMp);
+             buffReplyMpPCT2 += (buffAndDebuffList[i].replyMpPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffReplySp2 += (buffAndDebuffList[i].replySp);
+             buffReplySpPCT2 += (buffAndDebuffList[i].replySpPCT * (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)));
+             buffSkillOdds2 += buffAndDebuffList[i].skillOdds;
+             buffSword2 += buffAndDebuffList[i].sword;
+             buffGun2 += buffAndDebuffList[i].gun;
+                 }
+                 if(buffObjectList[i].GetComponent<EnemyUI>().apSkillBool && !buffObjectList[i].GetComponent<EnemyUI>().iqSkillBool)
+                 {
+             sp += (buffAndDebuffList[i].sp * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             mp += (buffAndDebuffList[i].mp * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             hp += (buffAndDebuffList[i].hp * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffTotalhp2 += (buffAndDebuffList[i].totalhp * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffTotalhpPCT2 += (buffAndDebuffList[i].totalhpPCT);
+             buffTotalmp2 += (buffAndDebuffList[i].totalmp * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffTotalmpPCT2 += (buffAndDebuffList[i].totalmpPCT);
+             buffTotalsp2 += (buffAndDebuffList[i].totalsp * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffTotalspPCT2 += (buffAndDebuffList[i].totalspPCT);
+             buffAd2 += (buffAndDebuffList[i].ad * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffAdPCT2 += (buffAndDebuffList[i].adPCT);
+             buffAp2 += (buffAndDebuffList[i].ap + buffObjectList[i].GetComponent<EnemyUI>().ap* buffAndDebuffList[i].skillFactor);
+             buffApPCT2 += (buffAndDebuffList[i].apPCT);
+             buffDef2 += (buffAndDebuffList[i].def * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffDefPCT2 += (buffAndDebuffList[i].defPCT);
+             buffMdef2 += (buffAndDebuffList[i].mdef * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffMdefPCT2 += (buffAndDebuffList[i].mdefPCT);
+             buffSpeed2 += (buffAndDebuffList[i].speed * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffSpeedPCT2 += (buffAndDebuffList[i].speedPCT);
+             buffDodge2 += (buffAndDebuffList[i].dodge);
+             //buffDodgePCT2 += (buffAndDebuffList[i].dodgePCT* (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)) * buffAndDebuffList[i].dodgePCT);
+             buffCrit2 += (buffAndDebuffList[i].crit);
+             //buffCritPCT2 += (buffAndDebuffList[i].critPCT * buffAndDebuffList[i].critPCT);
+             buffIq2 += (buffAndDebuffList[i].iq * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffIqPCT2 += (buffAndDebuffList[i].iqPCT);
+             buffCharm2 += (buffAndDebuffList[i].charm * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffCharmPCT2 += (buffAndDebuffList[i].charmPCT);
+             buffCritDamge2 += (buffAndDebuffList[i].critDamge);
+            // buffCritDamgePCT2 += (buffAndDebuffList[i].critDamgePCT * buffAndDebuffList[i].critDamgePCT);
+             buffDrainLife2 += (buffAndDebuffList[i].drainLife);
+             //buffDrainLifePCT2 += (buffAndDebuffList[i].drainLifePCT * buffAndDebuffList[i].drainLifePCT);
+             buffReplyHp2 += (buffAndDebuffList[i].replyHp * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffReplyHpPCT2 += (buffAndDebuffList[i].replyHpPCT);
+             buffReplyMp2 += (buffAndDebuffList[i].replyMp * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffReplyMpPCT2 += (buffAndDebuffList[i].replyMpPCT);
+             buffReplySp2 += (buffAndDebuffList[i].replySp * (1 + (buffObjectList[i].GetComponent<EnemyUI>().ap / 10000)));
+             buffReplySpPCT2 += (buffAndDebuffList[i].replySpPCT);
+             buffSkillOdds2 += buffAndDebuffList[i].skillOdds;
+             buffSword2 += buffAndDebuffList[i].sword;
+             buffGun2 += buffAndDebuffList[i].gun;
+                 }
+                 if(!buffObjectList[i].GetComponent<EnemyUI>().apSkillBool && !buffObjectList[i].GetComponent<EnemyUI>().iqSkillBool)
+                 {
+             sp += (buffAndDebuffList[i].sp);
+             mp += (buffAndDebuffList[i].mp);
+             hp += (buffAndDebuffList[i].hp);
+             buffTotalhp2 += (buffAndDebuffList[i].totalhp);
+             buffTotalhpPCT2 += (buffAndDebuffList[i].totalhpPCT);
+             buffTotalmp2 += (buffAndDebuffList[i].totalmp);
+             buffTotalmpPCT2 += (buffAndDebuffList[i].totalmpPCT);
+             buffTotalsp2 += (buffAndDebuffList[i].totalsp);
+             buffTotalspPCT2 += (buffAndDebuffList[i].totalspPCT);
+             buffAd2 += (buffAndDebuffList[i].ad);
+             buffAdPCT2 += (buffAndDebuffList[i].adPCT);
+             buffAp2 += (buffAndDebuffList[i].ap + buffObjectList[i].GetComponent<EnemyUI>().ap* buffAndDebuffList[i].skillFactor);
+             buffApPCT2 += (buffAndDebuffList[i].apPCT);
+             buffDef2 += (buffAndDebuffList[i].def);
+             buffDefPCT2 += (buffAndDebuffList[i].defPCT);
+             buffMdef2 += (buffAndDebuffList[i].mdef);
+             buffMdefPCT2 += (buffAndDebuffList[i].mdefPCT);
+             buffSpeed2 += (buffAndDebuffList[i].speed);
+             buffSpeedPCT2 += (buffAndDebuffList[i].speedPCT);
+             buffDodge2 += (buffAndDebuffList[i].dodge);
+             //buffDodgePCT2 += (buffAndDebuffList[i].dodgePCT* (1 + (buffObjectList[i].GetComponent<EnemyUI>().iq / 1000)) * buffAndDebuffList[i].dodgePCT);
+             buffCrit2 += (buffAndDebuffList[i].crit);
+             //buffCritPCT2 += (buffAndDebuffList[i].critPCT * buffAndDebuffList[i].critPCT);
+             buffIq2 += (buffAndDebuffList[i].iq);
+             buffIqPCT2 += (buffAndDebuffList[i].iqPCT);
+             buffCharm2 += (buffAndDebuffList[i].charm);
+             buffCharmPCT2 += (buffAndDebuffList[i].charmPCT);
+             buffCritDamge2 += (buffAndDebuffList[i].critDamge);
+            // buffCritDamgePCT2 += (buffAndDebuffList[i].critDamgePCT * buffAndDebuffList[i].critDamgePCT);
+             buffDrainLife2 += (buffAndDebuffList[i].drainLife);
+             //buffDrainLifePCT2 += (buffAndDebuffList[i].drainLifePCT * buffAndDebuffList[i].drainLifePCT);
+             buffReplyHp2 += (buffAndDebuffList[i].replyHp);
+             buffReplyHpPCT2 += (buffAndDebuffList[i].replyHpPCT);
+             buffReplyMp2 += (buffAndDebuffList[i].replyMp);
+             buffReplyMpPCT2 += (buffAndDebuffList[i].replyMpPCT);
+             buffReplySp2 += (buffAndDebuffList[i].replySp);
+             buffReplySpPCT2 += (buffAndDebuffList[i].replySpPCT);
+             buffSkillOdds2 += buffAndDebuffList[i].skillOdds;
+             buffSword2 += buffAndDebuffList[i].sword;
+             buffGun2 += buffAndDebuffList[i].gun;
+                 }
+
              }
         }
     }
@@ -1234,6 +1502,28 @@ public void CharmSkill()
             if(equipmentList[i].charmSkillBool == true)
             {
                 charmSkillBool = true;
+            }
+        }
+    }
+    apSkillBool = false;
+    for (int i = 0; i < equipmentList.Count; i++)
+    {
+        if(equipmentList[i] != null)
+        {
+            if(equipmentList[i].apSkillBool == true)
+            {
+                apSkillBool = true;
+            }
+        }
+    }
+    iqSkillBool = false;
+    for (int i = 0; i < equipmentList.Count; i++)
+    {
+        if(equipmentList[i] != null)
+        {
+            if(equipmentList[i].iqSkillBool == true)
+            {
+                iqSkillBool = true;
             }
         }
     }

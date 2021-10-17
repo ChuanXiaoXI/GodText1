@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9298dcf4578514f97913b37df2f544, type: 3}
+  m_Name: "SSS\u7EA7\u542F\u7075"
+  m_EditorClassIdentifier: 
+  itemName: "\u542F\u7075"
+  itemImage: {fileID: 0}
+  itemColor: {r: 0.9647059, g: 0, b: 0, a: 1}
+  itemHeld: 1
+  itemID: 0
+  equipment: 0
+  equipmentClass: Blood
+  weaponClass: 
+  consumable: 0
+  consumableTime: 0
+  blood: 1
+  singleBlood: 0
+  bloodClass: "\u542F\u7075"
+  level: 8
+  story: 0
+  skillList:
+  - {fileID: 11400000, guid: 904cd12df1a3b0b429177de16368b15b, type: 2}
+  - {fileID: 11400000, guid: b8153843b1cd3ee42a31d2a1462de8cd, type: 2}
+  - {fileID: 11400000, guid: ff01d22a67977364ebfa7eb7fdb92dd4, type: 2}
+  - {fileID: 11400000, guid: c03931ac4ac23614f960ff9ab697e71a, type: 2}
+  - {fileID: 11400000, guid: 64f1b7f5564aaf6439b54c21774d8c7b, type: 2}
+  textFile: {fileID: 0}
+  itemInfo: "\u300A\u957F\u751F\u8BC0\u300B\uFF0CSSS\u7EA7\u4F20\u627F\uFF0C\u3010\u542F\u7075\u4F53\u7CFB\u3011\r\n\u751F\u547D\uFF0B6200
+    \u7269\u653B + 1300 \u6CD5\u5F3A + 1300 \r\n\u901F\u5EA6\uFF0B550 \r\n\u7269\u9632\uFF0B900
+    \u9B54\u9632\uFF0B900\r\n\r\n\u6765\u81EA\u4E8E\u53E4\u4F4D\u9762\uFF0C\u6765\u81EA\u4E8E\u4E1C\u65B9\u7684\u795E\u79D8\u5C9B\u5C7F\uFF0C\u8BB0\u5F55\u7740\u957F\u751F\u4E0D\u8001\u7684\u79D8\u5BC6\r\n\u3010\u965B\u4E0B\uFF0C\u6211\u4EEC\u627E\u5230\u4E86\uFF01\u3011\r\n\r\n\u4F7F\u7528\u540E\u5C06\u4F1A\u5F3A\u5316\u81F3\u542F\u7075\u4F20\u627F\uFF0C\u5E76\u83B7\u5F97\u4EE5\u4E0B\u6280\u80FD\u53CA\u5F3A\u5316\r\n\r\n\u542F\u7075\uFF1A\u3010\u957F\u751F\u975E\u543E\u613F\uFF0C\u9752\u95E8\u5DF2\u5343\u5E74\u3011\r\n\r\n\u501F\u547D:\u5E38\u5E74\u884C\u8D70\u4E8E\u9634\u9633\u4E24\u754C\uFF0C\u542F\u7075\u4F20\u627F\u4EBA\u7684\u547D\u6C14\u4E0E\u4F53\u8D28\u53D7\u9634\u6C14\u4FB5\u8680\u3002\u6700\u5927\u751F\u547D\u503C-30%\uFF0C\u7269\u653B\u53CA\u6CD5\u5F3A-50%\uFF0C\u901F\u5EA6-30%\r\n      
+    \u6BCF\u6B7B\u4EA1\u4E00\u4E2A\u654C\u4EBA\uFF0C\u589E\u52A0\u81EA\u8EAB\u6700\u5927\u751F\u547D\u503C5%\uFF0C\u6301\u7EED\u5230\u6218\u6597\u7ED3\u675F\r\n\r\n\u9E92\u9E9F\u8840:\u5723\u9B42\u8840\u8109\uFF0C\u6FC0\u53D1\u5723\u9B42\u7279\u6027\u3002\uFF08\u5723\u9B42\u8840\u8109\u4F20\u627F\u4EBA\u91CA\u653E\u7684buff\u4EE5\u53CAdebuff\u6548\u679C\u5C06\u8DDF\u968F\u6CD5\u5F3A\u589E\u5E45\uFF0C\u6BCF1000\u70B9\u6CD5\u5F3A\u5C06\u4F7Fbuff\u53CAdebuff\u6548\u679C\u589E\u5F3A10%\uFF1B\u767E\u5206\u6BD4\u6548\u679C\u9664\u5916\uFF09\r\n\r\n\u5F52:\u6BCF\u6B7B\u4EA1\u4E00\u4E2A\u654C\u4EBA\uFF0C\u589E\u52A0\u81EA\u8EAB\u7269\u653B\u53CA\u6CD5\u5F3A10%\uFF0C\u6301\u7EED3\u56DE\u5408\r\n\r\n\u60B2\u6CE3:\u6BCF\u6B7B\u4EA1\u4E00\u4E2A\u654C\u4EBA\uFF0C\u964D\u4F4E\u654C\u65B9\u5168\u4F53\u7269\u653B\u53CA\u6CD5\u5F3A500\u70B9\uFF0C\u6301\u7EED2\u56DE\u5408\r\n\r\n\u8A93\u8A00:\u6BCF\u6B7B\u4EA1\u4E00\u4E2A\u654C\u4EBA\uFF0C\u589E\u52A0\u6211\u65B9\u5168\u4F53\u7269\u653B\u53CA\u6CD5\u5F3A100\u70B9\uFF0C\u6301\u7EED\u5230\u6218\u6597\u7ED3\u675F\r\n\r\n\u5B88\u751F:\u6BCF\u6B7B\u4EA1\u4E00\u4E2A\u654C\u4EBA\uFF0C\u6C38\u4E45\u589E\u52A0\u81EA\u8EAB\u6CD5\u5F3A\u53CA\u7269\u653B0.02\u70B9\uFF0C\u65E0\u4E0A\u9650\u3002"
+  hp: 0
+  mp: 0
+  sp: 0
+  replyHp: 0
+  replyMp: 0
+  replySp: 0
+  replyHpPCT: 0
+  replyMpPCT: 0
+  replySpPCT: 0
+  totalhp: 6200
+  totalhpPCT: -0.3
+  totalmp: 0
+  totalmpPCT: 0
+  totalsp: 0
+  totalspPCT: 0
+  ad: 1300
+  adPCT: -0.5
+  ap: 1300
+  apPCT: -0.5
+  def: 900
+  defPCT: 0
+  mdef: 900
+  mdefPCT: 0
+  speed: 550
+  speedPCT: -0.3
+  dodge: 0
+  crit: 0
+  iq: 0
+  iqPCT: 0
+  charm: 0
+  charmPCT: 0
+  critDamge: 0
+  drainLife: 0
+  sword: 0
+  gun: 0
+  shieldFactor: 0
+  skillOdds: 0
+  charmSkillBool: 0
+  iqSkillBool: 0
+  apSkillBool: 1
+  baseTotalhp: 0
+  baseDef: 0
+  baseMdef: 0
+  baseAd: 0
+  baseAp: 0
+  baseCharm: 0
+  baseIq: 0
+  baseSpeed: 0
+  basePoint: 0
+  baseCPoint: 0
+  baseSPoint: 0
+  baseSSSPoint: 0
