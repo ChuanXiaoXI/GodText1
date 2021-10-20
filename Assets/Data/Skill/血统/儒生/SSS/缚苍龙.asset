@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d23ebe591b350141b1cc6443521fb06, type: 3}
-  m_Name: "\u5BB9"
+  m_Name: "\u7F1A\u82CD\u9F99"
   m_EditorClassIdentifier: 
-  skillName: "\u5BB9"
+  skillName: "\u7F1A\u82CD\u9F99"
   startSkill: 0
   activeSkill: 0
   endSkill: 0
@@ -20,8 +20,8 @@ MonoBehaviour:
   charmFactor: 0
   turnSkill: 0
   killSkill: 0
-  deathSkill: 1
-  overSkill: 0
+  deathSkill: 0
+  overSkill: 1
   adSkill: 0
   adSkillFactor: 0
   apSkill: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
   def: 0
   mdef: 0
   critDamge: 0
-  iq: 0.05
+  iq: 0.5
   charm: 0
   buff: {fileID: 0}
   singleDamageName: 0

@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d23ebe591b350141b1cc6443521fb06, type: 3}
-  m_Name: "\u5BB9"
+  m_Name: "\u5B9A"
   m_EditorClassIdentifier: 
-  skillName: "\u5BB9"
+  skillName: "\u5B9A"
   startSkill: 0
   activeSkill: 0
   endSkill: 0
   endSkillOdd: 0
   charmFactor: 0
-  turnSkill: 0
+  turnSkill: 1
   killSkill: 0
-  deathSkill: 1
+  deathSkill: 0
   overSkill: 0
   adSkill: 0
   adSkillFactor: 0
@@ -41,8 +41,8 @@ MonoBehaviour:
   teamBuff: 0
   ownBuff: 0
   singleDebuff: 0
-  teamDebuff: 0
-  growthSkill: 1
+  teamDebuff: 1
+  growthSkill: 0
   ad: 0
   ap: 0
   totalhp: 0
@@ -50,13 +50,13 @@ MonoBehaviour:
   def: 0
   mdef: 0
   critDamge: 0
-  iq: 0.05
+  iq: 0
   charm: 0
-  buff: {fileID: 0}
+  buff: {fileID: 11400000, guid: e8a18baa0e8ab8641b9111f275ea3cd4, type: 2}
   singleDamageName: 0
   teamDamageName: 0
   singleBuffName: 0
   teamBuffName: 0
   ownBuffName: 0
   singleDebuffName: 0
-  teamDebuffName: 0
+  teamDebuffName: 1
