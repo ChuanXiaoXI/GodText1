@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: "\u5B9A"
   m_EditorClassIdentifier: 
   skillName: "\u5B9A"
-  startSkill: 0
+  startSkill: 1
   activeSkill: 0
   endSkill: 0
   endSkillOdd: 0
   charmFactor: 0
-  turnSkill: 1
+  turnSkill: 0
   killSkill: 0
   deathSkill: 0
   overSkill: 0
