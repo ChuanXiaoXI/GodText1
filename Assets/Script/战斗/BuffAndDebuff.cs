@@ -62,6 +62,8 @@ public float skillFactor;
     public float gun;//枪的系数
     public float shieldFactor;//盾的系数
     public float skillOdds;
+    
+    public Skill buffSkill;
 
 /*public bool startSkill;//光环buff
 public bool activeSkill;//主动技能

@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9298dcf4578514f97913b37df2f544, type: 3}
+  m_Name: "SS\u7EA7\u8840\u65CF"
+  m_EditorClassIdentifier: 
+  itemName: "\u4EB2\u738B"
+  itemImage: {fileID: 0}
+  itemColor: {r: 0.9647059, g: 0, b: 0, a: 1}
+  itemHeld: 1
+  itemID: 0
+  equipment: 0
+  equipmentClass: Blood
+  weaponClass: 
+  consumable: 0
+  consumableTime: 0
+  blood: 1
+  singleBlood: 0
+  bloodClass: "\u8840\u65CF"
+  level: 7
+  story: 0
+  skillList:
+  - {fileID: 11400000, guid: 3cba23a15aed53744950ee416a6496cd, type: 2}
+  - {fileID: 11400000, guid: 90b3c960c76e28d48a478a00ce2f8c01, type: 2}
+  - {fileID: 11400000, guid: 07a7b7ddec739dd408875d890751322d, type: 2}
+  - {fileID: 11400000, guid: 347f6d36333736d44b09be6171f074d5, type: 2}
+  - {fileID: 11400000, guid: 3a781fc8ea3341c49886041ba9eb1088, type: 2}
+  - {fileID: 11400000, guid: b3bd39074f6d82043abe3da3a27b2786, type: 2}
+  textFile: {fileID: 0}
+  itemInfo: "\u5143\u7956\u7684\u4EB2\u543B\uFF0CSS\u7EA7\u4F20\u627F\uFF0C\u3010\u8840\u65CF\u4F53\u7CFB\u3011\r\n\u751F\u547D\uFF0B6000
+    \u6CD5\u5F3A\uFF0B500 \r\n\u901F\u5EA6\uFF0B280\r\n\u7269\u9632\uFF0B800 \u9B54\u9632\uFF0B800\r\n\r\n\u6765\u81EA\u4E8E\u53E4\u4F4D\u9762\uFF0C\u8389\u8389\u4E1D\u5C0F\u59D0\u7684\u793C\u4EEA\u543B\uFF0C\u4E3B\u795E\u7A7A\u95F4\u53EF\u4EE5\u6EE1\u8DB3\u4F60\r\n\r\n\u4F7F\u7528\u540E\u5C06\u4F1A\u5F3A\u5316\u81F3\u4EB2\u738B\u4F20\u627F\uFF0C\u5E76\u83B7\u5F97\u4EE5\u4E0B\u6280\u80FD\u53CA\u5F3A\u5316\r\n\r\n\u4EB2\u738B\uFF1A\u3010\u8389\u8389\u4E1D\u5C0F\u59D0\uFF0C\u6211\u613F\u81E3\u670D\u4E8E\u60A8\u3011\r\n\r\n\u55DC\u8840:\u5438\u8840\u9B3C\u6BD4\u5E38\u4EBA\u62E5\u6709\u66F4\u957F\u7684\u5BFF\u547D\uFF0C\u5374\u6709\u66F4\u52A0\u5A07\u5AE9\u7684\u76AE\u80A4\u4E0E\u8EAB\u4F53\uFF0C\u4E00\u65E6\u79BB\u5F00\u8840\u6DB2\uFF0C\u4FBF\u65E0\u6CD5\u751F\u5B58\u3002\r\n\u6700\u5927\u751F\u547D\u503C+30%\uFF0C\u5438\u8840+20%\u3002\u7269\u9632-30%\uFF0C\u9B54\u9632-20%\u3002\r\n\u6BCF\u56DE\u5408\u51CF\u5C11\u81EA\u8EAB3%\u6700\u5927\u751F\u547D\u503C\uFF0C\u6BCF\u6B7B\u4EA1\u4E00\u4E2A\u654C\u4EBA\uFF0C\u589E\u52A05%\u6700\u5927\u751F\u547D\u503C\uFF0C\u6301\u7EED\u5230\u6218\u6597\u7ED3\u675F\u3002\r\n\r\n\u521D\u62E5:\u6D88\u8017300\u751F\u547D\u503C\uFF0C\u5BF9\u654C\u65B9\u9020\u6210\uFF08\u5438\u8840\u9B3C\u81EA\u8EAB\uFF093%\u6700\u5927\u751F\u547D\u503C\u7684\u5355\u4F53\u4F24\u5BB3\uFF1B\u5E76\u4F7F\u654C\u65B9\u751F\u547D\u56DE\u590D-300\u70B9\uFF0C\u6EA2\u51FA\u90E8\u5206\u5C06\u8F6C\u5316\u4E3A\u771F\u5B9E\u4F24\u5BB3\uFF0C\u6301\u7EED\u81F3\u6218\u6597\u7ED3\u675F\r\n\r\n\u6E34\u671B:\u5438\u8840\u9B3C\u6E34\u671B\u8840\u6DB2\uFF0C\u4EE5\u6D88\u8017\u81EA\u8EAB\u73B0\u6709\u8840\u91CF\u6765\u7EF4\u6301\u751F\u547D\u3002\u6D88\u80171000\u751F\u547D\u503C\uFF0C\u589E\u52A0\u81EA\u8EAB20%\u6700\u5927\u751F\u547D\u503C\uFF0C\u6301\u7EED8\u56DE\u5408\u3002\r\n\r\n\u9C9C\u8840\u9886\u57DF:\u6218\u6597\u5F00\u59CB\u91CA\u653E\u201C\u9C9C\u8840\u9886\u57DF\u201D\uFF0C\u4F7F\u6211\u65B9\u5168\u4F53\u751F\u547D\u56DE\u590D+400\u70B9\r\n\r\n\u6EB6\u8840\u4F53:\u6BCF\u6B7B\u4EA1\u4E00\u4E2A\u654C\u4EBA\uFF0C\u6C38\u4E45\u589E\u52A0\u81EA\u8EAB0.3\u6700\u5927\u751F\u547D\u503C"
+  hp: 0
+  mp: 0
+  sp: 0
+  replyHp: 0
+  replyMp: 0
+  replySp: 0
+  replyHpPCT: 0
+  replyMpPCT: 0
+  replySpPCT: 0
+  totalhp: 6000
+  totalhpPCT: 0.3
+  totalmp: 0
+  totalmpPCT: 0
+  totalsp: 0
+  totalspPCT: 0
+  ad: 0
+  adPCT: 0
+  ap: 500
+  apPCT: 0
+  def: 800
+  defPCT: -0.3
+  mdef: 800
+  mdefPCT: -0.2
+  speed: 280
+  speedPCT: 0
+  dodge: 0
+  crit: 0
+  iq: 0
+  iqPCT: 0
+  charm: 0
+  charmPCT: 0
+  critDamge: 0
+  drainLife: 0.2
+  sword: 0
+  gun: 0
+  shieldFactor: 0
+  skillOdds: 0
+  charmSkillBool: 0
+  iqSkillBool: 0
+  apSkillBool: 0
+  doubleDamage: 0
+  baseTotalhp: 0
+  baseDef: 0
+  baseMdef: 0
+  baseAd: 0
+  baseAp: 0
+  baseCharm: 0
+  baseIq: 0
+  baseSpeed: 0
+  basePoint: 0
+  baseCPoint: 0
+  baseSPoint: 0
+  baseSSSPoint: 0

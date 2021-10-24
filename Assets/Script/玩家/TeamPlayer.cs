@@ -70,6 +70,7 @@ public class TeamPlayer : MonoBehaviour ,IPointerEnterHandler, IPointerExitHandl
     public bool charmSkillBool;
     public bool apSkillBool;
     public bool iqSkillBool;
+    public bool doubleDamage;
     [Header("战斗系统")]
     public GameObject playerBattlePrefab;
     public GameObject playerBattleObject;
@@ -274,12 +275,11 @@ public void OnEnable()
 }
 public void Update()
 {   PlayerAlive();
-
-    
     Temporary();
     Equipment();
     PlayerInformation();
     Fight();
+    Equipment();
     PlayerInformation();
     //Death();
     
@@ -523,6 +523,24 @@ public void Equipment()
     for (int i = 0; i < skillList.Count; i++)
     {
         skillList[i] = null;
+    }
+    for (int i = 0; i < buffAndDebuffList.Count; i++)
+    {
+        if(buffAndDebuffList[i] != null)
+        {
+            if(buffAndDebuffList[i].buffSkill != null)
+            {
+                for(int j = 0; j < skillList.Count; j++)
+                {
+                    if(skillList[j] == null)
+                    {
+                        skillList[j] = buffAndDebuffList[i].buffSkill;
+                        break;
+                    }
+                    
+                }
+            }
+        }
     }
    
     for (int i = 0; i < equipmentList.Count; i++)
@@ -1325,7 +1343,6 @@ public void Action()//行动机制
     Sword();
     Gun();
     Shield();
-    //Book();
     Fuwen();
     Zhoushu();
     CharmSkill();
@@ -1333,6 +1350,10 @@ public void Action()//行动机制
     if(skillNum > skillOdds)
     {
       Attack();
+      if(doubleDamage)
+      {
+          Attack();
+      }
       End();
 
     }
@@ -1363,10 +1384,9 @@ public void Attack()
         targetEnemyUnit.GetComponent<EnemyUI>().damageNumObjectIsAlive = true;//伤害数值显示
         targetEnemyUnit.GetComponent<EnemyUI>().dodgeString = "闪避";
         
-        //End();
     }
     }
-    //if(disarm)
+    
 
   
 }
@@ -1524,6 +1544,17 @@ public void CharmSkill()
             if(equipmentList[i].iqSkillBool == true)
             {
                 iqSkillBool = true;
+            }
+        }
+    }
+    doubleDamage = false;
+    for (int i = 0; i < equipmentList.Count; i++)
+    {
+        if(equipmentList[i] != null)
+        {
+            if(equipmentList[i].doubleDamage == true)
+            {
+                doubleDamage = true;
             }
         }
     }

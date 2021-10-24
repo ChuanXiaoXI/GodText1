@@ -91,6 +91,7 @@ public string itemInfo;//信息
     public bool charmSkillBool;//妖血机制
     public bool iqSkillBool;//悟道机制
     public bool apSkillBool;//圣魂机制
+    public bool doubleDamage;
 
     public float baseTotalhp;
     public float baseDef;

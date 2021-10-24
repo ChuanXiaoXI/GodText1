@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "\u51C0\u5316buff"
   m_EditorClassIdentifier: 
   buffImage: {fileID: 0}
-  buffInfo: "\u8BE5\u9690\u4E4B\u8840\uFF1A\u751F\u547D\u6062\u590D-1300"
+  buffInfo: "\u8BE5\u9690\u4E4B\u8840\uFF1A\u751F\u547D\u6062\u590D-800"
   buffString: "\u8BE5\u9690\u4E4B\u8840"
   buffTime: 9999
   skillFactor: 0
@@ -22,7 +22,7 @@ MonoBehaviour:
   hp: 0
   mp: 0
   sp: 0
-  replyHp: -1300
+  replyHp: -800
   replyMp: 0
   replySp: 0
   replyHpPCT: 0
@@ -56,6 +56,7 @@ MonoBehaviour:
   gun: 0
   shieldFactor: 0
   skillOdds: 0
+  buffSkill: {fileID: 0}
   singleBuff: 0
   teamBuff: 0
   ownBuff: 0

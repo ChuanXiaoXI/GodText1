@@ -87,6 +87,7 @@ public float charm;
 //public int buffID;//
 public BuffAndDebuff buff;
 
+
 [Header("单体伤害显示")]
 [Header("显示种类")]
 public bool singleDamageName;//单体伤害
