@@ -1559,19 +1559,24 @@ public void Damage()//伤害机制
    int critNumber = Random.Range(0, 100);
         if(critNumber > crit)
         {  
-           targetEnemyUnit.GetComponent<PlayerBattle>().player.hp -= (ad - targetEnemyUnit.GetComponent<PlayerBattle>().player.def); 
+            float damage = (ad - targetEnemyUnit.GetComponent<PlayerBattle>().player.def);
+            if(damage <= 0 )
+           {
+             damage = 1;
+           }  
+           targetEnemyUnit.GetComponent<PlayerBattle>().player.hp -= damage; 
            
            for (int m = 0; m < damageList.Count; m++)
            {
                   if(damageList[m] == 0)
                 {
-                   damageList[m] = (ad - targetEnemyUnit.GetComponent<PlayerBattle>().player.def); 
+                   damageList[m] = damage; 
                    if(damageList[m] <= 0)
                    {
                          damageList[m] = 1;
                    } 
-                   skillName = "攻击";
-                   skillNameIsAlive = true;                                 
+                   //skillName = "攻击";
+                   //skillNameIsAlive = true;                                 
                    targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumObjectIsAlive = true;//伤害数值显示
                    targetEnemyUnit.GetComponent<PlayerBattle>().player.damageNumber = damageList[m];                   
                    break;
@@ -1580,12 +1585,17 @@ public void Damage()//伤害机制
         }
         if(critNumber <= crit)
         {  
-           targetEnemyUnit.GetComponent<PlayerBattle>().player.hp -= ((ad - targetEnemyUnit.GetComponent<PlayerBattle>().player.def) * (1.0f + critDamge));
+             float damage = ((ad - targetEnemyUnit.GetComponent<PlayerBattle>().player.def) * (1.0f + critDamge));
+            if(damage <= 0 )
+           {
+             damage = 1;
+           }  
+           targetEnemyUnit.GetComponent<PlayerBattle>().player.hp -= damage;
            for (int m = 0; m < damageList.Count; m++)
            {
                   if(damageList[m] == 0)
                 {
-                   damageList[m] = ((ad - targetEnemyUnit.GetComponent<PlayerBattle>().player.def) * (1.0f + critDamge));
+                   damageList[m] = damage;
                    if(damageList[m] <= 0)
                    {
                          damageList[m] = 1;
@@ -1629,17 +1639,22 @@ for (int i = 0; i < skillList.Count; i++)
                    {
                         if(skillList[targetSkillID].singleDamageName)
                     {                          
-                       skillName = skillList[targetSkillID].skillName;
+                        skillName = skillList[targetSkillID].skillName;
                         skillNameIsAlive = true; 
                     }    
                     if(skillList[targetSkillID].adSkill)
                     {  
-                       targetEnemyUnit.GetComponent<PlayerBattle>().player.hp -= ((ad - targetEnemyUnit.GetComponent<PlayerBattle>().player.def) * (skillList[targetSkillID].adSkillFactor));
+                        float damage = ((ad - targetEnemyUnit.GetComponent<PlayerBattle>().player.def) * (skillList[targetSkillID].adSkillFactor));
+                         if(damage <= 0 )
+                        {
+                          damage = 1;
+                        }  
+                       targetEnemyUnit.GetComponent<PlayerBattle>().player.hp -= damage;
                       for (int n = 0; n < damageList.Count; n++)
                        {
                            if(damageList[n] == 0)
                            {
-                               damageList[n] = ((ad - targetEnemyUnit.GetComponent<PlayerBattle>().player.def) * (skillList[targetSkillID].adSkillFactor));
+                               damageList[n] = damage;
                                 if(damageList[n] <= 0)
                             {
                              damageList[n] = 1;
@@ -1655,12 +1670,17 @@ for (int i = 0; i < skillList.Count; i++)
                     }
                     if(skillList[targetSkillID].hpSkill)
                     {  
-                       targetEnemyUnit.GetComponent<PlayerBattle>().player.hp -= ((totalhp - targetEnemyUnit.GetComponent<PlayerBattle>().player.def) * skillList[targetSkillID].hpSkillFactor);
+                        float damage = ((totalhp - targetEnemyUnit.GetComponent<PlayerBattle>().player.def) * skillList[targetSkillID].hpSkillFactor);
+                         if(damage <= 0 )
+                        {
+                          damage = 1;
+                        }  
+                       targetEnemyUnit.GetComponent<PlayerBattle>().player.hp -= damage;
                        for (int n = 0; n < damageList.Count; n++)
                        {
                            if(damageList[n] == 0)
                            {
-                               damageList[n] = ((totalhp - targetEnemyUnit.GetComponent<PlayerBattle>().player.def) * skillList[targetSkillID].hpSkillFactor);
+                               damageList[n] = damage;
                                 if(damageList[n] <= 0)
                          {
                              damageList[n] = 1;
@@ -1676,13 +1696,17 @@ for (int i = 0; i < skillList.Count; i++)
                     }
                     if(skillList[targetSkillID].apSkill)
                     {  
-                       
-                       targetEnemyUnit.GetComponent<PlayerBattle>().player.hp -= ((ap - targetEnemyUnit.GetComponent<PlayerBattle>().player.mdef) * skillList[targetSkillID].apSkillFactor);
+                       float damage = ((ap - targetEnemyUnit.GetComponent<PlayerBattle>().player.mdef) * skillList[targetSkillID].apSkillFactor);
+                         if(damage <= 0 )
+                        {
+                          damage = 1;
+                        }  
+                       targetEnemyUnit.GetComponent<PlayerBattle>().player.hp -= damage;
                        for (int m = 0; m < damageList.Count; m++)
                        {
                          if(damageList[m] == 0)
                          {
-                            damageList[m] = ((ap - targetEnemyUnit.GetComponent<PlayerBattle>().player.mdef) * skillList[targetSkillID].apSkillFactor);
+                            damageList[m] = damage;
                             if(damageList[m] <= 0)
                          {
                              damageList[m] = 1;
@@ -1697,13 +1721,17 @@ for (int i = 0; i < skillList.Count; i++)
                     }
                     if(skillList[targetSkillID].iqSkill)
                     {  
-                       
-                       targetEnemyUnit.GetComponent<PlayerBattle>().player.hp -= ((iq * skillList[targetSkillID].iqSkillFactor) - (targetEnemyUnit.GetComponent<PlayerBattle>().player.mdef * skillList[targetSkillID].iqSkillFactor));
+                       float damage = ((iq * skillList[targetSkillID].iqSkillFactor) - (targetEnemyUnit.GetComponent<PlayerBattle>().player.mdef * skillList[targetSkillID].iqSkillFactor));
+                         if(damage <= 0 )
+                        {
+                          damage = 1;
+                        }  
+                       targetEnemyUnit.GetComponent<PlayerBattle>().player.hp -= damage;
                        for (int m = 0; m < damageList.Count; m++)
                        {
                          if(damageList[m] == 0)
                          {
-                            damageList[m] = ((iq * skillList[targetSkillID].iqSkillFactor) - (targetEnemyUnit.GetComponent<PlayerBattle>().player.mdef * skillList[targetSkillID].iqSkillFactor));
+                            damageList[m] = damage;
                                if(damageList[m] <= 0)
                              {
                                 damageList[m] = 1;
@@ -1728,15 +1756,19 @@ for (int i = 0; i < skillList.Count; i++)
                     {  
                        for (int j = 0; j < targetEnemyUnitList.Count; j++)
                        {  
-                           
-                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= ((ad * skillList[targetSkillID].adSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[targetSkillID].adSkillFactor));
+                           float damage = ((ad * skillList[targetSkillID].adSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[targetSkillID].adSkillFactor));
+                          if(damage <= 0 )
+                         {
+                          damage = 1;
+                         }  
+                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= damage;
                 
                            targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.targetUnit = gameObject;
                            for (int m = 0; m < damageList.Count; m++)
                           {
                               if(damageList[m] == 0)
                             { 
-                               damageList[m] = ((ad * skillList[targetSkillID].adSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[targetSkillID].adSkillFactor));
+                               damageList[m] = damage;
                                 if(damageList[m] <= 0)
                              {
                                 damageList[m] = 1;
@@ -1754,15 +1786,19 @@ for (int i = 0; i < skillList.Count; i++)
                     {  
                        for (int j = 0; j < targetEnemyUnitList.Count; j++)
                        {  
-                           
-                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= ((totalhp * skillList[targetSkillID].hpSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[targetSkillID].hpSkillFactor)) ;
+                            float damage = ((totalhp * skillList[targetSkillID].hpSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[targetSkillID].hpSkillFactor));
+                            if(damage <= 0 )
+                           {
+                             damage = 1;
+                           }  
+                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= damage;
                 
                            targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.targetUnit = gameObject;
                           for (int m = 0; m < damageList.Count; m++)
                           {
                               if(damageList[m] == 0)
                             { 
-                               damageList[m] = ((totalhp * skillList[targetSkillID].hpSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[targetSkillID].hpSkillFactor));
+                               damageList[m] = damage;
                                 if(damageList[m] <= 0)
                              {
                                 damageList[m] = 1;
@@ -1779,14 +1815,19 @@ for (int i = 0; i < skillList.Count; i++)
                     if(skillList[targetSkillID].apSkill)
                     {
                         for (int j = 0; j < targetEnemyUnitList.Count; j++)
-                       {                          
-                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= ((ap * skillList[targetSkillID].apSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[targetSkillID].apSkillFactor));
+                       {   
+                            float damage = ((ap * skillList[targetSkillID].apSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[targetSkillID].apSkillFactor));
+                            if(damage <= 0 )
+                           {
+                             damage = 1;
+                           }                         
+                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= damage;
                            targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.targetUnit = gameObject;
                            for (int m = 0; m < damageList.Count; m++)
                           {
                               if(damageList[m] == 0)
                              { 
-                               damageList[m] = ((ap * skillList[targetSkillID].apSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[targetSkillID].apSkillFactor));
+                               damageList[m] = damage;
                                 if(damageList[m] <= 0)
                              {
                                 damageList[m] = 1;
@@ -1804,14 +1845,19 @@ for (int i = 0; i < skillList.Count; i++)
                     if(skillList[targetSkillID].iqSkill)
                     {
                         for (int j = 0; j < targetEnemyUnitList.Count; j++)
-                       {                          
-                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= ((iq * skillList[targetSkillID].iqSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[targetSkillID].iqSkillFactor));
+                       {     
+                           float damage = ((iq * skillList[targetSkillID].iqSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[targetSkillID].iqSkillFactor));
+                            if(damage <= 0 )
+                           {
+                             damage = 1;
+                           }                           
+                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= damage;
                            targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.targetUnit = gameObject;
                            for (int m = 0; m < damageList.Count; m++)
                           {
                               if(damageList[m] == 0)
                              { 
-                               damageList[m] = ((iq * skillList[targetSkillID].iqSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[targetSkillID].iqSkillFactor));
+                               damageList[m] = damage;
                                 if(damageList[m] <= 0)
                              {
                                 damageList[m] = 1;
@@ -2201,14 +2247,19 @@ public void EndSkill()//被动技能
                        for (int j = 0; j < targetEnemyUnitList.Count; j++)
                        {  
                            
-                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= ((ad * skillList[i].adSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[i].adSkillFactor));
+                           float damage = ((ad * skillList[i].adSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[i].adSkillFactor));
+                            if(damage <= 0 )
+                           {
+                             damage = 1;
+                           }      
+                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= damage;
                 
                            targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.targetUnit = gameObject;
                            for (int m = 0; m < damageList.Count; m++)
                           {
                               if(damageList[m] == 0)
                             { 
-                               damageList[m] = ((ad * skillList[i].adSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[i].adSkillFactor));
+                               damageList[m] = damage;
                                 if(damageList[m] <= 0)
                              {
                                 damageList[m] = 1;
@@ -2225,14 +2276,19 @@ public void EndSkill()//被动技能
                        for (int j = 0; j < targetEnemyUnitList.Count; j++)
                        {  
                            
-                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= ((totalhp * skillList[i].hpSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[i].hpSkillFactor));
+                           float damage = ((totalhp * skillList[i].hpSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[i].hpSkillFactor));
+                            if(damage <= 0 )
+                           {
+                             damage = 1;
+                           }    
+                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= damage;
                 
                            targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.targetUnit = gameObject;
                            for (int m = 0; m < damageList.Count; m++)
                           {
                               if(damageList[m] == 0)
                             { 
-                               damageList[m] = ((totalhp * skillList[i].hpSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[i].hpSkillFactor));
+                               damageList[m] = damage;
                                 if(damageList[m] <= 0)
                              {
                                 damageList[m] = 1;
@@ -2248,14 +2304,19 @@ public void EndSkill()//被动技能
                     if(skillList[i].apSkill)
                     {
                         for (int j = 0; j < targetEnemyUnitList.Count; j++)
-                       {                          
-                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= ((ap * skillList[i].apSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[i].apSkillFactor));
+                       {       
+                            float damage = ((ap * skillList[i].apSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[i].apSkillFactor));
+                            if(damage <= 0 )
+                           {
+                             damage = 1;
+                           }                       
+                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= damage;
                            targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.targetUnit = gameObject;
                             for (int m = 0; m < damageList.Count; m++)
                           {
                               if(damageList[m] == 0)
                              { 
-                               damageList[m] = ((ap * skillList[i].apSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[i].apSkillFactor));
+                               damageList[m] = damage;
                                 if(damageList[m] <= 0)
                              {
                                 damageList[m] = 1;
@@ -2272,14 +2333,19 @@ public void EndSkill()//被动技能
                     if(skillList[i].iqSkill)
                     {
                         for (int j = 0; j < targetEnemyUnitList.Count; j++)
-                       {                          
-                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= ((iq * skillList[i].iqSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[i].iqSkillFactor));
+                       {   
+                           float damage = ((iq * skillList[i].iqSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[i].iqSkillFactor));
+                            if(damage <= 0 )
+                           {
+                             damage = 1;
+                           }                             
+                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= damage;
                            targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.targetUnit = gameObject;
                            for (int m = 0; m < damageList.Count; m++)
                           {
                               if(damageList[m] == 0)
                              { 
-                               damageList[m] = ((iq * skillList[i].iqSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[i].iqSkillFactor));
+                               damageList[m] = damage;
                                 if(damageList[m] <= 0)
                              {
                                 damageList[m] = 1;
@@ -2544,14 +2610,19 @@ public void EndSkill()//被动技能
                        for (int j = 0; j < targetEnemyUnitList.Count; j++)
                        {  
                            
-                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= ((ad * skillList[i].adSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[i].adSkillFactor));
+                           float damage = ((ad * skillList[i].adSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[i].adSkillFactor));
+                            if(damage <= 0 )
+                           {
+                             damage = 1;
+                           }     
+                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= damage;
                 
                            targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.targetUnit = gameObject;
                            for (int m = 0; m < damageList.Count; m++)
                           {
                               if(damageList[m] == 0)
                             { 
-                               damageList[m] = ((ad * skillList[i].adSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[i].adSkillFactor));
+                               damageList[m] = damage;
                                 if(damageList[m] <= 0)
                              {
                                 damageList[m] = 1;
@@ -2567,15 +2638,19 @@ public void EndSkill()//被动技能
                     {  
                        for (int j = 0; j < targetEnemyUnitList.Count; j++)
                        {  
-                           
-                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= ((totalhp * skillList[i].hpSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[i].hpSkillFactor));
+                           float damage = ((totalhp * skillList[i].hpSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[i].hpSkillFactor));
+                            if(damage <= 0 )
+                           {
+                             damage = 1;
+                           }     
+                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= damage;
                 
                            targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.targetUnit = gameObject;
                            for (int m = 0; m < damageList.Count; m++)
                           {
                               if(damageList[m] == 0)
                             { 
-                               damageList[m] = ((totalhp * skillList[i].hpSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[i].hpSkillFactor));
+                               damageList[m] = damage;
                                 if(damageList[m] <= 0)
                              {
                                 damageList[m] = 1;
@@ -2591,14 +2666,19 @@ public void EndSkill()//被动技能
                     if(skillList[i].apSkill)
                     {
                         for (int j = 0; j < targetEnemyUnitList.Count; j++)
-                       {                          
-                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= ((ap * skillList[i].apSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[i].apSkillFactor));
+                       {   
+                           float damage = ((ap * skillList[i].apSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[i].apSkillFactor));
+                            if(damage <= 0 )
+                           {
+                             damage = 1;
+                           }                            
+                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= damage;
                            targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.targetUnit = gameObject;
                             for (int m = 0; m < damageList.Count; m++)
                           {
                               if(damageList[m] == 0)
                              { 
-                               damageList[m] = ((ap * skillList[i].apSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[i].apSkillFactor));
+                               damageList[m] = damage;
                                 if(damageList[m] <= 0)
                              {
                                 damageList[m] = 1;
@@ -2615,14 +2695,19 @@ public void EndSkill()//被动技能
                     if(skillList[i].iqSkill)
                     {
                         for (int j = 0; j < targetEnemyUnitList.Count; j++)
-                       {                          
-                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= ((iq * skillList[i].iqSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[i].iqSkillFactor));
+                       {           
+                           float damage = ((iq * skillList[i].iqSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[i].iqSkillFactor));
+                            if(damage <= 0 )
+                           {
+                             damage = 1;
+                           }                   
+                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= damage;
                            targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.targetUnit = gameObject;
                            for (int m = 0; m < damageList.Count; m++)
                           {
                               if(damageList[m] == 0)
                              { 
-                               damageList[m] = ((iq * skillList[i].iqSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[i].iqSkillFactor));
+                               damageList[m] = damage;
                                 if(damageList[m] <= 0)
                              {
                                 damageList[m] = 1;
@@ -2890,13 +2975,18 @@ public void End()
                     }    
                     if(skillList[i].adSkill)
                     {  
-                       targetEnemyUnit.GetComponent<PlayerBattle>().player.hp -= ((ad * skillList[i].adSkillFactor) - (targetEnemyUnit.GetComponent<PlayerBattle>().player.def * skillList[i].adSkillFactor));
+                        float damage = ((ad * skillList[i].adSkillFactor) - (targetEnemyUnit.GetComponent<PlayerBattle>().player.def * skillList[i].adSkillFactor));
+                            if(damage <= 0 )
+                           {
+                             damage = 1;
+                           }       
+                       targetEnemyUnit.GetComponent<PlayerBattle>().player.hp -= damage;
                        targetEnemyUnit.GetComponent<PlayerBattle>().player.targetUnit = gameObject;
                        for (int n = 0; n < damageList.Count; n++)
                        {
                            if(damageList[n] == 0)
                            {
-                               damageList[n] = ((ad * skillList[i].adSkillFactor) - (targetEnemyUnit.GetComponent<PlayerBattle>().player.def * skillList[i].adSkillFactor));
+                               damageList[n] = damage;
                                 if(damageList[n] <= 0)
                          {
                              damageList[n] = 1;
@@ -2910,13 +3000,18 @@ public void End()
                     }
                     if(skillList[i].hpSkill)
                     {  
-                       targetEnemyUnit.GetComponent<PlayerBattle>().player.hp -= ((totalhp * skillList[i].hpSkillFactor) - (targetEnemyUnit.GetComponent<PlayerBattle>().player.def * skillList[i].hpSkillFactor));
+                        float damage = ((totalhp * skillList[i].hpSkillFactor) - (targetEnemyUnit.GetComponent<PlayerBattle>().player.def * skillList[i].hpSkillFactor));
+                            if(damage <= 0 )
+                           {
+                             damage = 1;
+                           }   
+                       targetEnemyUnit.GetComponent<PlayerBattle>().player.hp -= damage;
                        targetEnemyUnit.GetComponent<PlayerBattle>().player.targetUnit = gameObject;
                        for (int n = 0; n < damageList.Count; n++)
                        {
                            if(damageList[n] == 0)
                            {
-                               damageList[n] = ((totalhp * skillList[i].hpSkillFactor) - (targetEnemyUnit.GetComponent<PlayerBattle>().player.def * skillList[i].hpSkillFactor));
+                               damageList[n] = damage;
                                 if(damageList[n] <= 0)
                          {
                              damageList[n] = 1;
@@ -2930,13 +3025,18 @@ public void End()
                     }
                     if(skillList[i].apSkill)
                     {  
-                       targetEnemyUnit.GetComponent<PlayerBattle>().player.hp -= ((ap * skillList[i].apSkillFactor) - (targetEnemyUnit.GetComponent<PlayerBattle>().player.mdef * skillList[i].apSkillFactor));
+                        float damage = ((ap * skillList[i].apSkillFactor) - (targetEnemyUnit.GetComponent<PlayerBattle>().player.mdef * skillList[i].apSkillFactor));
+                            if(damage <= 0 )
+                           {
+                             damage = 1;
+                           }   
+                       targetEnemyUnit.GetComponent<PlayerBattle>().player.hp -= damage;
                        targetEnemyUnit.GetComponent<PlayerBattle>().player.targetUnit = gameObject;
                        for (int m = 0; m < damageList.Count; m++)
                        {
                          if(damageList[m] == 0)
                          {
-                            damageList[m] = ((ap * skillList[i].apSkillFactor) - (targetEnemyUnit.GetComponent<PlayerBattle>().player.mdef * skillList[i].apSkillFactor));
+                            damageList[m] = damage;
                              if(damageList[m] <= 0)
                              {
                                 damageList[m] = 1;
@@ -2950,13 +3050,18 @@ public void End()
                     }
                     if(skillList[i].iqSkill)
                     {  
-                       targetEnemyUnit.GetComponent<PlayerBattle>().player.hp -= ((iq * skillList[i].iqSkillFactor) - (targetEnemyUnit.GetComponent<PlayerBattle>().player.mdef * skillList[i].iqSkillFactor));
+                        float damage = ((iq * skillList[i].iqSkillFactor) - (targetEnemyUnit.GetComponent<PlayerBattle>().player.mdef * skillList[i].iqSkillFactor));
+                            if(damage <= 0 )
+                           {
+                             damage = 1;
+                           }   
+                       targetEnemyUnit.GetComponent<PlayerBattle>().player.hp -=  damage ;
                        targetEnemyUnit.GetComponent<PlayerBattle>().player.targetUnit = gameObject;
                        for (int m = 0; m < damageList.Count; m++)
                        {
                          if(damageList[m] == 0)
                          {
-                            damageList[m] = ((iq * skillList[i].iqSkillFactor) - (targetEnemyUnit.GetComponent<PlayerBattle>().player.mdef * skillList[i].iqSkillFactor));
+                            damageList[m] =  damage ;
                              if(damageList[m] <= 0)
                              {
                                 damageList[m] = 1;
@@ -2980,13 +3085,18 @@ public void End()
                     {  
                        for (int j = 0; j < targetEnemyUnitList.Count; j++)
                        {  
-                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= ((ad * skillList[i].adSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[i].adSkillFactor));
+                            float damage = ((ad * skillList[i].adSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[i].adSkillFactor));
+                            if(damage <= 0 )
+                           {
+                             damage = 1;
+                           }   
+                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= damage;
                            targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.targetUnit = gameObject;
                            for (int m = 0; m < damageList.Count; m++)
                           {
                               if(damageList[m] == 0)
                             { 
-                               damageList[m] = ((ad * skillList[i].adSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[i].adSkillFactor));
+                               damageList[m] = damage;
                                 if(damageList[m] <= 0)
                              {
                                 damageList[m] = 1;
@@ -3003,13 +3113,18 @@ public void End()
                     {  
                        for (int j = 0; j < targetEnemyUnitList.Count; j++)
                        {  
-                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= ((totalhp * skillList[i].hpSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[i].hpSkillFactor));
+                           float damage = ((totalhp * skillList[i].hpSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[i].hpSkillFactor));
+                            if(damage <= 0 )
+                           {
+                             damage = 1;
+                           }   
+                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= damage;
                            targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.targetUnit = gameObject;
                            for (int m = 0; m < damageList.Count; m++)
                           {
                               if(damageList[m] == 0)
                             { 
-                               damageList[m] = ((totalhp * skillList[i].hpSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[i].hpSkillFactor));
+                               damageList[m] = damage;
                                 if(damageList[m] <= 0)
                              {
                                 damageList[m] = 1;
@@ -3025,14 +3140,19 @@ public void End()
                     if(skillList[i].apSkill)
                     {
                         for (int j = 0; j < targetEnemyUnitList.Count; j++)
-                       {                          
-                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= ((ap * skillList[i].apSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[i].apSkillFactor));
+                       {     
+                           float damage = ((ap * skillList[i].apSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[i].apSkillFactor));
+                            if(damage <= 0 )
+                           {
+                             damage = 1;
+                           }                        
+                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= damage;
                            targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.targetUnit = gameObject;
                             for (int m = 0; m < damageList.Count; m++)
                            {
                               if(damageList[m] == 0)
                              { 
-                               damageList[m] = ((ap * skillList[i].apSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[i].apSkillFactor));
+                               damageList[m] = damage;
                                 if(damageList[m] <= 0)
                              {
                                 damageList[m] = 1;
@@ -3050,14 +3170,19 @@ public void End()
                     if(skillList[i].iqSkill)
                     {
                         for (int j = 0; j < targetEnemyUnitList.Count; j++)
-                       {                          
-                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= ((iq * skillList[i].iqSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[i].iqSkillFactor));
+                       {    
+                           float damage = ((iq * skillList[i].iqSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[i].iqSkillFactor));
+                            if(damage <= 0 )
+                           {
+                             damage = 1;
+                           }                           
+                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.hp -= damage;
                            targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.targetUnit = gameObject;
                             for (int m = 0; m < damageList.Count; m++)
                            {
                               if(damageList[m] == 0)
                              { 
-                               damageList[m] = ((iq * skillList[i].iqSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[i].iqSkillFactor));
+                               damageList[m] = damage;
                                 if(damageList[m] <= 0)
                              {
                                 damageList[m] = 1;
@@ -3388,13 +3513,18 @@ public void Death()//死亡机制
                     }    
                         if(targetUnit.GetComponent<PlayerBattle>().player.skillList[i].adSkill)
                         {
-                            targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().hp -= ((targetUnit.GetComponent<PlayerBattle>().player.ad * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].adSkillFactor) - (targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().def * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].adSkillFactor));
+                             float damage = ((targetUnit.GetComponent<PlayerBattle>().player.ad * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].adSkillFactor) - (targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().def * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].adSkillFactor));
+                             if(damage <= 0 )
+                             {
+                               damage = 1;
+                             }       
+                            targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().hp -= damage;
                             targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().targetUnit = targetUnit;
                             for (int n = 0; n < targetUnit.GetComponent<PlayerBattle>().player.damageList.Count; n++)
                          {
                            if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
-                               targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = ((targetUnit.GetComponent<PlayerBattle>().player.ad * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].adSkillFactor) - (targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().def * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].adSkillFactor));
+                               targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = damage;
                                 if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] <= 0)
                          {
                              targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = 1;
@@ -3428,7 +3558,12 @@ public void Death()//死亡机制
                         }
                         if(targetUnit.GetComponent<PlayerBattle>().player.skillList[i].apSkill)
                         {
-                            targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().hp -= ((targetUnit.GetComponent<PlayerBattle>().player.ap * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].apSkillFactor) - (targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().mdef * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].apSkillFactor));
+                            float damage = ((targetUnit.GetComponent<PlayerBattle>().player.ap * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].apSkillFactor) - (targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().mdef * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].apSkillFactor));
+                             if(damage <= 0 )
+                             {
+                               damage = 1;
+                             }     
+                            targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().hp -= damage;
                            
                             targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().targetUnit = targetUnit;
                             for (int n = 0; n < targetUnit.GetComponent<PlayerBattle>().player.damageList.Count; n++)
@@ -3437,7 +3572,7 @@ public void Death()//死亡机制
                             
                             if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
-                               targetUnit.GetComponent<PlayerBattle>().player.damageList[n] =  ((targetUnit.GetComponent<PlayerBattle>().player.ap * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].apSkillFactor) - (targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().mdef * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].apSkillFactor));
+                               targetUnit.GetComponent<PlayerBattle>().player.damageList[n] =  damage;
                                if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] <= 0)
                                {
                                   targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = 1;
@@ -3451,13 +3586,18 @@ public void Death()//死亡机制
                         }
                         if(targetUnit.GetComponent<PlayerBattle>().player.skillList[i].iqSkill)
                         {
-                            targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().hp -= ((targetUnit.GetComponent<PlayerBattle>().player.iq * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].iqSkillFactor) - (targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().mdef * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].iqSkillFactor));
+                            float damage = ((targetUnit.GetComponent<PlayerBattle>().player.iq * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].iqSkillFactor) - (targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().mdef * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].iqSkillFactor));
+                             if(damage <= 0 )
+                             {
+                               damage = 1;
+                             }   
+                            targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().hp -= damage;
                             targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().targetUnit = targetUnit;
                             for (int n = 0; n < targetUnit.GetComponent<PlayerBattle>().player.damageList.Count; n++)
                             { 
                             if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
-                               targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = ((targetUnit.GetComponent<PlayerBattle>().player.iq * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].iqSkillFactor) - (targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().mdef * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].iqSkillFactor));
+                               targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = damage;
                                if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] <= 0)
                                {
                                   targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = 1;
@@ -3480,14 +3620,19 @@ public void Death()//死亡机制
                         if(targetUnit.GetComponent<PlayerBattle>().player.skillList[i].adSkill)
                         {
                             for (int j = 0; j < targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList.Count; j++)
-                            {  
-                             targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().hp -= ((targetUnit.GetComponent<PlayerBattle>().player.ad * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].adSkillFactor) - (targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().def * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].adSkillFactor));
+                            { 
+                                float damage = ((targetUnit.GetComponent<PlayerBattle>().player.ad * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].adSkillFactor) - (targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().def * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].adSkillFactor));
+                                if(damage <= 0 )
+                                {
+                                  damage = 1;
+                                }    
+                             targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().hp -= damage;
                              targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().targetUnit = targetUnit;
                              for (int n = 0; n < targetUnit.GetComponent<PlayerBattle>().player.damageList.Count; n++)
                             { 
                             if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
-                               targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = ((targetUnit.GetComponent<PlayerBattle>().player.ad * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].adSkillFactor) - (targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().def * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].adSkillFactor));
+                               targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = damage;
                                if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] <= 0)
                                {
                                   targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = 1;
@@ -3504,13 +3649,18 @@ public void Death()//死亡机制
                         {
                             for (int j = 0; j < targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList.Count; j++)
                             {  
-                             targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().hp -= ((targetUnit.GetComponent<PlayerBattle>().player.totalhp * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].hpSkillFactor) - (targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().def * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].hpSkillFactor));
+                                float damage = ((targetUnit.GetComponent<PlayerBattle>().player.totalhp * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].hpSkillFactor) - (targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().def * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].hpSkillFactor));
+                                if(damage <= 0 )
+                                {
+                                  damage = 1;
+                                }    
+                             targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().hp -= damage;
                              targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().targetUnit = targetUnit;
                              for (int n = 0; n < targetUnit.GetComponent<PlayerBattle>().player.damageList.Count; n++)
                             { 
                             if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
-                               targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = ((targetUnit.GetComponent<PlayerBattle>().player.totalhp * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].hpSkillFactor) - (targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().def * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].hpSkillFactor));
+                               targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = damage;
                                if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] <= 0)
                                {
                                   targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = 1;
@@ -3527,13 +3677,18 @@ public void Death()//死亡机制
                         {
                             for (int j = 0; j < targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList.Count; j++)
                             {  
-                             targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().hp -= ((targetUnit.GetComponent<PlayerBattle>().player.ap * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].apSkillFactor) - (targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().mdef * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].apSkillFactor));
+                                 float damage = ((targetUnit.GetComponent<PlayerBattle>().player.ap * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].apSkillFactor) - (targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().mdef * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].apSkillFactor));
+                                if(damage <= 0 )
+                                {
+                                  damage = 1;
+                                }    
+                             targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().hp -= damage;
                              targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().targetUnit = targetUnit;
                               for (int n = 0; n < targetUnit.GetComponent<PlayerBattle>().player.damageList.Count; n++)
                             { 
                             if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
-                               targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = ((targetUnit.GetComponent<PlayerBattle>().player.ap * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].apSkillFactor) - (targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().mdef * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].apSkillFactor));
+                               targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = damage;
                                if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] <= 0)
                                {
                                   targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = 1;
@@ -3549,14 +3704,19 @@ public void Death()//死亡机制
                         if(targetUnit.GetComponent<PlayerBattle>().player.skillList[i].iqSkill)
                         {
                             for (int j = 0; j < targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList.Count; j++)
-                            {  
-                             targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().hp -= ((targetUnit.GetComponent<PlayerBattle>().player.iq * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].iqSkillFactor) - (targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().mdef * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].iqSkillFactor));
+                            { 
+                                float damage = ((targetUnit.GetComponent<PlayerBattle>().player.iq * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].iqSkillFactor) - (targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().mdef * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].iqSkillFactor));
+                                if(damage <= 0 )
+                                {
+                                  damage = 1;
+                                }     
+                             targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().hp -= damage;
                              targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().targetUnit = targetUnit;
                               for (int n = 0; n < targetUnit.GetComponent<PlayerBattle>().player.damageList.Count; n++)
                             { 
                             if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
-                               targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = ((targetUnit.GetComponent<PlayerBattle>().player.iq * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].iqSkillFactor) - (targetUnit.GetComponent<PlayerBattle>().player.targetEnemyUnitList[j].GetComponent<EnemyUI>().mdef * targetUnit.GetComponent<PlayerBattle>().player.skillList[i].iqSkillFactor));
+                               targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = damage;
                                if(targetUnit.GetComponent<PlayerBattle>().player.damageList[n] <= 0)
                                {
                                   targetUnit.GetComponent<PlayerBattle>().player.damageList[n] = 1;
@@ -3751,13 +3911,18 @@ public void Death()//死亡机制
                     }    
                         if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].adSkill)
                         {
-                            targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().hp -= ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.ad * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].adSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().def * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].adSkillFactor));
+                             float damage = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.ad * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].adSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().def * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].adSkillFactor));
+                                if(damage <= 0 )
+                                {
+                                  damage = 1;
+                                }     
+                            targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().hp -= damage;
                             targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().targetUnit = targetEnemyUnitList[i];
                             for (int n = 0; n < targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList.Count; n++)
                             { 
                             if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
-                               targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.ad * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].adSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().def * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].adSkillFactor));
+                               targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = damage;
                                if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] <= 0)
                                {
                                   targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = 1;
@@ -3772,13 +3937,18 @@ public void Death()//死亡机制
                         }
                         if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].hpSkill)
                         {
-                            targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().hp -= ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.totalhp * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].hpSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().def * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].hpSkillFactor));
+                            float damage = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.totalhp * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].hpSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().def * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].hpSkillFactor));
+                                if(damage <= 0 )
+                                {
+                                  damage = 1;
+                                }  
+                            targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().hp -= damage;
                             targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().targetUnit = targetEnemyUnitList[i];
                             for (int n = 0; n < targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList.Count; n++)
                             { 
                             if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
-                               targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.totalhp * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].hpSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().def * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].hpSkillFactor));
+                               targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = damage;
                                if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] <= 0)
                                {
                                   targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = 1;
@@ -3792,13 +3962,18 @@ public void Death()//死亡机制
                         }
                         if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].apSkill)
                         {
-                            targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().hp -= ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.ap * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].apSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().mdef * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].apSkillFactor));
+                            float damage = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.ap * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].apSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().mdef * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].apSkillFactor));
+                                if(damage <= 0 )
+                                {
+                                  damage = 1;
+                                }  
+                            targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().hp -= damage;
                             targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().targetUnit = targetEnemyUnitList[i];
                             for (int n = 0; n < targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList.Count; n++)
                             { 
                             if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
-                               targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.ap * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].apSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().mdef * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].apSkillFactor));
+                               targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = damage;
                                if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] <= 0)
                                {
                                   targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = 1;
@@ -3812,13 +3987,18 @@ public void Death()//死亡机制
                         }
                         if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].iqSkill)
                         {
-                            targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().hp -= ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.iq * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].iqSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().mdef * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].iqSkillFactor));
+                            float damage = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.iq * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].iqSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().mdef * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].iqSkillFactor));
+                                if(damage <= 0 )
+                                {
+                                  damage = 1;
+                                }  
+                            targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().hp -= damage;
                             targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().targetUnit = targetEnemyUnitList[i];
                             for (int n = 0; n < targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList.Count; n++)
                             { 
                             if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
-                               targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.iq * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].iqSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit.GetComponent<EnemyUI>().mdef * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].iqSkillFactor));
+                               targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = damage;
                                if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] <= 0)
                                {
                                   targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = 1;
@@ -3842,13 +4022,18 @@ public void Death()//死亡机制
                         {
                             for (int k = 0; k < targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList.Count; k++)
                             {  
-                             targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().hp -= ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.ad * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].adSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().def * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].adSkillFactor));
+                                float damage = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.ad * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].adSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().def * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].adSkillFactor));
+                                if(damage <= 0 )
+                                {
+                                  damage = 1;
+                                }  
+                             targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().hp -= damage;
                              targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().targetUnit = targetEnemyUnitList[i];
                              for (int n = 0; n < targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList.Count; n++)
                             { 
                             if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
-                               targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.ad * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].adSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().def * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].adSkillFactor));
+                               targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = damage;
                                if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] <= 0)
                                {
                                   targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = 1;
@@ -3865,13 +4050,18 @@ public void Death()//死亡机制
                         {
                             for (int k = 0; k < targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList.Count; k++)
                             {  
-                             targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().hp -= ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.totalhp * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].hpSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().def * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].hpSkillFactor));
+                                float damage = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.totalhp * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].hpSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().def * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].hpSkillFactor));
+                                if(damage <= 0 )
+                                {
+                                  damage = 1;
+                                }  
+                             targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().hp -= damage;
                              targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().targetUnit = targetEnemyUnitList[i];
                              for (int n = 0; n < targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList.Count; n++)
                             { 
                             if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
-                               targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.totalhp * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].hpSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().def * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].hpSkillFactor));
+                               targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = damage;
                                if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] <= 0)
                                {
                                   targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = 1;
@@ -3888,13 +4078,18 @@ public void Death()//死亡机制
                         {
                             for (int k = 0; k < targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList.Count; k++)
                             {  
-                             targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().hp -= ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.ap * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].apSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().mdef * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].apSkillFactor));
+                                float damage = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.ap * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].apSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().mdef * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].apSkillFactor));
+                                if(damage <= 0 )
+                                {
+                                  damage = 1;
+                                }  
+                             targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().hp -= damage;
                              targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().targetUnit = targetEnemyUnitList[i];
                               for (int n = 0; n < targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList.Count; n++)
                             { 
                             if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
-                               targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.ap * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].apSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().mdef * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].apSkillFactor));
+                               targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = damage;
                                if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] <= 0)
                                {
                                   targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = 1;
@@ -3911,13 +4106,18 @@ public void Death()//死亡机制
                         {
                             for (int k = 0; k < targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList.Count; k++)
                             {  
-                             targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().hp -= ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.iq * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].iqSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().mdef * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].iqSkillFactor));
+                                float damage = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.iq * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].iqSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().mdef * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].iqSkillFactor));
+                                if(damage <= 0 )
+                                {
+                                  damage = 1;
+                                }  
+                             targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().hp -= damage;
                              targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().targetUnit = targetEnemyUnitList[i];
                               for (int n = 0; n < targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList.Count; n++)
                             { 
                             if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] == 0)
                            {
-                               targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = ((targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.iq * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].iqSkillFactor) - (targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnitList[k].GetComponent<EnemyUI>().mdef * targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[j].iqSkillFactor));
+                               targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = damage;
                                if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] <= 0)
                                {
                                   targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.damageList[n] = 1;

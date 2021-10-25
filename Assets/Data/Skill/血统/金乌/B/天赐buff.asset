@@ -20,7 +20,7 @@ MonoBehaviour:
   dizzy: 0
   disarm: 0
   hp: 0
-  mp: 10
+  mp: 6
   sp: 0
   replyHp: 0
   replyMp: 0

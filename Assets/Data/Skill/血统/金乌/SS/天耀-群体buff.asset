@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef78aeb2920ba904b80fb918d5da567a, type: 3}
-  m_Name: "\u5929\u8D50buff"
+  m_Name: "\u5929\u8000-\u7FA4\u4F53buff"
   m_EditorClassIdentifier: 
   buffImage: {fileID: 0}
-  buffInfo: 
-  buffString: "\u5929\u8D50"
+  buffInfo: "\u5929\u8000\uFF1A\u7269\u9632+300\uFF0C\u9B54\u9632+300"
+  buffString: 
   buffTime: 0
   skillFactor: 0
   dizzy: 0
   disarm: 0
   hp: 0
-  mp: 10
+  mp: 0
   sp: 0
   replyHp: 0
   replyMp: 0
@@ -38,9 +38,9 @@ MonoBehaviour:
   adPCT: 0
   ap: 0
   apPCT: 0
-  def: 0
+  def: 300
   defPCT: 0
-  mdef: 0
+  mdef: 300
   mdefPCT: 0
   speed: 0
   speedPCT: 0

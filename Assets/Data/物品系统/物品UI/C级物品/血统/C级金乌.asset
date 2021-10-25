@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9298dcf4578514f97913b37df2f544, type: 3}
+  m_Name: "C\u7EA7\u91D1\u4E4C"
+  m_EditorClassIdentifier: 
+  itemName: "\u8E06\u4E4C"
+  itemImage: {fileID: 0}
+  itemColor: {r: 0.9647059, g: 0, b: 0, a: 1}
+  itemHeld: 1
+  itemID: 0
+  equipment: 0
+  equipmentClass: Blood
+  weaponClass: 
+  consumable: 0
+  consumableTime: 0
+  blood: 1
+  singleBlood: 0
+  bloodClass: "\u91D1\u4E4C"
+  level: 3
+  story: 0
+  skillList:
+  - {fileID: 11400000, guid: 4a7b01797bbeadc42aa28931d09a2269, type: 2}
+  textFile: {fileID: 0}
+  itemInfo: "\u70E7\u70E7\u679C\u5B9E\uFF0CC\u7EA7\u4F20\u627F\uFF0C\u3010\u91D1\u4E4C\u4F53\u7CFB\u3011\r\n\u751F\u547D\uFF0B500
+    \u7269\u653B\uFF0B60 \r\n\u901F\u5EA6\uFF0B30\r\n\u7269\u9632\uFF0B90 \u9B54\u9632\uFF0B90\r\n\r\n\u6765\u81EA\u4E8E\u5F02\u4F4D\u9762\uFF0C\u4E00\u79CD\u6781\u5176\u96BE\u5403\u7684\u679C\u5B9E\uFF0C\u670D\u4E0B\u540E\u4F1A\u83B7\u5F97\u8D85\u80FD\u529B\uFF0C\u4F46\u4E5F\u4F1A\u53D8\u6210\u65F1\u9E2D\u5B50\r\n\r\n\u4F7F\u7528\u540E\u5C06\u4F1A\u5F3A\u5316\u81F3\u8E06\u4E4C\u4F20\u627F\uFF0C\u5E76\u83B7\u5F97\u4EE5\u4E0B\u6280\u80FD\u53CA\u5F3A\u5316\r\n\r\n\u8E06\u4E4C\uFF1A\u3010\u62B1\u4E09\u8DB3\u4E4B\u7075\u4E4C\uFF0C\u6302\u4E94\u5F69\u4E4B\u8F7B\u8679\u3011\r\n\r\n\u708E\u5E1D:\u6218\u6597\u5F00\u59CB\u91CA\u653E\u201C\u708E\u5E1D\u201D\uFF0C\u5BF9\u654C\u4EBA\u9020\u6210200%\u7269\u653B\u7684\u7FA4\u4F53\u4F24\u5BB3\uFF0C\u5E76\u9020\u6210\u71C3\u70E7\u6548\u679C\uFF1B\u71C3\u70E7\uFF1A\u6BCF\u56DE\u5408-50\u751F\u547D\uFF0C\u6301\u7EED5\u56DE\u5408"
+  hp: 0
+  mp: 0
+  sp: 0
+  replyHp: 0
+  replyMp: 0
+  replySp: 0
+  replyHpPCT: 0
+  replyMpPCT: 0
+  replySpPCT: 0
+  totalhp: 500
+  totalhpPCT: 0
+  totalmp: 0
+  totalmpPCT: 0
+  totalsp: 0
+  totalspPCT: 0
+  ad: 60
+  adPCT: 0
+  ap: 0
+  apPCT: 0
+  def: 90
+  defPCT: 0
+  mdef: 90
+  mdefPCT: 0
+  speed: 30
+  speedPCT: 0
+  dodge: 0
+  crit: 0
+  iq: 0
+  iqPCT: 0
+  charm: 0
+  charmPCT: 0
+  critDamge: 0
+  drainLife: 0
+  sword: 0
+  gun: 0
+  shieldFactor: 0
+  skillOdds: 0
+  charmSkillBool: 0
+  iqSkillBool: 0
+  apSkillBool: 0
+  doubleDamage: 0
+  baseTotalhp: 0
+  baseDef: 0
+  baseMdef: 0
+  baseAd: 0
+  baseAp: 0
+  baseCharm: 0
+  baseIq: 0
+  baseSpeed: 0
+  basePoint: 0
+  baseCPoint: 0
+  baseSPoint: 0
+  baseSSSPoint: 0

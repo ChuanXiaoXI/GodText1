@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9298dcf4578514f97913b37df2f544, type: 3}
+  m_Name: "A\u7EA7\u91D1\u4E4C"
+  m_EditorClassIdentifier: 
+  itemName: "\u9010\u65E5\u5DE8\u4EBA"
+  itemImage: {fileID: 0}
+  itemColor: {r: 0.9647059, g: 0, b: 0, a: 1}
+  itemHeld: 1
+  itemID: 0
+  equipment: 0
+  equipmentClass: Blood
+  weaponClass: 
+  consumable: 0
+  consumableTime: 0
+  blood: 1
+  singleBlood: 0
+  bloodClass: "\u91D1\u4E4C"
+  level: 5
+  story: 0
+  skillList:
+  - {fileID: 11400000, guid: bd96ed4c6d9d35f4d8fde25419321387, type: 2}
+  - {fileID: 11400000, guid: 8cba9fc7ac91ed6409efdfe8fba7a20b, type: 2}
+  textFile: {fileID: 0}
+  itemInfo: "\u706B\u7130\u7CFB-\u2162\u578B\u8BD5\u5242\uFF0CA\u7EA7\u4F20\u627F\uFF0C\u3010\u91D1\u4E4C\u4F53\u7CFB\u3011\r\n\u751F\u547D\uFF0B1600
+    \u7269\u653B\uFF0B180 \r\n\u901F\u5EA6\uFF0B80\r\n\u7269\u9632\uFF0B300 \u9B54\u9632\uFF0B300\r\n\r\n\u6765\u81EA\u4E8E\u6E90\u4F4D\u9762\uFF0C\u6781\u9AD8\u79D1\u6280\u7684\u57FA\u56E0\u5DE5\u7A0B\u4EA7\u7269\uFF0C\u4F7F\u7528\u540E\u53EF\u8FDB\u5316\u4E3A\u5DE8\u4EBA\u4F53\r\n\r\n\u4F7F\u7528\u540E\u5C06\u4F1A\u5F3A\u5316\u81F3\u9010\u65E5\u5DE8\u4EBA\u4F20\u627F\uFF0C\u5E76\u83B7\u5F97\u4EE5\u4E0B\u6280\u80FD\u53CA\u5F3A\u5316\r\n\r\n\u9010\u65E5\u5DE8\u4EBA\uFF1A\u3010\u65E5\u5728\u4E1C\uFF0C\u5411\u65E5\u800C\u4EA1\u3011\r\n\r\n\u708E\u5E1D:\u6218\u6597\u5F00\u59CB\u91CA\u653E\u201C\u708E\u5E1D\u201D\uFF0C\u5BF9\u654C\u4EBA\u9020\u6210250%\u7269\u653B\u7684\u7FA4\u4F53\u4F24\u5BB3\uFF0C\u5E76\u9020\u6210\u71C3\u70E7\u6548\u679C\uFF1B\u71C3\u70E7\uFF1A\u6BCF\u56DE\u5408-150\u751F\u547D\uFF0C\u6301\u7EED5\u56DE\u5408\r\n\r\n\u5929\u8D50:\u6BCF\u6B7B\u4EA1\u4E00\u4E2A\u654C\u4EBA\uFF0C\u4F7F\u6211\u65B9\u5168\u4F53\u6062\u590D8\u70B9\u9B54\u6CD5\u3002\r\n\r\n\u5DE8\u4EBA\u4F53:\u7269\u9632+20%\uFF0C\u9B54\u9632+10%\uFF0C\u7269\u653B+10%\uFF0C\u901F\u5EA6-20%"
+  hp: 0
+  mp: 0
+  sp: 0
+  replyHp: 0
+  replyMp: 0
+  replySp: 0
+  replyHpPCT: 0
+  replyMpPCT: 0
+  replySpPCT: 0
+  totalhp: 1600
+  totalhpPCT: 0
+  totalmp: 0
+  totalmpPCT: 0
+  totalsp: 0
+  totalspPCT: 0
+  ad: 180
+  adPCT: 0.1
+  ap: 0
+  apPCT: 0
+  def: 300
+  defPCT: 0.2
+  mdef: 300
+  mdefPCT: 0.1
+  speed: 80
+  speedPCT: -0.3
+  dodge: 0
+  crit: 0
+  iq: 0
+  iqPCT: 0
+  charm: 0
+  charmPCT: 0
+  critDamge: 0
+  drainLife: 0
+  sword: 0
+  gun: 0
+  shieldFactor: 0
+  skillOdds: 0
+  charmSkillBool: 0
+  iqSkillBool: 0
+  apSkillBool: 0
+  doubleDamage: 0
+  baseTotalhp: 0
+  baseDef: 0
+  baseMdef: 0
+  baseAd: 0
+  baseAp: 0
+  baseCharm: 0
+  baseIq: 0
+  baseSpeed: 0
+  basePoint: 0
+  baseCPoint: 0
+  baseSPoint: 0
+  baseSSSPoint: 0
