@@ -19,6 +19,7 @@ public class TimeManage : MonoBehaviour
    public GameObject diolog;
 
    public List<GameObject> playerList = new List<GameObject>();
+   public PlayerData playerData;
     /*void Awake()
     {
         if(instance != null)

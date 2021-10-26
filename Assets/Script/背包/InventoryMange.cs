@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class InventoryMange : MonoBehaviour
 {
     static InventoryMange instance;
-    public Inventory mybag;
+    public PlayerData mybag;
     public GameObject slotGrid;
 
     public GameObject emptySlot;
@@ -30,6 +30,7 @@ public class InventoryMange : MonoBehaviour
     }
     public static void RefreshItem()
     {
+        
        /* for (int i = 0; i < 18; i++)
         {
             if(instance.slotGrid.transform.childCount == 0)
@@ -49,7 +50,7 @@ public class InventoryMange : MonoBehaviour
        instance.slots[i].GetComponent<Slot>().slotID = i;
        instance.slots[i].GetComponent<Slot>().SetupSlot(instance.mybag.itemList[i]);
        }*/
-      for (int i = 0; i < 18; i++)
+     /* for (int i = 0; i < 18; i++)
       {
           if(instance.slots[i].transform.childCount == 0)
           {
@@ -59,7 +60,7 @@ public class InventoryMange : MonoBehaviour
           {
               instance.mybag.bagList[i] = instance.slots[i].transform.GetChild(0).gameObject.GetComponent<ItemOnDrag>().item;
           }
-      }
+      }*/
        
 
     }

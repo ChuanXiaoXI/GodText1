@@ -252,7 +252,6 @@ public GameObject skillNameObject;
 
 public void Start()
 {
-    
     PlayerAlive();//检测player存活
     //slotPlayerImage.sprite = playerClass.playerImage;//图片传值
     //slotPlayerName.text = playerClass.playerName.ToString();//姓名传值
@@ -1455,18 +1454,29 @@ public void Gun()//枪械机制
 }
 public void Shield()//盾防机制
 {
-     /*for (int i = 0; i < targetEnemyUnitList.Count; i++)
+    List<GameObject> untargetUnitList = new List<GameObject>();
+    
+     for (int i = 0; i < targetEnemyUnitList.Count; i++)
      {
-         if(targetEnemyUnitList[i].GetComponent<EnemyUI>().targetEnemyUnit == playerBattleObject)
-         {
-             continue;
-         }
          if(targetEnemyUnitList[i].GetComponent<EnemyUI>().targetEnemyUnit != playerBattleObject)
          {
-             targetEnemyUnitList[i].GetComponent<EnemyUI>().targetEnemyUnit = playerBattleObject;
-             break;
+             untargetUnitList.Add(targetEnemyUnitList[i]);
          }
-     }*/
+     }
+     if(untargetUnitList.Count != 0)
+     {
+     int randomIndex =  Random.Range(0, untargetUnitList.Count);
+     untargetUnitList[randomIndex].GetComponent<EnemyUI>().targetEnemyUnit = playerBattleObject;
+     untargetUnitList.Remove(untargetUnitList[randomIndex]);
+        if(untargetUnitList.Count != 0)
+        {
+             int randomIndex1 =  Random.Range(0, untargetUnitList.Count);
+             untargetUnitList[randomIndex1].GetComponent<EnemyUI>().targetEnemyUnit = playerBattleObject;
+             untargetUnitList.Remove(untargetUnitList[randomIndex1]);
+        }
+     }
+     untargetUnitList.Clear();
+
 
     for (int i = 0; i < equipmentList.Count; i++)
     {   if(equipmentList[i] != null)

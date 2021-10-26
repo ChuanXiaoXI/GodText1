@@ -8,7 +8,8 @@ public class TeamManage : MonoBehaviour
     static TeamManage instance;
     
     public List<GameObject> players = new List<GameObject>();
-    
+    public List<TeamPlayer> playerList = new List<TeamPlayer>();
+    public PlayerData playerData;
     
     void Awake()
     {
