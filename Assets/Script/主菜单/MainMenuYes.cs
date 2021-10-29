@@ -7,7 +7,8 @@ public class MainMenuYes : MonoBehaviour
    
     
     
-    public void OnStartGame(){
+    public void OnStartGame()
+	{
         
 		SceneManager.LoadScene (1);
 	}
