@@ -618,7 +618,7 @@ public void Fight()//战斗机制
 
        if(actionTime >= 2 && actionTime >= 0.5f)//行动开始
        {
-        //Debug.Log("111");
+        
         turn += 1; 
         actionTime = 0;
         hp += replyHp;
@@ -1241,9 +1241,9 @@ public void Action()//行动机制
 }
 public void Attack()
 { 
-   
-     gameObject.transform.DOMove(new Vector3( actionPosition.transform.position.x, actionPosition.transform.position.y, 0f), 0.2f);
-     gameObject.transform.DOMove(new Vector3( originalPosition.transform.position.x, originalPosition.transform.position.y, 0f), 0.8f);//战斗移动
+     
+     gameObject.transform.DOMove(new Vector3(actionPosition.transform.position.x, actionPosition.transform.position.y, 0f), 0.2f);
+     gameObject.transform.DOMove(new Vector3(originalPosition.transform.position.x, originalPosition.transform.position.y, 0f), 0.8f);//战斗移动
      
     if(!disarm && sp >= 10)
     {
@@ -1327,28 +1327,31 @@ public void Gun()//枪械机制
 }
 public void Shield()//盾防机制
 {
-    List<GameObject> untargetUnitList = new List<GameObject>();
+   
+      List<GameObject> untargetUnitList = new List<GameObject>();
     
      for (int i = 0; i < targetEnemyUnitList.Count; i++)
-     {
-         if(targetEnemyUnitList[i].GetComponent<EnemyUI>().targetEnemyUnit != gameObject)
+     {Debug.Log("111");
+         if(targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.targetEnemyUnit != gameObject)
          {
              untargetUnitList.Add(targetEnemyUnitList[i]);
          }
      }
+     
      if(untargetUnitList.Count != 0)
      {
      int randomIndex =  Random.Range(0, untargetUnitList.Count);
-     untargetUnitList[randomIndex].GetComponent<EnemyUI>().targetEnemyUnit = gameObject;
+     untargetUnitList[randomIndex].GetComponent<PlayerBattle>().player.targetEnemyUnit = gameObject;
      untargetUnitList.Remove(untargetUnitList[randomIndex]);
         if(untargetUnitList.Count != 0)
         {
              int randomIndex1 =  Random.Range(0, untargetUnitList.Count);
-             untargetUnitList[randomIndex1].GetComponent<EnemyUI>().targetEnemyUnit = gameObject;
+             untargetUnitList[randomIndex1].GetComponent<PlayerBattle>().player.targetEnemyUnit = gameObject;
              untargetUnitList.Remove(untargetUnitList[randomIndex1]);
         }
      }
      untargetUnitList.Clear();
+
     for (int i = 0; i < equipmentList.Count; i++)
     {   if(equipmentList[i] != null)
       {
@@ -3946,15 +3949,15 @@ public void Death()//死亡机制
                     {
                          targetUnit.GetComponent<PlayerBattle>().player.skillName = targetUnit.GetComponent<PlayerBattle>().player.skillList[i].skillName;
                          targetUnit.GetComponent<PlayerBattle>().player.skillNameIsAlive = true;   
-                        targetUnit.GetComponent<PlayerBattle>().player.baseAd += targetUnit.GetComponent<PlayerBattle>().player.skillList[i].ad;
-                        targetUnit.GetComponent<PlayerBattle>().player.baseAp += targetUnit.GetComponent<PlayerBattle>().player.skillList[i].ap;
-                        targetUnit.GetComponent<PlayerBattle>().player.baseTotalhp += targetUnit.GetComponent<PlayerBattle>().player.skillList[i].totalhp;
-                        targetUnit.GetComponent<PlayerBattle>().player.baseSpeed += targetUnit.GetComponent<PlayerBattle>().player.skillList[i].speed;
-                        targetUnit.GetComponent<PlayerBattle>().player.baseDef += targetUnit.GetComponent<PlayerBattle>().player.skillList[i].def;
-                        targetUnit.GetComponent<PlayerBattle>().player.baseMdef += targetUnit.GetComponent<PlayerBattle>().player.skillList[i].mdef;
-                        targetUnit.GetComponent<PlayerBattle>().player.baseCritDamge += targetUnit.GetComponent<PlayerBattle>().player.skillList[i].critDamge;
-                        targetUnit.GetComponent<PlayerBattle>().player.baseIq += targetUnit.GetComponent<PlayerBattle>().player.skillList[i].iq;
-                        targetUnit.GetComponent<PlayerBattle>().player.baseCharm += targetUnit.GetComponent<PlayerBattle>().player.skillList[i].charm;
+                        targetUnit.GetComponent<PlayerBattle>().player.growthAd += targetUnit.GetComponent<PlayerBattle>().player.skillList[i].ad;
+                        targetUnit.GetComponent<PlayerBattle>().player.growthAp += targetUnit.GetComponent<PlayerBattle>().player.skillList[i].ap;
+                        targetUnit.GetComponent<PlayerBattle>().player.growthTotalhp += targetUnit.GetComponent<PlayerBattle>().player.skillList[i].totalhp;
+                        targetUnit.GetComponent<PlayerBattle>().player.growthSpeed += targetUnit.GetComponent<PlayerBattle>().player.skillList[i].speed;
+                        targetUnit.GetComponent<PlayerBattle>().player.growthDef += targetUnit.GetComponent<PlayerBattle>().player.skillList[i].def;
+                        targetUnit.GetComponent<PlayerBattle>().player.growthMdef += targetUnit.GetComponent<PlayerBattle>().player.skillList[i].mdef;
+                        targetUnit.GetComponent<PlayerBattle>().player.growthCritDamge += targetUnit.GetComponent<PlayerBattle>().player.skillList[i].critDamge;
+                        targetUnit.GetComponent<PlayerBattle>().player.growthIq += targetUnit.GetComponent<PlayerBattle>().player.skillList[i].iq;
+                        targetUnit.GetComponent<PlayerBattle>().player.growthCharm += targetUnit.GetComponent<PlayerBattle>().player.skillList[i].charm;
                     }  
                 }
             }
@@ -4347,15 +4350,15 @@ public void Death()//死亡机制
                     {
                         targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillName = targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[i].skillName;
                         targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillNameIsAlive = true;   
-                        targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.baseAd += targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[i].ad;
-                        targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.baseAp += targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[i].ap;
-                        targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.baseTotalhp += targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[i].totalhp;
-                        targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.baseSpeed += targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[i].speed;
-                        targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.baseDef += targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[i].def;
-                        targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.baseMdef += targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[i].mdef;
-                        targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.baseCritDamge += targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[i].critDamge;
-                        targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.baseIq += targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[i].iq;
-                        targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.baseCharm += targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[i].charm;
+                        targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.growthAd += targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[i].ad;
+                        targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.growthAp += targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[i].ap;
+                        targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.growthTotalhp += targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[i].totalhp;
+                        targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.growthSpeed += targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[i].speed;
+                        targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.growthDef += targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[i].def;
+                        targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.growthMdef += targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[i].mdef;
+                        targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.growthCritDamge += targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[i].critDamge;
+                        targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.growthIq += targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[i].iq;
+                        targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.growthCharm += targetEnemyUnitList[i].GetComponent<PlayerBattle>().player.skillList[i].charm;
                     }  
 
                     }

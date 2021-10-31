@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be81ab8c3e264e48aaaf5160a10f789, type: 3}
   m_Name: New PlayerData
   m_EditorClassIdentifier: 
-  playerList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  worldIndex: 0
+  saveList:
+  - {fileID: 11400000, guid: bc926720aa33bb44290f8ff845152117, type: 2}
+  - {fileID: 11400000, guid: ccada9e31de2fdd43948ffaead246f9f, type: 2}
+  - {fileID: 11400000, guid: c1b5a787f31c8ef45a1bd1c4af2da9c7, type: 2}
+  - {fileID: 11400000, guid: 7f5c2c14f678a5e49a8dc57adc1834e4, type: 2}
+  - {fileID: 11400000, guid: 1664668df11b1174890ec4e102e9fc06, type: 2}
+  - {fileID: 11400000, guid: df95283f35fdfb3428a162592792a334, type: 2}
+  - {fileID: 11400000, guid: 06c4e96478794a542ad770c126c00039, type: 2}
+  - {fileID: 11400000, guid: 3da2110314c007145a151c292b61fcb6, type: 2}
+  worldIndex: 1
   bagList:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 0e83df67cf5bd1a42be6cbe9212fce5c, type: 2}
+  - {fileID: 11400000, guid: 6a7ff82b91f9daa42a30d6fe2200fd5b, type: 2}
+  - {fileID: 11400000, guid: a9ebbac60fbdb9a4ea2c371f917d599e, type: 2}
+  - {fileID: 11400000, guid: 0e0f99f6910d5ae44a6b91c7fb1bf970, type: 2}
+  - {fileID: 11400000, guid: 99f1a098964165e488b24c73c33fdd9b, type: 2}
+  - {fileID: 11400000, guid: 64aae08b5dfeca84f94737f7b42c162e, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

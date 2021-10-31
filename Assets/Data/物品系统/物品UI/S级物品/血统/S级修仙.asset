@@ -20,7 +20,7 @@ MonoBehaviour:
   equipment: 0
   equipmentClass: Blood
   weaponClass: 
-  consumable: 1
+  consumable: 0
   consumableTime: 0
   blood: 1
   singleBlood: 0

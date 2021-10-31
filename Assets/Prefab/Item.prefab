@@ -452,7 +452,7 @@ MonoBehaviour:
   itemInfoText: {fileID: 0}
   itemInfoTextObject: {fileID: 0}
   itemInfoPoint1: {fileID: 2463806088534285342}
-  itemHeld: 0
+  itemHeld: 1
   itemNum: {fileID: 6748074368059098796}
   timeManage: {fileID: 0}
   time: 0

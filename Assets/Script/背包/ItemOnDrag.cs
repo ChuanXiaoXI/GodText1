@@ -43,6 +43,7 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
 
   private void Start()
   {
+    itemHeld = item.itemHeld;
     time = Time.time;
     bag = GameObject.Find("bag");
     itemImage.sprite = item.itemImage;//图片传值
@@ -58,7 +59,7 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
     itemInfo = itemInformation.transform.GetChild(0).gameObject.GetComponent<Text>();
 
     colorObject.GetComponent<Image>().color = item.itemColor;
-    itemHeld = item.itemHeld;
+    
     
   }
   

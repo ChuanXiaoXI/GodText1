@@ -71,6 +71,16 @@ public class TeamPlayer : MonoBehaviour ,IPointerEnterHandler, IPointerExitHandl
     public bool apSkillBool;
     public bool iqSkillBool;
     public bool doubleDamage;
+
+    public float growthAd;
+    public float growthAp; 
+    public float growthTotalhp; 
+    public float growthSpeed; 
+    public float growthDef; 
+    public float growthMdef; 
+    public float growthCritDamge; 
+    public float growthIq;
+    public float growthCharm; 
     [Header("战斗系统")]
     public GameObject playerBattlePrefab;
     public GameObject playerBattleObject;
@@ -253,15 +263,10 @@ public GameObject skillNameObject;
 public void Start()
 {
     PlayerAlive();//检测player存活
-    //slotPlayerImage.sprite = playerClass.playerImage;//图片传值
-    //slotPlayerName.text = playerClass.playerName.ToString();//姓名传值
-    //battleManage = GameObject.Find("UI").transform.GetChild(6).gameObject.GetComponent<BattleManage>();//战斗系统
+    
     timeManage = GameObject.Find("World");//时间系统
     playerInfo = GameObject.Find("Team").transform.GetChild(0).gameObject;//UI简介系统
-    //playerInformation = GameObject.Find("PlayerInformation");
-    //enemyInformation = GameObject.Find("EnemyInformation");
-    //itemInfromation = GameObject.Find("ItemInformation");
-    //infromation = GameObject.Find("Information");
+    
     Base();//基础属性
     Equipment();//装备属性
     PlayerInformation();//汇总属性信息显示
@@ -405,19 +410,19 @@ public void PlayerInformation()
         speed = 1;
     }
     //玩家属性值公式//属性 = （基础属性 + 装备属性 + 临时附加属性（技能附加，消耗品附加）） * （1 + 基础附加百分比（道具，特性）+ 装备附加百分比 + 临时附加百分比（技能，消耗品））
-    totalhp = (baseTotalhp + equipmentTotalhp + temporaryTotalhp + buffTotalhp) * (1.0f + baseTotalhpPCT + equipmentTotalhpPCT + temporaryTotalhpPCT + buffTotalhpPCT);
+    totalhp = (baseTotalhp + equipmentTotalhp + temporaryTotalhp + buffTotalhp + growthTotalhp) * (1.0f + baseTotalhpPCT + equipmentTotalhpPCT + temporaryTotalhpPCT + buffTotalhpPCT);
     totalmp = (baseTotalmp + equipmentTotalmp + temporaryTotalmp + buffTotalmp) * (1.0f + baseTotalmpPCT + equipmentTotalmpPCT + temporaryTotalmpPCT + buffTotalmpPCT);
     totalsp = (baseTotalsp + equipmentTotalsp + temporaryTotalsp + buffTotalsp) * (1.0f + baseTotalspPCT + equipmentTotalspPCT + temporaryTotalspPCT + buffTotalspPCT);
-    ad = (baseAd + equipmentAd + temporaryAd + buffAd) * (1.0f + baseAdPCT + equipmentAdPCT + temporaryAdPCT + buffAdPCT);
-    ap = (baseAp + equipmentAp + temporaryAp + buffAp) * (1.0f + baseApPCT + equipmentApPCT + temporaryApPCT + buffApPCT)  ;
-    def = (baseDef + equipmentDef + temporaryDef + buffDef) * (1.0f + baseDefPCT + equipmentDefPCT + temporaryDefPCT + buffDefPCT);
-    mdef = (baseMdef + equipmentMdef + temporaryMdef + buffMdef) * (1.0f + baseMdefPCT + equipmentMdefPCT + temporaryMdefPCT + buffMdefPCT);
-    speed = (baseSpeed + equipmentSpeed + temporarySpeed + buffSpeed) * (1.0f + baseSpeedPCT + equipmentSpeedPCT + temporarySpeedPCT + buffSpeedPCT);
+    ad = (baseAd + equipmentAd + temporaryAd + buffAd + growthAd) * (1.0f + baseAdPCT + equipmentAdPCT + temporaryAdPCT + buffAdPCT);
+    ap = (baseAp + equipmentAp + temporaryAp + buffAp + growthAp) * (1.0f + baseApPCT + equipmentApPCT + temporaryApPCT + buffApPCT)  ;
+    def = (baseDef + equipmentDef + temporaryDef + buffDef + growthDef) * (1.0f + baseDefPCT + equipmentDefPCT + temporaryDefPCT + buffDefPCT);
+    mdef = (baseMdef + equipmentMdef + temporaryMdef + buffMdef + growthMdef) * (1.0f + baseMdefPCT + equipmentMdefPCT + temporaryMdefPCT + buffMdefPCT);
+    speed = (baseSpeed + equipmentSpeed + temporarySpeed + buffSpeed + growthSpeed) * (1.0f + baseSpeedPCT + equipmentSpeedPCT + temporarySpeedPCT + buffSpeedPCT);
     dodge = (baseDodge + equipmentDodge + temporaryDodge + buffDodge); //* (1.0f + baseDodgePCT + equipmentDodgePCT + temporaryDodgePCT + buffDodgePCT);
     crit = (baseCrit + equipmentCrit + temporaryCrit + buffCrit) ;//* (1.0f + baseCritPCT + equipmentCritPCT + temporaryCritPCT + buffCritPCT);
-    iq = (baseIq + equipmentIq + temporaryIq + buffIq) * (1.0f + baseIqPCT + equipmentIqPCT + temporaryIqPCT + buffIqPCT);
-    charm = (baseCharm + equipmentCharm + temporaryCharm + buffCharm) * (1.0f + baseCharmPCT + equipmentCharmPCT + temporaryCharmPCT + buffCharmPCT);
-    critDamge = (baseCritDamge + equipmentCritDamge + temporaryCritDamge + buffCritDamge);//* (1.0f + baseCritDamgePCT + equipmentCritDamgePCT + temporaryCritDamgePCT + buffCritDamgePCT);
+    iq = (baseIq + equipmentIq + temporaryIq + buffIq + growthIq) * (1.0f + baseIqPCT + equipmentIqPCT + temporaryIqPCT + buffIqPCT);
+    charm = (baseCharm + equipmentCharm + temporaryCharm + buffCharm + growthCharm) * (1.0f + baseCharmPCT + equipmentCharmPCT + temporaryCharmPCT + buffCharmPCT);
+    critDamge = (baseCritDamge + equipmentCritDamge + temporaryCritDamge + buffCritDamge + growthCritDamge);//* (1.0f + baseCritDamgePCT + equipmentCritDamgePCT + temporaryCritDamgePCT + buffCritDamgePCT);
     drainLife = (baseDrainLife + equipmentDrainLife + temporaryDrainLife + buffDrainLife); //* (1.0f + baseDrainLifePCT + equipmentDrainLifePCT + temporaryDrainLifePCT + buffDrainLifePCT);
     replyHp = (baseReplyHp + equipmentReplyHp + temporaryReplyHp + buffReplyHp) * (1.0f + baseReplyHpPCT + equipmentReplyHpPCT + temporaryReplyHpPCT + buffReplyHpPCT);
     replyMp = (baseReplyMp + equipmentReplyMp + temporaryReplyMp + buffReplyMp) * (1.0f + baseReplyMpPCT + equipmentReplyMpPCT + temporaryReplyMpPCT + buffReplyMpPCT);  
@@ -471,12 +476,6 @@ public void Base()
     baseReplyHpPCT = playerClass.replyHpPCT;
     baseReplyMpPCT = playerClass.replyMpPCT;
     baseReplySpPCT = playerClass.replySpPCT;
-    
-    
-
-    
-
-
 }
 
 public void Equipment()

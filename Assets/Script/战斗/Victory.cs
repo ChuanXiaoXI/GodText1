@@ -29,15 +29,15 @@ public class Victory : MonoBehaviour
                  {                 
                    if(battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].overSkill)
                    {
-                        battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.baseAd += battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[i].ad;
-                        battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.baseAp += battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[i].ap;
-                        battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.baseTotalhp += battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[i].totalhp;
-                        battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.baseSpeed += battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[i].speed;
-                        battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.baseDef += battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[i].def;
-                        battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.baseMdef += battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[i].mdef;
-                        battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.baseCritDamge += battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[i].critDamge;
-                        battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.baseIq += battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[i].iq;
-                        battleManage. remainPlayerList[i].GetComponent<PlayerBattle>().player.baseCharm += battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[i].charm;
+                        battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.growthAd += battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[i].ad;
+                        battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.growthAp += battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[i].ap;
+                        battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.growthTotalhp += battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[i].totalhp;
+                        battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.growthSpeed += battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[i].speed;
+                        battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.growthDef += battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[i].def;
+                        battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.growthMdef += battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[i].mdef;
+                        battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.growthCritDamge += battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[i].critDamge;
+                        battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.growthIq += battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[i].iq;
+                        battleManage. remainPlayerList[i].GetComponent<PlayerBattle>().player.growthCharm += battleManage.remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[i].charm;
                    }
                  }
                }
