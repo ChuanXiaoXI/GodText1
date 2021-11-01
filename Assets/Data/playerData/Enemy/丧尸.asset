@@ -60,12 +60,12 @@ MonoBehaviour:
   replyMp: 0
   totalsp: 100
   replySp: 3
-  ad: 10
+  ad: 0
   ap: 3
   def: 3
   mdef: 1
   speed: 200
-  dodge: 10
+  dodge: 0
   crit: 20
   iq: 4
   charm: 4
