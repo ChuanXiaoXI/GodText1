@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9298dcf4578514f97913b37df2f544, type: 3}
+  m_Name: "SSS\u7EA7\u566C\u4F53"
+  m_EditorClassIdentifier: 
+  itemName: "\u6B87"
+  itemImage: {fileID: 0}
+  itemColor: {r: 0.9647059, g: 0, b: 0, a: 1}
+  itemHeld: 1
+  itemID: 0
+  equipment: 0
+  equipmentClass: Blood
+  weaponClass: 
+  consumable: 0
+  consumableTime: 0
+  blood: 1
+  singleBlood: 0
+  bloodClass: "\u566C"
+  level: 8
+  story: 0
+  skillList:
+  - {fileID: 11400000, guid: e1181716f90b23145be80391c86dee6c, type: 2}
+  - {fileID: 11400000, guid: 1c490c72fd8e0b94f9bda4375d3a4f75, type: 2}
+  - {fileID: 11400000, guid: 98bf0f16eba870543893777f7c33d385, type: 2}
+  - {fileID: 11400000, guid: cad1e638ed926404982025b3b1a2091e, type: 2}
+  - {fileID: 11400000, guid: df81d8e7c9ec6974ba58d03d385a1071, type: 2}
+  - {fileID: 11400000, guid: 45dbba7ab25bfe743942f04d04c1c8c1, type: 2}
+  - {fileID: 11400000, guid: 76d111a31ad49164b940c865ddecbc3c, type: 2}
+  - {fileID: 11400000, guid: fba5c6323a2553e47a997ea777772ee1, type: 2}
+  - {fileID: 11400000, guid: dce1be0c64bb2d64bb088f84b3266adc, type: 2}
+  - {fileID: 11400000, guid: f95e8fe48a9148d47b5bbc77a7d8209a, type: 2}
+  textFile: {fileID: 0}
+  itemInfo: "\u71B5\uFF0CSSS\u7EA7\u4F20\u627F\uFF0C\u3010\u566C\u4F53\u7CFB\u3011\r\n\u65E0\u5C5E\u6027\u52A0\u6210\r\n\r\n\u6765\u81EA\u4E8E\u221E\u4F4D\u9762\uFF0C\u8FD9\u662F\u4E00\u4E2A\u6781\u5176\u4EE4\u6240\u6709\u751F\u7075\u656C\u754F\u4E14\u65E0\u6CD5\u9762\u5BF9\u7684\u5B58\u5728\r\n\u3010\u751F\u7075\u4EE5\u8D1F\u71B5\u4E3A\u751F\uFF0C\u71B5\u589E\u4EE5\u6709\u5E8F\u4E3A\u98DF\u3011\r\n\r\n\u4F7F\u7528\u540E\u5C06\u4F1A\u5F3A\u5316\u81F3\u6B87\u4F20\u627F\uFF0C\u5E76\u83B7\u5F97\u4EE5\u4E0B\u6280\u80FD\u53CA\u5F3A\u5316\r\n\r\n\u6B87\uFF1A\u3010\u6210\u5F80\u574F\u7A7A\uFF0C\u9053\u4EA6\u65E0\u5B58\u3011\r\n\r\n\u6C42\u751F:\u6700\u5927\u751F\u547D\u503C-70%\uFF0C\u7269\u653B-70%\uFF0C\u6CD5\u5F3A-70%\uFF0C\u7269\u9632-70%\uFF0C\u9B54\u9632-70%\u3002\r\n       
+    \u6218\u6597\u5F00\u59CB\uFF0C\u8FDB\u5165\u786C\u5316\u6A21\u5F0F\uFF0C\u7269\u9632+400%\uFF0C\u9B54\u9632+400%\uFF0C\u65BD\u6CD5\u6982\u7387+30%\uFF0C\u6301\u7EED3\u56DE\u5408\u3002\r\n\r\n\u589E\u6B96:\u6BCF\u56DE\u5408\u7ED3\u675F\u4F1A\u81EA\u6211\u6210\u957F\uFF0C\u589E\u52A0\u81EA\u8EAB10%\u6700\u5927\u751F\u547D\u503C\uFF0C\u7269\u653B\u53CA\u6CD5\u5F3A\uFF0C\u7269\u6297\u53CA\u9B54\u6297\uFF0C\u6700\u591A\u6210\u957F15\u5C42\r\n\r\n\u6355\u98DF:\u6BCF\u6B7B\u4EA1\u4E00\u4E2A\u654C\u4EBA\uFF0C\u589E\u52A0\u81EA\u8EAB5%\u6700\u5927\u751F\u547D\u503C\uFF0C\u7269\u653B\u53CA\u6CD5\u5F3A\uFF0C\u7269\u6297\u53CA\u9B54\u6297\uFF0C\u6301\u7EED\u81F3\u6218\u6597\u7ED3\u675F\r\n\r\n\u81A8\u80C0:\u6D88\u801730\u4F53\u529B\uFF0C\u589E\u52A0\u81EA\u8EAB100%\u7269\u6297\u53CA\u9B54\u6297\uFF0C\u6301\u7EED3\u56DE\u5408\r\n\r\n\u98DF\u661F:\u6BCF\u51FB\u6740\u4E00\u4E2A\u654C\u4EBA\uFF0C\u6C38\u4E45\u589E\u52A0\u81EA\u8EAB\u6700\u5927\u751F\u547D\u503C5\u70B9\uFF0C\u7269\u9632\u53CA\u9B54\u96320.5\u70B9\uFF0C\u65E0\u4E0A\u9650\u3002\u6BCF\u6B7B\u4EA1\u4E00\u4E2A\u654C\u4EBA\uFF0C\u6C38\u4E45\u589E\u52A0\u81EA\u8EAB\u6700\u5927\u751F\u547D\u503C0.5\u70B9\uFF0C\u7269\u9632\u53CA\u9B54\u96320.05\u70B9\uFF0C\u65E0\u4E0A\u9650\u3002\r\n\r\n\u541E\u65F6:\u6BCF\u51FB\u6740\u4E00\u4E2A\u654C\u4EBA\uFF0C\u6C38\u4E45\u589E\u52A0\u81EA\u8EAB\u901F\u5EA60.1\u70B9\uFF0C\u65E0\u4E0A\u9650\u3002\u6BCF\u6B7B\u4EA1\u4E00\u4E2A\u654C\u4EBA\uFF0C\u6C38\u4E45\u589E\u52A0\u81EA\u8EAB\u901F\u5EA60.01\u70B9\uFF0C\u65E0\u4E0A\u9650\u3002\r\n\r\n\u566C\u9053:\u6BCF\u51FB\u6740\u4E00\u4E2A\u654C\u4EBA\uFF0C\u6C38\u4E45\u589E\u52A0\u81EA\u8EAB\u7269\u653B\u53CA\u6CD5\u5F3A1\u70B9\uFF0C\u65E0\u4E0A\u9650\u3002\u6BCF\u6B7B\u4EA1\u4E00\u4E2A\u654C\u4EBA\uFF0C\u6C38\u4E45\u589E\u52A0\u81EA\u8EAB\u7269\u653B\u53CA\u6CD5\u5F3A0.1\u70B9\uFF0C\u65E0\u4E0A\u9650\u3002"
+  hp: 0
+  mp: 0
+  sp: 0
+  replyHp: 0
+  replyMp: 0
+  replySp: 0
+  replyHpPCT: 0
+  replyMpPCT: 0
+  replySpPCT: 0
+  totalhp: 0
+  totalhpPCT: -0.7
+  totalmp: 0
+  totalmpPCT: 0
+  totalsp: 0
+  totalspPCT: 0
+  ad: 0
+  adPCT: -0.7
+  ap: 0
+  apPCT: -0.7
+  def: 0
+  defPCT: -0.7
+  mdef: 0
+  mdefPCT: -0.7
+  speed: 0
+  speedPCT: 0
+  dodge: 0
+  crit: 0
+  iq: 0
+  iqPCT: 0
+  charm: 0
+  charmPCT: 0
+  critDamge: 0
+  drainLife: 0
+  sword: 0
+  gun: 0
+  shieldFactor: 0
+  skillOdds: 0
+  charmSkillBool: 0
+  iqSkillBool: 0
+  apSkillBool: 0
+  doubleDamage: 0
+  baseTotalhp: 0
+  baseDef: 0
+  baseMdef: 0
+  baseAd: 0
+  baseAp: 0
+  baseCharm: 0
+  baseIq: 0
+  baseSpeed: 0
+  basePoint: 0
+  baseCPoint: 0
+  baseSPoint: 0
+  baseSSSPoint: 0

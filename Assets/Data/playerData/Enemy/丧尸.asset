@@ -64,7 +64,7 @@ MonoBehaviour:
   ap: 3
   def: 3
   mdef: 1
-  speed: 5
+  speed: 200
   dodge: 10
   crit: 20
   iq: 4

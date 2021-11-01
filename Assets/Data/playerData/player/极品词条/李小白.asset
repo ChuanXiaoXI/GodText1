@@ -60,7 +60,7 @@ MonoBehaviour:
   replyMp: 0
   totalsp: 1000
   replySp: 1
-  ad: 0
+  ad: 1000
   ap: 1
   def: 3
   mdef: 2
