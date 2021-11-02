@@ -320,7 +320,7 @@ public void DamageNumObjectIsAlive()
 public void SkillNameIsAlive()
 {
     //if(skillNameIsAlive)
-    //{
+   // {
         skillNameObject = Instantiate(skillNameObjectPrefab);
         skillNameObject.GetComponent<SkillName>().skillNameText.text = skillName.ToString();
         skillNameObject.GetComponent<SkillName>().skillNamePoint2 = playerBattleObject.GetComponent<PlayerBattle>().skillNamePoint2;
@@ -735,7 +735,7 @@ public void Fight()//战斗机制
        Target();
        DamageNumObjectIsAlive();
        BuffInfoIsAlive();
-       //SkillNameIsAlive();
+      // SkillNameIsAlive();
 
        Buff();
        Death();
@@ -750,13 +750,7 @@ public void Fight()//战斗机制
         mp += replyMp;
         sp += replySp;
 
-        for (int i = 0; i < buffTime.Count; i++)
-      {
-        if(buffTime[i] != 0)
-        {
-            buffTime[i] -= 1;//持续回合数减1
-        }
-      }
+        
 
         if(!dizzy)
         { 
@@ -3395,8 +3389,7 @@ public void End()
                 {
                     if(skillList[i].singleDamageName)
                     {                          
-                        skillName = skillList[i].skillName;
-                        skillNameIsAlive = true; 
+                        SkillNameIsAlive();
                     }    
                     if(skillList[i].adSkill)
                     {  
@@ -3778,7 +3771,7 @@ public void End()
                      if(skillList[i].ownBuffName)
                     {                          
                         skillName = skillList[i].skillName;
-                       // SkillNameIsAlive();
+                        SkillNameIsAlive();
                         //skillNameIsAlive = true; 
                     }    
                     for (int j = 0; j < buffAndDebuffList.Count; j++)
@@ -3892,6 +3885,13 @@ public void End()
     {
         damageList[i] = 0;
     }
+    for (int i = 0; i < buffTime.Count; i++)
+      {
+        if(buffTime[i] != 0)
+        {
+            buffTime[i] -= 1;//持续回合数减1
+        }
+      }
     
 }
 

@@ -21,6 +21,9 @@ public class BattleManage : MonoBehaviour
     //public int enemyNum;//生成数量
     public  List<GameObject> enemyList = new List<GameObject>() ;
     public List<GameObject> remainEnemyList = new List<GameObject>();
+
+    public GameObject buffPrefabObject;
+    public GameObject buffObject;
    // public int enemyPoint;
     [Header("速度最大值判定")]
     public float maxSpeed;
@@ -151,21 +154,22 @@ public class BattleManage : MonoBehaviour
 {
 
     for (int i = 0; i < remainPlayerList.Count; i++)
-    {   for (int j = 0; j < remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList.Count; j++)
+    {   
+        for (int j = 0; j < remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList.Count; j++)
        {
          if (remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j] != null)
          {
              if(remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].startSkill && remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].teamBuff)//团队buff
              {
                  for (int k = 0; k < remainPlayerList.Count; k++)
-                { 
-                
+                {                
                     if(remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList.Contains(remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff))
                     {
                         for (int l = 0; l < remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList.Count; l++)
                         {
                             if(remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList[l] == remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff)
                             {
+                                //Debug.Log("111");
                                 if(remainPlayerList[k].GetComponent<PlayerBattle>().player.buffObjectList[l].GetComponent<PlayerBattle>().player.iq >= remainPlayerList[i].GetComponent<PlayerBattle>().player.iq)
                                 {
                                     continue;
@@ -176,7 +180,6 @@ public class BattleManage : MonoBehaviour
                                     remainPlayerList[k].GetComponent<PlayerBattle>().player.buffObjectList[l] = remainPlayerList[i];
                                     remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff;
                                     break;
-
                                 }
                             }
                         }
@@ -191,21 +194,17 @@ public class BattleManage : MonoBehaviour
                          remainPlayerList[k].GetComponent<PlayerBattle>().player.buffObjectList[l] = remainPlayerList[i];
                          remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff;
                          
-                        
-                              remainPlayerList[k].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff);   
-                              GameObject buffObject = Instantiate(remainPlayerList[k].GetComponent<PlayerBattle>().player.buffPrefabObject);
-                              buffObject.transform.parent = remainPlayerList[k].GetComponent<PlayerBattle>().player.buffManage.transform;                              
+                        //Debug.Log("111");
+                              remainPlayerList[k].transform.GetChild(8).gameObject.GetComponent<EnemyBuffManager>().buffList.Add(remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff);   
+                              buffObject = Instantiate(buffPrefabObject);
+                              buffObject.transform.parent = remainPlayerList[k].transform.GetChild(8).gameObject.transform;                              
                               buffObject.GetComponent<Buff>().buffHeld = 1;
                               buffObject.GetComponent<Buff>().buff = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff;
                               
                                remainPlayerList[k].GetComponent<PlayerBattle>().player.buffInfoIsAlive = true;
-                               remainPlayerList[k].GetComponent<PlayerBattle>().player.buffInfo = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff.buffString;
+                              remainPlayerList[k].GetComponent<PlayerBattle>().player.buffInfo = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff.buffString;
                               
-                              //buff显示
-
-                              
-                              
-                                                                              
+                              //buff显示                                                                                                                                     
                          break;
                        }
                          
@@ -238,9 +237,9 @@ public class BattleManage : MonoBehaviour
                                     remainEnemyList[k].GetComponent<EnemyUI>().buffObjectList[l] = remainPlayerList[i];
                                     remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff;
 
-                                     remainEnemyList[k].GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Add(remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff);   
-                                     GameObject buffObject = Instantiate(remainEnemyList[k].GetComponent<EnemyUI>().buffPrefabObject);
-                                     buffObject.transform.parent = remainEnemyList[k].GetComponent<EnemyUI>().buffManage.transform;                              
+                                     remainEnemyList[k].transform.GetChild(5).gameObject.GetComponent<EnemyBuffManager>().buffList.Add(remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff);   
+                                     buffObject = Instantiate(buffPrefabObject);
+                                     buffObject.transform.parent = remainEnemyList[k].transform.GetChild(5).gameObject.transform;                              
                                      buffObject.GetComponent<Buff>().buffHeld = 1;
                                      buffObject.GetComponent<Buff>().buff = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff;
                                
@@ -292,7 +291,7 @@ public class BattleManage : MonoBehaviour
                              remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList[l] = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff;
 
                               remainEnemyList[k].GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Add(remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff);   
-                              GameObject buffObject = Instantiate(remainEnemyList[k].GetComponent<EnemyUI>().buffPrefabObject);
+                              buffObject = Instantiate(buffPrefabObject);
                               buffObject.transform.parent = remainEnemyList[k].GetComponent<EnemyUI>().buffManage.transform;                              
                               buffObject.GetComponent<Buff>().buffHeld = 1;
                               buffObject.GetComponent<Buff>().buff = remainPlayerList[i].GetComponent<PlayerBattle>().player.skillList[j].buff;
@@ -435,9 +434,9 @@ public class BattleManage : MonoBehaviour
                          remainEnemyList[k].GetComponent<EnemyUI>().buffObjectList[l] = remainEnemyList[i];
                          remainEnemyList[k].GetComponent<EnemyUI>().buffAndDebuffList[l] = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff;
 
-                              remainEnemyList[k].GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Add(remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff);   
-                              GameObject buffObject = Instantiate(remainEnemyList[k].GetComponent<EnemyUI>().buffPrefabObject);
-                              buffObject.transform.parent = remainEnemyList[k].GetComponent<EnemyUI>().buffManage.transform;                              
+                              remainEnemyList[k].transform.GetChild(5).gameObject.GetComponent<EnemyBuffManager>().buffList.Add(remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff);   
+                              buffObject = Instantiate(buffPrefabObject);
+                              buffObject.transform.parent = remainEnemyList[k].transform.GetChild(5).gameObject.transform;                              
                               buffObject.GetComponent<Buff>().buffHeld = 1;
                               buffObject.GetComponent<Buff>().buff = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff;
                               
@@ -490,9 +489,9 @@ public class BattleManage : MonoBehaviour
                              remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList[l] = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff;
                              
 
-                              remainPlayerList[k].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff);   
-                              GameObject buffObject = Instantiate(remainEnemyList[i].GetComponent<EnemyUI>().buffPrefabObject);
-                              buffObject.transform.parent = remainPlayerList[k].GetComponent<PlayerBattle>().player.buffManage.transform;                              
+                              remainPlayerList[k].transform.GetChild(8).gameObject.GetComponent<EnemyBuffManager>().buffList.Add(remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff);   
+                              buffObject = Instantiate(buffPrefabObject);
+                              buffObject.transform.parent =  remainPlayerList[k].transform.GetChild(8).gameObject.transform;                              
                               buffObject.GetComponent<Buff>().buffHeld = 1;
                               buffObject.GetComponent<Buff>().buff = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff;
                               
@@ -525,7 +524,7 @@ public class BattleManage : MonoBehaviour
                              remainPlayerList[k].GetComponent<PlayerBattle>().player.buffAndDebuffList[l] = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff;
                             
                              remainPlayerList[k].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff);   
-                              GameObject buffObject = Instantiate(remainEnemyList[i].GetComponent<EnemyUI>().buffPrefabObject);
+                              buffObject = Instantiate(buffPrefabObject);
                               buffObject.transform.parent = remainPlayerList[k].GetComponent<PlayerBattle>().player.buffManage.transform;                              
                               buffObject.GetComponent<Buff>().buffHeld = 1;
                               buffObject.GetComponent<Buff>().buff = remainEnemyList[i].GetComponent<EnemyUI>().skillList[j].buff;

@@ -15,7 +15,7 @@ MonoBehaviour:
   buffImage: {fileID: 0}
   buffInfo: "\u95EA\u7B26\uFF1A\u95EA\u907F+10%"
   buffString: "\u95EA\u907F\u63D0\u5347"
-  buffTime: 3
+  buffTime: 2
   skillFactor: 0
   dizzy: 0
   disarm: 0
@@ -56,6 +56,7 @@ MonoBehaviour:
   gun: 0
   shieldFactor: 0
   skillOdds: 0
+  buffSkill: {fileID: 0}
   singleBuff: 0
   teamBuff: 1
   ownBuff: 0

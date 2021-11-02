@@ -67,7 +67,7 @@ MonoBehaviour:
   speed: 5
   dodge: 0
   crit: 5
-  iq: 4
+  iq: 10
   charm: 0
   critDamge: 0
   drainLife: 0

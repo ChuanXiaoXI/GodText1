@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffImage: {fileID: 0}
   buffInfo: 
-  buffString: "\u5929\u8D50"
+  buffString: "\u8865\u5929"
   buffTime: 0
   skillFactor: 0
   dizzy: 0
