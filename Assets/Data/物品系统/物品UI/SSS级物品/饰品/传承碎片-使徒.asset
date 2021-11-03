@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac9298dcf4578514f97913b37df2f544, type: 3}
-  m_Name: "SSS\u7EA7\u9B54\u6CD5"
+  m_Name: "\u4F20\u627F\u788E\u7247-\u4F7F\u5F92"
   m_EditorClassIdentifier: 
   itemName: "\u4F7F\u5F92"
   itemImage: {fileID: 0}
@@ -76,6 +76,7 @@ MonoBehaviour:
   charmSkillBool: 0
   iqSkillBool: 0
   apSkillBool: 0
+  doubleDamage: 0
   baseTotalhp: 0
   baseDef: 0
   baseMdef: 0

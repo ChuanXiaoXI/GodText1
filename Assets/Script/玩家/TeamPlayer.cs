@@ -2315,7 +2315,14 @@ public void Skill()//主动技能
                     {
                         if(buffAndDebuffList[j] == null)
                         {
-                        buffTime[j] = activeSkillList[targetSkillID].buff.buffTime;
+                            if(activeSkillList[targetSkillID].buff.buffTime != 0)
+                            {
+                              buffTime[j] = activeSkillList[targetSkillID].buff.buffTime + 1;
+                            }
+                            if(activeSkillList[targetSkillID].buff.buffTime == 0)
+                            {
+                              buffTime[j] = 0;
+                            }
                         buffObjectList[j] = playerBattleObject;
                         buffAndDebuffList[j] = activeSkillList[targetSkillID].buff;
                         
@@ -2813,7 +2820,15 @@ public void EndSkill()//被动技能
                     {
                         if(buffAndDebuffList[j] == null)
                         {
-                        buffTime[j] = skillList[i].buff.buffTime;
+                            if(skillList[i].buff.buffTime != 0)
+                            {
+                              buffTime[j] = skillList[i].buff.buffTime + 1;
+                            }
+                            if(skillList[i].buff.buffTime == 0)
+                            {
+                              buffTime[j] = 0;
+                            }
+                        
                         buffObjectList[j] = playerBattleObject;
                         buffAndDebuffList[j] = skillList[i].buff;
                       
@@ -3294,9 +3309,15 @@ public void EndSkill()//被动技能
                     {
                         if(buffAndDebuffList[j] == null)
                         {
-
-                        
-                        buffTime[j] = skillList[i].buff.buffTime;
+                            if(skillList[i].buff.buffTime != 0)
+                            {
+                              buffTime[j] = skillList[i].buff.buffTime + 1;
+                            }
+                            if(skillList[i].buff.buffTime == 0)
+                            {
+                              buffTime[j] = 0;
+                            }                       
+                       // buffTime[j] = skillList[i].buff.buffTime;
                         buffObjectList[j] = playerBattleObject;
                         buffAndDebuffList[j] = skillList[i].buff;
                       
@@ -3789,7 +3810,15 @@ public void End()
                     {
                          if(buffAndDebuffList[j] == null)
                          {
-                        buffTime[j] = skillList[i].buff.buffTime;
+                             if(skillList[i].buff.buffTime != 0)
+                            {
+                              buffTime[j] = skillList[i].buff.buffTime + 1;
+                            }
+                            if(skillList[i].buff.buffTime == 0)
+                            {
+                              buffTime[j] = 0;
+                            }
+                        //buffTime[j] = skillList[i].buff.buffTime;
                         buffObjectList[j] = playerBattleObject;
                         buffAndDebuffList[j] = skillList[i].buff;
                        
@@ -3889,8 +3918,11 @@ public void End()
             break;
         }
     }
-
-    hp += (drainLife * damage);
+    if(drainLife * damage >= 0)
+    {
+        hp += (drainLife * damage);
+    }
+    //hp += (drainLife * damage);
     damage = 0;
     for (int i = 0; i < damageList.Count; i++)
     {
@@ -4175,6 +4207,7 @@ public void Death()//死亡机制
                          {
                              if(targetUnit.GetComponent<EnemyUI>().buffAndDebuffList[j] == null)
                              {
+                                
                          targetUnit.GetComponent<EnemyUI>().buffTime[j] = targetUnit.GetComponent<EnemyUI>().skillList[i].buff.buffTime;
                          targetUnit.GetComponent<EnemyUI>().buffObjectList[j] = targetUnit.GetComponent<EnemyUI>().gameObject;
                          targetUnit.GetComponent<EnemyUI>().buffAndDebuffList[j] = targetUnit.GetComponent<EnemyUI>().skillList[i].buff;
@@ -4592,7 +4625,7 @@ public void Death()//死亡机制
                          for (int j = 0; j < targetEnemyUnitList[l].GetComponent<EnemyUI>().buffAndDebuffList.Count; j++)
                          {
                          if(targetEnemyUnitList[l].GetComponent<EnemyUI>().buffAndDebuffList[j] == null)
-                         {
+                         {                          
                          targetEnemyUnitList[l].GetComponent<EnemyUI>().buffTime[j] = targetEnemyUnitList[l].GetComponent<EnemyUI>().skillList[i].buff.buffTime;
                          targetEnemyUnitList[l].GetComponent<EnemyUI>().buffObjectList[j] = targetEnemyUnitList[l].GetComponent<EnemyUI>().gameObject;
                          targetEnemyUnitList[l].GetComponent<EnemyUI>().buffAndDebuffList[j] = targetEnemyUnitList[l].GetComponent<EnemyUI>().skillList[i].buff;
