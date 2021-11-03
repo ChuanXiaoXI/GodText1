@@ -71,7 +71,7 @@ MonoBehaviour:
   charm: 100
   critDamge: 0
   drainLife: 0
-  skillOdds: 0
+  skillOdds: 100
   exp: 0
   level: 0
   totalhpPCT: 0

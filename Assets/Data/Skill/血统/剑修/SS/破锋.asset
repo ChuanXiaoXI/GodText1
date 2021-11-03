@@ -17,6 +17,7 @@ MonoBehaviour:
   activeSkill: 1
   endSkill: 0
   endSkillOdd: 0
+  charmFactor: 0
   turnSkill: 0
   killSkill: 0
   deathSkill: 0

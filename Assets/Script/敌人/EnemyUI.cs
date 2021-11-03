@@ -614,7 +614,7 @@ public void Fight()//战斗机制
        DamageNum();
        BuffInfoIsAlive();
        DamageNumObjectIsAlive();
-       SkillNameIsAlive();
+       //SkillNameIsAlive();
 
        if(actionTime >= 2 && actionTime >= 0.5f)//行动开始
        {
@@ -1651,37 +1651,41 @@ public void Damage()//伤害机制
 
 public void Skill()//主动技能
 {
-
+ List<Skill> activeSkillList = new List<Skill>();
 for (int i = 0; i < skillList.Count; i++)
     { 
+        if(skillList[i].activeSkill)
+      {      
+            activeSkillList.Add(skillList[i]);       
+      }
         int targetSkillID;
-        targetSkillID = Random.Range(0 , skillList.Count);
-        if(skillList[targetSkillID] == null)
+        targetSkillID = Random.Range(0 , activeSkillList.Count);
+        /*if(activeSkillList[targetSkillID] == null)
         {
             continue;
-        }
-        if(skillList[targetSkillID] != null)
+        }*/
+        if(activeSkillList[targetSkillID] != null)
         {
-            if(skillList[targetSkillID].activeSkill)
+            if(activeSkillList[targetSkillID].activeSkill)
             {      
-                 if(mp >= skillList[targetSkillID].mp && sp >= skillList[targetSkillID].sp && hp >= skillList[targetSkillID].hp )
+                 if(mp >= activeSkillList[targetSkillID].mp && sp >= activeSkillList[targetSkillID].sp && hp >= activeSkillList[targetSkillID].hp )
                 {
-                   mp -= skillList[targetSkillID].mp;
-                   sp -= skillList[targetSkillID].sp;
-                   hp -= skillList[targetSkillID].hp;
+                   mp -= activeSkillList[targetSkillID].mp;
+                   sp -= activeSkillList[targetSkillID].sp;
+                   hp -= activeSkillList[targetSkillID].hp;
                    gameObject.transform.DOMove(new Vector3( actionPosition.transform.position.x, actionPosition.transform.position.y, 0f), 0.2f);
                    gameObject.transform.DOMove(new Vector3( originalPosition.transform.position.x, originalPosition.transform.position.y, 0f), 0.8f);//战斗移动
                 
-                   if(skillList[targetSkillID].singleDamage)//单体伤害技能
+                   if(activeSkillList[targetSkillID].singleDamage)//单体伤害技能
                    {
-                        if(skillList[targetSkillID].singleDamageName)
+                        if(activeSkillList[targetSkillID].singleDamageName)
                     {                          
-                        skillName = skillList[targetSkillID].skillName;
+                        skillName = activeSkillList[targetSkillID].skillName;
                         skillNameIsAlive = true; 
                     }    
-                    if(skillList[targetSkillID].adSkill)
+                    if(activeSkillList[targetSkillID].adSkill)
                     {  
-                        float damage = ((ad - targetEnemyUnit.GetComponent<PlayerBattle>().player.def) * (skillList[targetSkillID].adSkillFactor));
+                        float damage = ((ad - targetEnemyUnit.GetComponent<PlayerBattle>().player.def) * (activeSkillList[targetSkillID].adSkillFactor));
                          if(damage <= 0 )
                         {
                           damage = 1;
@@ -1705,9 +1709,9 @@ for (int i = 0; i < skillList.Count; i++)
     
                        break;
                     }
-                    if(skillList[targetSkillID].hpSkill)
+                    if(activeSkillList[targetSkillID].hpSkill)
                     {  
-                        float damage = ((totalhp - targetEnemyUnit.GetComponent<PlayerBattle>().player.def) * skillList[targetSkillID].hpSkillFactor);
+                        float damage = ((totalhp - targetEnemyUnit.GetComponent<PlayerBattle>().player.def) * activeSkillList[targetSkillID].hpSkillFactor);
                          if(damage <= 0 )
                         {
                           damage = 1;
@@ -1731,9 +1735,9 @@ for (int i = 0; i < skillList.Count; i++)
     
                        break;
                     }
-                    if(skillList[targetSkillID].apSkill)
+                    if(activeSkillList[targetSkillID].apSkill)
                     {  
-                       float damage = ((ap - targetEnemyUnit.GetComponent<PlayerBattle>().player.mdef) * skillList[targetSkillID].apSkillFactor);
+                       float damage = ((ap - targetEnemyUnit.GetComponent<PlayerBattle>().player.mdef) * activeSkillList[targetSkillID].apSkillFactor);
                          if(damage <= 0 )
                         {
                           damage = 1;
@@ -1756,9 +1760,9 @@ for (int i = 0; i < skillList.Count; i++)
                        }
                        break; 
                     }
-                    if(skillList[targetSkillID].iqSkill)
+                    if(activeSkillList[targetSkillID].iqSkill)
                     {  
-                       float damage = ((iq * skillList[targetSkillID].iqSkillFactor) - (targetEnemyUnit.GetComponent<PlayerBattle>().player.mdef * skillList[targetSkillID].iqSkillFactor));
+                       float damage = ((iq * activeSkillList[targetSkillID].iqSkillFactor) - (targetEnemyUnit.GetComponent<PlayerBattle>().player.mdef * activeSkillList[targetSkillID].iqSkillFactor));
                          if(damage <= 0 )
                         {
                           damage = 1;
@@ -1782,18 +1786,18 @@ for (int i = 0; i < skillList.Count; i++)
                        break; 
                     }
                    }
-                   if(skillList[targetSkillID].teamDamage)//群体伤害技能
+                   if(activeSkillList[targetSkillID].teamDamage)//群体伤害技能
                    {
-                        if(skillList[targetSkillID].teamDamageName)
+                        if(activeSkillList[targetSkillID].teamDamageName)
                     {                          
-                       skillName = skillList[targetSkillID].skillName;
+                       skillName = activeSkillList[targetSkillID].skillName;
                         skillNameIsAlive = true; 
                     }    
-                    if(skillList[targetSkillID].adSkill)
+                    if(activeSkillList[targetSkillID].adSkill)
                     {  
                        for (int j = 0; j < targetEnemyUnitList.Count; j++)
                        {  
-                           float damage = ((ad * skillList[targetSkillID].adSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[targetSkillID].adSkillFactor));
+                           float damage = ((ad * activeSkillList[targetSkillID].adSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * activeSkillList[targetSkillID].adSkillFactor));
                           if(damage <= 0 )
                          {
                           damage = 1;
@@ -1820,11 +1824,11 @@ for (int i = 0; i < skillList.Count; i++)
                        }
                        break;
                     }
-                    if(skillList[targetSkillID].hpSkill)
+                    if(activeSkillList[targetSkillID].hpSkill)
                     {  
                        for (int j = 0; j < targetEnemyUnitList.Count; j++)
                        {  
-                            float damage = ((totalhp * skillList[targetSkillID].hpSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * skillList[targetSkillID].hpSkillFactor));
+                            float damage = ((totalhp * activeSkillList[targetSkillID].hpSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.def * activeSkillList[targetSkillID].hpSkillFactor));
                             if(damage <= 0 )
                            {
                              damage = 1;
@@ -1851,11 +1855,11 @@ for (int i = 0; i < skillList.Count; i++)
                        }
                        break;
                     }
-                    if(skillList[targetSkillID].apSkill)
+                    if(activeSkillList[targetSkillID].apSkill)
                     {
                         for (int j = 0; j < targetEnemyUnitList.Count; j++)
                        {   
-                            float damage = ((ap * skillList[targetSkillID].apSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[targetSkillID].apSkillFactor));
+                            float damage = ((ap * activeSkillList[targetSkillID].apSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * activeSkillList[targetSkillID].apSkillFactor));
                             if(damage <= 0 )
                            {
                              damage = 1;
@@ -1882,11 +1886,11 @@ for (int i = 0; i < skillList.Count; i++)
                        }
                        break;
                     }
-                    if(skillList[targetSkillID].iqSkill)
+                    if(activeSkillList[targetSkillID].iqSkill)
                     {
                         for (int j = 0; j < targetEnemyUnitList.Count; j++)
                        {     
-                           float damage = ((iq * skillList[targetSkillID].iqSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * skillList[targetSkillID].iqSkillFactor));
+                           float damage = ((iq * activeSkillList[targetSkillID].iqSkillFactor) - (targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.mdef * activeSkillList[targetSkillID].iqSkillFactor));
                             if(damage <= 0 )
                            {
                              damage = 1;
@@ -1913,11 +1917,11 @@ for (int i = 0; i < skillList.Count; i++)
                        break;
                     }
                    }
-                   if(skillList[targetSkillID].singleDebuff && !skillList[targetSkillID].dizzy)//单体debuff
+                   if(activeSkillList[targetSkillID].singleDebuff && !activeSkillList[targetSkillID].dizzy)//单体debuff
                    {
-                        if(skillList[targetSkillID].singleDebuffName)
+                        if(activeSkillList[targetSkillID].singleDebuffName)
                     {                          
-                       skillName = skillList[targetSkillID].skillName;
+                       skillName = activeSkillList[targetSkillID].skillName;
                         skillNameIsAlive = true; 
                     }    
                          for (int j = 0; j < targetEnemyUnit.GetComponent<PlayerBattle>().player.buffAndDebuffList.Count ; j++)
@@ -1925,28 +1929,28 @@ for (int i = 0; i < skillList.Count; i++)
                              if(targetEnemyUnit.GetComponent<PlayerBattle>().player.buffAndDebuffList[j] == null)
                              {
                               targetEnemyUnit.GetComponent<PlayerBattle>().player.buffObjectList[j] = gameObject;
-                              targetEnemyUnit.GetComponent<PlayerBattle>().player.buffTime[j] = skillList[targetSkillID].buff.buffTime;
-                              targetEnemyUnit.GetComponent<PlayerBattle>().player.buffAndDebuffList[j] = skillList[targetSkillID].buff;
+                              targetEnemyUnit.GetComponent<PlayerBattle>().player.buffTime[j] = activeSkillList[targetSkillID].buff.buffTime;
+                              targetEnemyUnit.GetComponent<PlayerBattle>().player.buffAndDebuffList[j] = activeSkillList[targetSkillID].buff;
                               
                               
-                              if(targetEnemyUnit.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[targetSkillID].buff))
+                              if(targetEnemyUnit.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(activeSkillList[targetSkillID].buff))
                               {
                                   for(int l = 0; l < targetEnemyUnit.GetComponent<PlayerBattle>().player.buffManage.transform.childCount ; l++)
                                   {
-                                      if(targetEnemyUnit.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buff == skillList[targetSkillID].buff)
+                                      if(targetEnemyUnit.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buff == activeSkillList[targetSkillID].buff)
                                       {
                                           targetEnemyUnit.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buffHeld += 1;
                                           break;
                                       }
                                   }
                               }
-                              if(!targetEnemyUnit.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[targetSkillID].buff))
+                              if(!targetEnemyUnit.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(activeSkillList[targetSkillID].buff))
                               {
-                              targetEnemyUnit.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(skillList[targetSkillID].buff);   
+                              targetEnemyUnit.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(activeSkillList[targetSkillID].buff);   
                               GameObject buffObject = Instantiate(buffPrefabObject);
                               buffObject.transform.parent = targetEnemyUnit.GetComponent<PlayerBattle>().player.buffManage.transform;                              
                               buffObject.GetComponent<Buff>().buffHeld = 1;
-                              buffObject.GetComponent<Buff>().buff = skillList[targetSkillID].buff;
+                              buffObject.GetComponent<Buff>().buff = activeSkillList[targetSkillID].buff;
                               }
                               
                               
@@ -1956,11 +1960,11 @@ for (int i = 0; i < skillList.Count; i++)
                          }
                      break;
                    }
-                   if(skillList[targetSkillID].singleDebuff && skillList[targetSkillID].dizzy)//单体眩晕
+                   if(activeSkillList[targetSkillID].singleDebuff && activeSkillList[targetSkillID].dizzy)//单体眩晕
                    {
-                        if(skillList[targetSkillID].singleDebuffName)
+                        if(activeSkillList[targetSkillID].singleDebuffName)
                     {                          
-                       skillName = skillList[targetSkillID].skillName;
+                       skillName = activeSkillList[targetSkillID].skillName;
                         skillNameIsAlive = true; 
                     }    
                     if(charm >= targetEnemyUnit.GetComponent<PlayerBattle>().player.charm)
@@ -1969,16 +1973,16 @@ for (int i = 0; i < skillList.Count; i++)
                        {
                            if(targetEnemyUnit.GetComponent<PlayerBattle>().player.buffAndDebuffList[j] == null)
                            {
-                            targetEnemyUnit.GetComponent<PlayerBattle>().player.buffTime[j] = skillList[targetSkillID].buff.buffTime;
+                            targetEnemyUnit.GetComponent<PlayerBattle>().player.buffTime[j] = activeSkillList[targetSkillID].buff.buffTime;
                             targetEnemyUnit.GetComponent<PlayerBattle>().player.buffObjectList[j] = gameObject;
-                            targetEnemyUnit.GetComponent<PlayerBattle>().player.buffAndDebuffList[j] = skillList[targetSkillID].buff;
+                            targetEnemyUnit.GetComponent<PlayerBattle>().player.buffAndDebuffList[j] = activeSkillList[targetSkillID].buff;
                             
                            
-                            if(targetEnemyUnit.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[targetSkillID].buff))
+                            if(targetEnemyUnit.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(activeSkillList[targetSkillID].buff))
                               {
                                   for(int l = 0; l < targetEnemyUnit.GetComponent<PlayerBattle>().player.buffManage.transform.childCount ; l++)
                                   {
-                                      if(targetEnemyUnit.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buff == skillList[targetSkillID].buff)
+                                      if(targetEnemyUnit.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buff == activeSkillList[targetSkillID].buff)
                                       {
                                           targetEnemyUnit.GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buffHeld += 1;
                                           break;
@@ -1986,13 +1990,13 @@ for (int i = 0; i < skillList.Count; i++)
                                   }
                               }
                             
-                             if(!targetEnemyUnit.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[targetSkillID].buff))
+                             if(!targetEnemyUnit.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(activeSkillList[targetSkillID].buff))
                               {
-                              targetEnemyUnit.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(skillList[targetSkillID].buff);   
+                              targetEnemyUnit.GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(activeSkillList[targetSkillID].buff);   
                               GameObject buffObject = Instantiate(buffPrefabObject);
                               buffObject.transform.parent = targetEnemyUnit.GetComponent<PlayerBattle>().player.buffManage.transform;                              
                               buffObject.GetComponent<Buff>().buffHeld = 1;
-                              buffObject.GetComponent<Buff>().buff = skillList[targetSkillID].buff;
+                              buffObject.GetComponent<Buff>().buff = activeSkillList[targetSkillID].buff;
                               }
                               
                               
@@ -2007,11 +2011,11 @@ for (int i = 0; i < skillList.Count; i++)
                       break;
                     }
                    }
-                   if(skillList[targetSkillID].teamDebuff && !skillList[targetSkillID].dizzy)//群体debuff
+                   if(activeSkillList[targetSkillID].teamDebuff && !activeSkillList[targetSkillID].dizzy)//群体debuff
                    {
-                        if(skillList[targetSkillID].teamDebuffName)
+                        if(activeSkillList[targetSkillID].teamDebuffName)
                     {                          
-                       skillName = skillList[targetSkillID].skillName;
+                       skillName = activeSkillList[targetSkillID].skillName;
                         skillNameIsAlive = true; 
                     }    
                     for (int j = 0; j < targetEnemyUnitList.Count; j++)
@@ -2022,29 +2026,29 @@ for (int i = 0; i < skillList.Count; i++)
                             {
                                 if(targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffAndDebuffList == null)
                                 {
-                                    targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffTime[k] = skillList[targetSkillID].buff.buffTime;
+                                    targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffTime[k] = activeSkillList[targetSkillID].buff.buffTime;
                                     targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffObjectList[k] = gameObject;
-                                    targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffAndDebuffList[k] = skillList[targetSkillID].buff;
+                                    targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffAndDebuffList[k] = activeSkillList[targetSkillID].buff;
                                     
                                     
-                                     if(targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[targetSkillID].buff))
+                                     if(targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(activeSkillList[targetSkillID].buff))
                               {
                                   for(int l = 0; l < targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.childCount ; l++)
                                   {
-                                      if(targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buff == skillList[targetSkillID].buff)
+                                      if(targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buff == activeSkillList[targetSkillID].buff)
                                       {
                                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buffHeld += 1;
                                           break;
                                       }
                                   }
                               }
-                                      if(!targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[targetSkillID].buff))
+                                      if(!targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(activeSkillList[targetSkillID].buff))
                               {
-                              targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(skillList[targetSkillID].buff);   
+                              targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(activeSkillList[targetSkillID].buff);   
                               GameObject buffObject = Instantiate(buffPrefabObject);
                               buffObject.transform.parent = targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform;                              
                               buffObject.GetComponent<Buff>().buffHeld = 1;
-                              buffObject.GetComponent<Buff>().buff = skillList[targetSkillID].buff;
+                              buffObject.GetComponent<Buff>().buff = activeSkillList[targetSkillID].buff;
                               }
                              
                               //buff显示
@@ -2056,11 +2060,11 @@ for (int i = 0; i < skillList.Count; i++)
                     break;
 
                    }
-                   if(skillList[targetSkillID].teamDebuff && skillList[targetSkillID].dizzy)//群体眩晕
+                   if(activeSkillList[targetSkillID].teamDebuff && activeSkillList[targetSkillID].dizzy)//群体眩晕
                    {
-                         if(skillList[targetSkillID].teamDebuffName)
+                         if(activeSkillList[targetSkillID].teamDebuffName)
                     {                          
-                       skillName = skillList[targetSkillID].skillName;
+                       skillName = activeSkillList[targetSkillID].skillName;
                         skillNameIsAlive = true; 
                     }    
                     for (int j = 0; j < targetEnemyUnitList.Count; j++)
@@ -2073,29 +2077,29 @@ for (int i = 0; i < skillList.Count; i++)
                                  { 
                                      if(targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffAndDebuffList == null)
                                     {
-                                       targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffTime[k] = skillList[targetSkillID].buff.buffTime;
+                                       targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffTime[k] = activeSkillList[targetSkillID].buff.buffTime;
                                        targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffObjectList[k] = gameObject;
-                                       targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffAndDebuffList[k] = skillList[targetSkillID].buff;
+                                       targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffAndDebuffList[k] = activeSkillList[targetSkillID].buff;
                                       
                                    
-                                       if(targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[targetSkillID].buff))
+                                       if(targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(activeSkillList[targetSkillID].buff))
                               {
                                   for(int l = 0; l < targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.childCount ; l++)
                                   {
-                                      if(targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buff == skillList[targetSkillID].buff)
+                                      if(targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buff == activeSkillList[targetSkillID].buff)
                                       {
                                           targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform.GetChild(l).GetComponent<Buff>().buffHeld += 1;
                                           break;
                                       }
                                   }
                               }
-                                      if(!targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[targetSkillID].buff))
+                                      if(!targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(activeSkillList[targetSkillID].buff))
                               {
-                              targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(skillList[targetSkillID].buff);   
+                              targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.GetComponent<EnemyBuffManager>().buffList.Add(activeSkillList[targetSkillID].buff);   
                               GameObject buffObject = Instantiate(buffPrefabObject);
                               buffObject.transform.parent = targetEnemyUnitList[j].GetComponent<PlayerBattle>().player.buffManage.transform;                              
                               buffObject.GetComponent<Buff>().buffHeld = 1;
-                              buffObject.GetComponent<Buff>().buff = skillList[targetSkillID].buff;
+                              buffObject.GetComponent<Buff>().buff = activeSkillList[targetSkillID].buff;
                               }
                              
                               //buff显示
@@ -2112,43 +2116,43 @@ for (int i = 0; i < skillList.Count; i++)
                     break;
 
                    }
-                   if(skillList[targetSkillID].singleBuff)//队友buff
+                   if(activeSkillList[targetSkillID].singleBuff)//队友buff
                    {
-                         if(skillList[targetSkillID].singleBuffName)
+                         if(activeSkillList[targetSkillID].singleBuffName)
                     {                          
-                       skillName = skillList[targetSkillID].skillName;
+                       skillName = activeSkillList[targetSkillID].skillName;
                         skillNameIsAlive = true; 
                     }    
                     for (int j = 0; j < targetPlayerUnit.GetComponent<EnemyUI>().buffAndDebuffList.Count; j++)
                     {
                         if(targetPlayerUnit.GetComponent<EnemyUI>().buffAndDebuffList[j] == null)
                         {
-                           targetPlayerUnit.GetComponent<EnemyUI>().buffTime[j] = skillList[targetSkillID].buff.buffTime;
+                           targetPlayerUnit.GetComponent<EnemyUI>().buffTime[j] = activeSkillList[targetSkillID].buff.buffTime;
                            targetPlayerUnit.GetComponent<EnemyUI>().buffObjectList[j] = gameObject;
-                           targetPlayerUnit.GetComponent<EnemyUI>().buffAndDebuffList[j] = skillList[targetSkillID].buff;
+                           targetPlayerUnit.GetComponent<EnemyUI>().buffAndDebuffList[j] = activeSkillList[targetSkillID].buff;
                            
                               
-                             if(targetPlayerUnit.GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[targetSkillID].buff))
+                             if(targetPlayerUnit.GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(activeSkillList[targetSkillID].buff))
                               {
                                   for(int k = 0; k < targetPlayerUnit.GetComponent<EnemyUI>().buffManage.transform.childCount ; k++)
                                   {
-                                      if(targetPlayerUnit.GetComponent<EnemyUI>().buffManage.transform.GetChild(k).GetComponent<Buff>().buff == skillList[targetSkillID].buff)
+                                      if(targetPlayerUnit.GetComponent<EnemyUI>().buffManage.transform.GetChild(k).GetComponent<Buff>().buff == activeSkillList[targetSkillID].buff)
                                       {
                                           targetPlayerUnit.GetComponent<EnemyUI>().buffManage.transform.GetChild(k).GetComponent<Buff>().buffHeld += 1;
                                           break;
                                       }
                                   }
                               }
-                           if(!targetPlayerUnit.GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[targetSkillID].buff))
+                           if(!targetPlayerUnit.GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(activeSkillList[targetSkillID].buff))
                               {
-                              targetPlayerUnit.GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Add(skillList[targetSkillID].buff);   
+                              targetPlayerUnit.GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Add(activeSkillList[targetSkillID].buff);   
                               GameObject buffObject = Instantiate(buffPrefabObject);
                               buffObject.transform.parent = targetPlayerUnit.GetComponent<EnemyUI>().buffManage.transform;                              
                               buffObject.GetComponent<Buff>().buffHeld = 1;
-                              buffObject.GetComponent<Buff>().buff = skillList[targetSkillID].buff;
+                              buffObject.GetComponent<Buff>().buff = activeSkillList[targetSkillID].buff;
                               }
                               targetPlayerUnit.GetComponent<EnemyUI>().buffInfoIsAlive = true;
-                              targetPlayerUnit.GetComponent<EnemyUI>().buffInfo = skillList[targetSkillID].buff.buffString;
+                              targetPlayerUnit.GetComponent<EnemyUI>().buffInfo = activeSkillList[targetSkillID].buff.buffString;
                               //buff显示
                            break;
                         }
@@ -2156,55 +2160,55 @@ for (int i = 0; i < skillList.Count; i++)
                     break;
                    
                    }
-                   if(skillList[targetSkillID].ownBuff)//单体buff
+                   if(activeSkillList[targetSkillID].ownBuff)//单体buff
                    {
-                       if(skillList[targetSkillID].ownBuffName)
+                       if(activeSkillList[targetSkillID].ownBuffName)
                     {                          
-                       skillName = skillList[targetSkillID].skillName;
+                       skillName = activeSkillList[targetSkillID].skillName;
                         skillNameIsAlive = true; 
                     }    
                     for (int j = 0; j < buffAndDebuffList.Count; j++)
                     {
                         if(buffAndDebuffList[j] == null)
                         {
-                        buffTime[j] = skillList[targetSkillID].buff.buffTime;
+                        buffTime[j] = activeSkillList[targetSkillID].buff.buffTime;
                         buffObjectList[j] = gameObject;
-                        buffAndDebuffList[j] = skillList[targetSkillID].buff;
+                        buffAndDebuffList[j] = activeSkillList[targetSkillID].buff;
 
 
 
-                         if(gameObject.GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[targetSkillID].buff))
+                         if(gameObject.GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(activeSkillList[targetSkillID].buff))
                               {
                                   for(int k = 0; k < gameObject.GetComponent<EnemyUI>().buffManage.transform.childCount ; k++)
                                   {
-                                      if(gameObject.GetComponent<EnemyUI>().buffManage.transform.GetChild(k).GetComponent<Buff>().buff == skillList[targetSkillID].buff)
+                                      if(gameObject.GetComponent<EnemyUI>().buffManage.transform.GetChild(k).GetComponent<Buff>().buff == activeSkillList[targetSkillID].buff)
                                       {
                                           gameObject.GetComponent<EnemyUI>().buffManage.transform.GetChild(k).GetComponent<Buff>().buffHeld += 1;
                                           break;
                                       }
                                   }
                               }
-                        if(!gameObject.GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[targetSkillID].buff))
+                        if(!gameObject.GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(activeSkillList[targetSkillID].buff))
                               {
-                              gameObject.GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Add(skillList[targetSkillID].buff);   
+                              gameObject.GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Add(activeSkillList[targetSkillID].buff);   
                               GameObject buffObject = Instantiate(buffPrefabObject);
                               buffObject.transform.parent = gameObject.GetComponent<EnemyUI>().buffManage.transform;                              
                               buffObject.GetComponent<Buff>().buffHeld = 1;
-                              buffObject.GetComponent<Buff>().buff = skillList[targetSkillID].buff;
+                              buffObject.GetComponent<Buff>().buff = activeSkillList[targetSkillID].buff;
                               }
                              buffInfoIsAlive = true;
-                             buffInfo = skillList[targetSkillID].buff.buffString;
+                             buffInfo = activeSkillList[targetSkillID].buff.buffString;
                               //buff显示
                         break;
                         }
                     }
                     break;
                    }
-                   if(skillList[targetSkillID].teamBuff)//团队buff
+                   if(activeSkillList[targetSkillID].teamBuff)//团队buff
                    {
-                        if(skillList[targetSkillID].teamBuffName)
+                        if(activeSkillList[targetSkillID].teamBuffName)
                     {                          
-                       skillName = skillList[targetSkillID].skillName;
+                       skillName = activeSkillList[targetSkillID].skillName;
                         skillNameIsAlive = true; 
                     }    
                     for (int j = 0; j < targetPlayerUnitList.Count; j++)
@@ -2215,33 +2219,33 @@ for (int i = 0; i < skillList.Count; i++)
                             {
                                 if(targetPlayerUnitList[j].GetComponent<EnemyUI>().buffAndDebuffList[k] == null)
                                 {
-                                    targetPlayerUnitList[j].GetComponent<EnemyUI>().buffTime[k] = skillList[targetSkillID].buff.buffTime;
+                                    targetPlayerUnitList[j].GetComponent<EnemyUI>().buffTime[k] = activeSkillList[targetSkillID].buff.buffTime;
                                     targetPlayerUnitList[j].GetComponent<EnemyUI>().buffObjectList[k] = gameObject;
-                                    targetPlayerUnitList[j].GetComponent<EnemyUI>().buffAndDebuffList[k] = skillList[targetSkillID].buff;
+                                    targetPlayerUnitList[j].GetComponent<EnemyUI>().buffAndDebuffList[k] = activeSkillList[targetSkillID].buff;
                                     
                                     
                                      
-                                 if(targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[targetSkillID].buff))
+                                 if(targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(activeSkillList[targetSkillID].buff))
                               {
                                   for(int l = 0; l < targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.transform.childCount ; l++)
                                   {
-                                      if(targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.transform.GetChild(l).GetComponent<Buff>().buff == skillList[targetSkillID].buff)
+                                      if(targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.transform.GetChild(l).GetComponent<Buff>().buff == activeSkillList[targetSkillID].buff)
                                       {
                                           targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.transform.GetChild(l).GetComponent<Buff>().buffHeld += 1;
                                           break;
                                       }
                                   }
                               }
-                                    if(!targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(skillList[targetSkillID].buff))
+                                    if(!targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Contains(activeSkillList[targetSkillID].buff))
                               {
-                              targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Add(skillList[targetSkillID].buff);   
+                              targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.GetComponent<EnemyBuffManager>().buffList.Add(activeSkillList[targetSkillID].buff);   
                               GameObject buffObject = Instantiate(buffPrefabObject);
                               buffObject.transform.parent = targetPlayerUnitList[j].GetComponent<EnemyUI>().buffManage.transform;                              
                               buffObject.GetComponent<Buff>().buffHeld = 1;
-                              buffObject.GetComponent<Buff>().buff = skillList[targetSkillID].buff;
+                              buffObject.GetComponent<Buff>().buff = activeSkillList[targetSkillID].buff;
                               }
                               targetPlayerUnitList[j].GetComponent<EnemyUI>().buffInfoIsAlive = true;
-                              targetPlayerUnitList[j].GetComponent<EnemyUI>().buffInfo = skillList[targetSkillID].buff.buffString;
+                              targetPlayerUnitList[j].GetComponent<EnemyUI>().buffInfo = activeSkillList[targetSkillID].buff.buffString;
                               
                               //buff显示
                                     break;
@@ -2253,7 +2257,7 @@ for (int i = 0; i < skillList.Count; i++)
                    }
                 
                 }
-                  if(mp < skillList[targetSkillID].mp || sp < skillList[targetSkillID].sp || hp < skillList[targetSkillID].hp)
+                  if(mp < activeSkillList[targetSkillID].mp || sp < activeSkillList[targetSkillID].sp || hp < activeSkillList[targetSkillID].hp)
                  {
                  Attack();
                  break;
