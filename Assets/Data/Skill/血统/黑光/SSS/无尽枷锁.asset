@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d23ebe591b350141b1cc6443521fb06, type: 3}
-  m_Name: "\u6267\u5FF5"
+  m_Name: "\u65E0\u5C3D\u67B7\u9501"
   m_EditorClassIdentifier: 
-  skillName: "\u6267\u5FF5"
+  skillName: "\u65E0\u5C3D\u67B7\u9501"
   startSkill: 0
   activeSkill: 0
   endSkill: 0
@@ -43,12 +43,12 @@ MonoBehaviour:
   singleDebuff: 0
   teamDebuff: 0
   growthSkill: 1
-  ad: 0.1
+  ad: 0.02
   ap: 0
-  totalhp: 0
-  speed: 0
-  def: 0
-  mdef: 0
+  totalhp: 1
+  speed: 0.01
+  def: 0.002
+  mdef: 0.002
   critDamge: 0
   iq: 0
   charm: 0
