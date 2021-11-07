@@ -17,6 +17,7 @@ MonoBehaviour:
   activeSkill: 1
   endSkill: 0
   endSkillOdd: 0
+  charmFactor: 0
   turnSkill: 0
   killSkill: 0
   deathSkill: 0
@@ -30,7 +31,7 @@ MonoBehaviour:
   hpSkill: 0
   hpSkillFactor: 0
   mp: 30
-  sp: 0
+  sp: 15
   hp: 0
   dizzy: 0
   disarm: 0

@@ -18,10 +18,10 @@ MonoBehaviour:
   endSkill: 0
   endSkillOdd: 0
   charmFactor: 0
-  turnSkill: 0
+  turnSkill: 1
   killSkill: 0
   deathSkill: 0
-  overSkill: 1
+  overSkill: 0
   adSkill: 0
   adSkillFactor: 0
   apSkill: 0
