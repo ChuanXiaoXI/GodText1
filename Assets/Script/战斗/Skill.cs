@@ -46,6 +46,7 @@ public float hpSkillFactor;
 
 
 
+
 [Header("消耗魔量/体力/生命（可多选）（固定数值，无百分比）")]
  public float mp;
  public float sp;

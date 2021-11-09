@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "\u771F\u8EABbuff"
   m_EditorClassIdentifier: 
   buffImage: {fileID: 0}
-  buffInfo: "\u771F\u8EAB\uFF1A\u7269\u653B+70\u548C\u901F\u5EA6+35"
+  buffInfo: "\u771F\u8EAB\uFF1A\u7269\u653B+100\u548C\u901F\u5EA6+30"
   buffString: "\u7269\u653B\u63D0\u5347\uFF1B\u901F\u5EA6\u63D0\u5347"
   buffTime: 2
   skillFactor: 0
@@ -34,7 +34,7 @@ MonoBehaviour:
   totalmpPCT: 0
   totalsp: 0
   totalspPCT: 0
-  ad: 70
+  ad: 100
   adPCT: 0
   ap: 0
   apPCT: 0
@@ -42,7 +42,7 @@ MonoBehaviour:
   defPCT: 0
   mdef: 0
   mdefPCT: 0
-  speed: 35
+  speed: 30
   speedPCT: 0
   dodge: 0
   crit: 0

@@ -30,7 +30,7 @@ MonoBehaviour:
   skillList:
   - {fileID: 11400000, guid: 25679fb3ff70878409201449301a67da, type: 2}
   textFile: {fileID: 0}
-  itemInfo: "\u4F20\u627F\u788E\u7247-\u51C0\u5FC3\uFF0CA\u7EA7\u9970\u54C1\r\n\u7269\u653B+80\r\n\r\n\u51C0\u5FC3:\u6BCF\u56DE\u5408\u7ED3\u675F\u589E\u52A0\u81EA\u8EAB12\u7269\u653B\uFF0C\u65E0\u4E0A\u9650"
+  itemInfo: "\u4F20\u627F\u788E\u7247-\u51C0\u5FC3\uFF0CA\u7EA7\u9970\u54C1\r\n\r\n\u51C0\u5FC3:\u6BCF\u56DE\u5408\u7ED3\u675F\u589E\u52A0\u81EA\u8EAB12\u7269\u653B\uFF0C\u65E0\u4E0A\u9650"
   hp: 0
   mp: 0
   sp: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
   totalmpPCT: 0
   totalsp: 0
   totalspPCT: 0
-  ad: 80
+  ad: 0
   adPCT: 0
   ap: 0
   apPCT: 0

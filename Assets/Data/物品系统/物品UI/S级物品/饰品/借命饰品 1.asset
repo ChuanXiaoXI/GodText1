@@ -25,7 +25,7 @@ MonoBehaviour:
   blood: 0
   singleBlood: 0
   bloodClass: 
-  level: 8
+  level: 6
   story: 0
   skillList:
   - {fileID: 11400000, guid: 904cd12df1a3b0b429177de16368b15b, type: 2}

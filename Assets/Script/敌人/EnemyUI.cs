@@ -1422,6 +1422,7 @@ public void CharmSkill()
             if(equipmentList[i].charmSkillBool == true)
             {
                 charmSkillBool = true;
+                break;
             }
         }
     }
@@ -1433,6 +1434,7 @@ public void CharmSkill()
             if(equipmentList[i].apSkillBool == true)
             {
                 apSkillBool = true;
+                break;
             }
         }
     }
@@ -1444,6 +1446,7 @@ public void CharmSkill()
             if(equipmentList[i].iqSkillBool == true)
             {
                 iqSkillBool = true;
+                break;
             }
         }
     }
@@ -1455,6 +1458,7 @@ public void CharmSkill()
             if(equipmentList[i].doubleDamage == true)
             {
                 doubleDamage = true;
+                break;
             }
         }
     }
