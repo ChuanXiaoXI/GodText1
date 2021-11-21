@@ -30,7 +30,7 @@ MonoBehaviour:
   skillList:
   - {fileID: 11400000, guid: 07d9950b0501ea443bba2e84ac72a58a, type: 2}
   textFile: {fileID: 0}
-  itemInfo: "\u4F20\u627F\u788E\u7247-\u91D1\u6208\uFF0CB\u7EA7\u9970\u54C1\r\n\u7269\u653B+5%\uFF0C\u6CD5\u5F3A+5%\r\n\r\n\u91D1\u6208:\u6218\u6597\u5F00\u59CB\u91CA\u653E\u201C\u6208\u201D\u9886\u57DF\u3002\u589E\u52A0\u6211\u65B9\u5168\u4F535%\u7269\u653B\u4E0E5%\u6CD5\u5F3A\uFF0C\u6301\u7EED\u5230\u6218\u6597\u7ED3\u675F"
+  itemInfo: "\u4F20\u627F\u788E\u7247-\u91D1\u6208\uFF0CB\u7EA7\u9970\u54C1\r\n\r\n\u91D1\u6208:\u6218\u6597\u5F00\u59CB\u91CA\u653E\u201C\u6208\u201D\u9886\u57DF\u3002\u589E\u52A0\u6211\u65B9\u5168\u4F535%\u7269\u653B\u4E0E5%\u6CD5\u5F3A\uFF0C\u6301\u7EED\u5230\u6218\u6597\u7ED3\u675F"
   hp: 0
   mp: 0
   sp: 0
@@ -47,9 +47,9 @@ MonoBehaviour:
   totalsp: 0
   totalspPCT: 0
   ad: 0
-  adPCT: 0.05
+  adPCT: 0
   ap: 0
-  apPCT: 0.05
+  apPCT: 0
   def: 0
   defPCT: 0
   mdef: 0

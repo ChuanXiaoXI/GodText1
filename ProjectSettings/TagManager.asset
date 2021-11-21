@@ -11,6 +11,8 @@ TagManager:
   - EnemyUnit
   - PlayerTeam
   - Point
+  - BuildingGrid
+  - CenterPoint
   layers:
   - Default
   - TransparentFX

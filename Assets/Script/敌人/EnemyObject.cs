@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class EnemyObject : MonoBehaviour
 {
@@ -26,8 +27,18 @@ public class EnemyObject : MonoBehaviour
     public int enemyNum1,enemyNum2,enemyNum3,enemyNum4,enemyNum5;
     public string name1,name2,name3;
    
+
+    public bool battleKnock;
+    public float KnockTime;
+
+    public GameObject originalObject;
+    public bool isMoving;
+    public float moveTime;
     private void Start() 
     {
+        originalObject = transform.parent.parent.gameObject;
+
+
         informationManage = GameObject.Find("InformationManage");
         information = informationManage.transform.GetChild(0).gameObject;
         enemyInformation = information.transform.GetChild(1).gameObject;
@@ -52,11 +63,50 @@ public class EnemyObject : MonoBehaviour
             enemyNum5 = 1;
         }
         enemyNum2 = Random.Range(enemyNum5,enemyNum3);
-
+        
        
     }
     private void Update()
-    {
+    { 
+        if(battleKnock == false)
+        {
+            KnockTime += Time.deltaTime;
+            if(KnockTime >= 0.1f)
+            {
+                battleKnock = true;
+                KnockTime = 0;
+            }
+        }
+
+        if(!isMoving)
+        {
+            List<GameObject> moveObejctList = new List<GameObject>();
+            if(transform.parent.parent.gameObject.GetComponent<BuildingGrid>().upGameObject != null)
+            {
+                moveObejctList.Add(transform.parent.parent.gameObject.GetComponent<BuildingGrid>().upGameObject);
+            }
+            if(transform.parent.parent.gameObject.GetComponent<BuildingGrid>().downGameObject != null)
+            {
+                moveObejctList.Add(transform.parent.parent.gameObject.GetComponent<BuildingGrid>().downGameObject);
+            }
+            if(transform.parent.parent.gameObject.GetComponent<BuildingGrid>().leftGameObject != null)
+            {
+                moveObejctList.Add(transform.parent.parent.gameObject.GetComponent<BuildingGrid>().leftGameObject);
+            }
+            if(transform.parent.parent.gameObject.GetComponent<BuildingGrid>().rightGameObject != null)
+            {
+                moveObejctList.Add(transform.parent.parent.gameObject.GetComponent<BuildingGrid>().rightGameObject);
+            }
+            int index = Random.Range(0,moveObejctList.Count);
+            gameObject.transform.DOMove(new Vector3(moveObejctList[index].transform.position.x, moveObejctList[index].transform.position.y, 0f), moveTime);//移动                  
+            gameObject.transform.parent = moveObejctList[index].transform.GetChild(1).gameObject.transform; 
+            isMoving = true;
+           
+        }
+
+
+
+
         for (int i = 0; i < enemyList.Count ; i++)
        {
            if(enemyList[i] != null)
@@ -101,7 +151,7 @@ public class EnemyObject : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other) 
    {
-       if(other.gameObject.CompareTag("Player"))//碰撞检测
+       if(other.gameObject.CompareTag("Player") && battleKnock)//碰撞检测
        {
         
           battleManage.GetComponent<BattleManage>().enemyList = enemyList;

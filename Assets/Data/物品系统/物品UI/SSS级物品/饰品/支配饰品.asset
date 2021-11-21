@@ -17,7 +17,7 @@ MonoBehaviour:
   itemColor: {r: 0.9647059, g: 0, b: 0, a: 1}
   itemHeld: 1
   itemID: 0
-  equipment: 0
+  equipment: 1
   equipmentClass: Gem
   weaponClass: 
   consumable: 0
@@ -28,9 +28,9 @@ MonoBehaviour:
   level: 8
   story: 0
   skillList:
-  - {fileID: 11400000, guid: 67eabe0f717914149aeddad6116e7f30, type: 2}
+  - {fileID: 11400000, guid: e377c2c60dfd8944ea034666c99beb1a, type: 2}
   textFile: {fileID: 0}
-  itemInfo: "\u4F20\u627F\u788E\u7247-\u652F\u914D\uFF0CSSS\u7EA7\u9970\u54C1\r\n\u653B\u51FB+500\r\n\r\n\u652F\u914D:\u6BCF\u6B7B\u4EA1\u4E00\u4E2A\u654C\u4EBA\u589E\u52A0\u81EA\u8EAB300\u7269\u653B\uFF0C\u6301\u7EED3\u56DE\u5408"
+  itemInfo: "\u4F20\u627F\u788E\u7247-\u652F\u914D\uFF0CSSS\u7EA7\u9970\u54C1\r\n\u653B\u51FB+500\r\n\r\n\u652F\u914D:\u6BCF\u6B7B\u4EA1\u4E00\u4E2A\u654C\u4EBA\u589E\u52A0\u81EA\u8EAB180\u7269\u653B\uFF0C\u6301\u7EED3\u56DE\u5408"
   hp: 0
   mp: 0
   sp: 0

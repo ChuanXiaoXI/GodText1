@@ -25,7 +25,7 @@ MonoBehaviour:
   adSkill: 0
   adSkillFactor: 0
   apSkill: 1
-  apSkillFactor: 1.5
+  apSkillFactor: 1
   iqSkill: 0
   iqSkillFactor: 0
   hpSkill: 0

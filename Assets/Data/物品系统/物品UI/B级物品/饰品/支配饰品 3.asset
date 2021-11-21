@@ -28,9 +28,9 @@ MonoBehaviour:
   level: 5
   story: 0
   skillList:
-  - {fileID: 11400000, guid: 43a12e26f145b5a40ae768f19c0f2826, type: 2}
+  - {fileID: 11400000, guid: e13ff738bc948ce4bab6ddfb61298563, type: 2}
   textFile: {fileID: 0}
-  itemInfo: "\u4F20\u627F\u788E\u7247-\u652F\u914D\uFF0CA\u7EA7\u9970\u54C1\r\n\u653B\u51FB+80\r\n\r\n\u652F\u914D:\u6BCF\u6B7B\u4EA1\u4E00\u4E2A\u654C\u4EBA\u589E\u52A0\u81EA\u8EAB60\u7269\u653B\uFF0C\u6301\u7EED3\u56DE\u5408"
+  itemInfo: "\u4F20\u627F\u788E\u7247-\u652F\u914D\uFF0CA\u7EA7\u9970\u54C1\r\n\u653B\u51FB+80\r\n\r\n\u652F\u914D:\u6BCF\u6B7B\u4EA1\u4E00\u4E2A\u654C\u4EBA\u589E\u52A0\u81EA\u8EAB35\u7269\u653B\uFF0C\u6301\u7EED3\u56DE\u5408"
   hp: 0
   mp: 0
   sp: 0
