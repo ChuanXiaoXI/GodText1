@@ -16,6 +16,9 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
     public Transform originalParent;//原父级
     public Vector3 originalPosition;//原坐标
     [Header("UI信息")]
+    [TextArea]
+    public string itemString;
+
     //public GameObject missionManager;
     public GameObject playerInformation;
     public GameObject enemyInformation;
@@ -31,12 +34,12 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
     public int itemHeld;
     public Text itemNum;//数量
     public GameObject timeManage;
-    //[双击进入背包]
+    [Header("战利品双击进入背包")]
     public float time;
     public GameObject bag;
     public GameObject itemPrefab;
     public bool trophy;
-    //[结束战斗]
+    [Header("战斗结束（无需更改）")]
     public GameObject battleManage;
     public GameObject victory;
     //[故事]
@@ -45,6 +48,7 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
 
     [Header("装备属性")]
     public int gemPrepertyIndex;
+    public bool isLoadItem;//读档锁
 
     public float replyHp;
     public float replyMp;
@@ -116,6 +120,9 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
 
     colorObject.GetComponent<Image>().color = item.itemColor;
     
+    IsLoadItem();
+    ItemInformation();
+    Preperty();
     
   }
   
@@ -126,9 +133,30 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
     if(itemHeld == 0)
     {
       Destroy(gameObject);
+    }  
+  }
+  public void IsLoadItem()
+  {
+    if(!isLoadItem)
+    {
+      if(item.gemPrepertyList != null)
+      {
+        gemPrepertyIndex = Random.Range(1,item.gemPrepertyList.randomPrepertyList.Count);
+      }
     }
 
-    
+  }
+  public void ItemInformation()
+  {
+    if(item.gemPrepertyList == null)
+    {
+      itemString = item.itemInfo;
+    }
+    if(item.gemPrepertyList != null)
+    {
+      itemString = item.itemInfo +  "\r\n"  +  "\r\n"  + item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].prepertyText +  "\r\n"  +  "\r\n"  + item.skillList[0].skillInfo;
+    }
+
   }
   public void Preperty()
   {
@@ -228,7 +256,7 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
   public void OnPointerEnter(PointerEventData eventData)//鼠标进入物体显示信息
 { 
         itemInfoText = itemInfoTextObject.GetComponent<Text>();
-        itemInfoText.text = item.itemInfo;
+        itemInfoText.text = itemString;
         itemInfoTextObject.transform.position = itemInfoPoint1.transform.position;
         itemInfoTextObject.SetActive(true);
         
@@ -244,7 +272,7 @@ public void OnPointerExit(PointerEventData eventData)
     //playerInformation.SetActive(false);
     //enemyInformation.SetActive(false);
     itemInformation.SetActive(true);
-    itemInfo.text = item.itemInfo.ToString();
+    itemInfo.text = item.itemInfo;
   
      
         if (Time.time - time <= 0.3f)//双击战利品进入背包
