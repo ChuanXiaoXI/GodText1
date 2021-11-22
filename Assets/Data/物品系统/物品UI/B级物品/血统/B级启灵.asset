@@ -27,9 +27,11 @@ MonoBehaviour:
   bloodClass: "\u542F\u7075"
   level: 4
   story: 0
+  textFile: {fileID: 0}
   skillList:
   - {fileID: 11400000, guid: 550955d68c8addb4395dd3572db8bd4b, type: 2}
-  textFile: {fileID: 0}
+  - {fileID: 11400000, guid: e2593c94b3295794193b39063bea8ccc, type: 2}
+  gemPrepertyList: {fileID: 0}
   itemInfo: "\u9E92\u9E9F\u8840\uFF0CB\u7EA7\u4F20\u627F\uFF0C\u3010\u542F\u7075\u4F53\u7CFB\u3011\r\n\u751F\u547D\uFF0B600
     \u7269\u653B + 120 \u6CD5\u5F3A + 120 \r\n\u901F\u5EA6\uFF0B50\r\n\u7269\u9632\uFF0B80
     \u9B54\u9632\uFF0B80\r\n\r\n\u6765\u81EA\u4E8E\u53E4\u4F4D\u9762\uFF0C\u6B64\u8840\u4E3A\u5F20\u5BB6\u4E00\u8109\u5B88\u7075\u4EBA\u6240\u4F20\uFF0C\u6E0A\u6E90\u6D41\u957F\r\n\r\n\u4F7F\u7528\u540E\u5C06\u4F1A\u5F3A\u5316\u81F3\u9E92\u9E9F\u8840\u4F20\u627F\uFF0C\u5E76\u83B7\u5F97\u4EE5\u4E0B\u6280\u80FD\u53CA\u5F3A\u5316\r\n\r\n\u9E92\u9E9F\u8840\uFF1A\u3010\u9E92\u9E9F\u964D\u4E16\uFF0C\u90AA\u9B54\u9000\u6563\uFF01\u3011\r\n\r\n\u501F\u547D:\u5E38\u5E74\u884C\u8D70\u4E8E\u9634\u9633\u4E24\u754C\uFF0C\u542F\u7075\u4F20\u627F\u4EBA\u7684\u547D\u6C14\u4E0E\u4F53\u8D28\u53D7\u9634\u6C14\u4FB5\u8680\u3002\u6700\u5927\u751F\u547D\u503C-20%\uFF0C\u7269\u653B\u53CA\u6CD5\u5F3A-40%\uFF0C\u901F\u5EA6-20%\r\n      
@@ -74,6 +76,7 @@ MonoBehaviour:
   charmSkillBool: 0
   iqSkillBool: 0
   apSkillBool: 1
+  doubleDamage: 0
   baseTotalhp: 0
   baseDef: 0
   baseMdef: 0

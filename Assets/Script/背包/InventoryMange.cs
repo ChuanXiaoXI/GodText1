@@ -108,7 +108,7 @@ public class InventoryMange : MonoBehaviour
             instance.playerList[i].GetComponent<TeamPlayer>().bloodNum = instance.playerData.saveList[i].bloodNum;
             for (int j = 0; j < instance.playerList[i].GetComponent<TeamPlayer>().equipmentList.Count; j++)
             {
-                instance.playerList[i].GetComponent<TeamPlayer>().equipmentList[j] = instance.playerData.saveList[i].equipmentList[j]; 
+                instance.playerList[i].GetComponent<TeamPlayer>().equipmentList[j].item = instance.playerData.saveList[i].equipmentList[j]; 
             }
             
         }

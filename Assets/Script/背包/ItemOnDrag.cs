@@ -9,6 +9,7 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
 { 
     [Header("item属性传输")]
     public Item item;
+    public string itemName;
     public Image itemImage;
     public GameObject colorObject;
     [Header("拖拽原坐标")]
@@ -41,15 +42,70 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
     //[故事]
     public GameObject story;
 
+
+    [Header("装备属性")]
+    public int gemPrepertyIndex;
+
+    public float replyHp;
+    public float replyMp;
+    public float replySp;
+
+    public float replyHpPCT;
+    public float replyMpPCT;
+    public float replySpPCT;
+
+    public float totalhp; 
+    public float totalhpPCT;//血量与最大血量
+    public float totalmp;  
+    public float totalmpPCT;//魔量与最大魔量
+    public float totalsp;  
+    public float totalspPCT;//体力
+    public float ad;  
+    public float adPCT;//物攻
+    public float ap;  
+    public float apPCT;//法强
+    public float def;  
+    public float defPCT;//物防
+    public float mdef;  
+    public float mdefPCT;//魔防
+    public float speed;  
+    public float speedPCT;//速度
+    public float dodge;  
+  
+    public float crit;  
+  
+    public float iq;  
+    public float iqPCT;//脑力
+    public float charm;  
+    public float charmPCT;//魅力
+    public float critDamge;  
+   
+    public float drainLife;  
+   
+    public float sword;//剑的系数
+    public float gun;//枪的系数
+    public int shieldFactor;//盾的系数
+    public float skillOdds;//施法概率
+    public bool charmSkillBool;//妖血机制
+    public bool iqSkillBool;//悟道机制
+    public bool apSkillBool;//圣魂机制
+    public bool doubleDamage;
+
   private void Start()
   {
     itemHeld = item.itemHeld;
+
     time = Time.time;
+
     bag = GameObject.Find("bag");
+
     itemImage.sprite = item.itemImage;//图片传值
+
     //infromation = GameObject.Find("InformationManage");
     timeManage = GameObject.Find("World");
+
     story = GameObject.Find("UI").transform.GetChild(7).gameObject;
+    
     itemInfoTextObject = GameObject.Find("UI").transform.GetChild(9).gameObject;
     informationManage = GameObject.Find("InformationManage");
     information = informationManage.transform.GetChild(0).gameObject;
@@ -74,7 +130,102 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
 
     
   }
-  public void OnPointerEnter(PointerEventData eventData)
+  public void Preperty()
+  {
+    itemName = item.itemName;
+
+    replyHp = item.replyHp;
+    replyMp = item.replyMp;
+    replySp = item.replySp;
+
+    replyHpPCT = item.replyHpPCT;
+    replyMpPCT = item.replyMpPCT;
+    replySpPCT = item.replySpPCT;
+
+    totalhp = item.totalhp;
+    totalhpPCT = item.totalhpPCT;//血量与最大血量
+    totalmp = item.totalmp;  
+    totalmpPCT = item.totalmpPCT;//魔量与最大魔量
+    totalsp = item.totalsp;  
+    totalspPCT = item.totalspPCT;//体力
+    ad = item.ad;  
+    adPCT = item.adPCT;//物攻
+    ap = item.ap;  
+    apPCT = item.apPCT;//法强
+    def = item.def;  
+    defPCT = item.defPCT;//物防
+    mdef = item.mdef;  
+    mdefPCT = item.mdefPCT;//魔防
+    speed = item.speed;  
+    speedPCT = item.speedPCT;//速度
+    dodge = item.dodge;  
+  
+    crit = item.crit; 
+  
+    iq = item.iq;  
+    iqPCT = item.iqPCT;//脑力
+    charm = item.charm;  
+    charmPCT = item.charmPCT;//魅力
+    critDamge = item.critDamge;  
+   
+    drainLife = item.drainLife;  
+   
+    sword = item.sword;//剑的系数
+    gun = item.gun;//枪的系数
+    shieldFactor = item.shieldFactor;//盾的系数
+    skillOdds = item.skillOdds;//施法概率
+    charmSkillBool = item.charmSkillBool;//妖血机制
+    iqSkillBool = item.iqSkillBool;//悟道机制
+    apSkillBool = item.apSkillBool;//圣魂机制
+    doubleDamage = item.doubleDamage;
+
+    if(item.gemPrepertyList != null)
+    {
+    replyHp += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].replyHp;
+    replyMp += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].replyMp;
+    replySp += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].replySp;
+
+    replyHpPCT += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].replyHpPCT;
+    replyMpPCT += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].replyMpPCT;
+    replySpPCT += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].replySpPCT;
+
+    totalhp += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].totalhp;
+    totalhpPCT += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].totalhpPCT;//血量与最大血量
+    totalmp += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].totalmp;  
+    totalmpPCT += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].totalmpPCT;//魔量与最大魔量
+    totalsp += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].totalsp;  
+    totalspPCT += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].totalspPCT;//体力
+    ad += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].ad;  
+    adPCT += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].adPCT;//物攻
+    ap += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].ap;  
+    apPCT += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].apPCT;//法强
+    def += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].def;  
+    defPCT += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].defPCT;//物防
+    mdef += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].mdef;  
+    mdefPCT += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].mdefPCT;//魔防
+    speed += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].speed;  
+    speedPCT += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].speedPCT;//速度
+    dodge += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].dodge;  
+  
+    crit += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].crit; 
+  
+    iq += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].iq;  
+    iqPCT += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].iqPCT;//脑力
+    charm += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].charm;  
+    charmPCT += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].charmPCT;//魅力
+    critDamge += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].critDamge;  
+   
+    drainLife += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].drainLife;  
+   
+    sword += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].sword;//剑的系数
+    gun += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].gun;//枪的系数
+    shieldFactor += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].shieldFactor;//盾的系数
+    skillOdds += item.gemPrepertyList.randomPrepertyList[gemPrepertyIndex].skillOdds;//施法概率
+    }
+
+
+  }
+  public void OnPointerEnter(PointerEventData eventData)//鼠标进入物体显示信息
 { 
         itemInfoText = itemInfoTextObject.GetComponent<Text>();
         itemInfoText.text = item.itemInfo;
@@ -96,7 +247,7 @@ public void OnPointerExit(PointerEventData eventData)
     itemInfo.text = item.itemInfo.ToString();
   
      
-        if (Time.time - time <= 0.3f)
+        if (Time.time - time <= 0.3f)//双击战利品进入背包
           {
             if(gameObject.transform.parent.gameObject.name == "Victory1" || gameObject.transform.parent.gameObject.name == "Victory2" || gameObject.transform.parent.gameObject.name == "Victory3")
              { 
@@ -126,7 +277,7 @@ public void OnPointerExit(PointerEventData eventData)
                    }
                }
              }
-             if(item.story)
+      if(item.story)//单击打开故事框
       {
         story.GetComponent<Story>().textFile = item.textFile;
         story.SetActive(true);
@@ -134,7 +285,7 @@ public void OnPointerExit(PointerEventData eventData)
         }
         time = Time.time;
     }
-    public void Trophy()
+    public void Trophy()//战利品
     {
       trophy = false;
       if(gameObject.transform.parent.gameObject.name == "Victory1" || gameObject.transform.parent.gameObject.name == "Victory2" || gameObject.transform.parent.gameObject.name == "Victory3")
@@ -347,20 +498,20 @@ public void OnPointerExit(PointerEventData eventData)
             {
               if(item.level == 2 && item.singleBlood == false)
               {
-              eventData.pointerCurrentRaycast.gameObject.GetComponent<TeamPlayer>().equipmentList[i] = item;
+              eventData.pointerCurrentRaycast.gameObject.GetComponent<TeamPlayer>().equipmentList[i].item = item;
               Destroy(gameObject);
               }
               if(item.singleBlood)
               {
-              eventData.pointerCurrentRaycast.gameObject.GetComponent<TeamPlayer>().equipmentList[i] = item;
+              eventData.pointerCurrentRaycast.gameObject.GetComponent<TeamPlayer>().equipmentList[i].item = item;
               Destroy(gameObject);
               }
             }
             if(eventData.pointerCurrentRaycast.gameObject.GetComponent<TeamPlayer>().equipmentList[i] != null)
             {
-              if((item.level - eventData.pointerCurrentRaycast.gameObject.GetComponent<TeamPlayer>().equipmentList[i].level) == 1 && item.bloodClass == eventData.pointerCurrentRaycast.gameObject.GetComponent<TeamPlayer>().equipmentList[i].bloodClass)
+              if((item.level - eventData.pointerCurrentRaycast.gameObject.GetComponent<TeamPlayer>().equipmentList[i].item.level) == 1 && item.bloodClass == eventData.pointerCurrentRaycast.gameObject.GetComponent<TeamPlayer>().equipmentList[i].item.bloodClass)
               {
-                eventData.pointerCurrentRaycast.gameObject.GetComponent<TeamPlayer>().equipmentList[i] = item;
+                eventData.pointerCurrentRaycast.gameObject.GetComponent<TeamPlayer>().equipmentList[i].item = item;
                 Destroy(gameObject);
               }
             }

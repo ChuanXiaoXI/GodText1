@@ -23,7 +23,7 @@ public class TeamPlayer : MonoBehaviour ,IPointerEnterHandler, IPointerExitHandl
     public List<int> consumableTimeList = new List<int>();//消耗品持续时间，与时间系统交互，大地图界面吃药，增加属性
     
     [Header("角色总属性值")]
-    public List<Item> equipmentList = new List<Item>();//装备列表
+    public List<ItemOnDrag> equipmentList = new List<ItemOnDrag>();//装备列表
     public int bloodNum;//血统槽数目
     //public string name;
     public float hp;
@@ -518,7 +518,7 @@ public void Equipment()
     equipmentSkillOdds = 0;
     equipmentSword = 0;
     equipmentGun = 0;
-    for (int i = 0; i < skillList.Count; i++)
+   /* for (int i = 0; i < skillList.Count; i++)
     {
         skillList[i] = null;
     }
@@ -539,7 +539,7 @@ public void Equipment()
                 }
             }
         }
-    }
+    }*/
    
     for (int i = 0; i < equipmentList.Count; i++)
     {
@@ -568,29 +568,29 @@ public void Equipment()
         equipmentSpeed += equipmentList[i].speed;
         equipmentSpeedPCT += equipmentList[i].speedPCT;
         equipmentDodge += equipmentList[i].dodge;
-        //equipmentDodgePCT += equipmentList[i].dodgePCT;
+        
         equipmentCrit += equipmentList[i].crit;
-        //equipmentCritPCT += equipmentList[i].critPCT;
+       
         equipmentIq += equipmentList[i].iq;
         equipmentIqPCT += equipmentList[i].iqPCT;
         equipmentCharm += equipmentList[i].charm;
         equipmentCharmPCT += equipmentList[i].charmPCT;
         equipmentCritDamge += equipmentList[i].critDamge;
-        //equipmentCritDamgePCT += equipmentList[i].critDamgePCT;
+    
         equipmentDrainLife += equipmentList[i].drainLife;
-        //equipmentDrainLifePCT += equipmentList[i].drainLifePCT; 
+        
         equipmentSkillOdds += equipmentList[i].skillOdds;
         equipmentSword += equipmentList[i].sword;
         equipmentGun += equipmentList[i].gun;
-        for (int j = 0; j < equipmentList[i].skillList.Count; j++)
+        for (int j = 0; j < equipmentList[i].item.skillList.Count; j++)
         {
-            if(equipmentList[i].skillList[j] != null)
+            if(equipmentList[i].item.skillList[j] != null)
             {
              for (int l = 0; l < skillList.Count; l++)
              {
                  if(skillList[l] == null)
                  {
-                     skillList[l] = equipmentList[i].skillList[j];
+                     skillList[l] = equipmentList[i].item.skillList[j];
                      break;
                  }
              }
@@ -1566,7 +1566,7 @@ public void CharmSkill()
         }
     }
 }
-public void Book()
+/*public void Book()
 {
     for (int i = 0; i < equipmentList.Count; i++)
     {
@@ -1582,14 +1582,14 @@ public void Book()
             }
         }
     }
-}
+}*/
 public void Fuwen()
 {
    for (int i = 0; i < equipmentList.Count; i++)
     {
         if(equipmentList[i] != null)
         {
-            if(equipmentList[i].weaponClass == "fuwen")
+            if(equipmentList[i].item.weaponClass == "fuwen")
             {
                 int number = Random.Range(6, 9);
                 { 
@@ -1674,7 +1674,7 @@ public void Zhoushu()
     {
         if(equipmentList[i] != null)
         {
-            if(equipmentList[i].weaponClass == "zhoushu")
+            if(equipmentList[i].item.weaponClass == "zhoushu")
             {
                 int number = Random.Range(11, 14);
                 { 

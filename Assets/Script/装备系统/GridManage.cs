@@ -27,7 +27,7 @@ public class GridManage : MonoBehaviour
         {
             if(equipments[i].transform.childCount != 0)
             {
-               player.equipmentList[i] = equipments[i].transform.GetChild(0).gameObject.GetComponent<ItemOnDrag>().item;
+               player.equipmentList[i] = equipments[i].transform.GetChild(0).gameObject.GetComponent<ItemOnDrag>();
             }
             if(equipments[i].transform.childCount == 0)
             {

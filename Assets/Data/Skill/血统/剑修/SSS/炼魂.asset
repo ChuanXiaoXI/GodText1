@@ -17,6 +17,7 @@ MonoBehaviour:
   activeSkill: 0
   endSkill: 1
   endSkillOdd: 100
+  charmFactor: 0
   turnSkill: 0
   killSkill: 0
   deathSkill: 0
@@ -59,3 +60,4 @@ MonoBehaviour:
   ownBuffName: 0
   singleDebuffName: 0
   teamDebuffName: 0
+  skillInfo: "\u70BC\u9B42:\u666E\u653B\u989D\u5916\u9644\u5E2650%\u7269\u653B\u7684\u5355\u4F53\u4F24\u5BB3"

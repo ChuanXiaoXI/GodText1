@@ -30,11 +30,14 @@ public string bloodClass;
 public int level;//等级
 [Header("故事")]
 public bool story;//故事
+[Header("故事文件")]
+public TextAsset textFile;
 
 [Header("技能词条")]
 public List<Skill> skillList = new List<Skill>();
+[Header("饰品属性词条")]
+public RandomPrepertyList gemPrepertyList;
 
-public TextAsset textFile;
 
 [TextArea]
 [Header("物品信息")]

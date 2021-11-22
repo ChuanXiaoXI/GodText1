@@ -106,6 +106,9 @@ public bool singleDebuffName;//单体debuff
 public bool teamDebuffName;//群体debuff
 
 
+[TextArea]
+[Header("技能信息")]
+public string skillInfo;//信息
 //public float skillFactor;
 
 

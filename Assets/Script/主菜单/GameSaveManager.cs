@@ -18,6 +18,7 @@ public class GameSaveManager : MonoBehaviour
     {
 
         playerData.worldIndex = timeManager.GetComponent<TimeManage>().level;//传递轮回次数
+
         for (int i = 0; i < bagManager.transform.childCount; i++)
         {
             if(bagManager.transform.GetChild(i).gameObject.transform.childCount != 0)
@@ -61,7 +62,7 @@ public class GameSaveManager : MonoBehaviour
             playerData.saveList[i].bloodNum = teamManager.transform.GetChild(i).gameObject.GetComponent<TeamPlayer>().bloodNum;
             for(int j = 0; j < teamManager.transform.GetChild(i).gameObject.GetComponent<TeamPlayer>().equipmentList.Count; j++)
             {
-                playerData.saveList[i].equipmentList[j] = teamManager.transform.GetChild(i).gameObject.GetComponent<TeamPlayer>().equipmentList[j];
+                playerData.saveList[i].equipmentList[j] = teamManager.transform.GetChild(i).gameObject.GetComponent<TeamPlayer>().equipmentList[j].item;
             }
             
 

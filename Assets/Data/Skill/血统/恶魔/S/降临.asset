@@ -60,3 +60,4 @@ MonoBehaviour:
   ownBuffName: 0
   singleDebuffName: 0
   teamDebuffName: 0
+  skillInfo: "\u964D\u4E34:\u9B54\u754C\u964D\u4E34\uFF0C\u6211\u65B9\u5168\u4F53\u6CD5\u5F3A+10%\uFF0C\u540C\u65F6\u6BCF\u56DE\u5408\u51CF\u5C113\u70B9\u4F53\u529B\u548C5\u70B9\u9B54\u6CD5"
