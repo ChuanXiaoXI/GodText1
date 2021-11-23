@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d23ebe591b350141b1cc6443521fb06, type: 3}
   m_Name: "\u6F5C\u4F0F-\u51CF\u76CA"
   m_EditorClassIdentifier: 
-  skillName: "\u6F5C\u4F0F"
+  skillName: 
   startSkill: 0
   activeSkill: 0
   endSkill: 0
@@ -60,3 +60,4 @@ MonoBehaviour:
   ownBuffName: 0
   singleDebuffName: 0
   teamDebuffName: 0
+  skillInfo: 

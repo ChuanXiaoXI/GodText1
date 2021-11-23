@@ -27,10 +27,12 @@ MonoBehaviour:
   bloodClass: "\u7EFF\u76AE"
   level: 5
   story: 0
+  textFile: {fileID: 0}
   skillList:
+  - {fileID: 11400000, guid: 5007e5e17a109c941894f2111f3b0908, type: 2}
   - {fileID: 11400000, guid: f81c3c9f5a2610248a007f3d61fb4dcf, type: 2}
   - {fileID: 11400000, guid: 3ea5ffcdf65972f48a8148e8901ec925, type: 2}
-  textFile: {fileID: 0}
+  gemPrepertyList: {fileID: 0}
   itemInfo: "\u9ED1\u8272\u7684\u8840\u6DB2\uFF0CA\u7EA7\u4F20\u627F\uFF0C\u3010\u7EFF\u76AE\u4F53\u7CFB\u3011\r\n\u751F\u547D\uFF0B1400
     \u7269\u653B\uFF0B380\r\n\u901F\u5EA6\uFF0B70\r\n\u7269\u9632\uFF0B150 \u9B54\u9632\uFF0B90\r\n\r\n\u6765\u81EA\u4E8E\u4E2D\u53E4\u4F4D\u9762\uFF0C\u8165\u81ED\u7684\u6697\u7EA2\u8272\u8840\u6DB2\uFF0C\u5374\u8574\u542B\u7740\u5F3A\u5927\u7684\u529B\u91CF\u3002\r\n\r\n\u4F7F\u7528\u540E\u5C06\u4F1A\u5F3A\u5316\u81F3\u9ED1\u517D\u4EBA\u4F20\u627F\uFF0C\u5E76\u83B7\u5F97\u4EE5\u4E0B\u6280\u80FD\u53CA\u5F3A\u5316\r\n\r\n\u9ED1\u517D\u4EBA\uFF1A\u3010Waaagh\uFF01\uFF01\uFF01\u3011\r\n\r\n\u517D\u6027:\u66B4\u51FB\u7387-100%\uFF0C\u901F\u5EA6-30%\uFF0C\u7269\u653B+20%\r\n\r\n\u6D3B\u8840:\u4F53\u529B\u4E0A\u9650+20\uFF1B\u6BCF\u51FB\u6740\u4E00\u540D\u654C\u4EBA\uFF0C\u6062\u590D20\u70B9\u4F53\u529B\r\n\r\n\u94C1\u722A:\u6D88\u801735\u4F53\u529B\uFF0C\u5BF9\u654C\u65B9\u9020\u6210350%\u7269\u653B\u5355\u4F53\u4F24\u5BB3\uFF1B\u540C\u65F6\u964D\u4F4E\u81EA\u8EAB\u653B\u51FB\u529B10%\uFF0C\u6301\u7EED5\u56DE\u5408\r"
   hp: 0
@@ -70,8 +72,10 @@ MonoBehaviour:
   gun: 0
   shieldFactor: 0
   skillOdds: 0
-  assassin: 0
   charmSkillBool: 0
+  iqSkillBool: 0
+  apSkillBool: 0
+  doubleDamage: 0
   baseTotalhp: 0
   baseDef: 0
   baseMdef: 0

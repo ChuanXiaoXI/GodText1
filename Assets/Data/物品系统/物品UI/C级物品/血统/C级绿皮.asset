@@ -27,8 +27,10 @@ MonoBehaviour:
   bloodClass: "\u7EFF\u76AE"
   level: 3
   story: 0
-  skillList: []
   textFile: {fileID: 0}
+  skillList:
+  - {fileID: 11400000, guid: 5a700c6f56f8dc6419f0216823cc4859, type: 2}
+  gemPrepertyList: {fileID: 0}
   itemInfo: "\u5706\u6EDA\u6EDA\u7684\u8089\u7403\uFF0CC\u7EA7\u4F20\u627F\uFF0C\u3010\u7EFF\u76AE\u4F53\u7CFB\u3011\r\n\u751F\u547D\uFF0B450
     \u7269\u653B\uFF0B120\n\u901F\u5EA6\uFF0B25\r\n\u7269\u9632\uFF0B45 \u9B54\u9632\uFF0B30\r\n\r\n\u6765\u81EA\u4E8E\u4E2D\u53E4\u4F4D\u9762\uFF0C\u8FD9\u4E2A\u8089\u7403\u4F60\u53EF\u4EE5\u4E00\u53E3\u5C31\u541E\u4E86\u5B83\uFF0C\u867D\u7136\u5B83\u8FD8\u5728\u54C7\u54C7\u4E71\u53EB\u3002\r\n\r\n\u4F7F\u7528\u540E\u5C06\u4F1A\u5F3A\u5316\u81F3\u8DF3\u8DF3\u4F20\u627F\uFF0C\u5E76\u83B7\u5F97\u4EE5\u4E0B\u6280\u80FD\u53CA\u5F3A\u5316\r\n\r\n\u8DF3\u8DF3\uFF1A\u3010\u4E00\u8DF3\u4E00\u8DF3\uFF0C\u5403\u6389\u6240\u6709\u4E1C\u897F\u3011\r\n\r\n\u517D\u6027:\u66B4\u51FB\u7387-100%\uFF0C\u901F\u5EA6-40%\uFF0C\u7269\u653B+10%\r"
   hp: 0
@@ -68,8 +70,10 @@ MonoBehaviour:
   gun: 0
   shieldFactor: 0
   skillOdds: 0
-  assassin: 0
   charmSkillBool: 0
+  iqSkillBool: 0
+  apSkillBool: 0
+  doubleDamage: 0
   baseTotalhp: 0
   baseDef: 0
   baseMdef: 0

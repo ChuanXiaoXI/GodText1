@@ -27,9 +27,9 @@ MonoBehaviour:
   replySp: 0
   replyHpPCT: 0
   replyMpPCT: 0
-  replySpPCT: 0
+  replySpPCT: 0.5
   totalhp: 0
-  totalhpPCT: 0
+  totalhpPCT: 0.3
   totalmp: 0
   totalmpPCT: 0
   totalsp: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
   charm: 0
   charmPCT: 0
   critDamge: 0
-  drainLife: 0
+  drainLife: -1
   sword: 0
   gun: 0
   shieldFactor: 0
