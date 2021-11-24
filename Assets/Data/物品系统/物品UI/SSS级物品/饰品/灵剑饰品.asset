@@ -43,9 +43,9 @@ MonoBehaviour:
   replySpPCT: 0
   totalhp: 0
   totalhpPCT: 0
-  totalmp: 25
+  totalmp: 0
   totalmpPCT: 0
-  totalsp: 15
+  totalsp: 0
   totalspPCT: 0
   ad: 0
   adPCT: 0

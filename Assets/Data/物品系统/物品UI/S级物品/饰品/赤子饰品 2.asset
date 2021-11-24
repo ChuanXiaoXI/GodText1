@@ -17,7 +17,7 @@ MonoBehaviour:
   itemColor: {r: 0.9647059, g: 0, b: 0, a: 1}
   itemHeld: 1
   itemID: 0
-  equipment: 0
+  equipment: 1
   equipmentClass: Gem
   weaponClass: 
   consumable: 0
@@ -27,10 +27,11 @@ MonoBehaviour:
   bloodClass: 
   level: 6
   story: 0
-  skillList:
-  - {fileID: 11400000, guid: d633fc47daf72164aa4fcbd1d402c372, type: 2}
   textFile: {fileID: 0}
-  itemInfo: "\u4F20\u627F\u788E\u7247-\u8D64\u5B50\uFF0CSS\u7EA7\u9970\u54C1\r\n\u8111\u529B+70\r\n\r\n\u8D64\u5B50:\u6D88\u801780\u70B9\u9B54\u6CD5\uFF0C\u589E\u52A0\u81EA\u8EAB150\u70B9\u8111\u529B\uFF0C\u6301\u7EED3\u56DE\u5408\u3002\r\n"
+  skillList:
+  - {fileID: 11400000, guid: c7d0daf7799a93d40a7929cd3b511f37, type: 2}
+  gemPrepertyList: {fileID: 11400000, guid: 075e6cb692d54ac42b8732037d9bed99, type: 2}
+  itemInfo: "\u4F20\u627F\u788E\u7247-\u8D64\u5B50\uFF0CS\u7EA7\u9970\u54C1"
   hp: 0
   mp: 0
   sp: 0
@@ -58,7 +59,7 @@ MonoBehaviour:
   speedPCT: 0
   dodge: 0
   crit: 0
-  iq: 70
+  iq: 0
   iqPCT: 0
   charm: 0
   charmPCT: 0

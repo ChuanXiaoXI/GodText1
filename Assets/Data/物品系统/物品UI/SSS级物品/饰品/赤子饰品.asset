@@ -27,10 +27,11 @@ MonoBehaviour:
   bloodClass: 
   level: 8
   story: 0
+  textFile: {fileID: 0}
   skillList:
   - {fileID: 11400000, guid: 2996d8413f2e96d409b82653c4c4c092, type: 2}
-  textFile: {fileID: 0}
-  itemInfo: "\u4F20\u627F\u788E\u7247-\u8D64\u5B50\uFF0CSSS\u7EA7\u9970\u54C1\r\n\u8111\u529B+80\r\n\r\n\u8D64\u5B50:\u6D88\u8017100\u70B9\u9B54\u6CD5\uFF0C\u589E\u52A0\u81EA\u8EAB200\u70B9\u8111\u529B\uFF0C\u6301\u7EED3\u56DE\u5408\u3002\r"
+  gemPrepertyList: {fileID: 11400000, guid: e6372b8c0a3092642ba1884c90bc3a89, type: 2}
+  itemInfo: "\u4F20\u627F\u788E\u7247-\u8D64\u5B50\uFF0CSSS\u7EA7\u9970\u54C1"
   hp: 0
   mp: 0
   sp: 0
@@ -58,7 +59,7 @@ MonoBehaviour:
   speedPCT: 0
   dodge: 0
   crit: 0
-  iq: 80
+  iq: 0
   iqPCT: 0
   charm: 0
   charmPCT: 0

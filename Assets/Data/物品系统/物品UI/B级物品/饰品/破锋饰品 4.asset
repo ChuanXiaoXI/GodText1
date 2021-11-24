@@ -17,7 +17,7 @@ MonoBehaviour:
   itemColor: {r: 0.9647059, g: 0, b: 0, a: 1}
   itemHeld: 1
   itemID: 0
-  equipment: 0
+  equipment: 1
   equipmentClass: Gem
   weaponClass: 
   consumable: 0
@@ -27,10 +27,11 @@ MonoBehaviour:
   bloodClass: 
   level: 4
   story: 0
+  textFile: {fileID: 0}
   skillList:
   - {fileID: 11400000, guid: d9d7f1540d4517048ac21f649b2bf3fe, type: 2}
-  textFile: {fileID: 0}
-  itemInfo: "\u4F20\u627F\u788E\u7247-\u7834\u950B\uFF0CB\u7EA7\u9970\u54C1\r\n\u901F\u5EA6+12\r\n\r\n\u7834\u950B:\u6D88\u801725\u4F53\u529B\uFF0C\u5BF9\u654C\u65B9\u9020\u6210170%\u7269\u653B\u5355\u4F53\u4F24\u5BB3;\u540C\u65F6\u589E\u52A0\u81EA\u8EAB\u653B\u51FB\u529B5%\uFF0C\u6301\u7EED2\u56DE\u5408"
+  gemPrepertyList: {fileID: 11400000, guid: 8c212aae05c2c9547b1e8a2d97dda7c9, type: 2}
+  itemInfo: "\u4F20\u627F\u788E\u7247-\u7834\u950B\uFF0CB\u7EA7\u9970\u54C1\r"
   hp: 0
   mp: 0
   sp: 0
@@ -54,7 +55,7 @@ MonoBehaviour:
   defPCT: 0
   mdef: 0
   mdefPCT: 0
-  speed: 12
+  speed: 0
   speedPCT: 0
   dodge: 0
   crit: 0
