@@ -17,7 +17,7 @@ MonoBehaviour:
   itemColor: {r: 0.9647059, g: 0, b: 0, a: 1}
   itemHeld: 1
   itemID: 0
-  equipment: 0
+  equipment: 1
   equipmentClass: Soul
   weaponClass: 
   consumable: 0
@@ -27,8 +27,9 @@ MonoBehaviour:
   bloodClass: 
   level: 8
   story: 0
-  skillList: []
   textFile: {fileID: 0}
+  skillList: []
+  gemPrepertyList: {fileID: 0}
   itemInfo: "\u9E3F\u94A7\uFF0CSSS\u7EA7\u9B42\u4F53\r\n\r\n\u5168\u76DB\u4E4B\u65F6\u7684\u9E3F\u94A7\u7075\u9B42\u4F53\uFF0C\u4ED6\u53EF\u4EE5\u4E3A\u4F60\u63D0\u4F9B\u6E90\u6E90\u4E0D\u65AD\u7684\u529B\u91CF\n\n\u4ED9\u6E90:\u9B54\u6CD5\u56DE\u590D+3\uFF1B\u4F53\u529B\u56DE\u590D+5\uFF1B\u6700\u5927\u9B54\u6CD5\u503C+30\uFF0C\u6700\u5927\u4F53\u529B\u503C+50"
   hp: 0
   mp: 0

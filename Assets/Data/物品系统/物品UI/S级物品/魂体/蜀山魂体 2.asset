@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac9298dcf4578514f97913b37df2f544, type: 3}
-  m_Name: "\u8700\u5C71\u9B42\u4F53 1"
+  m_Name: "\u8700\u5C71\u9B42\u4F53 2"
   m_EditorClassIdentifier: 
   itemName: "\u674E\u900D\u9065\u4E4B\u9B42\uFF08\u6B8B\u7834\uFF09"
   itemImage: {fileID: 0}
   itemColor: {r: 0.9647059, g: 0, b: 0, a: 1}
   itemHeld: 1
   itemID: 0
-  equipment: 0
+  equipment: 1
   equipmentClass: Soul
   weaponClass: 
   consumable: 0
