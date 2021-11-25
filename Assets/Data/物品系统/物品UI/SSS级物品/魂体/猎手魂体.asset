@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9298dcf4578514f97913b37df2f544, type: 3}
+  m_Name: "\u730E\u624B\u9B42\u4F53"
+  m_EditorClassIdentifier: 
+  itemName: "\u730E\u624B"
+  itemImage: {fileID: 0}
+  itemColor: {r: 0.9647059, g: 0, b: 0, a: 1}
+  itemHeld: 1
+  itemID: 0
+  equipment: 0
+  equipmentClass: Soul
+  weaponClass: 
+  consumable: 0
+  consumableTime: 0
+  blood: 0
+  singleBlood: 0
+  bloodClass: 
+  level: 8
+  story: 0
+  textFile: {fileID: 0}
+  skillList:
+  - {fileID: 11400000, guid: 2acafdd35c4bfe245819ff365d329be0, type: 2}
+  - {fileID: 11400000, guid: 01df505f8f3eaf5448263c88c471050b, type: 2}
+  - {fileID: 11400000, guid: b02426e94a94bea4caf2eb4ff2fdc882, type: 2}
+  gemPrepertyList: {fileID: 0}
+  itemInfo: "\u730E\u624B\uFF0CSSS\u7EA7\u9B42\u4F53\r\n\r\n\u730E\u624B\uFF0C\u62E5\u6709\u6BC1\u706D\u661F\u7A7A\u7684\u80FD\u529B\n\n\u80FD:\u6218\u6597\u5F00\u59CB\uFF0C\u8FDB\u5165\u9884\u88C5\u586B\u72B6\u6001\uFF0C\u964D\u4F4E\u81EA\u8EAB100%\u65BD\u6CD5\u6982\u7387\uFF0C\u6301\u7EED20\u56DE\u5408\n\r\n\u542F:\u6BCF\u56DE\u5408\u7ED3\u675F\u589E\u52A0\u81EA\u8EAB10%\u65BD\u6CD5\u6982\u7387\uFF0C\u53EF\u53E0\u52A010\u5C42\n\r\n\u706D:\u6D88\u8017250\u4F53\u529B\uFF0C\u5BF9\u654C\u65B9\u9020\u62101500%\u7269\u653B\u7FA4\u4F53\u4F24\u5BB3\n\r\n"
+  hp: 0
+  mp: 0
+  sp: 0
+  replyHp: 0
+  replyMp: 0
+  replySp: 0
+  replyHpPCT: 0
+  replyMpPCT: 0
+  replySpPCT: 0
+  totalhp: 0
+  totalhpPCT: 0
+  totalmp: 0
+  totalmpPCT: 0
+  totalsp: 0
+  totalspPCT: 0
+  ad: 0
+  adPCT: 0
+  ap: 0
+  apPCT: 0
+  def: 0
+  defPCT: 0
+  mdef: 0
+  mdefPCT: 0
+  speed: 0
+  speedPCT: 0
+  dodge: 0
+  crit: 0
+  iq: 0
+  iqPCT: 0
+  charm: 0
+  charmPCT: 0
+  critDamge: 0
+  drainLife: 0
+  sword: 0
+  gun: 0
+  shieldFactor: 0
+  skillOdds: 0
+  charmSkillBool: 0
+  iqSkillBool: 0
+  apSkillBool: 0
+  doubleDamage: 0
+  baseTotalhp: 0
+  baseDef: 0
+  baseMdef: 0
+  baseAd: 0
+  baseAp: 0
+  baseCharm: 0
+  baseIq: 0
+  baseSpeed: 0
+  basePoint: 0
+  baseCPoint: 0
+  baseSPoint: 0
+  baseSSSPoint: 0
