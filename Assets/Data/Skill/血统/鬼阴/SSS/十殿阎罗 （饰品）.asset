@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d23ebe591b350141b1cc6443521fb06, type: 3}
-  m_Name: "\u6B7B\u4EA1"
+  m_Name: "\u5341\u6BBF\u960E\u7F57 \uFF08\u9970\u54C1\uFF09"
   m_EditorClassIdentifier: 
-  skillName: "\u6B7B\u4EA1"
+  skillName: "\u5341\u6BBF\u960E\u7F57"
   startSkill: 0
   activeSkill: 0
-  endSkill: 1
-  endSkillOdd: 100
+  endSkill: 0
+  endSkillOdd: 0
   charmFactor: 0
   turnSkill: 0
   killSkill: 0
-  deathSkill: 0
+  deathSkill: 1
   overSkill: 0
   adSkill: 0
   adSkillFactor: 0
@@ -39,8 +39,8 @@ MonoBehaviour:
   teamDamage: 0
   singleBuff: 0
   teamBuff: 0
-  ownBuff: 0
-  singleDebuff: 1
+  ownBuff: 1
+  singleDebuff: 0
   teamDebuff: 0
   growthSkill: 0
   ad: 0
@@ -52,12 +52,12 @@ MonoBehaviour:
   critDamge: 0
   iq: 0
   charm: 0
-  buff: {fileID: 11400000, guid: 6aaae4fd939c73f46ba5776449adc8ae, type: 2}
+  buff: {fileID: 11400000, guid: bf1976ab20842a0469782274d3ad139a, type: 2}
   singleDamageName: 0
   teamDamageName: 0
   singleBuffName: 0
   teamBuffName: 0
-  ownBuffName: 0
-  singleDebuffName: 1
+  ownBuffName: 1
+  singleDebuffName: 0
   teamDebuffName: 0
-  skillInfo: "\u6B7B\u4EA1:\u666E\u653B\u5C06\u5C01\u9501\u76EE\u6807\u547D\u6C14\uFF0C\u964D\u4F4E\u654C\u4EBA100%\u5438\u8840\u53CA600\u70B9\u751F\u547D\u56DE\u590D\uFF0C\u6301\u7EED3\u56DE\u5408"
+  skillInfo: "\u5341\u6BBF\u960E\u7F57:\u6BCF\u51FB\u6740\u4E00\u540D\u654C\u4EBA\u589E\u52A0\u81EA\u8EAB50%\u66B4\u4F24\uFF0C\u6301\u7EED3\u56DE\u5408"

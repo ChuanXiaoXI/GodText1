@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef78aeb2920ba904b80fb918d5da567a, type: 3}
-  m_Name: "\u6B7B\u4EA1buff"
+  m_Name: "\u5341\u6BBF\u960E\u7F57buff\uFF08\u9970\u54C1\uFF09 1"
   m_EditorClassIdentifier: 
   buffImage: {fileID: 0}
-  buffInfo: "\u6B7B\u4EA1\uFF1A\u751F\u547D\u56DE\u590D\u80FD\u529B\u548C\u5438\u8840\u80FD\u529B\u88AB\u964D\u4F4E"
-  buffString: "\u547D\u6C14\u6D41\u901D"
+  buffInfo: "\u5341\u6BBF\u960E\u7F57\uFF1A\u6BCF\u5C42\u66B4\u4F24+30%"
+  buffString: "\u66B4\u4F24\u63D0\u5347"
   buffTime: 3
   skillFactor: 0
   dizzy: 0
@@ -22,7 +22,7 @@ MonoBehaviour:
   hp: 0
   mp: 0
   sp: 0
-  replyHp: -600
+  replyHp: 0
   replyMp: 0
   replySp: 0
   replyHpPCT: 0
@@ -50,8 +50,8 @@ MonoBehaviour:
   iqPCT: 0
   charm: 0
   charmPCT: 0
-  critDamge: 0
-  drainLife: -1
+  critDamge: 0.3
+  drainLife: 0
   sword: 0
   gun: 0
   shieldFactor: 0
@@ -59,6 +59,6 @@ MonoBehaviour:
   buffSkill: {fileID: 0}
   singleBuff: 0
   teamBuff: 0
-  ownBuff: 0
-  singleDebuff: 1
+  ownBuff: 1
+  singleDebuff: 0
   teamDebuff: 0

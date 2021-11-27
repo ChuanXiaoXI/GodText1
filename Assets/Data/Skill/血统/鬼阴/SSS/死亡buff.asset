@@ -22,10 +22,10 @@ MonoBehaviour:
   hp: 0
   mp: 0
   sp: 0
-  replyHp: 0
+  replyHp: -1000
   replyMp: 0
   replySp: 0
-  replyHpPCT: -1
+  replyHpPCT: 0
   replyMpPCT: 0
   replySpPCT: 0
   totalhp: 0

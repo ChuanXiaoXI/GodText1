@@ -31,7 +31,7 @@ MonoBehaviour:
   hpSkill: 0
   hpSkillFactor: 0
   mp: 0
-  sp: 0
+  sp: 35
   hp: 0
   dizzy: 0
   disarm: 0
