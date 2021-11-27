@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: player1
   m_EditorClassIdentifier: 
   playerClass: {fileID: 11400000, guid: e6964d1a1c9ff694fadab89ed4cb07ee, type: 2}
+  equipmentIndexList: 0000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   growthAd: 0
   growthAp: 0
   growthTotalhp: 0
@@ -32,7 +33,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: cb71de559bb804e4696bb8f114f6e2ad, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

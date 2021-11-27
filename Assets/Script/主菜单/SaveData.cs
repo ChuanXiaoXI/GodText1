@@ -5,6 +5,7 @@ using UnityEngine;
 public class SaveData : ScriptableObject
 {     
       public Player_Class playerClass;
+      public List<int> equipmentIndexList = new List<int>();
 
     public float growthAd;
     public float growthAp; 

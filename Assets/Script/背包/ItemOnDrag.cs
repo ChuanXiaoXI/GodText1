@@ -129,6 +129,10 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
   private void Update() 
   {
     itemNum.text = itemHeld.ToString();
+    if(item.gemPrepertyList == null)
+    {
+      gemPrepertyIndex = 0;
+    }
     Trophy();
     if(itemHeld == 0)
     {

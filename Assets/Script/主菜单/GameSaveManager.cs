@@ -39,6 +39,7 @@ public class GameSaveManager : MonoBehaviour
             if(bagManager.transform.GetChild(i).gameObject.transform.childCount != 0)
             {
                 playerData.bagList[i] = bagManager.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.GetComponent<ItemOnDrag>().item;
+                playerData.equipmentIndexList[i] = bagManager.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.GetComponent<ItemOnDrag>().gemPrepertyIndex;
             }
         }//传递背包数据
         for (int i = 0; i < teamManager.transform.childCount; i++)
@@ -62,7 +63,18 @@ public class GameSaveManager : MonoBehaviour
             playerData.saveList[i].bloodNum = teamManager.transform.GetChild(i).gameObject.GetComponent<TeamPlayer>().bloodNum;
             for(int j = 0; j < teamManager.transform.GetChild(i).gameObject.GetComponent<TeamPlayer>().equipmentList.Count; j++)
             {
-                playerData.saveList[i].equipmentList[j] = teamManager.transform.GetChild(i).gameObject.GetComponent<TeamPlayer>().equipmentList[j].item;
+                if(teamManager.transform.GetChild(i).gameObject.GetComponent<TeamPlayer>().equipmentList[j] == null)
+                {
+                    playerData.saveList[i].equipmentList[j] = null; 
+                    playerData.saveList[i].equipmentIndexList[j] = 0;
+                }
+                if(teamManager.transform.GetChild(i).gameObject.GetComponent<TeamPlayer>().equipmentList[j] != null)
+                {
+                    playerData.saveList[i].equipmentList[j] = teamManager.transform.GetChild(i).gameObject.GetComponent<TeamPlayer>().equipmentList[j].item;
+                    playerData.saveList[i].equipmentIndexList[j] = teamManager.transform.GetChild(i).gameObject.GetComponent<TeamPlayer>().equipmentList[j].gemPrepertyIndex;
+                }
+               
+                //playerData.saveList[i].equipmentIndexList[j] = teamManager.transform.GetChild(i).gameObject.GetComponent<TeamPlayer>().equipmentList[j].gemPrepertyIndex;
             }
             
 

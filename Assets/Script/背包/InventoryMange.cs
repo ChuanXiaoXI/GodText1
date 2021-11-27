@@ -32,7 +32,7 @@ public class InventoryMange : MonoBehaviour
     }
     public static void LoadGame()
     {
-        instance.timeManage.GetComponent<TimeManage>().level = instance.playerData.worldIndex;
+        instance.timeManage.GetComponent<TimeManage>().level = instance.playerData.worldIndex;//传递轮回次数
 
         for (int i = 0; i < instance.slots.Count; i++)
         {
@@ -41,19 +41,21 @@ public class InventoryMange : MonoBehaviour
                 Destroy(instance.slots[i].transform.GetChild(0).gameObject);
             }
             
-        }
+        }//删除全部背包物品
 
         for (int i = 0; i < instance.playerData.bagList.Count; i++)
         {
             if(instance.playerData.bagList[i] != null)
            {
-                //Debug.Log("3484");
-                instance.itemObject = Instantiate(instance.itemPrefab);
+                instance.itemPrefab.GetComponent<ItemOnDrag>().isLoadItem = true;
+                instance.itemObject = Instantiate(instance.itemPrefab);        
                 instance.itemObject.transform.parent = instance.slots[i].transform;
                 instance.itemObject.transform.position = instance.slots[i].transform.position;
                 instance.itemObject.GetComponent<ItemOnDrag>().item = instance.playerData.bagList[i];
+                instance.itemObject.GetComponent<ItemOnDrag>().gemPrepertyIndex = instance.playerData.equipmentIndexList[i];
+                instance.itemPrefab.GetComponent<ItemOnDrag>().isLoadItem = false;
            } 
-        }
+        }//创建物品
 
 
         for (int i = 0; i < instance.equipmentGridList.Count; i++)
@@ -67,7 +69,7 @@ public class InventoryMange : MonoBehaviour
 
              }
             
-        }
+        }//删除全部装备物品
          for (int i = 0; i < instance.equipmentGridList.Count; i++)
          {
              if(instance.playerData.saveList[i].playerClass != null)
@@ -76,10 +78,13 @@ public class InventoryMange : MonoBehaviour
                  {
                      if(instance.playerData.saveList[i].equipmentList[j] != null)
                      {
+                         instance.itemPrefab.GetComponent<ItemOnDrag>().isLoadItem = true;
                          instance.itemObject = Instantiate(instance.itemPrefab);
                          instance.itemObject.transform.parent = instance.equipmentGridList[i].transform.GetChild(j).gameObject.transform;
                          instance.itemObject.transform.position = instance.equipmentGridList[i].transform.GetChild(j).gameObject.transform.position;
                          instance.itemObject.GetComponent<ItemOnDrag>().item = instance.playerData.saveList[i].equipmentList[j];
+                         instance.itemObject.GetComponent<ItemOnDrag>().gemPrepertyIndex = instance.playerData.saveList[i].equipmentIndexList[j];
+                         instance.itemPrefab.GetComponent<ItemOnDrag>().isLoadItem = false;
 
                      }
                  }

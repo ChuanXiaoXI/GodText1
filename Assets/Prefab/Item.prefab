@@ -439,10 +439,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
+  itemName: 
   itemImage: {fileID: 6748074369146426436}
   colorObject: {fileID: 4676463090842440348}
   originalParent: {fileID: 0}
   originalPosition: {x: 0, y: 0, z: 0}
+  itemString: 
   playerInformation: {fileID: 0}
   enemyInformation: {fileID: 0}
   itemInformation: {fileID: 0}
@@ -462,6 +464,46 @@ MonoBehaviour:
   battleManage: {fileID: 0}
   victory: {fileID: 0}
   story: {fileID: 0}
+  gemPrepertyIndex: 0
+  isLoadItem: 0
+  replyHp: 0
+  replyMp: 0
+  replySp: 0
+  replyHpPCT: 0
+  replyMpPCT: 0
+  replySpPCT: 0
+  totalhp: 0
+  totalhpPCT: 0
+  totalmp: 0
+  totalmpPCT: 0
+  totalsp: 0
+  totalspPCT: 0
+  ad: 0
+  adPCT: 0
+  ap: 0
+  apPCT: 0
+  def: 0
+  defPCT: 0
+  mdef: 0
+  mdefPCT: 0
+  speed: 0
+  speedPCT: 0
+  dodge: 0
+  crit: 0
+  iq: 0
+  iqPCT: 0
+  charm: 0
+  charmPCT: 0
+  critDamge: 0
+  drainLife: 0
+  sword: 0
+  gun: 0
+  shieldFactor: 0
+  skillOdds: 0
+  charmSkillBool: 0
+  iqSkillBool: 0
+  apSkillBool: 0
+  doubleDamage: 0
 --- !u!114 &6748074368323824114
 MonoBehaviour:
   m_ObjectHideFlags: 0

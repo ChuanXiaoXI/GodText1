@@ -24,12 +24,12 @@ MonoBehaviour:
   worldIndex: 1
   bagList:
   - {fileID: 0}
-  - {fileID: 11400000, guid: 0e83df67cf5bd1a42be6cbe9212fce5c, type: 2}
-  - {fileID: 11400000, guid: 6a7ff82b91f9daa42a30d6fe2200fd5b, type: 2}
-  - {fileID: 11400000, guid: a9ebbac60fbdb9a4ea2c371f917d599e, type: 2}
-  - {fileID: 11400000, guid: 0e0f99f6910d5ae44a6b91c7fb1bf970, type: 2}
-  - {fileID: 11400000, guid: 99f1a098964165e488b24c73c33fdd9b, type: 2}
-  - {fileID: 11400000, guid: 64aae08b5dfeca84f94737f7b42c162e, type: 2}
+  - {fileID: 11400000, guid: 65a6915fbff518d4e91ec0568a8ff068, type: 2}
+  - {fileID: 11400000, guid: 6f61eeff58aea374290e7df19155b7f4, type: 2}
+  - {fileID: 11400000, guid: 96b06d3307e133e40ab20c4f80c21426, type: 2}
+  - {fileID: 11400000, guid: 9c36c4d6800be0946a429565cdf4a6f3, type: 2}
+  - {fileID: 11400000, guid: 45d4d51bcea6ce44d8170726dca90690, type: 2}
+  - {fileID: 11400000, guid: af67e5852f33be54ab4508a1093cc80c, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -41,3 +41,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  equipmentIndexList: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
