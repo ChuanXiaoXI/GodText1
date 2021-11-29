@@ -13,6 +13,7 @@ public class TimeManage : MonoBehaviour
    public float a;
    public Text leverUI;
    public float timeFactor;
+   public bool timeKnock;
 
    public GameObject story;
    public GameObject battle;
@@ -36,6 +37,8 @@ public class TimeManage : MonoBehaviour
     }
     public void TimeUI()
     {
+        if(!timeKnock)
+        {
          a += (Time.deltaTime * timeFactor);
         if(a >= 2.5f)
         {
@@ -61,6 +64,7 @@ public class TimeManage : MonoBehaviour
         }
         timeUI.text = "第" + day.ToString() + "天" + time.ToString() + ":00";
         leverUI.text = "第" + level.ToString() + "轮回世界";
+    }
     }
     public void TimeFactor()
     {

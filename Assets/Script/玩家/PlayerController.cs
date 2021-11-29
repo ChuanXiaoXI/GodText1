@@ -18,9 +18,12 @@ public class PlayerController : MonoBehaviour
     public float InputY;
     public float stopX;
     public float stopY;
+
+    public GameObject timeManager;
     // Start is called before the first frame update
     void Start()
     {
+        timeManager = GameObject.Find("World");
         //animator = GetComponent<Animator>();
     }
     private void OnTriggerEnter2D(Collider2D other) 
@@ -35,6 +38,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!timeManager.GetComponent<TimeManage>().timeKnock)
+        {
         InputY = Input.GetAxisRaw("Vertical");
         InputX = Input.GetAxisRaw("Horizontal");
         
@@ -116,5 +121,6 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 1);
         if (movement.x < 0)
             transform.localScale = new Vector3(-1, 1, 1);*/
+        }
     }
 }
