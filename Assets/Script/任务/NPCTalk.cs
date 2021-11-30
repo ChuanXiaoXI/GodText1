@@ -196,6 +196,8 @@ public class NPCTalk : MonoBehaviour
             } 
         }
     }
+
+    
     public void RefuseButton()
     {
                 int npcRefuseIndex = Random.Range(0 , npc.npcRefuse.Count);

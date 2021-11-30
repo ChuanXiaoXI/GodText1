@@ -44,7 +44,9 @@ public class NPC : MonoBehaviour
         {
             npcName.text = npc.playerName;
         }
-         NpcFavouriteItem.Clear();
+        gameObject.GetComponent<EnemyUI>().playerClass = npc;//属性传值
+
+        NpcFavouriteItem.Clear();
         NpcInteractionItem.Clear();
         for(int i = 0; i < npc.npcFavouriteItem.Count; i++)
         {
@@ -91,9 +93,9 @@ public class NPC : MonoBehaviour
     }
     public void NPCButton()
    {      
-           npcTalk.GetComponent<NPCTalk>().npc = npc;
-           npcTalk.GetComponent<NPCTalk>().npcObject = gameObject;
-           npcTalk.SetActive(true);
+          npcTalk.GetComponent<NPCTalk>().npc = npc;
+          npcTalk.GetComponent<NPCTalk>().npcObject = gameObject;
+          npcTalk.SetActive(true);
           battleManage.GetComponent<BattleManage>().enemyList = enemyList;
           battleManage.GetComponent<BattleManage>().enemyObject = gameObject;
           battleManage.GetComponent<BattleManage>().npcObject = npcList;

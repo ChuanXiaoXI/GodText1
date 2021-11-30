@@ -26,9 +26,10 @@ public class NPCChatButton : MonoBehaviour
     {
         npc = npcTalkObject.GetComponent<NPCTalk>().npcObject;
         GetTxtFromFile(textFile);
-        index = 0;
+        
         //npc = npcTalkObject.GetComponent<NPCTalk>().npcObject;
         missionIndex = npc.GetComponent<NPC>().missionIndex;
+        StartCoroutine(SetTextUI());
     }
 
     // Update is called once per frame
@@ -39,7 +40,7 @@ public class NPCChatButton : MonoBehaviour
     { 
         
         //npc = npcTalkObject.GetComponent<NPCTalk>().npcObject;
-        if(index == textList.Count - 1)
+        if(index == textList.Count)
         {
             //textLabel.text = npc.GetComponent<NPC>().npc.npcMissionInfo[missionIndex];
              acceptButton.SetActive(true);
@@ -92,7 +93,8 @@ public class NPCChatButton : MonoBehaviour
         
     }
 
-    IEnumerator SetTextUI(){
+    IEnumerator SetTextUI()
+    {
         textFinished = false;
         textLabel.text = "";
         
@@ -115,7 +117,8 @@ public class NPCChatButton : MonoBehaviour
              }
 
          int letter = 0;
-         while (!cancelTyping && letter < textList[index].Length - 1){
+         while (!cancelTyping && letter < textList[index].Length - 1)
+         {
              textLabel.text += textList[index][letter];
              letter++;
              yield return new WaitForSeconds(0.1f);

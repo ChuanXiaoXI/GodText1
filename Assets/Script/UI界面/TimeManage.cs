@@ -18,9 +18,12 @@ public class TimeManage : MonoBehaviour
    public GameObject story;
    public GameObject battle;
    public GameObject diolog;
+   public GameObject teamManager;
 
    public List<GameObject> playerList = new List<GameObject>();
    public PlayerData playerData;
+
+
     /*void Awake()
     {
         if(instance != null)
@@ -29,6 +32,10 @@ public class TimeManage : MonoBehaviour
     }*/
 
     // Update is called once per frame
+    public void Start()
+    {
+        teamManager = GameObject.Find("Team");
+    }
    public void Update()
     {
        TimeUI();
@@ -44,6 +51,7 @@ public class TimeManage : MonoBehaviour
         {
             a = 0;
             time += 1;
+            teamManager.GetComponent<TeamManage>().strength += 1.0f;
             if(battle.activeSelf == false)
             {
                 for(int i = 0; i < playerList.Count; i++)

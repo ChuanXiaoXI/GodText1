@@ -20,10 +20,12 @@ public class PlayerController : MonoBehaviour
     public float stopY;
 
     public GameObject timeManager;
+    public GameObject teamManager;
     // Start is called before the first frame update
     void Start()
     {
         timeManager = GameObject.Find("World");
+        teamManager = GameObject.Find("Team");
         //animator = GetComponent<Animator>();
     }
     private void OnTriggerEnter2D(Collider2D other) 
@@ -38,8 +40,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(!timeManager.GetComponent<TimeManage>().timeKnock)
         {
+            if(teamManager.GetComponent<TeamManage>().strength > 0)
+            {
+
+            
         InputY = Input.GetAxisRaw("Vertical");
         InputX = Input.GetAxisRaw("Horizontal");
         
@@ -49,7 +56,8 @@ public class PlayerController : MonoBehaviour
             {
                 isMoving = true;
                 gameObject.transform.DOMove(new Vector3(gameObject.transform.parent.parent.gameObject.GetComponent<BuildingGrid>().rightGameObject.transform.position.x, gameObject.transform.parent.parent.gameObject.GetComponent<BuildingGrid>().rightGameObject.transform.position.y, 0f), moveTime);//移动                  
-                gameObject.transform.parent = gameObject.transform.parent.parent.gameObject.GetComponent<BuildingGrid>().rightGameObject.transform.GetChild(0).gameObject.transform;                               
+                gameObject.transform.parent = gameObject.transform.parent.parent.gameObject.GetComponent<BuildingGrid>().rightGameObject.transform.GetChild(0).gameObject.transform; 
+                teamManager.GetComponent<TeamManage>().strength -= speed;                              
             }
             
         }
@@ -60,6 +68,7 @@ public class PlayerController : MonoBehaviour
                 isMoving = true;
                 gameObject.transform.DOMove(new Vector3(gameObject.transform.parent.parent.gameObject.GetComponent<BuildingGrid>().leftGameObject.transform.position.x, gameObject.transform.parent.parent.gameObject.GetComponent<BuildingGrid>().leftGameObject.transform.position.y, 0f), moveTime);//移动
                 gameObject.transform.parent = gameObject.transform.parent.parent.gameObject.GetComponent<BuildingGrid>().leftGameObject.transform.GetChild(0).gameObject.transform;
+                teamManager.GetComponent<TeamManage>().strength -= speed;  
                 
             }
             
@@ -72,6 +81,7 @@ public class PlayerController : MonoBehaviour
                 isMoving = true;
                 gameObject.transform.DOMove(new Vector3(gameObject.transform.parent.parent.gameObject.GetComponent<BuildingGrid>().upGameObject.transform.position.x, gameObject.transform.parent.parent.gameObject.GetComponent<BuildingGrid>().upGameObject.transform.position.y, 0f), moveTime);//移动
                 gameObject.transform.parent = gameObject.transform.parent.parent.gameObject.GetComponent<BuildingGrid>().upGameObject.transform.GetChild(0).gameObject.transform;
+                teamManager.GetComponent<TeamManage>().strength -= speed;  
                 
             }
             
@@ -84,6 +94,7 @@ public class PlayerController : MonoBehaviour
                 isMoving = true;
                 gameObject.transform.DOMove(new Vector3(gameObject.transform.parent.parent.gameObject.GetComponent<BuildingGrid>().downGameObject.transform.position.x, gameObject.transform.parent.parent.gameObject.GetComponent<BuildingGrid>().downGameObject.transform.position.y, 0f), moveTime);//移动
                 gameObject.transform.parent = gameObject.transform.parent.parent.gameObject.GetComponent<BuildingGrid>().downGameObject.transform.GetChild(0).gameObject.transform;
+                teamManager.GetComponent<TeamManage>().strength -= speed;  
                 
             }
             
@@ -121,6 +132,7 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 1);
         if (movement.x < 0)
             transform.localScale = new Vector3(-1, 1, 1);*/
+            }
         }
     }
 }
