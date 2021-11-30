@@ -45,8 +45,6 @@ public class PlayerController : MonoBehaviour
         {
             if(teamManager.GetComponent<TeamManage>().strength > 0)
             {
-
-            
         InputY = Input.GetAxisRaw("Vertical");
         InputX = Input.GetAxisRaw("Horizontal");
         
@@ -68,7 +66,7 @@ public class PlayerController : MonoBehaviour
                 isMoving = true;
                 gameObject.transform.DOMove(new Vector3(gameObject.transform.parent.parent.gameObject.GetComponent<BuildingGrid>().leftGameObject.transform.position.x, gameObject.transform.parent.parent.gameObject.GetComponent<BuildingGrid>().leftGameObject.transform.position.y, 0f), moveTime);//移动
                 gameObject.transform.parent = gameObject.transform.parent.parent.gameObject.GetComponent<BuildingGrid>().leftGameObject.transform.GetChild(0).gameObject.transform;
-                teamManager.GetComponent<TeamManage>().strength -= speed;  
+                teamManager.GetComponent<TeamManage>().strength -= speed;  //根据速度，消耗行动力
                 
             }
             

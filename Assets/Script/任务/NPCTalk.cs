@@ -27,6 +27,7 @@ public class NPCTalk : MonoBehaviour
     public List<GameObject> missionList = new List<GameObject>();
     public Mission mission;
     [Header("玩家队伍")]
+    public GameObject teamManager;
     public List<GameObject> playerList = new List<GameObject>();
     public float[] playerCharm;
     [Header("交互机制")]
@@ -65,6 +66,10 @@ public class NPCTalk : MonoBehaviour
         }
 
         //MissionFinish();
+    }
+    public void Start()
+    {
+        teamManager = GameObject.Find("Team");
     }
     public void npcHello()
     {
@@ -149,7 +154,8 @@ public class NPCTalk : MonoBehaviour
     }
     public void AcceptButton()
     {
-        
+        if(teamManager.GetComponent<TeamManage>().strength >= 2)
+        {
         if(npcObject.GetComponent<NPC>().mission)
         {
            if(npc.npcMission[npcObject.GetComponent<NPC>().missionIndex] != null) 
@@ -163,6 +169,7 @@ public class NPCTalk : MonoBehaviour
                 missionList[i].GetComponent<PlayerMission>().mission = mission;
                 npcObject.GetComponent<NPC>().mission = false;
                 npcChat.text = npc.npcThank[thankIndex];
+                teamManager.GetComponent<TeamManage>().strength -= 2;
                 npcTalkObject.SetActive(false);
                 npcMissionObject.SetActive(false);
                 npcChatObject.SetActive(true);
@@ -195,6 +202,7 @@ public class NPCTalk : MonoBehaviour
 
             } 
         }
+    }
     }
 
     
@@ -310,12 +318,16 @@ public class NPCTalk : MonoBehaviour
 }
 public void ItemInteractionAccept()
 {
+    if(teamManager.GetComponent<TeamManage>().strength >= 2)
+    {
                 npcInteractionObject.GetComponent<NPCInteraction>().textFile = npc.npcInteraction[interactionIndex];
+                teamManager.GetComponent<TeamManage>().strength -= 2;
                 npcTalkObject.SetActive(false);
                 npcMissionObject.SetActive(false);
                 npcChatObject.SetActive(false);
                 npcInteractionObject.SetActive(true);
                 npcInteractionSelect.SetActive(false);
+    }
     
 
 }
