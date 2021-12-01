@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class BattleManage : MonoBehaviour
 {  
@@ -21,7 +22,7 @@ public class BattleManage : MonoBehaviour
     //public int enemyNum;//生成数量
     public  List<GameObject> enemyList = new List<GameObject>() ;
     public List<GameObject> remainEnemyList = new List<GameObject>();
-
+    [Header("buff显示设置")]
     public GameObject buffPrefabObject;
     public GameObject buffObject;
    // public int enemyPoint;
@@ -34,10 +35,15 @@ public class BattleManage : MonoBehaviour
     public GameObject victory;
 
     public GameObject enemyObject;
-    public List<GameObject> npcObject = new List<GameObject>();
+    
+    public GameObject npcManager;
+    public GameObject npcDefeatSence;
+    public Text npcDefeatText;
+    public List<GameObject> npcTalkSence = new List<GameObject>();
+    //public List<GameObject> npcObject = new List<GameObject>();
 
-    public GameObject itemPrefab;//战利品
-    public GameObject itemObject;
+    //public GameObject itemPrefab;//战利品
+    //public GameObject itemObject;
  
     // Start is called before the first frame update
     void Start()
@@ -652,8 +658,28 @@ public class BattleManage : MonoBehaviour
     {
         if(remainEnemyList.Count == 0)
         {
-            victory.SetActive(true);
+            if(!enemyObject.GetComponent<EnemyUI>().playerClass.NPC)
+            {
+              victory.SetActive(true);
+              if(enemyObject != null)
+             {
+              Destroy(enemyObject);
+             }
+            }
             if(enemyObject.GetComponent<EnemyUI>().playerClass.NPC)
+            {
+                npcManager.SetActive(true);
+                npcDefeatSence.SetActive(true);
+                 for (int i = 0; i < npcTalkSence.Count ; i++)
+                 {
+                     npcTalkSence[i].SetActive(false);
+                 }
+                 npcDefeatText.text = "你已经击败了" + enemyObject.GetComponent<NPC>().npc.playerName + ",你要如何处置？";
+
+               // npcTalkSence.SetActive(false);
+           
+            }
+            /*if(enemyObject.GetComponent<EnemyUI>().playerClass.NPC)
             {
               if(enemyObject.GetComponent<NPC>().npc.npcDeathItem.Count != 0)
               {
@@ -670,11 +696,8 @@ public class BattleManage : MonoBehaviour
                   Destroy(enemyObject.GetComponent<NPC>().npcList[i]);
                   }
               }
-            }
-           if(enemyObject != null)
-           {
-            Destroy(enemyObject);
-           }
+            }*/
+           
 
             for (int i = 0; i < remainPlayerList.Count ; i++)
             {

@@ -54,7 +54,7 @@ public class Player_Class : ScriptableObject
      [Header("npc喜爱列表(可以空白)")]
      public List<Item> npcFavouriteItem = new List<Item>();
      [Header("npc死亡掉落(可以空白)")]
-     public List<Item> npcDeathItem = new List<Item>();
+     public List<Inventory> npcDeathItem = new List<Inventory>();
      [Header("npc交互文本")]
      public List<TextAsset> npcInteraction = new List<TextAsset>();
      [Header("npc交互拒绝语句")]

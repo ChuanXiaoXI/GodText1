@@ -18,7 +18,7 @@ public class NPC : MonoBehaviour
     [Header("npc战斗模组")]
     public GameObject battleManage;
     public List<GameObject> enemyList = new List<GameObject>();//
-    public List<GameObject> npcList = new List<GameObject>();//世界npc列表
+    //public List<GameObject> npcList = new List<GameObject>();//世界npc列表
     //public GameObject itemObject;//战利品
     [Header("npc交互模组")]
     public List<Item> NpcFavouriteItem = new List<Item>();
@@ -98,7 +98,7 @@ public class NPC : MonoBehaviour
           npcTalk.SetActive(true);
           battleManage.GetComponent<BattleManage>().enemyList = enemyList;
           battleManage.GetComponent<BattleManage>().enemyObject = gameObject;
-          battleManage.GetComponent<BattleManage>().npcObject = npcList;
+          //battleManage.GetComponent<BattleManage>().npcObject = npcList;
        
     
     }

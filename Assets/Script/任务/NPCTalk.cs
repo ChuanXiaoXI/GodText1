@@ -17,11 +17,13 @@ public class NPCTalk : MonoBehaviour
     public Text npcMission;
     public Text npcChat;
     public Text npcInteractionSelectText;
+    public Text npcItemText;
     public GameObject npcTalkObject;
     public GameObject npcMissionObject;
     public GameObject npcChatObject;
     public GameObject npcInteractionSelect;
     public GameObject npcInteractionObject;
+    public GameObject npcDefeatSence;
     //public GameObject npcMissionInfo;
     [Header("npc任务组件")]
     public List<GameObject> missionList = new List<GameObject>();
@@ -40,6 +42,7 @@ public class NPCTalk : MonoBehaviour
     public GameObject itemObject;
     public bool interaction;
     
+    public GameObject npcItem;
 
      public GameObject battleManage;
      public bool battle;
@@ -57,6 +60,7 @@ public class NPCTalk : MonoBehaviour
         npcChatObject.SetActive(false);
         npcInteractionObject.SetActive(false);
         npcInteractionSelect.SetActive(false);
+        npcDefeatSence.SetActive(false);
         npcName.text = npc.playerName;
         npcImage.sprite = npc.playerImage;
         npcHello();
@@ -363,19 +367,36 @@ public void MissionFinish()
      if(npc.npcInteractionItem[interactionIndex] != null) 
      {
       itemObject = Instantiate(itemPrefab);
-      itemObject.GetComponent<ItemOnWorld>().thisItem = npc.npcInteractionItem[interactionIndex];
+      //itemObject.GetComponent<ItemOnWorld>().thisItem = npc.npcInteractionItem[interactionIndex];
       //itemObject = Instantiate(itemPrefab);
-      itemObject.transform.position = npcObject.transform.position;
-      itemObject.transform.DOMove(new Vector3( npcObject.transform.position.x + 0.14f, npcObject.transform.position.y + -1.0f, 0f), 1.0f);
-      for(int i = 0; i < npcObject.GetComponent<NPC>().npcList.Count; i++)
+      //itemObject.transform.position = npcObject.transform.position;
+      //itemObject.transform.DOMove(new Vector3( npcObject.transform.position.x + 0.14f, npcObject.transform.position.y + -1.0f, 0f), 1.0f);
+      /*for(int i = 0; i < npcObject.GetComponent<NPC>().npcList.Count; i++)
       {
           npcObject.GetComponent<NPC>().npcList[i].GetComponent<NPC>().NpcFavouriteItem[interactionIndex] = null;
           npcObject.GetComponent<NPC>().npcList[i].GetComponent<NPC>().NpcInteractionItem[interactionIndex] = null;
-      }
+      }*/
       bagList[bagIndex].transform.GetChild(0).gameObject.GetComponent<ItemOnDrag>().itemHeld -= 1;
 
      }
       
+      gameObject.SetActive(false);
+
+  }
+  public void KillButton()
+  {
+      npcItem.SetActive(true);
+      npcItem.GetComponent<NPCItem>().getItemTime = 2;
+      npcDefeatSence.SetActive(false);
+      npcItemText.text = "你杀了" + npc.playerName + ",你可以带走2样东西";
+      for (int i = 0; i < npcObject.GetComponent<NPC>().npc.npcDeathItem.Count; i++)
+      {
+          if(npcObject.GetComponent<NPC>().npc.npcDeathItem[i] != null)
+          {
+              npcItem.GetComponent<NPCItem>().npcDeathItem.Add(npcObject.GetComponent<NPC>().npc.npcDeathItem[i]);
+          }
+      }
+      Destroy(npcObject);
       gameObject.SetActive(false);
 
   }

@@ -156,7 +156,7 @@ public class EnemyObject : MonoBehaviour
         
           battleManage.GetComponent<BattleManage>().enemyList = enemyList;
           battleManage.GetComponent<BattleManage>().enemyObject = gameObject;
-          battleManage.GetComponent<BattleManage>().npcObject = npcList;
+          //battleManage.GetComponent<BattleManage>().npcObject = npcList;
          // Destroy(gameObject);
           battleManage.SetActive(true);
            
