@@ -44,6 +44,8 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
     public GameObject victory;
     //[故事]
     public GameObject story;
+    [Header("npc战利品")]
+    public bool npcItem;
 
 
     [Header("装备属性")]
@@ -325,6 +327,7 @@ public void OnPointerExit(PointerEventData eventData)
         trophy = true;
       }
     }
+    
 
     
   public void OnBeginDrag(PointerEventData eventData)
