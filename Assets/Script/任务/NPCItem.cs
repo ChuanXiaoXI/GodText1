@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class NPCItem : MonoBehaviour
 {
     public int getItemTime;
-    public List<Inventory> npcDeathItem = new List<Inventory>();
+    public List<Item> npcItemList = new List<Item>();
+    public GameObject npcMarkObject;
      [Header("物品生成")]
-    public GameObject slot1;
-    public GameObject slot2;
-    public GameObject slot3;
+    public GameObject itemManager;
+    public List<GameObject> slotList = new List<GameObject>();
     public GameObject itemPrefab;
     public GameObject itemMarkObject;
     [Header("命运")]
@@ -23,7 +23,7 @@ public class NPCItem : MonoBehaviour
     public Text randomIndex2Text;
     public Text randomIndex3Text;
     public Text randomIndexSumText;
-    [Header("命运算法（不必修改）")]
+   /* [Header("命运算法（不必修改）")]
     public int upNumber1;
     public int upNumber2;
     public int upNumber3;
@@ -34,28 +34,32 @@ public class NPCItem : MonoBehaviour
     public int endIndex;
     public int point1;
     public int point2;
-    public int point3;
+    public int point3;*/
     
     public void OnEnble()
     {
         randomIndexManager.SetActive(false);
     }
+    public void Start()
+    {
+        for (int i = 0; i < itemManager.transform.childCount; i++)
+       {
+           slotList.Add(itemManager.transform.GetChild(i).gameObject);
+       }
+
+    }
     public void Update()
     {
         if(getItemTime == 0)
         {
-            if(slot1.transform.childCount != 0)
+            for (int i = 0; i < slotList.Count; i++)
             {
-                Destroy(slot1.transform.GetChild(0).gameObject);
+                if(slotList[i].transform.childCount != 0)
+                {
+                    Destroy(slotList[i].transform.GetChild(0).gameObject);
+                }
             }
-             if(slot2.transform.childCount != 0)
-            {
-                Destroy(slot2.transform.GetChild(0).gameObject);
-            }
-             if(slot3.transform.childCount != 0)
-            {
-                Destroy(slot3.transform.GetChild(0).gameObject);
-            }
+           
             gameObject.SetActive(false);
             
         }
@@ -75,7 +79,34 @@ public class NPCItem : MonoBehaviour
     }
     public void DefeatItemButton()//按骰子总数生成装备
     {
-        int randomNumber1 = Random.Range(1,101);
+        for (int i = 3; i < randomIndexSum + 1; i++)
+        {
+         if(npcItemList[i - 3] != null)
+         {
+        slotList[i - 3].SetActive(true);
+        itemMarkObject = Instantiate(itemPrefab);
+        itemMarkObject.transform.parent = slotList[i - 3].transform;
+        itemMarkObject.transform.position = slotList[i - 3].transform.position;
+        itemMarkObject.GetComponent<ItemOnDrag>().item = npcItemList[i - 3];
+        itemMarkObject.GetComponent<ItemOnDrag>().npcKillItem = true;
+        itemMarkObject.GetComponent<ItemOnDrag>().npcMarkObject = npcMarkObject;
+        itemMarkObject.GetComponent<ItemOnDrag>().npcItemManager = gameObject;
+         }
+         if(npcItemList[i - 3] == null)
+         {
+             break;
+         }
+        }
+        for (int i = 0; i < slotList.Count; i++)
+        {
+            if(slotList[i].transform.childCount == 0)
+            {
+                slotList[i].SetActive(false);
+            }
+        }
+         //itemMarkObject.GetComponent<ItemOnDrag>().randomObject = randomIndexManager;
+       
+       /* int randomNumber1 = Random.Range(1,101);
         int randomNumber2 = Random.Range(1,101);
         int randomNumber3 = Random.Range(1,101);
         if(randomIndexSum >= 3 && randomIndexSum <= 8)
@@ -233,7 +264,7 @@ public class NPCItem : MonoBehaviour
                 itemMarkObject.GetComponent<ItemOnDrag>().npcItemManager = gameObject;
                 //itemMarkObject.GetComponent<ItemOnDrag>().randomObject = randomIndexManager;
 
-            }
+            }*/
            
            
             

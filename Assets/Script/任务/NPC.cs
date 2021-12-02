@@ -23,6 +23,11 @@ public class NPC : MonoBehaviour
     [Header("npc交互模组")]
     public List<Item> NpcFavouriteItem = new List<Item>();
     public List<Item> NpcInteractionItem = new List<Item>();
+       [Header("npc持有物品模组")]
+     public List<Item> npcItemList1 = new List<Item>();
+     public List<Item> npcItemList2 = new List<Item>();
+     //public List<Item> npcItemList3 = new List<Item>();
+     public List<Item> npcItemList = new List<Item>();
 
     
 
@@ -45,32 +50,18 @@ public class NPC : MonoBehaviour
             npcName.text = npc.playerName;
         }
         gameObject.GetComponent<EnemyUI>().playerClass = npc;//属性传值
-
-        NpcFavouriteItem.Clear();
-        NpcInteractionItem.Clear();
-        for(int i = 0; i < npc.npcFavouriteItem.Count; i++)
-        {
-            NpcFavouriteItem.Add(npc.npcFavouriteItem[i]);
-        }
-         for(int i = 0; i <npc.npcInteractionItem.Count; i++)
-        {
-            NpcInteractionItem.Add(npc.npcInteractionItem[i]);
-        }
-        //NpcFavouriteItem = npc.npcFavouriteItem;
-        //NpcInteractionItem = npc.npcInteractionItem;
-        //enemyClass = gameObject.GetComponent<NPCBattle>().enemyClass;
+        NPCItem();
         npcTalk = GameObject.Find("UI").transform.GetChild(8).gameObject;
         player = GameObject.Find("Player");
         battleManage = GameObject.Find("UI").transform.GetChild(6).gameObject;
 
-        missionIndex = Random.Range(0 , npc.npcMissionTalk.Count);
-        
+        missionIndex = Random.Range(0 , npc.npcMissionTalk.Count); 
     }
    
     public  void OnEnable() 
     {
        
-        NpcFavouriteItem.Clear();
+       /* NpcFavouriteItem.Clear();
         NpcInteractionItem.Clear();
         for(int i = 0; i < npc.npcFavouriteItem.Count; i++)
         {
@@ -87,10 +78,52 @@ public class NPC : MonoBehaviour
         player = GameObject.Find("Player");
         battleManage = GameObject.Find("UI").transform.GetChild(6).gameObject;
 
-        missionIndex = Random.Range(0 , npc.npcMissionTalk.Count);
+        missionIndex = Random.Range(0 , npc.npcMissionTalk.Count);*/
         
         
     }
+    public void NPCItem()
+    {
+        npcItemList1.Clear();
+        for(int i = 0; i < npc.npcItemList1.Count; i++)
+        {
+            npcItemList1.Add(npc.npcItemList1[i]);
+        }
+        npcItemList2.Clear();
+        for(int i = 0; i < npc.npcItemList2.Count; i++)
+        {
+            npcItemList2.Add(npc.npcItemList2[i]);
+        }
+         for(int i = 0; i < 7; i++)
+         {
+             int randomIndex = Random.Range(0,npcItemList1.Count);
+             npcItemList.Add(npcItemList1[randomIndex]);
+             npcItemList1.Remove(npcItemList1[randomIndex]);
+         }
+          for(int i = 0; i < 3; i++)
+         {
+             int randomIndex = Random.Range(0,npcItemList2.Count);
+             npcItemList.Add(npcItemList2[randomIndex]);
+             npcItemList2.Remove(npcItemList2[randomIndex]);
+         }
+         for(int i = 0; i < npc.npcItemList3.Count; i++)
+         {
+             npcItemList.Add(npc.npcItemList3[i]);
+         }
+
+         NpcFavouriteItem.Clear();
+         NpcInteractionItem.Clear();
+         for(int i = 0; i < npc.npcFavouriteItem.Count; i++)
+         {
+            NpcFavouriteItem.Add(npc.npcFavouriteItem[i]);
+         }
+         for(int i = 0; i <npc.npcInteractionItem.Count; i++)
+         {
+            NpcInteractionItem.Add(npc.npcInteractionItem[i]);
+         }
+    }
+
+
     public void NPCButton()
    {      
           npcTalk.GetComponent<NPCTalk>().npc = npc;

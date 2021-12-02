@@ -388,15 +388,14 @@ public void MissionFinish()
       npcItem.SetActive(true);
       npcItem.GetComponent<NPCItem>().getItemTime = 2;
       npcDefeatSence.SetActive(false);
-      npcItemText.text = "你杀了" + npc.playerName + ",你可以带走2样东西";
-      for (int i = 0; i < npcObject.GetComponent<NPC>().npc.npcDeathItem.Count; i++)
+      npcItemText.text = "你杀了" + npc.playerName + ",你可以带走2样东西";   
+      for (int i = 0; i < npcObject.GetComponent<NPC>().npcItemList.Count; i++)
       {
-          if(npcObject.GetComponent<NPC>().npc.npcDeathItem[i] != null)
-          {
-              npcItem.GetComponent<NPCItem>().npcDeathItem.Add(npcObject.GetComponent<NPC>().npc.npcDeathItem[i]);
-          }
+          npcItem.GetComponent<NPCItem>().npcItemList.Add(npcObject.GetComponent<NPC>().npcItemList[i]);
       }
-      Destroy(npcObject);
+      //npcItem.GetComponent<NPCItem>().npcItemList = npcObject.GetComponent<NPC>().npcItemList; 
+      npcItem.GetComponent<NPCItem>().npcMarkObject = npcObject;      
+      //Destroy(npcObject);
       gameObject.SetActive(false);
 
   }

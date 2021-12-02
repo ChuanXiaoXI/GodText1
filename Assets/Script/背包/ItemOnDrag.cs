@@ -45,9 +45,10 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
     //[故事]
     public GameObject story;
     [Header("npc战利品")]
-    public bool npcItem;
+    public bool npcKillItem;
     public GameObject npcItemManager;
     public GameObject randomObject;
+    public GameObject npcMarkObject;
 
 
     [Header("装备属性")]
@@ -313,7 +314,7 @@ public void OnPointerExit(PointerEventData eventData)
                    }
                }
              }
-             if(npcItem)
+             if(npcKillItem)
              {
                for (int i = 0; i < 18 ; i++)
                {
@@ -321,8 +322,13 @@ public void OnPointerExit(PointerEventData eventData)
                    {
                      gameObject.transform.parent = bag.transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform;
                      gameObject.transform.position = bag.transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.position;
-                     npcItem = false;
+                     npcKillItem = false;
                      npcItemManager.GetComponent<NPCItem>().getItemTime -= 1;
+                     if(npcMarkObject != null)
+                     {
+                       Destroy(npcMarkObject);
+                     }
+
                    }
 
                 }
@@ -380,7 +386,7 @@ public void OnPointerExit(PointerEventData eventData)
   
   public void OnEndDrag(PointerEventData eventData)
   {
-    if(trophy == false && npcItem == false)
+    if(trophy == false && npcKillItem == false)
     {
 
     
