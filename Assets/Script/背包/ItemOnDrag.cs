@@ -46,6 +46,8 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
     public GameObject story;
     [Header("npc战利品")]
     public bool npcItem;
+    public GameObject npcItemManager;
+    public GameObject randomObject;
 
 
     [Header("装备属性")]
@@ -311,14 +313,30 @@ public void OnPointerExit(PointerEventData eventData)
                    }
                }
              }
+             if(npcItem)
+             {
+               for (int i = 0; i < 18 ; i++)
+               {
+                   if(bag.transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.childCount == 0)
+                   {
+                     gameObject.transform.parent = bag.transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform;
+                     gameObject.transform.position = bag.transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.position;
+                     npcItem = false;
+                     npcItemManager.GetComponent<NPCItem>().getItemTime -= 1;
+                   }
+
+                }
+             }
+
       if(item.story)//单击打开故事框
       {
         story.GetComponent<Story>().textFile = item.textFile;
         story.SetActive(true);
       }
-        }
+        
         time = Time.time;
-    }
+      }
+   }
     public void Trophy()//战利品
     {
       trophy = false;
@@ -362,7 +380,7 @@ public void OnPointerExit(PointerEventData eventData)
   
   public void OnEndDrag(PointerEventData eventData)
   {
-    if(trophy == false)
+    if(trophy == false && npcItem == false)
     {
 
     

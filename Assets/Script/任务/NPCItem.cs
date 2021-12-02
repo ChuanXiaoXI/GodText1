@@ -35,7 +35,31 @@ public class NPCItem : MonoBehaviour
     public int point1;
     public int point2;
     public int point3;
-
+    
+    public void OnEnble()
+    {
+        randomIndexManager.SetActive(false);
+    }
+    public void Update()
+    {
+        if(getItemTime == 0)
+        {
+            if(slot1.transform.childCount != 0)
+            {
+                Destroy(slot1.transform.GetChild(0).gameObject);
+            }
+             if(slot2.transform.childCount != 0)
+            {
+                Destroy(slot2.transform.GetChild(0).gameObject);
+            }
+             if(slot3.transform.childCount != 0)
+            {
+                Destroy(slot3.transform.GetChild(0).gameObject);
+            }
+            gameObject.SetActive(false);
+            
+        }
+    }
     
     public void RandomIndex()//摇骰子
     {
@@ -49,7 +73,7 @@ public class NPCItem : MonoBehaviour
         randomIndex3Text.text = randomIndex3.ToString();
         randomIndexSumText.text = randomIndexSum.ToString();
     }
-    public void Button()//按骰子总数生成装备
+    public void DefeatItemButton()//按骰子总数生成装备
     {
         int randomNumber1 = Random.Range(1,101);
         int randomNumber2 = Random.Range(1,101);
@@ -105,6 +129,8 @@ public class NPCItem : MonoBehaviour
                 itemMarkObject.transform.position = slot1.transform.position;
                 itemMarkObject.GetComponent<ItemOnDrag>().item = npcDeathItem[0].bagList[random];
                 itemMarkObject.GetComponent<ItemOnDrag>().npcItem = true;
+                itemMarkObject.GetComponent<ItemOnDrag>().npcItemManager = gameObject;
+                //itemMarkObject.GetComponent<ItemOnDrag>().randomObject = randomIndexManager;
 
 
             }   
@@ -116,6 +142,8 @@ public class NPCItem : MonoBehaviour
                 itemMarkObject.transform.position = slot1.transform.position;
                 itemMarkObject.GetComponent<ItemOnDrag>().item = npcDeathItem[1].bagList[random];
                 itemMarkObject.GetComponent<ItemOnDrag>().npcItem = true;
+                itemMarkObject.GetComponent<ItemOnDrag>().npcItemManager = gameObject;
+                //itemMarkObject.GetComponent<ItemOnDrag>().randomObject = randomIndexManager;
 
             }   
             if(randomNumber1 > point2 && randomNumber1 <= point3)
@@ -126,6 +154,8 @@ public class NPCItem : MonoBehaviour
                 itemMarkObject.transform.position = slot1.transform.position;
                 itemMarkObject.GetComponent<ItemOnDrag>().item = npcDeathItem[3].bagList[random];
                 itemMarkObject.GetComponent<ItemOnDrag>().npcItem = true;
+                itemMarkObject.GetComponent<ItemOnDrag>().npcItemManager = gameObject;
+                //itemMarkObject.GetComponent<ItemOnDrag>().randomObject = randomIndexManager;
 
             }
 
@@ -137,6 +167,8 @@ public class NPCItem : MonoBehaviour
                 itemMarkObject.transform.position = slot2.transform.position;
                 itemMarkObject.GetComponent<ItemOnDrag>().item = npcDeathItem[0].bagList[random];
                 itemMarkObject.GetComponent<ItemOnDrag>().npcItem = true;
+                itemMarkObject.GetComponent<ItemOnDrag>().npcItemManager = gameObject;
+                //itemMarkObject.GetComponent<ItemOnDrag>().randomObject = randomIndexManager;
 
 
             }   
@@ -148,6 +180,8 @@ public class NPCItem : MonoBehaviour
                 itemMarkObject.transform.position = slot2.transform.position;
                 itemMarkObject.GetComponent<ItemOnDrag>().item = npcDeathItem[1].bagList[random];
                 itemMarkObject.GetComponent<ItemOnDrag>().npcItem = true;
+                itemMarkObject.GetComponent<ItemOnDrag>().npcItemManager = gameObject;
+                //itemMarkObject.GetComponent<ItemOnDrag>().randomObject = randomIndexManager;
 
             }   
             if(randomNumber2 > point2 && randomNumber2 <= point3)
@@ -158,6 +192,8 @@ public class NPCItem : MonoBehaviour
                 itemMarkObject.transform.position = slot2.transform.position;
                 itemMarkObject.GetComponent<ItemOnDrag>().item = npcDeathItem[3].bagList[random];
                 itemMarkObject.GetComponent<ItemOnDrag>().npcItem = true;
+                itemMarkObject.GetComponent<ItemOnDrag>().npcItemManager = gameObject;
+                //itemMarkObject.GetComponent<ItemOnDrag>().randomObject = randomIndexManager;
 
             }
 
@@ -169,6 +205,8 @@ public class NPCItem : MonoBehaviour
                 itemMarkObject.transform.position = slot3.transform.position;
                 itemMarkObject.GetComponent<ItemOnDrag>().item = npcDeathItem[0].bagList[random];
                 itemMarkObject.GetComponent<ItemOnDrag>().npcItem = true;
+                itemMarkObject.GetComponent<ItemOnDrag>().npcItemManager = gameObject;
+                //itemMarkObject.GetComponent<ItemOnDrag>().randomObject = randomIndexManager;
 
 
             }   
@@ -180,6 +218,8 @@ public class NPCItem : MonoBehaviour
                 itemMarkObject.transform.position = slot3.transform.position;
                 itemMarkObject.GetComponent<ItemOnDrag>().item = npcDeathItem[1].bagList[random];
                 itemMarkObject.GetComponent<ItemOnDrag>().npcItem = true;
+                itemMarkObject.GetComponent<ItemOnDrag>().npcItemManager = gameObject;
+                //itemMarkObject.GetComponent<ItemOnDrag>().randomObject = randomIndexManager;
 
             }   
             if(randomNumber3 > point2)
@@ -190,6 +230,8 @@ public class NPCItem : MonoBehaviour
                 itemMarkObject.transform.position = slot3.transform.position;
                 itemMarkObject.GetComponent<ItemOnDrag>().item = npcDeathItem[3].bagList[random];
                 itemMarkObject.GetComponent<ItemOnDrag>().npcItem = true;
+                itemMarkObject.GetComponent<ItemOnDrag>().npcItemManager = gameObject;
+                //itemMarkObject.GetComponent<ItemOnDrag>().randomObject = randomIndexManager;
 
             }
            
