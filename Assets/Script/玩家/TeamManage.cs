@@ -12,9 +12,16 @@ public class TeamManage : MonoBehaviour
     public List<GameObject> players = new List<GameObject>();
     public List<TeamPlayer> playerList = new List<TeamPlayer>();
     public PlayerData playerData;
-
+     [Header("行动力")]
     public float strength;
     public Text strengthText;
+    public float socialStrength;
+    public bool socialBool;
+    public float battleStrength;
+    public bool battleBool;
+    public float searchStrength;
+    public bool searchBool;
+    
     
     void Awake()
     {

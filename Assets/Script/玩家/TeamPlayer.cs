@@ -647,16 +647,16 @@ public void Temporary()
     {
         if(consumableList[i] != null)
         {
-            hp += consumableList[i].hp;
+            hp += (consumableList[i].hp * totalhp);
             mp += consumableList[i].mp;
             sp += consumableList[i].sp;
-            baseTotalhp += consumableList[i].baseTotalhp;
-            baseAd += consumableList[i].baseAd;
-            baseAp += consumableList[i].baseAp;
-            baseDef += consumableList[i].baseDef;
-            baseMdef += consumableList[i].baseMdef;
-            baseIq += consumableList[i].baseIq;
-            baseCharm += consumableList[i].baseCharm;
+            growthTotalhp += consumableList[i].baseTotalhp;
+            growthAd += consumableList[i].baseAd;
+            growthAp += consumableList[i].baseAp;
+            growthDef += consumableList[i].baseDef;
+            growthMdef += consumableList[i].baseMdef;
+            growthIq += consumableList[i].baseIq;
+            growthCharm += consumableList[i].baseCharm;
             point += consumableList[i].basePoint;
             Cpoint += consumableList[i].baseCPoint;
             Spoint += consumableList[i].baseSPoint;

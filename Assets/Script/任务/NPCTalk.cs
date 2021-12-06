@@ -173,7 +173,7 @@ public class NPCTalk : MonoBehaviour
                 missionList[i].GetComponent<PlayerMission>().mission = mission;
                 npcObject.GetComponent<NPC>().mission = false;
                 npcChat.text = npc.npcThank[thankIndex];
-                teamManager.GetComponent<TeamManage>().strength -= 2;
+                teamManager.GetComponent<TeamManage>().strength -= teamManager.GetComponent<TeamManage>().socialStrength;
                 npcTalkObject.SetActive(false);
                 npcMissionObject.SetActive(false);
                 npcChatObject.SetActive(true);
@@ -223,14 +223,18 @@ public class NPCTalk : MonoBehaviour
     }
   public void BattleButton()
   {
-                int npcBattleTalkIndex = Random.Range(0 , npc.npcBattleTalk.Count);
-                npcChat.text = npc.npcBattleTalk[npcBattleTalkIndex];
-                npcTalkObject.SetActive(false);
-                npcMissionObject.SetActive(false);
-                npcChatObject.SetActive(true);
-                npcInteractionObject.SetActive(false);
-                npcInteractionSelect.SetActive(false);
-                battle = true;
+      if(teamManager.GetComponent<TeamManage>().strength >= teamManager.GetComponent<TeamManage>().battleStrength)
+      {
+        teamManager.GetComponent<TeamManage>().strength -= teamManager.GetComponent<TeamManage>().battleStrength;        
+        int npcBattleTalkIndex = Random.Range(0 , npc.npcBattleTalk.Count);
+        npcChat.text = npc.npcBattleTalk[npcBattleTalkIndex];
+        npcTalkObject.SetActive(false);
+        npcMissionObject.SetActive(false);
+        npcChatObject.SetActive(true);
+        npcInteractionObject.SetActive(false);
+        npcInteractionSelect.SetActive(false);
+        battle = true;
+      }
     //Destroy(npcObject);
     //battleManage.SetActive(true);
     //gameObject.SetActive(false);
@@ -322,10 +326,10 @@ public class NPCTalk : MonoBehaviour
 }
 public void ItemInteractionAccept()
 {
-    if(teamManager.GetComponent<TeamManage>().strength >= 2)
+    if(teamManager.GetComponent<TeamManage>().strength >= teamManager.GetComponent<TeamManage>().socialStrength)
     {
                 npcInteractionObject.GetComponent<NPCInteraction>().textFile = npc.npcInteraction[interactionIndex];
-                teamManager.GetComponent<TeamManage>().strength -= 2;
+                teamManager.GetComponent<TeamManage>().strength -= teamManager.GetComponent<TeamManage>().socialStrength;
                 npcTalkObject.SetActive(false);
                 npcMissionObject.SetActive(false);
                 npcChatObject.SetActive(false);
@@ -399,4 +403,21 @@ public void MissionFinish()
       gameObject.SetActive(false);
 
   }
+  public void ForgiveButton()
+  {
+      npcItem.SetActive(true);
+      npcItem.GetComponent<NPCItem>().getItemTime = 1;
+      npcDefeatSence.SetActive(false);
+      npcItemText.text = "你饶恕了" + npc.playerName + ",你可以带走1样东西";   
+      for (int i = 0; i < npcObject.GetComponent<NPC>().npcItemList.Count; i++)
+      {
+          npcItem.GetComponent<NPCItem>().npcItemList.Add(npcObject.GetComponent<NPC>().npcItemList[i]);
+      }
+      //npcItem.GetComponent<NPCItem>().npcItemList = npcObject.GetComponent<NPC>().npcItemList; 
+      npcItem.GetComponent<NPCItem>().npcMarkObject = npcObject;      
+      //Destroy(npcObject);
+      gameObject.SetActive(false);
+
+  }
+
 }
