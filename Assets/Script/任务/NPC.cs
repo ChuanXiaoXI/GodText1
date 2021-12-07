@@ -50,7 +50,7 @@ public class NPC : MonoBehaviour
             npcName.text = npc.playerName;
         }
         gameObject.GetComponent<EnemyUI>().playerClass = npc;//属性传值
-        NPCItem();
+       // NPCItem();
         npcTalk = GameObject.Find("UI").transform.GetChild(8).gameObject;
         player = GameObject.Find("Player");
         battleManage = GameObject.Find("UI").transform.GetChild(6).gameObject;
@@ -78,8 +78,8 @@ public class NPC : MonoBehaviour
         player = GameObject.Find("Player");
         battleManage = GameObject.Find("UI").transform.GetChild(6).gameObject;
 
-        missionIndex = Random.Range(0 , npc.npcMissionTalk.Count);*/
-        
+        missionIndex = Random.Range(0 , npc.npcMissionTalk.Count);
+        */
         
     }
     public void NPCItem()

@@ -77,30 +77,13 @@ public class NPCTalk : MonoBehaviour
     }
     public void npcHello()
     {
-        //int chatIndex = Random.Range(0 , npc.npcChat.Count - 1);
-        //npcChat.text = npc.npcChat[chatIndex];//随机交谈语句
+        
         int index = Random.Range(0 , npc.npcTalk.Count);
         npcTalk.text = npc.npcTalk[index];//随机问好语句
-        //int missionIndex = Random.Range(0 , npc.npcTalk.Count - 1);
-        //mission = npc.npcMission[missionIndex];//随机任务
-        //npcMission.text = npc.npcMissionTalk[missionIndex];//随机任务语句
+       
        
     }
     
-    /*public void MissionButton()
-    {
-        npcTalkObject.SetActive(false);
-        npcMissionObject.SetActive(true);
-        npcChatObject.SetActive(false);
-        if(npcObject.GetComponent<NPC>().mission == false)
-        {
-            npcChat.text = npc.npcNullMission;
-            npcTalkObject.SetActive(false);
-            npcMissionObject.SetActive(false);
-            npcChatObject.SetActive(true);
-
-        }
-    }*/
     public void ChatButton()
     {
         if(npcObject.GetComponent<NPC>().mission)
@@ -136,7 +119,7 @@ public class NPCTalk : MonoBehaviour
           int chatIndex = Random.Range(0 , npc.npcNullCharm.Count);  
           npcMissionObject.GetComponent<NPCChatButton>().npc = npcObject;
           npcChat.text = npc.npcNullCharm[chatIndex];
-           npcTalkObject.SetActive(false);
+          npcTalkObject.SetActive(false);
           npcMissionObject.SetActive(false);
           npcChatObject.SetActive(true);
           npcInteractionObject.SetActive(false);
@@ -371,19 +354,9 @@ public void MissionFinish()
      if(npc.npcInteractionItem[interactionIndex] != null) 
      {
       itemObject = Instantiate(itemPrefab);
-      //itemObject.GetComponent<ItemOnWorld>().thisItem = npc.npcInteractionItem[interactionIndex];
-      //itemObject = Instantiate(itemPrefab);
-      //itemObject.transform.position = npcObject.transform.position;
-      //itemObject.transform.DOMove(new Vector3( npcObject.transform.position.x + 0.14f, npcObject.transform.position.y + -1.0f, 0f), 1.0f);
-      /*for(int i = 0; i < npcObject.GetComponent<NPC>().npcList.Count; i++)
-      {
-          npcObject.GetComponent<NPC>().npcList[i].GetComponent<NPC>().NpcFavouriteItem[interactionIndex] = null;
-          npcObject.GetComponent<NPC>().npcList[i].GetComponent<NPC>().NpcInteractionItem[interactionIndex] = null;
-      }*/
       bagList[bagIndex].transform.GetChild(0).gameObject.GetComponent<ItemOnDrag>().itemHeld -= 1;
 
      }
-      
       gameObject.SetActive(false);
 
   }
