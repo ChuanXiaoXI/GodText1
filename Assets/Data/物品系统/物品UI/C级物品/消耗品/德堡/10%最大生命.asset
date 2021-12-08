@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac9298dcf4578514f97913b37df2f544, type: 3}
-  m_Name: "5%\u751F\u547D\u56DE\u590D"
+  m_Name: "10%\u6700\u5927\u751F\u547D"
   m_EditorClassIdentifier: 
-  itemName: "\u521B\u53EF\u8D34"
+  itemName: "\u6D3B\u8840\u4E38"
   itemImage: {fileID: 0}
   itemColor: {r: 0, g: 0, b: 0, a: 0}
   itemHeld: 1
@@ -30,8 +30,8 @@ MonoBehaviour:
   textFile: {fileID: 0}
   skillList: []
   gemPrepertyList: {fileID: 0}
-  itemInfo: "\u521B\u53EF\u8D34\uFF0CD\u7EA7\u6D88\u8017\u54C1\n\u80FD\u6709\u6548\u5904\u7406\u4E00\u4E9B\u5C0F\u4F24\u53E3\uFF0C\u662F\u5C45\u5BB6\u5E38\u5907\u533B\u7597\u7528\u54C1\n\n\u4F7F\u7528\u540E\u7ACB\u5373\u56DE\u590D5%\u751F\u547D"
-  hp: 0.05
+  itemInfo: "\u6D3B\u8840\u4E38\uFF0CC\u7EA7\u6D88\u8017\u54C1\n\u5730\u9EC4\uFF0C\u5F53\u5F52\u3001\u9EC4\u8FDE\u5236\u6210\uFF0C\u5177\u6709\u6D3B\u8840\u5316\u7600\uFF0C\u63D0\u9AD8\u7EC6\u80DE\u6D3B\u529B\u7684\u529F\u6548\n\n\u4F7F\u7528\u540E\u589E\u52A010%\u6700\u5927\u751F\u547D\u503C\uFF0C30\u6700\u5927\u4F53\u529B\u503C\uFF0C\u6301\u7EED6\u4E2A\u5C0F\u65F6"
+  hp: 0
   mp: 0
   sp: 0
   replyHp: 0
@@ -41,10 +41,10 @@ MonoBehaviour:
   replyMpPCT: 0
   replySpPCT: 0
   totalhp: 0
-  totalhpPCT: 0
+  totalhpPCT: 0.1
   totalmp: 0
   totalmpPCT: 0
-  totalsp: 0
+  totalsp: 30
   totalspPCT: 0
   ad: 0
   adPCT: 0
