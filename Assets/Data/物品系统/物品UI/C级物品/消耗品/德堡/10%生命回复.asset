@@ -21,7 +21,7 @@ MonoBehaviour:
   equipmentClass: 
   weaponClass: 
   consumable: 1
-  consumableTime: 0
+  consumableTime: 6
   blood: 0
   singleBlood: 0
   bloodClass: 
@@ -30,7 +30,7 @@ MonoBehaviour:
   textFile: {fileID: 0}
   skillList: []
   gemPrepertyList: {fileID: 0}
-  itemInfo: "\u7EF7\u5E26\uFF0CC\u7EA7\u6D88\u8017\u54C1\n\u80FD\u6709\u6548\u5904\u7406\u4E00\u4E9B\u8F83\u5927\u578B\u4F24\u53E3\uFF0C\u662F\u5C45\u5BB6\u5E38\u5907\u533B\u7597\u7528\u54C1\n\n\u4F7F\u7528\u540E\u7ACB\u5373\u56DE\u590D5%\u751F\u547D"
+  itemInfo: "\u7EF7\u5E26\uFF0CC\u7EA7\u6D88\u8017\u54C1\n\u80FD\u6709\u6548\u5904\u7406\u4E00\u4E9B\u8F83\u5927\u578B\u4F24\u53E3\uFF0C\u662F\u5C45\u5BB6\u5E38\u5907\u533B\u7597\u7528\u54C1\n\n\u4F7F\u7528\u540E\u7ACB\u5373\u56DE\u590D10%\u751F\u547D"
   hp: 0.1
   mp: 0
   sp: 0
