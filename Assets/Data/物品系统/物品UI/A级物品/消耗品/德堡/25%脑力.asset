@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac9298dcf4578514f97913b37df2f544, type: 3}
-  m_Name: "5%\u653B\u51FB \uFF0824\u5C0F\u65F6\uFF09"
+  m_Name: "25%\u8111\u529B"
   m_EditorClassIdentifier: 
-  itemName: "\u80BE\u4E0A\u817A\u7D20"
+  itemName: "CPH1\u7A81\u89E6\u6FC0\u53D1\u7D20"
   itemImage: {fileID: 0}
   itemColor: {r: 0, g: 0, b: 0, a: 0}
   itemHeld: 1
@@ -21,7 +21,7 @@ MonoBehaviour:
   equipmentClass: 
   weaponClass: 
   consumable: 1
-  consumableTime: 24
+  consumableTime: 6
   blood: 0
   singleBlood: 0
   bloodClass: 
@@ -30,7 +30,7 @@ MonoBehaviour:
   textFile: {fileID: 0}
   skillList: []
   gemPrepertyList: {fileID: 0}
-  itemInfo: "\u80BE\u4E0A\u817A\u7D20\uFF0CB\u7EA7\u6D88\u8017\u54C1\n\u4EBA\u5DE5\u5408\u6210\u7684\u80BE\u4E0A\u817A\u7D20\uFF0C\u80FD\u4E00\u5B9A\u65F6\u95F4\u5185\u4E3A\u4EBA\u4F53\u63D0\u4F9B\u5F3A\u5927\u7684\u80FD\u91CF\n\uFF08\u5305\u88C5\u4E0A\u5370\u6709\u201C\u5B89\u5E03\u96F7\u62C9\u201D\uFF09\n\n\u4F7F\u7528\u540E\u589E\u52A05%\u7269\u653B\uFF0C2%\u901F\u5EA6\uFF0C\u6301\u7EED24\u4E2A\u5C0F\u65F6"
+  itemInfo: "CPH1\u7A81\u89E6\u6FC0\u53D1\u7D20\uFF0CA\u7EA7\u6D88\u8017\u54C1\n\u636E\u8BF4\u53EA\u6709\u4EBA\u7C7B\u80DA\u80CE\u57281-3\u6708\u5206\u6CCC\u7684\u6FC0\u7D20\uFF0C\u80FD\u77ED\u65F6\u95F4\u5185\u589E\u5F3A\u5927\u8111\u7A81\u89E6\u4F20\u9012\u901F\u5EA6\uFF0C\u4F7F\u5927\u8111\u795E\u7ECF\u5143\u66F4\u52A0\u6D3B\u8DC3\uFF0C\u5B8C\u5584\u4EBA\u4F53\u8111\u90E8\n\n\u4F7F\u7528\u540E\u589E\u52A025%\u8111\u529B\uFF0C\u6301\u7EED6\u4E2A\u5C0F\u65F6\u3002\n\u8111\u529B\u6C38\u4E45\u51CF\u5C111\u70B9"
   hp: 0
   mp: 0
   sp: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   totalsp: 0
   totalspPCT: 0
   ad: 0
-  adPCT: 0.05
+  adPCT: 0
   ap: 0
   apPCT: 0
   def: 0
@@ -55,11 +55,11 @@ MonoBehaviour:
   mdef: 0
   mdefPCT: 0
   speed: 0
-  speedPCT: 0.02
+  speedPCT: 0
   dodge: 0
   crit: 0
   iq: 0
-  iqPCT: 0
+  iqPCT: 0.25
   charm: 0
   charmPCT: 0
   critDamge: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
   baseAd: 0
   baseAp: 0
   baseCharm: 0
-  baseIq: 0
+  baseIq: -1
   baseSpeed: 0
   basePoint: 0
   baseCPoint: 0

@@ -21,7 +21,7 @@ MonoBehaviour:
   equipmentClass: 
   weaponClass: 
   consumable: 1
-  consumableTime: 6
+  consumableTime: 0
   blood: 0
   singleBlood: 0
   bloodClass: 
