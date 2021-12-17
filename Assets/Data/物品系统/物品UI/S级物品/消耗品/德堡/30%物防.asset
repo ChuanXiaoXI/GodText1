@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac9298dcf4578514f97913b37df2f544, type: 3}
-  m_Name: "25%\u7269\u9632"
+  m_Name: "30%\u7269\u9632"
   m_EditorClassIdentifier: 
-  itemName: "5-\u7F9F\u8272\u80FA\u6291\u5236\u5242\uFF08\u7279\u6548\uFF09"
+  itemName: "G-2\u8BD5\u5242"
   itemImage: {fileID: 0}
   itemColor: {r: 0, g: 0, b: 0, a: 0}
   itemHeld: 1
@@ -30,7 +30,7 @@ MonoBehaviour:
   textFile: {fileID: 0}
   skillList: []
   gemPrepertyList: {fileID: 0}
-  itemInfo: "5-\u7F9F\u8272\u80FA\u6291\u5236\u5242\uFF08\u7279\u6548\uFF09\uFF0CA\u7EA7\u6D88\u8017\u54C1\n\u80FD\u6291\u5236\u201C5-\u7F9F\u8272\u80FA\u201D\u5728\u4F53\u5185\u7684\u4F20\u9012\uFF0C\u4E00\u822C\u7528\u4E8E\u201C\u5E7B\u75DB\u201D\u75C5\u4EBA\u6216\u795E\u7ECF\u6027\u75BC\u75DB\u75C5\u6781\u5176\u4E25\u91CD\u7684\u60A3\u8005\uFF0C\u80FD\u77ED\u65F6\u95F4\u5185\u9EBB\u75F9\u75DB\u89C9\n\n\u4F7F\u7528\u540E\u589E\u52A025%\u7269\u9632\uFF0C\u6301\u7EED6\u4E2A\u5C0F\u65F6\u3002\n\u7269\u9632\u6C38\u4E45\u51CF\u5C113\u70B9"
+  itemInfo: "G-2\u8BD5\u5242\uFF0CS\u7EA7\u6D88\u8017\u54C1\n\u5C06G-2\u57FA\u56E0\u6CE8\u5C04\u8FDB\u5165\u76AE\u80A4\u8868\u5C42\u7EC6\u80DE\uFF0C\u76F4\u63A5\u4FC3\u4F7F\u5176\u5206\u6CCCG-BVCB\u86CB\u767D\uFF0C\u4F7F\u7EC6\u80DE\u786C\u5EA6\u589E\u52A0\uFF0C\u662F\u76AE\u80A4\u7EC4\u7EC7\u66F4\u52A0\u575A\u786C\n\n\u4F7F\u7528\u540E\u589E\u52A035%\u7269\u9632\uFF0C\u6301\u7EED6\u4E2A\u5C0F\u65F6\u3002\n\u7269\u9632\u6C38\u4E45\u51CF\u5C114\u70B9"
   hp: 0
   mp: 0
   sp: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
   ap: 0
   apPCT: 0
   def: 0
-  defPCT: 0.25
+  defPCT: 0.3
   mdef: 0
   mdefPCT: 0
   speed: 0
@@ -73,7 +73,7 @@ MonoBehaviour:
   apSkillBool: 0
   doubleDamage: 0
   baseTotalhp: 0
-  baseDef: -3
+  baseDef: -4
   baseMdef: 0
   baseAd: 0
   baseAp: 0
