@@ -30,7 +30,7 @@ public class ItemOnDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
     public Text itemInfoText;
     public GameObject itemInfoTextObject;
     public GameObject itemInfoPoint1;
-    //[消耗品]
+    [Header("消耗品")]
     public int itemHeld;
     public Text itemNum;//数量
     public GameObject timeManage;

@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9298dcf4578514f97913b37df2f544, type: 3}
+  m_Name: "25%\u7269\u9632"
+  m_EditorClassIdentifier: 
+  itemName: "5-\u7F9F\u8272\u80FA\u6291\u5236\u5242\uFF08\u7279\u6548\uFF09"
+  itemImage: {fileID: 0}
+  itemColor: {r: 0, g: 0, b: 0, a: 0}
+  itemHeld: 1
+  itemID: 0
+  equipment: 0
+  equipmentClass: 
+  weaponClass: 
+  consumable: 1
+  consumableTime: 6
+  blood: 0
+  singleBlood: 0
+  bloodClass: 
+  level: 0
+  story: 0
+  textFile: {fileID: 0}
+  skillList: []
+  gemPrepertyList: {fileID: 0}
+  itemInfo: "5-\u7F9F\u8272\u80FA\u6291\u5236\u5242\uFF08\u7279\u6548\uFF09\uFF0CA\u7EA7\u6D88\u8017\u54C1\n\u80FD\u6291\u5236\u201C5-\u7F9F\u8272\u80FA\u201D\u5728\u4F53\u5185\u7684\u4F20\u9012\uFF0C\u4E00\u822C\u7528\u4E8E\u201C\u5E7B\u75DB\u201D\u75C5\u4EBA\u6216\u795E\u7ECF\u6027\u75BC\u75DB\u75C5\u6781\u5176\u4E25\u91CD\u7684\u60A3\u8005\uFF0C\u80FD\u77ED\u65F6\u95F4\u5185\u9EBB\u75F9\u75DB\u89C9\n\n\u4F7F\u7528\u540E\u589E\u52A025%\u7269\u9632\uFF0C\u6301\u7EED6\u4E2A\u5C0F\u65F6\u3002\n\u7269\u9632\u6C38\u4E45\u51CF\u5C113\u70B9"
+  hp: 0
+  mp: 0
+  sp: 0
+  replyHp: 0
+  replyMp: 0
+  replySp: 0
+  replyHpPCT: 0
+  replyMpPCT: 0
+  replySpPCT: 0
+  totalhp: 0
+  totalhpPCT: 0
+  totalmp: 0
+  totalmpPCT: 0
+  totalsp: 0
+  totalspPCT: 0
+  ad: 0
+  adPCT: 0
+  ap: 0
+  apPCT: 0
+  def: 0
+  defPCT: 0.25
+  mdef: 0
+  mdefPCT: 0
+  speed: 0
+  speedPCT: 0
+  dodge: 0
+  crit: 0
+  iq: 0
+  iqPCT: 0
+  charm: 0
+  charmPCT: 0
+  critDamge: 0
+  drainLife: 0
+  sword: 0
+  gun: 0
+  shieldFactor: 0
+  skillOdds: 0
+  charmSkillBool: 0
+  iqSkillBool: 0
+  apSkillBool: 0
+  doubleDamage: 0
+  baseTotalhp: 0
+  baseDef: -1
+  baseMdef: 0
+  baseAd: 0
+  baseAp: 0
+  baseCharm: 0
+  baseIq: 0
+  baseSpeed: 0
+  basePoint: 0
+  baseCPoint: 0
+  baseSPoint: 0
+  baseSSSPoint: 0
